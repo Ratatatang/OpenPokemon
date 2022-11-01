@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://OpenWorld/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://OpenWorld/Player/PlayerRollRight.tres" type="Animation" id=4]
@@ -213,31 +213,6 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=23]
-animation = "AttackLeft"
-
-[sub_resource type="AnimationNodeAnimation" id=25]
-animation = "AttackUp"
-
-[sub_resource type="AnimationNodeAnimation" id=26]
-animation = "AttackDown"
-
-[sub_resource type="AnimationNodeAnimation" id=27]
-animation = "AttackRight"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=20]
-blend_point_0/node = SubResource( 23 )
-blend_point_0/pos = Vector2( -1.1, 0 )
-blend_point_1/node = SubResource( 25 )
-blend_point_1/pos = Vector2( 0, -1 )
-blend_point_2/node = SubResource( 26 )
-blend_point_2/pos = Vector2( 0, 1 )
-blend_point_3/node = SubResource( 27 )
-blend_point_3/pos = Vector2( 1.1, 0 )
-min_space = Vector2( -1.1, -1 )
-max_space = Vector2( 1.1, 1 )
-blend_mode = 1
-
 [sub_resource type="AnimationNodeAnimation" id=3]
 animation = "IdleLeft"
 
@@ -317,26 +292,20 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=14]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=21]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=34]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=35]
 
 [sub_resource type="AnimationNodeStateMachine" id=15]
-states/Attack/node = SubResource( 20 )
-states/Attack/position = Vector2( 293, 167 )
 states/Idle/node = SubResource( 7 )
 states/Idle/position = Vector2( 293, 87 )
 states/Roll/node = SubResource( 33 )
 states/Roll/position = Vector2( 132, 87.6388 )
 states/Run/node = SubResource( 12 )
 states/Run/position = Vector2( 466, 87 )
-transitions = [ "Idle", "Run", SubResource( 13 ), "Run", "Idle", SubResource( 14 ), "Idle", "Attack", SubResource( 21 ), "Attack", "Idle", SubResource( 22 ), "Roll", "Idle", SubResource( 34 ), "Idle", "Roll", SubResource( 35 ) ]
+transitions = [ "Idle", "Run", SubResource( 13 ), "Run", "Idle", SubResource( 14 ), "Roll", "Idle", SubResource( 34 ), "Idle", "Roll", SubResource( 35 ) ]
 start_node = "Idle"
-graph_offset = Vector2( 0, -9.36123 )
+graph_offset = Vector2( -601.253, -9.36123 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
@@ -391,10 +360,9 @@ anims/disappear = SubResource( 38 )
 tree_root = SubResource( 15 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 16 )
-parameters/Attack/blend_position = Vector2( 0, 0 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Roll/blend_position = Vector2( 0, 0 )
-parameters/Run/blend_position = Vector2( 0, 0 )
+parameters/Run/blend_position = Vector2( 1.03201, 0.0831354 )
 
 [node name="CollectionBox" type="Area2D" parent="."]
 position = Vector2( -0.499998, 4.5 )

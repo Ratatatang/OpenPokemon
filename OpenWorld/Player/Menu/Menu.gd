@@ -3,11 +3,11 @@ extends CanvasLayer
 onready var selectionArrow = $Menu/NinePatchRect/Arrow
 onready var menu = $Menu
 
-onready var partyScreen = load("res://WorldAssets/PokemonScreen.tscn")
-onready var inventory = load("res://WorldAssets/TestScreen.tscn")
-onready var journal = load("res://WorldAssets/TestScreen.tscn")
-onready var settings = load("res://WorldAssets/TestScreen.tscn")
-onready var save = load("res://WorldAssets/TestScreen.tscn")
+onready var partyScreen = load("res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn")
+onready var inventory = load("res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn")
+onready var journal = load("res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn")
+onready var settings = load("res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn")
+onready var save = load("res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn")
 
 
 onready var options = [partyScreen, inventory, journal, settings, save]

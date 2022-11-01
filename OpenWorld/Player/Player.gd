@@ -44,7 +44,7 @@ func _process(delta):
 		stateMachine.FREEZE:
 			freeze_state(delta)
 			
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("Interact"):
 		if($Camera2D/DialogBox.visible != true):
 			if($PlayerInteractionBox.get_overlapping_areas() != []):
 				if($Camera2D/DialogBox.visible == false):

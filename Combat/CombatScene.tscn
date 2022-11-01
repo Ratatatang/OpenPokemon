@@ -1,0 +1,356 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Combat/CombatContainer.png" type="Texture" id=1]
+[ext_resource path="res://Combat/Health/HealthFrame.png" type="Texture" id=2]
+[ext_resource path="res://Combat/Buttons/Water_Button.png" type="Texture" id=3]
+[ext_resource path="res://Combat/CombatScene.gd" type="Script" id=4]
+[ext_resource path="res://Combat/Health/HealthyHealthProgress.png" type="Texture" id=5]
+[ext_resource path="res://Combat/Health/HealthUnder.png" type="Texture" id=6]
+[ext_resource path="res://pkmnfl.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 15
+extra_spacing_top = 8
+font_data = ExtResource( 7 )
+
+[node name="CombatScene" type="Node2D"]
+position = Vector2( 23, 0 )
+script = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="PlayerPosition" type="Position2D" parent="."]
+position = Vector2( -93, 9 )
+
+[node name="player1Sprite" type="Sprite" parent="PlayerPosition"]
+region_enabled = true
+region_rect = Rect2( 128, 0, 64, 64 )
+
+[node name="TextureProgress" type="TextureProgress" parent="PlayerPosition"]
+margin_left = -63.0
+margin_top = -67.0
+margin_right = 17.0
+margin_bottom = -58.0
+max_value = 1000.0
+value = 1000.0
+texture_under = ExtResource( 6 )
+texture_over = ExtResource( 2 )
+texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPosition/TextureProgress"]
+margin_top = 12.0
+margin_right = 129.0
+margin_bottom = 36.0
+
+[node name="EnemyPosition" type="Position2D" parent="."]
+position = Vector2( 84, -24 )
+
+[node name="enemy1Sprite" type="Sprite" parent="EnemyPosition"]
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="TextureProgress" type="TextureProgress" parent="EnemyPosition"]
+margin_left = -9.0
+margin_top = -43.0
+margin_right = 71.0
+margin_bottom = -34.0
+max_value = 1000.0
+value = 1000.0
+texture_under = ExtResource( 6 )
+texture_over = ExtResource( 2 )
+texture_progress = ExtResource( 5 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="EnemyPosition/TextureProgress"]
+margin_top = 13.0
+margin_right = 129.0
+margin_bottom = 37.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -159.0
+margin_top = 26.0
+margin_right = 159.0
+margin_bottom = 89.0
+grow_horizontal = 0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionSelect" type="Control" parent="."]
+visible = false
+margin_left = -159.0
+margin_top = 26.0
+margin_right = -119.0
+margin_bottom = 66.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bag" type="TextureButton" parent="ActionSelect"]
+margin_left = 259.0
+margin_top = 2.0
+margin_right = 314.0
+margin_bottom = 32.0
+action_mode = 0
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ActionSelect/Bag"]
+margin_left = 5.0
+margin_top = 7.0
+margin_right = 49.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "Bag"
+align = 1
+
+[node name="Run" type="TextureButton" parent="ActionSelect"]
+margin_left = 259.0
+margin_top = 31.0
+margin_right = 314.0
+margin_bottom = 61.0
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ActionSelect/Run"]
+margin_left = 5.0
+margin_top = 7.0
+margin_right = 49.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "Run"
+align = 1
+
+[node name="Fight" type="TextureButton" parent="ActionSelect"]
+margin_left = 203.0
+margin_top = 2.0
+margin_right = 258.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ActionSelect/Fight"]
+margin_left = 5.0
+margin_top = 7.0
+margin_right = 49.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "Fight"
+align = 1
+
+[node name="Pokemon" type="TextureButton" parent="ActionSelect"]
+margin_left = 203.0
+margin_top = 31.0
+margin_right = 258.0
+margin_bottom = 61.0
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ActionSelect/Pokemon"]
+margin_left = -4.0
+margin_top = 7.0
+margin_right = 89.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.68, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "Pokemon"
+align = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ActionSelect"]
+margin_left = 16.0
+margin_top = 14.0
+margin_right = 216.0
+margin_bottom = 44.0
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
+custom_fonts/normal_font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoveSelect" type="Control" parent="."]
+margin_left = -359.0
+margin_top = 26.0
+margin_right = -319.0
+margin_bottom = 66.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move1" type="TextureButton" parent="MoveSelect"]
+margin_left = 200.0
+margin_top = 2.0
+margin_right = 315.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MoveSelect/Move1"]
+margin_left = 10.0
+margin_right = 99.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "Fight"
+align = 1
+valign = 1
+
+[node name="Move2" type="TextureButton" parent="MoveSelect"]
+margin_left = 315.0
+margin_top = 2.0
+margin_right = 430.0
+margin_bottom = 32.0
+action_mode = 0
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MoveSelect/Move2"]
+margin_left = 13.0
+margin_right = 101.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "Bag"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move3" type="TextureButton" parent="MoveSelect"]
+margin_left = 200.0
+margin_top = 31.0
+margin_right = 315.0
+margin_bottom = 61.0
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MoveSelect/Move3"]
+margin_left = 10.0
+margin_top = 1.0
+margin_right = 141.0
+margin_bottom = 23.0
+rect_scale = Vector2( 0.68, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "Pokemon"
+align = 1
+valign = 1
+
+[node name="Move4" type="TextureButton" parent="MoveSelect"]
+margin_left = 315.0
+margin_top = 31.0
+margin_right = 430.0
+margin_bottom = 61.0
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MoveSelect/Move4"]
+margin_left = 13.0
+margin_right = 101.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "Run"
+align = 1
+valign = 1
+
+[node name="PPDisplay" type="RichTextLabel" parent="MoveSelect"]
+margin_left = 439.0
+margin_top = 40.0
+margin_right = 510.0
+margin_bottom = 69.0
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "PP : 40/40"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameDisplay" type="RichTextLabel" parent="MoveSelect"]
+margin_left = 439.0
+margin_top = 12.0
+margin_right = 518.0
+margin_bottom = 34.0
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
+custom_fonts/normal_font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialouge" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialouge"]
+margin_left = -93.0
+margin_top = 28.0
+margin_right = 134.0
+margin_bottom = 87.0
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
+custom_fonts/normal_font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthTween" type="Tween" parent="."]
+
+[connection signal="button_down" from="ActionSelect/Bag" to="." method="_on_Bag_button_down"]
+[connection signal="pressed" from="ActionSelect/Bag" to="." method="_on_Bag_pressed"]
+[connection signal="pressed" from="ActionSelect/Run" to="." method="_on_Run_pressed"]
+[connection signal="pressed" from="ActionSelect/Fight" to="." method="_on_Fight_pressed"]
+[connection signal="pressed" from="ActionSelect/Pokemon" to="." method="_on_Pokemon_pressed"]
+[connection signal="mouse_entered" from="MoveSelect/Move1" to="." method="_on_Move1_mouse_entered"]
+[connection signal="pressed" from="MoveSelect/Move1" to="." method="_on_Move1_pressed"]
+[connection signal="mouse_entered" from="MoveSelect/Move2" to="." method="_on_Move2_mouse_entered"]
+[connection signal="pressed" from="MoveSelect/Move2" to="." method="_on_Move2_pressed"]
+[connection signal="mouse_entered" from="MoveSelect/Move3" to="." method="_on_Move3_mouse_entered"]
+[connection signal="pressed" from="MoveSelect/Move3" to="." method="_on_Move3_pressed"]
+[connection signal="mouse_entered" from="MoveSelect/Move4" to="." method="_on_Move4_mouse_entered"]
+[connection signal="pressed" from="MoveSelect/Move4" to="." method="_on_Move4_pressed"]

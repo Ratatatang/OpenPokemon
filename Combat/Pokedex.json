@@ -1,0 +1,50 @@
+{
+    "Pokedex": {
+        "Bulbasaur" : {
+            "ID": "001",
+            "Types": ["Grass", "Poison"],
+            "Moves": {
+                "1": ["tackle", "growl"],
+                "3": ["vine_whip"],
+                "6": ["growth"],
+                "9": ["leech_seed"],
+                "12": ["razor_leaf"],
+                "15": ["poison_powder"]
+            },
+            "BaseStats": {
+                "hp": 45,
+                "atk": 49,
+                "def": 49,
+                "spAtk": 65,
+                "spDef": 65,
+                "speed": 45
+                },
+            "EvoLv": 16,
+            "EvoPokemon": "Ivysaur"
+        },
+        "Ivysaur": {
+            "ID": "002",
+            "Types": ["Grass", "Poison"],
+            "Moves": {
+                "1": ["tackle", "growl", "vine_whip", "growth"],
+                "9": ["leech_seed"],
+                "12": ["razor_leaf"],
+                "15": ["poison_powder"]
+            },
+            "EvoLv": 32,
+            "EvoPokemon": "Venasaur"
+        },
+        "Venasaur": {
+            "ID": "003",
+            "Types": ["Grass", "Poison"],
+            "Moves": {
+                "1": ["tackle", "growl", "vine_whip", "growth"],
+                "9": ["leech_seed"],
+                "12": ["razor_leaf"],
+                "15": ["poison_powder"]
+            },
+            "EvoLv": 0,
+            "EvoPokemon": ""
+        }
+    }
+}

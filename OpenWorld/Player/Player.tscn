@@ -394,6 +394,7 @@ shape = SubResource( 39 )
 position = Vector2( 0, 5 )
 z_index = 9
 current = true
+zoom = Vector2( 0.5, 0.5 )
 
 [node name="DialogBox" parent="Camera2D" instance=ExtResource( 18 )]
 

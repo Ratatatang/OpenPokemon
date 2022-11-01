@@ -9,7 +9,7 @@ var moisture = {}
 var biome = {}
 var openSimplexNoise = OpenSimplexNoise.new()
 
-var biomeTiles = {"Plains": 0, "Forest": 1, "Swamp": 2, "Taiga": 3, "Tundra": 4, "Jungle": 5, "Savannah": 6, "Desert": 7,  "Sulfur": 8, "Beach": 9, "Ocean": 10, "TaigaPlains": 11}
+var biomeTiles = {"Plains": 0, "Forest": 1, "Swamp": 2, "Taiga": 3, "Tundra": 4, "Jungle": 5, "Savannah": 6, "Desert": 7,  "Sulfur": 8, "TaigaPlains": 9, "Ocean": 10, "Beach": 11,}
 
 #Generates maps for temp, moisture & altitude used to decide biomes
 func _ready():
@@ -47,12 +47,12 @@ func setTile(width, height):
 				biome[pos] = "Ocean"
 			
 			#Beach
-			elif between(alt, 0.2, 0.27):
+			elif between(alt, 0.2, 0.23):
 				tilemap.set_cellv(pos, biomeTiles.Beach)
 				biome[pos] = "Beach"
 				
 			#Other Biomes
-			elif between(alt, 0.27, 1):
+			elif between(alt, 0.23, 1):
 				
 				#Plains
 				#if between(moist, 0.2, 0.5) and between(temp, 0.2, 0.5):
@@ -94,6 +94,10 @@ func setTile(width, height):
 				#Desert
 				elif temp > 0.7 and moist < 0.4:
 					tilemap.set_cellv(pos, biomeTiles.Desert)"""
+				
+#				if biome[Vector2(pos.x-1, pos.y-1)] == "Ocean" or biome[Vector2(pos.x-1, pos.y+1)] == "Ocean" or biome[Vector2(pos.x+1, pos.y-1)] == "Ocean" or biome[Vector2(pos.x+1, pos.y+1)] == "Ocean":
+#					tilemap.set_cellv(pos, biomeTiles.Beach)
+#					biome[pos] = "Beach"
 					
 #Helper func for start < val < end
 func between(val, start, end):

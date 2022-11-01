@@ -28,7 +28,6 @@ func start(dialogPath, dialogSpeed = 0.05):
 # waits for the escape command to move dialog along, as
 # well as for enabled to be false to stop the dialog
 	
-# warning-ignore:unused_argument
 func _process(delta):
 	if(enabled == true):
 		if Input.is_action_just_pressed("escape") and $Choices.visible == false:
@@ -162,7 +161,7 @@ func findDialog(key = "") -> void:
 		find_parent("Player").external_set_state("move")
 		visible = false
 
-# helper function for setting the dialog or choice as the
+# helper function for setting the dialog or choices as the
 # visible part of the dialog
 
 func setVisible(toSet):

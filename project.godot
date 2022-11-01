@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="OpenPokemon"
-run/main_scene="res://World Generation/World Generator.tscn"
+run/main_scene="res://OpenWorld/World Generation/World Generator.tscn"
 config/icon="res://icon.png"
 
 [display]

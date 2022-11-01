@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/single_tile_tileset.png-5ea6a1bb09608319906019cad00978af.stex"
+path="res://.import/DialogBox.png-f3ab0b115ed23754ecb801172a6c793a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World Generation/single_tile_tileset.png"
-dest_files=[ "res://.import/single_tile_tileset.png-5ea6a1bb09608319906019cad00978af.stex" ]
+source_file="res://OpenWorld/Player/Dialog/DialogBox.png"
+dest_files=[ "res://.import/DialogBox.png-f3ab0b115ed23754ecb801172a6c793a.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

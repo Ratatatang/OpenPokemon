@@ -10,13 +10,15 @@ size = 12
 font_data = ExtResource( 4 )
 
 [node name="Menu" type="CanvasLayer"]
+scale = Vector2( 3, 3 )
+transform = Transform2D( 3, 0, 0, 3, 0, 0 )
 script = ExtResource( 3 )
 
 [node name="Menu" type="Control" parent="."]
-margin_left = 255.0
-margin_top = 4.0
-margin_right = 295.0
-margin_bottom = 44.0
+margin_left = 274.333
+margin_top = 2.66667
+margin_right = 314.333
+margin_bottom = 42.6667
 __meta__ = {
 "_edit_use_anchors_": true
 }

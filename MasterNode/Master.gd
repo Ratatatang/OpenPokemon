@@ -14,6 +14,10 @@ var playerPokemonList = [
 	""
 ]
 
+onready var currentScene = $CurrentScene
+onready var player = currentScene.get_player()
+onready var screenBase = "res://OpenWorld/Player/Menu/Menus/Screen.tscn"
+
 # base class for all pokemon. has names, stats and moves
 
 class pokemon:
@@ -150,4 +154,10 @@ func _ready():
 
 	playerPokemonList[0] = pokemon.new("Bulbasaur", 4, pokedex, movedex)
 
+
+func loadScreen(screen):
+	player.frozen = true
+	player.external_set_state("freeze")
+	currentScene.add_child(load(screenBase).instance())
+	currentScene.get_screen().add_child(load(screen).instance())
 

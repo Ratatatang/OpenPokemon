@@ -104,6 +104,6 @@ func between(val, start, end):
 	if start <= val and val <= end:
 		return true
 		
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		get_tree().reload_current_scene()
+#func _input(event):
+#	if event.is_action_pressed("ui_accept"):
+#		get_tree().reload_current_scene()

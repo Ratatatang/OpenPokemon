@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://MasterNode/Master.gd" type="Script" id=1]
 [ext_resource path="res://OpenWorld/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://OpenWorld/World Generation/World Generator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://OpenWorld/Player/Menu/Menu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://MasterNode/CurrentScene.gd" type="Script" id=5]
 
 [node name="Master" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,6 +25,7 @@ __meta__ = {
 }
 
 [node name="CurrentScene" type="Node2D" parent="."]
+script = ExtResource( 5 )
 
 [node name="World" type="YSort" parent="CurrentScene"]
 

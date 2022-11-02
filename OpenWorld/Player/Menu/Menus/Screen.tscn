@@ -3,10 +3,14 @@
 [node name="Screen" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_top = 1.0
-margin_right = 320.0
-margin_bottom = 181.0
+margin_left = -574.0
+margin_top = -341.0
+margin_right = 707.0
+margin_bottom = 416.0
 color = Color( 0.301961, 0.301961, 0.301961, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Camera" type="Camera2D" parent="."]
+current = true

@@ -88,7 +88,10 @@ func move_state(delta):
 
 func external_set_state(newState):
 	if newState == "freeze":
+		frozen = true
 		state = stateMachine.FREEZE
+	else:
+		frozen = false
 	if newState == "move":
 		state = stateMachine.MOVE
 	if newState == "roll":

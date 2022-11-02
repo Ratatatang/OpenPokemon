@@ -156,8 +156,12 @@ func _ready():
 
 
 func loadScreen(screen):
-	player.frozen = true
 	player.external_set_state("freeze")
 	currentScene.add_child(load(screenBase).instance())
 	currentScene.get_screen().add_child(load(screen).instance())
+	
+func exitScreen():
+	currentScene.get_screen().queue_free()
+	player.external_set_state("move")
+	player.camera_set()
 

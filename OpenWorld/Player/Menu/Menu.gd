@@ -54,13 +54,13 @@ func _unhandled_input(event) -> void:
 					screen_loaded = ScreenLoaded.SAVE_SCREEN
 	
 				
-			elif event.is_action_pressed("scrolldown"):
+			elif event.is_action_pressed("scrolldown") or event.is_action_pressed("ui_down"):
 				if selected_option == 4:
 					selected_option = -1
 				selected_option += 1
 				selectionArrow.rect_position.y = 11 + (selected_option % 5) * 15
 				
-			elif event.is_action_pressed("scrollup"):
+			elif event.is_action_pressed("scrollup") or event.is_action_pressed("ui_up"):
 				if selected_option == 0:
 					selected_option = 4
 				else:

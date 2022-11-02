@@ -47,12 +47,12 @@ func setTile(width, height):
 				biome[pos] = "Ocean"
 			
 			#Beach
-			elif between(alt, 0.2, 0.23):
+			elif between(alt, 0.2, 0.27):
 				tilemap.set_cellv(pos, biomeTiles.Beach)
 				biome[pos] = "Beach"
 				
 			#Other Biomes
-			elif between(alt, 0.23, 1):
+			elif between(alt, 0.27, 1):
 				
 				#Plains
 				#if between(moist, 0.2, 0.5) and between(temp, 0.2, 0.5):

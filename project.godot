@@ -84,6 +84,14 @@ openMenu={
 "deadzone": 0.5,
 "events": [  ]
 }
+spin={
+"deadzone": 0.5,
+"events": [  ]
+}
+escape={
+"deadzone": 0.5,
+"events": [  ]
+}
 
 [physics]
 

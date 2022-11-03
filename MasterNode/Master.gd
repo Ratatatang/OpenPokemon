@@ -27,8 +27,6 @@ class pokemon:
 	var speciesName
 	var displayName
 	
-	var baseStats
-	
 	var hp
 	var atk
 	var spAtk
@@ -62,7 +60,6 @@ class pokemon:
 	}
 	
 	var availableMoves = []
-	var availableMovesTemp = []
 	
 	var healthBar
 	
@@ -77,7 +74,7 @@ class pokemon:
 		self.pokedexInfo = instPokedex.get("Pokedex").get(speciesName)
 		var moveLvs = pokedexInfo.get("Moves").keys()
 		
-		self.baseStats = pokedexInfo.get("BaseStats")
+		var baseStats = pokedexInfo.get("BaseStats")
 		
 		self.hpIV = round(rand_range(0, 31))
 		self.atkIV = round(rand_range(0, 31))
@@ -100,13 +97,14 @@ class pokemon:
 		get_moves(moveLvs, instMovedex)
 		
 		instMovedex = null
-		availableMovesTemp = []
 		
 		# this is fucking stupid.
 		#(figures out what key values in the moves dictionary need to be appended to availableMoves)
 		
 		
 	func get_moves(moveLvs, instMovedex):
+		
+		var availableMovesTemp = []
 		
 		for i in range(len(moveLvs)):
 			if(int(moveLvs[i]) <= self.level):

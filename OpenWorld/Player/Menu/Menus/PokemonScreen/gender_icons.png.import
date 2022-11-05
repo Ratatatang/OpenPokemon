@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/NurseJoy.png-c358594e0f5f690e930f74a6e863b9bd.stex"
+path="res://.import/gender_icons.png-08a74dfbf5faf250b593ce2d7bd1082d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://OpenWorld/Player/Menu/Menus/TestScreen/NurseJoy.png"
-dest_files=[ "res://.import/NurseJoy.png-c358594e0f5f690e930f74a6e863b9bd.stex" ]
+source_file="res://OpenWorld/Player/Menu/Menus/PokemonScreen/gender_icons.png"
+dest_files=[ "res://.import/gender_icons.png-08a74dfbf5faf250b593ce2d7bd1082d.stex" ]
 
 [params]
 

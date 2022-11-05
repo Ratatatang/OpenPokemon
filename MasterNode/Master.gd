@@ -17,6 +17,9 @@ var playerPokemonList = [
 onready var currentScene = $CurrentScene
 onready var player = currentScene.get_player()
 onready var screenBase = "res://OpenWorld/Player/Menu/Menus/Screen.tscn"
+onready var combatScenePath = "res://Combat/CombatScene.tscn"
+onready var menu = $Menu
+onready var screenEffectPlayer = $ScreenEffects/AnimationPlayer
 
 # base class for all pokemon. has names, stats and moves
 
@@ -65,10 +68,10 @@ class pokemon:
 	
 	var types = []
 	
-	func _init(newName, lv, instPokedex, instMovedex):
+	func _init(name, lv, instPokedex, instMovedex):
 		
-		self.speciesName = newName
-		self.displayName = newName
+		self.speciesName = name
+		self.displayName = name
 		self.level = lv
 		
 		self.pokedexInfo = instPokedex.get("Pokedex").get(speciesName)
@@ -76,6 +79,7 @@ class pokemon:
 		
 		var baseStats = pokedexInfo.get("BaseStats")
 		
+		#Sets random IV's
 		self.hpIV = round(rand_range(0, 31))
 		self.atkIV = round(rand_range(0, 31))
 		self.defIV = round(rand_range(0, 31))
@@ -83,6 +87,7 @@ class pokemon:
 		self.spDefIV = round(rand_range(0, 31))
 		self.speedIV = round(rand_range(0, 31))
 		
+		#Calculates stats based on base stats & IV's
 		self.hp =  round((((2 * baseStats.get("hp") + hpIV + 0) * level)/100) + level + 10)
 		self.atk = round((((2 * baseStats.get("atk") + atkIV + 0) * level)/100) + 5)
 		self.def = round((((2 * baseStats.get("def") + defIV + 0) * level)/100) + 5)
@@ -96,11 +101,18 @@ class pokemon:
 		
 		get_moves(moveLvs, instMovedex)
 		
-		instMovedex = null
+	func recalculateStats():
+		var baseStats = pokedexInfo.get("BaseStats")
+		
+		self.hp =  round((((2 * baseStats.get("hp") + hpIV + 0) * level)/100) + level + 10)
+		self.atk = round((((2 * baseStats.get("atk") + atkIV + 0) * level)/100) + 5)
+		self.def = round((((2 * baseStats.get("def") + defIV + 0) * level)/100) + 5)
+		self.spAtk = round((((2 * baseStats.get("spAtk") + spAtkIV + 0) * level)/100) + 5)
+		self.spDef = round((((2 * baseStats.get("spDef") + spDefIV + 0) * level)/100) + 5)
+		self.speed = round((((2 * baseStats.get("speed") + speedIV + 0) * level)/100) + 5)
 		
 		# this is fucking stupid.
 		#(figures out what key values in the moves dictionary need to be appended to availableMoves)
-		
 		
 	func get_moves(moveLvs, instMovedex):
 		
@@ -114,7 +126,7 @@ class pokemon:
 						self.availableMoves.append(movesToAppend[j])
 						print("added " + movesToAppend[j])
 		
-		self.availableMovesTemp = availableMoves.duplicate(true)
+		availableMovesTemp = availableMoves.duplicate(true)
 		
 		# sets the amount of keys to set, and set a key to be a unique move
 		# off the tempAvailableMoves list
@@ -128,22 +140,25 @@ class pokemon:
 		move = round(move)
 		
 		for i in len(keys):
-			move = rand_range(0, len(self.availableMovesTemp)-1)
+			move = rand_range(0, len(availableMovesTemp)-1)
 			move = round(move)
 			print(move)
 			print(availableMovesTemp)
-			self.moves[keys[i]] = self.availableMovesTemp[move]
-			self.availableMovesTemp.erase(moves[keys[i]])
+			self.moves[keys[i]] = availableMovesTemp[move]
+			availableMovesTemp.erase(moves[keys[i]])
 			self.moves[keys[i]] = instMovedex.get("Movedex").get(moves[keys[i]])
 			self.movePP["move"+str(i+1)+"PP"] = self.moves[keys[i]].get("PP")
 
 func _ready():
+	
+	#Gets the pokedex
 	var pokedexFile = File.new()
 	pokedexFile.open("res://Combat/Pokedex.json", File.READ)
 	var pokedexFileData = JSON.parse(pokedexFile.get_as_text())
 	pokedexFile.close()
 	pokedex = pokedexFileData.result
 	
+	#Gets the movedex
 	var movedexFile = File.new()
 	movedexFile.open("res://Combat/Movedex.json", File.READ)
 	var movedexFileData = JSON.parse(movedexFile.get_as_text())
@@ -152,14 +167,36 @@ func _ready():
 
 	playerPokemonList[0] = pokemon.new("Bulbasaur", 4, pokedex, movedex)
 
-
+#Adds a base screen node, and then adds the given screen onto that
 func loadScreen(screen):
 	player.external_set_state("freeze")
 	currentScene.add_child(load(screenBase).instance())
 	currentScene.get_screen().add_child(load(screen).instance())
-	
+
+#Removes the current base screen & frees the player to move
 func exitScreen():
 	currentScene.get_screen().queue_free()
 	player.external_set_state("move")
 	player.camera_set()
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("test"):
+		callWildEncounter("Bulbasaur", 5)
 
+func callWildEncounter(species, lv):
+	menu.enabled = false
+	player.external_set_state("freeze")
+	screenEffectPlayer.play("WildCombatStart")
+	yield(screenEffectPlayer, "animation_finished")
+	currentScene.get_child(0).visible = false
+	currentScene.add_child(load(combatScenePath).instance())
+	var combatScene = currentScene.get_node("CombatScene")
+	# This could all be one function
+	combatScene.getPokedex(pokedex, movedex)
+	combatScene.set_mons("playerList", 0, playerPokemonList)
+	combatScene.set_mons("enemy1", 0, pokemon.new(species, lv, pokedex, movedex))
+	combatScene.StartBattle()
+	combatScene.connect("finished_combat", self, "fade_from_combat")
+	combatScene.connect("lose_combat", self, "lose_from_combat")
+	
+	screenEffectPlayer.play("FadeToCombat")

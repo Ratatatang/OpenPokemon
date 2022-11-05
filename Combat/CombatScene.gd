@@ -181,7 +181,7 @@ func wild_combat_start():
 func _ready():
 	
 	var typeFile = File.new()
-	typeFile.open("TypeMatchups.json", File.READ)
+	typeFile.open("res://Combat/TypeMatchups.json", File.READ)
 	var typeEffectFileData = JSON.parse(typeFile.get_as_text())
 	typeFile.close()
 	typeEffect = typeEffectFileData.result

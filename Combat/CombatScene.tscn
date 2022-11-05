@@ -27,11 +27,11 @@ zoom = Vector2( 0.312, 0.3 )
 [node name="PlayerPosition" type="Position2D" parent="."]
 position = Vector2( -93, 9 )
 
-[node name="player1Sprite" type="Sprite" parent="PlayerPosition"]
+[node name="sprite" type="Sprite" parent="PlayerPosition"]
 region_enabled = true
 region_rect = Rect2( 128, 0, 64, 64 )
 
-[node name="TextureProgress" type="TextureProgress" parent="PlayerPosition"]
+[node name="healthbar" type="TextureProgress" parent="PlayerPosition"]
 margin_left = -63.0
 margin_top = -67.0
 margin_right = 17.0
@@ -45,19 +45,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPosition/TextureProgress"]
-margin_top = 12.0
-margin_right = 129.0
-margin_bottom = 36.0
+[node name="name" type="RichTextLabel" parent="PlayerPosition/healthbar"]
+margin_left = 1.0
+margin_top = -13.0
+margin_right = 130.0
+margin_bottom = 11.0
 
 [node name="EnemyPosition" type="Position2D" parent="."]
 position = Vector2( 84, -24 )
 
-[node name="enemy1Sprite" type="Sprite" parent="EnemyPosition"]
+[node name="sprite" type="Sprite" parent="EnemyPosition"]
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 
-[node name="TextureProgress" type="TextureProgress" parent="EnemyPosition"]
+[node name="healthbar" type="TextureProgress" parent="EnemyPosition"]
 margin_left = -9.0
 margin_top = -43.0
 margin_right = 71.0
@@ -68,16 +69,20 @@ texture_under = ExtResource( 6 )
 texture_over = ExtResource( 2 )
 texture_progress = ExtResource( 5 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="EnemyPosition/TextureProgress"]
-margin_top = 13.0
-margin_right = 129.0
-margin_bottom = 37.0
+[node name="name" type="RichTextLabel" parent="EnemyPosition/healthbar"]
+margin_left = 1.0
+margin_top = -13.0
+margin_right = 130.0
+margin_bottom = 11.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -159.0
-margin_top = 26.0
-margin_right = 159.0
-margin_bottom = 89.0
+[node name="TextureRect" type="TextureRect" parent="EnemyPosition"]
+margin_left = -243.0
+margin_top = 50.0
+margin_right = 75.0
+margin_bottom = 113.0
 grow_horizontal = 0
 texture = ExtResource( 1 )
 __meta__ = {

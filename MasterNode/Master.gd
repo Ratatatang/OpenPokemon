@@ -164,7 +164,8 @@ func _ready():
 	var movedexFileData = JSON.parse(movedexFile.get_as_text())
 	movedexFile.close()
 	movedex = movedexFileData.result
-
+	
+	screenEffectPlayer.play("Reset")
 	playerPokemonList[0] = pokemon.new("Bulbasaur", 4, pokedex, movedex)
 
 #Adds a base screen node, and then adds the given screen onto that
@@ -192,10 +193,8 @@ func callWildEncounter(species, lv):
 	currentScene.add_child(load(combatScenePath).instance())
 	var combatScene = currentScene.get_node("CombatScene")
 	# This could all be one function
-	combatScene.getPokedex(pokedex, movedex)
-	combatScene.set_mons("playerList", 0, playerPokemonList)
-	combatScene.set_mons("enemy1", 0, pokemon.new(species, lv, pokedex, movedex))
-	combatScene.StartBattle()
+	combatScene.wild_combat_start(playerPokemonList, pokemon.new(species, lv, pokedex, movedex))
+	
 	combatScene.connect("finished_combat", self, "fade_from_combat")
 	combatScene.connect("lose_combat", self, "lose_from_combat")
 	

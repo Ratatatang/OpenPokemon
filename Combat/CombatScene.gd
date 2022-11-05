@@ -52,10 +52,7 @@ signal lose_combat
 var combatPokedex
 var combatMovedex
 
-onready var playerSprite1 = $PlayerPosition/player1Sprite
 var playerActive1
-
-onready var enemySprite1 = $EnemyPosition/enemy1Sprite
 var enemyActive1
 
 var playerList = ["", "", "", "", "", ""]
@@ -85,9 +82,10 @@ class selectedMove:
 		
 class battlingMon:
 	
-	var tempDisplayName
+	var displayName
 	
 	var healthBar
+	var sprite
 	
 	var pokemon
 	
@@ -99,12 +97,14 @@ class battlingMon:
 	var tempAcucy
 	var tempEvsn
 	
-	func _init(mon, bar):
+	func _init(mon, slot):
 		self.pokemon = mon
-		self.healthBar = bar
-		self.tempDisplayName = self.pokemon.displayName
+		self.healthBar = slot.get_node("healthbar")
+		self.sprite = slot.get_node("sprite")
+		self.displayName = self.pokemon.displayName
+		healthBar.get_node("name").text = displayName
 		setStats()
-			
+	
 	func changeStat(stat, value):
 		if(stat == "Attack"):
 			self.tempAtk += value
@@ -131,7 +131,7 @@ class battlingMon:
 		self.tempEvsn = 0
 	
 # for externally setting the pokemon in use
-func set_mons(team, index, pokemon):
+"""func set_mons(team, index, pokemon):
 	if(team == "enemy"):
 		enemyList[index] = pokemon
 	if(team == "player"):
@@ -139,46 +139,43 @@ func set_mons(team, index, pokemon):
 	if(team == "playerList"):
 		playerList = pokemon
 	if(team == "enemy1"):
-		enemyActive1 = battlingMon.new(pokemon, $EnemyPosition/TextureProgress)
-
-# for setting the pokedex (if needed for wild encounters)
-
-func getPokedex(pokedex, movedex):
-	combatPokedex = pokedex
-	combatMovedex = movedex
-
+		enemyActive1 = battlingMon.new(pokemon, $EnemyPosition/TextureProgress)"""
+		
 # starts wild combat by setting the correct sprites and name for the 
 # what will ____ do message
 
-func wild_combat_start():
-	playerActive1 = battlingMon.new(playerList[0], $PlayerPosition/TextureProgress)
+func wild_combat_start(playerTeam, enemyPokemon):
+	playerList = playerTeam
+	playerActive1 = battlingMon.new(playerList[0], $PlayerPosition)
 	
-	playerSprite1.texture = load("res://Combat/Sprites/"+playerActive1.pokemon.pokedexInfo.get("ID")+".png")
+	playerActive1.sprite.texture = load("res://Combat/Sprites/"+playerActive1.pokemon.pokedexInfo.get("ID")+".png")
 	playerMoves = playerActive1.pokemon.moves
 	
-	enemySprite1.texture = load("res://Combat/Sprites/"+enemyActive1.pokemon.pokedexInfo.get("ID")+".png")
+	enemyActive1 = battlingMon.new(enemyPokemon, $EnemyPosition)
+	enemyActive1.sprite.texture = load("res://Combat/Sprites/"+enemyActive1.pokemon.pokedexInfo.get("ID")+".png")
 	enemyMoves = enemyActive1.pokemon.moves.values()
-	enemyActive1.tempDisplayName = "Enemy " + enemyActive1.tempDisplayName
+	enemyActive1.displayName = "Enemy " + enemyActive1.displayName
 	
 	for i in len(enemyMoves):
 		if str(enemyMoves[i]) == "":
 			enemyMoves.resize(len(enemyMoves)-1)
 	
-	playerActive1.setStats()
-	enemyActive1.setStats()
-	
 	var percentHealth = playerActive1.pokemon.tempHp/playerActive1.pokemon.hp
-	$PlayerPosition/TextureProgress.value = round($PlayerPosition/TextureProgress.value * percentHealth)
+	playerActive1.healthBar.value = round(playerActive1.healthBar.value * percentHealth)
 	
-	update_healthbar_color(percentHealth, $PlayerPosition/TextureProgress)
+	update_healthbar_color(percentHealth, playerActive1.healthBar)
 	
 	
-	$ActionSelect/RichTextLabel.text = "What will " + playerActive1.tempDisplayName + " do?"
+	$ActionSelect/RichTextLabel.text = "What will " + playerActive1.displayName + " do?"
 	buttonMoves()
+	set_control("Action")
 	
 # just makes sure that certain values are correct
 
 func _ready():
+	
+	combatMovedex = get_parent().get_parent().movedex
+	combatPokedex = get_parent().get_parent().pokedex
 	
 	var typeFile = File.new()
 	typeFile.open("res://Combat/TypeMatchups.json", File.READ)
@@ -196,7 +193,7 @@ func _ready():
 func _process(delta):
 	randomize()
 	if Input.is_action_pressed("spin"):
-		playerSprite1.rotation_degrees += 999999999999999999
+		playerActive1.sprite.texture.rotation_degrees += 999999999999999999
 	if Input.is_action_just_pressed("escape") and $ActionSelect.visible == false and Dialoge.visible == false:
 		set_control("Action")
 	elif(Input.is_action_just_pressed("escape") and Dialoge.visible == true):
@@ -232,15 +229,6 @@ func buttonMoves():
 		buttonType.capitalize()
 		buttons["Move"+str(i+1)].texture_normal = load("res://Combat/Buttons/"+buttonType+"_Button.png")
 		buttons["Move"+str(i+1)].find_node("Label").text = buttonMove.get("DisplayName")
-		
-# functions for the states
-
-func StartBattle():
-	if trainerBattle != false:
-		pass
-	else:
-		set_control("Action")
-		wild_combat_start()
 
 func DecideMon():
 	pass
@@ -441,9 +429,9 @@ func speedCalculator(unsortedMoves):
 		
 func moveText(miss, move):
 	if miss == false:
-		Dialoge.text = move.attacker.tempDisplayName + " used " + move.attack.get("DisplayName") + " on " + move.victim.tempDisplayName + "!"
+		Dialoge.text = move.attacker.displayName + " used " + move.attack.get("DisplayName") + " on " + move.victim.displayName + "!"
 	else:
-		Dialoge.text = move.attacker.tempDisplayName + " missed."
+		Dialoge.text = move.attacker.displayName + " missed."
 		
 func otherText(type):
 	if type == "notEffective":

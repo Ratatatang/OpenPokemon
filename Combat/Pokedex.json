@@ -31,18 +31,34 @@
                 "12": ["razor_leaf"],
                 "15": ["poison_powder"]
             },
+            "BaseStats": {
+                "hp": 60,
+                "atk": 62,
+                "def": 63,
+                "spAtk": 80,
+                "spDef": 80,
+                "speed": 60
+                },
             "EvoLv": 32,
             "EvoPokemon": "Venasaur"
         },
-        "Venasaur": {
+        "Venusaur": {
             "ID": "003",
             "Types": ["Grass", "Poison"],
             "Moves": {
                 "1": ["tackle", "growl", "vine_whip", "growth"],
                 "9": ["leech_seed"],
                 "12": ["razor_leaf"],
-                "15": ["poison_powder"]
+                "15": ["poison_powder"],
             },
+            "BaseStats": {
+                "hp": 80,
+                "atk": 82,
+                "def": 83,
+                "spAtk": 100,
+                "spDef": 100,
+                "speed": 80
+                },
             "EvoLv": 0,
             "EvoPokemon": ""
         }

@@ -1,7 +1,8 @@
 {
-    "Flags": ["Sound", "Powder", "SwapCat", "Healing", "Support"],
+    "Flags": ["Sound", "Powder", "SwapCat", "Healing", "Support", "Charge"],
     "StatusEffects": ["Poison", "Paralyze", "Burn", "Sleep", "Freeze"],
     "VolatileEffects":  ["Confusion", "Infatuated", "Leech Seed", "Flinch"],
+    "EctEffects": ["HealPercent", "HealAmount", "Recoil"],
 
     "Movedex": {
         "tackle":{
@@ -235,6 +236,47 @@
                 }
             }
         },
+        "petal_blizzard":{
+            "DisplayName" : "Petal Blizzard",
+            "Type": "Grass",
+            "Power": 90,
+            "PP": 15,
+            "Accuracy": 100,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "AllAdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {}
+        },
+        "seed_bomb":{
+            "DisplayName" : "Seed Bomb",
+            "Type": "Grass",
+            "Power": 80,
+            "PP": 15,
+            "Accuracy": 100,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {}
+        },
+        "worry_seed":{
+            "DisplayName" : "Worry Seed",
+            "Type": "Grass",
+            "Power": 80,
+            "PP": 15,
+            "Accuracy": 100,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "Any",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "AbilityChange": "Insomnia"
+            }
+        },
         "harden":{
             "DisplayName" : "Harden",
             "Type": "Normal",
@@ -252,6 +294,91 @@
                     "Defence": 1
                 }
             }
+        },
+        "sweet_scent":{
+            "DisplayName" : "Sweet Scent",
+            "Type": "Normal",
+            "Power": 0,
+            "PP": 20,
+            "Accuracy": 100,
+            "Category": "Status",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Victim",
+                    "Evasion": -1
+                }
+            }
+        },
+        "synthesis":{
+            "DisplayName" : "Synthesis",
+            "Type": "Grass",
+            "Power": 0,
+            "PP": 5,
+            "Accuracy": 101,
+            "Category": "Status",
+            "Flags": [],
+            "Target": "Self",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Victim",
+                    "HealPercent": 0.25
+                }
+            }
+        },
+        "take_down":{
+            "DisplayName" : "Take Down",
+            "Type": "Normal",
+            "Power": 90,
+            "PP": 20,
+            "Accuracy": 85,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Self",
+                    "Recoil": 0.25
+                }
+            }
+        },
+        "double_edge":{
+            "DisplayName" : "Double Edge",
+            "Type": "Normal",
+            "Power": 120,
+            "PP": 15,
+            "Accuracy": 85,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Self",
+                    "Recoil": 0.333
+                }
+            }
+        },
+        "solar_beam":{
+            "DisplayName" : "Solar Beam",
+            "Type": "Normal",
+            "Power": 120,
+            "PP": 10,
+            "Accuracy": 100,
+            "Category": "Physical",
+            "Flags": ["Charge"],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {}
         },
         "leech_seed":{
             "DisplayName" : "Leech Seed",

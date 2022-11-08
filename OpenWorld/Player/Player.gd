@@ -132,6 +132,7 @@ func set_spawn(location, direction):
 	print(location)
 	position = location
 	
+	
 func camera_set():
 	$Camera2D.current = true
 

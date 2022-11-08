@@ -68,10 +68,10 @@ class pokemon:
 	
 	var types = []
 	
-	func _init(name, lv, instPokedex, instMovedex):
+	func _init(tempName, lv, instPokedex, instMovedex):
 		
-		self.speciesName = name
-		self.displayName = name
+		self.speciesName = tempName
+		self.displayName = tempName
 		self.level = lv
 		
 		self.pokedexInfo = instPokedex.get("Pokedex").get(speciesName)
@@ -166,8 +166,10 @@ func _ready():
 	movedex = movedexFileData.result
 	
 	screenEffectPlayer.play("Reset")
-	playerPokemonList[0] = pokemon.new("Bulbasaur", 4, pokedex, movedex)
-
+	playerPokemonList[0] = pokemon.new("Bulbasaur", 5, pokedex, movedex)
+	playerPokemonList[1] = pokemon.new("Ivysaur", 16, pokedex, movedex)
+	playerPokemonList[2] = pokemon.new("Venusaur", 32, pokedex, movedex)
+	
 #Adds a base screen node, and then adds the given screen onto that
 func loadScreen(screen):
 	player.external_set_state("freeze")
@@ -192,9 +194,7 @@ func callWildEncounter(species, lv):
 	currentScene.get_child(0).visible = false
 	currentScene.add_child(load(combatScenePath).instance())
 	var combatScene = currentScene.get_node("CombatScene")
-	# This could all be one function
 	combatScene.wild_combat_start(playerPokemonList, pokemon.new(species, lv, pokedex, movedex))
-	
 	combatScene.connect("finished_combat", self, "fade_from_combat")
 	combatScene.connect("lose_combat", self, "lose_from_combat")
 	

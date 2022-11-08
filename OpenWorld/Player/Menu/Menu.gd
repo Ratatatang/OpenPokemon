@@ -3,7 +3,7 @@ extends CanvasLayer
 onready var selectionArrow = $Menu/NinePatchRect/Arrow
 onready var menu = $Menu
 
-onready var partyScreen = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
+onready var partyScreen = "res://OpenWorld/Player/Menu/Menus/PokemonScreen/PokemonScreen.tscn"
 onready var inventory = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
 onready var journal = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
 onready var settings = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"

@@ -69,7 +69,12 @@
         "Pidgey" : {
             "ID": "016",
             "Types": ["Normal", "Flying"],
-            "Moves": {},
+            "Moves": {
+                "1": ["tackle"],
+                "5": ["sand_attack"],
+                "9": ["gust"],
+                "13": ["quick_attack"]
+            },
             "BaseStats": {
                 "hp": 40,
                 "atk": 45,
@@ -78,6 +83,7 @@
                 "spDef": 35,
                 "speed": 56
                 },
+            "ExperienceCurve": "MediumSlow",
             "EvoLv": 18,
             "EvoPokemon": "Pidgeotto"
         },
@@ -93,6 +99,7 @@
                 "spDef": 50,
                 "speed": 71
                 },
+            "ExperienceCurve": "MediumSlow",
             "EvoLv": 36,
             "EvoPokemon": "Pidgeot"
         },
@@ -107,7 +114,8 @@
                 "spAtk": 70,
                 "spDef": 70,
                 "speed": 101
-                }
+                },
+            "ExperienceCurve": "MediumSlow"
         },
         "Spinarak" : {
             "ID": "167",

@@ -503,7 +503,7 @@ func effectiveness(atkType, defTypes):
 		typeEffective += 0
 	
 	if(typeEffective > 1):
-		moves.insert("effective", 1)
+		moves.insert(1, "effective")
 	elif(typeEffective < 1 and typeEffective > 0):
 		moves.insert(1, "notEffective")
 	

@@ -194,10 +194,10 @@ func _ready():
 	
 	screenEffectPlayer.play("Reset")
 	
-	playerPokemonList[0] = pokemon.new("Bulbasaur", 5, pokedex, movedex)
+	playerPokemonList[3] = pokemon.new("Bulbasaur", 5, pokedex, movedex)
 	playerPokemonList[1] = pokemon.new("Ivysaur", 16, pokedex, movedex)
 	playerPokemonList[2] = pokemon.new("Venusaur", 32, pokedex, movedex)
-	playerPokemonList[3] = pokemon.new("Bulbasaur", 5, pokedex, movedex)
+	playerPokemonList[0] = pokemon.new("Pidgey", 13, pokedex, movedex)
 	playerPokemonList[4] = pokemon.new("Ivysaur", 16, pokedex, movedex)
 	playerPokemonList[5] = pokemon.new("Venusaur", 32, pokedex, movedex)
 	

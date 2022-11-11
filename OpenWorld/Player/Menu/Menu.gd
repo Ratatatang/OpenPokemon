@@ -25,6 +25,7 @@ func _ready():
 
 func _unhandled_input(event) -> void:
 	if(enabled == false):
+		menu.visible = false
 		return
 	match screen_loaded:
 		ScreenLoaded.NOTHING:

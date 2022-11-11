@@ -236,7 +236,7 @@
             "Power": 40,
             "PP": 35,
             "Accuracy": 100,
-            "Category": "special",
+            "Category": "Special",
             "Flags": [],
             "Target": "All",
             "Priority": 0,

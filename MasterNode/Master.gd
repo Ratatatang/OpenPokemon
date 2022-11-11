@@ -30,6 +30,8 @@ class pokemon:
 	var speciesName
 	var displayName
 	
+	var gender
+	
 	var hp
 	var atk
 	var spAtk
@@ -47,6 +49,9 @@ class pokemon:
 	var tempHp
 	
 	var level
+	var xp = 0
+	var neededXP
+	var experienceCurve
 	
 	var movePP = {
 		"move1PP" : 0,
@@ -76,8 +81,23 @@ class pokemon:
 		
 		self.pokedexInfo = instPokedex.get("Pokedex").get(speciesName)
 		var moveLvs = pokedexInfo.get("Moves").keys()
-		
+
 		var baseStats = pokedexInfo.get("BaseStats")
+		
+		self.experienceCurve = load("res://MasterNode/"+pokedexInfo.get("ExperienceCurve")+".gd").new()
+		self.neededXP = experienceCurve.levelFunction(level)
+
+		#print(experienceCurve.levelFunction(level))
+		
+		var genderNum = round(rand_range(0, 100))
+		var genderRatio = 50
+		if(pokedexInfo.keys().has("GenderRatio")):
+			genderRatio = pokedexInfo.get("GenderRatio")
+		
+		if(genderNum >= genderRatio):
+			gender = "Female"
+		else:
+			gender = "Male"
 		
 		#Sets random IV's
 		self.hpIV = round(rand_range(0, 31))
@@ -124,7 +144,7 @@ class pokemon:
 				for j in range(len(movesToAppend)):
 					if self.availableMoves.find(movesToAppend[j]) <= 0:
 						self.availableMoves.append(movesToAppend[j])
-						print("added " + movesToAppend[j])
+						#print("added " + movesToAppend[j])
 		
 		availableMovesTemp = availableMoves.duplicate(true)
 		
@@ -142,13 +162,20 @@ class pokemon:
 		for i in len(keys):
 			move = rand_range(0, len(availableMovesTemp)-1)
 			move = round(move)
-			print(move)
-			print(availableMovesTemp)
+			#print(move)
+			#print(availableMovesTemp)
 			self.moves[keys[i]] = availableMovesTemp[move]
 			availableMovesTemp.erase(moves[keys[i]])
 			self.moves[keys[i]] = instMovedex.get("Movedex").get(moves[keys[i]])
 			self.movePP["move"+str(i+1)+"PP"] = self.moves[keys[i]].get("PP")
-
+	
+	func calculateLevel(addedXP):
+		self.xp += addedXP
+		while(xp >= neededXP):
+			level += 1
+			xp -= neededXP
+			neededXP = experienceCurve.levelFunction(level)
+			
 func _ready():
 	
 	#Gets the pokedex
@@ -166,9 +193,13 @@ func _ready():
 	movedex = movedexFileData.result
 	
 	screenEffectPlayer.play("Reset")
+	
 	playerPokemonList[0] = pokemon.new("Bulbasaur", 5, pokedex, movedex)
 	playerPokemonList[1] = pokemon.new("Ivysaur", 16, pokedex, movedex)
 	playerPokemonList[2] = pokemon.new("Venusaur", 32, pokedex, movedex)
+	playerPokemonList[3] = pokemon.new("Bulbasaur", 5, pokedex, movedex)
+	playerPokemonList[4] = pokemon.new("Ivysaur", 16, pokedex, movedex)
+	playerPokemonList[5] = pokemon.new("Venusaur", 32, pokedex, movedex)
 	
 #Adds a base screen node, and then adds the given screen onto that
 func loadScreen(screen):

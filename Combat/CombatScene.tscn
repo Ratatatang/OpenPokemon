@@ -68,6 +68,9 @@ value = 1000.0
 texture_under = ExtResource( 6 )
 texture_over = ExtResource( 2 )
 texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="name" type="RichTextLabel" parent="EnemyPosition/healthbar"]
 margin_left = 1.0

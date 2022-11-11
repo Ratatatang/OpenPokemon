@@ -1,5 +1,5 @@
 {
-    "Flags": ["Sound", "Powder", "SwapCat", "Healing", "Support", "Charge"],
+    "Flags": ["Sound", "Powder", "SwapCat", "Healing", "Support", "Charge", "IgnoreLevitate", "AirAttack"],
     "StatusEffects": ["Poison", "Paralyze", "Burn", "Sleep", "Freeze"],
     "VolatileEffects":  ["Confusion", "Infatuated", "Leech Seed", "Flinch"],
     "EctEffects": ["HealPercent", "HealAmount", "Recoil"],
@@ -50,6 +50,45 @@
             "Power": 65,
             "PP": 20,
             "Accuracy": 100,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {}
+        },
+        "quick_attack":{
+            "DisplayName" : "Quick Attack",
+            "Type": "Normal",
+            "Power": 40,
+            "PP": 30,
+            "Accuracy": 100,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 1,
+            "SpecialEffect": null,
+            "StatChanges": {}
+        },
+        "wing_attack":{
+            "DisplayName" : "Wing Attack",
+            "Type": "Flying",
+            "Power": 60,
+            "PP": 35,
+            "Accuracy": 100,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {}
+        },
+        "aerial_ace":{
+            "DisplayName" : "Aerial Ace",
+            "Type": "Flying",
+            "Power": 60,
+            "PP": 20,
+            "Accuracy": 101,
             "Category": "Physical",
             "Flags": [],
             "Target": "AdjacentFoe",
@@ -124,6 +163,60 @@
                 }
             }
         },
+        "sand_attack":{
+            "DisplayName" : "Sand Attack",
+            "Type": "Ground",
+            "Power": 0,
+            "PP": 15,
+            "Accuracy": 100,
+            "Category": "Status",
+            "Flags": ["IgnoreLevitate"],
+            "Target": "AllAdjacentFoes",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100":  {
+                    "Target": "Victim",
+                    "Accuracy": -1
+                }
+            }
+        },
+        "feather_dance":{
+            "DisplayName" : "Feather Dance",
+            "Type": "Flying",
+            "Power": 0,
+            "PP": 15,
+            "Accuracy": 100,
+            "Category": "Status",
+            "Flags": [],
+            "Target": "AdjacentFoes",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100":  {
+                    "Target": "Victim",
+                    "Attack": -2
+                }
+            }
+        },
+        "agility":{
+            "DisplayName" : "Agility",
+            "Type": "Psychic",
+            "Power": 0,
+            "PP": 30,
+            "Accuracy": 101,
+            "Category": "Status",
+            "Flags": [],
+            "Target": "Self",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100":  {
+                    "Target": "Victim",
+                    "Speed": 2
+                }
+            }
+        },
         "vine_whip":{
             "DisplayName" : "Vine Whip",
             "Type": "Grass",
@@ -156,12 +249,35 @@
             "Power": 75,
             "PP": 15,
             "Accuracy": 95,
-            "Category": "special",
+            "Category": "Special",
             "Flags": [],
             "Target": "All",
             "Priority": 0,
             "SpecialEffect": null,
-            "StatChanges": {}
+            "StatChanges": {
+                "30": {
+                    "Target": "Victim",
+                    "VolatileEffect": "Flinch"
+                }
+            }
+        },
+        "twister":{
+            "DisplayName" : "Twister",
+            "Type": "Dragon",
+            "Power": 40,
+            "PP": 20,
+            "Accuracy": 100,
+            "Category": "Special",
+            "Flags": ["AirAttack"],
+            "Target": "AllAdjacentFoes",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "30": {
+                    "Target": "Victim",
+                    "VolatileEffect": "Flinch"
+                }
+            }
         },
         "growth":{
             "DisplayName" : "Growth",
@@ -236,6 +352,19 @@
                 }
             }
         },
+        "hurricane":{
+            "DisplayName" : "Hurricane",
+            "Type": "Flying",
+            "Power": 110,
+            "PP": 10,
+            "Accuracy": 70,
+            "Category": "Special",
+            "Flags": [],
+            "Target": "All",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {}
+        },
         "petal_blizzard":{
             "DisplayName" : "Petal Blizzard",
             "Type": "Grass",
@@ -244,7 +373,7 @@
             "Accuracy": 100,
             "Category": "Physical",
             "Flags": [],
-            "Target": "AllAdjacentFoe",
+            "Target": "AllAdjacentFoes",
             "Priority": 0,
             "SpecialEffect": null,
             "StatChanges": {}
@@ -328,6 +457,24 @@
                 "100": {
                     "Target": "Victim",
                     "HealPercent": 0.25
+                }
+            }
+        },
+        "roost":{
+            "DisplayName" : "Roost",
+            "Type": "Flying",
+            "Power": 0,
+            "PP": 10,
+            "Accuracy": 101,
+            "Category": "Status",
+            "Flags": [],
+            "Target": "Self",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Victim",
+                    "HealPercent": 0.50
                 }
             }
         },

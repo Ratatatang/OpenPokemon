@@ -4,15 +4,15 @@ onready var selectionArrow = $Menu/NinePatchRect/Arrow
 onready var menu = $Menu
 
 onready var partyScreen = "res://OpenWorld/Player/Menu/Menus/PokemonScreen/PokemonScreen.tscn"
-onready var inventory = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
+onready var crafting = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
 onready var journal = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
 onready var settings = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
 onready var save = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
 
 
-onready var options = [partyScreen, inventory, journal, settings, save]
+onready var options = [partyScreen, crafting, journal, settings, save]
  
-enum ScreenLoaded {NOTHING, JUST_MENU, PARTY_SCREEN, INV_SCREEN, JOURNAL_SCREEN, SETTINGS_SCREEN, SAVE_SCREEN}
+enum ScreenLoaded {NOTHING, JUST_MENU, PARTY_SCREEN, CRAFT_SCREEN, JOURNAL_SCREEN, SETTINGS_SCREEN, SAVE_SCREEN}
 var screen_loaded = ScreenLoaded.NOTHING
 
 var selected_option = 0
@@ -45,7 +45,7 @@ func _unhandled_input(event) -> void:
 				if(selected_option == 0):
 					screen_loaded = ScreenLoaded.PARTY_SCREEN
 				if(selected_option == 1):
-					screen_loaded = ScreenLoaded.INV_SCREEN
+					screen_loaded = ScreenLoaded.CRAFT_SCREEN
 				if(selected_option == 2):
 					screen_loaded = ScreenLoaded.JOURNAL_SCREEN
 				if(selected_option == 3):
@@ -73,7 +73,7 @@ func _unhandled_input(event) -> void:
 				menu.visible = true
 				screen_loaded = ScreenLoaded.JUST_MENU
 				
-		ScreenLoaded.INV_SCREEN:
+		ScreenLoaded.CRAFT_SCREEN:
 			if event.is_action_pressed("openMenu"):
 				get_parent().exitScreen()
 				menu.visible = true

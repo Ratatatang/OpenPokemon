@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://Combat/Sprites/001.png" type="Texture" id=1]
 [ext_resource path="res://Combat/Health/HealthFrame.png" type="Texture" id=2]
 [ext_resource path="res://Combat/Health/HealthyHealthProgress.png" type="Texture" id=3]
 [ext_resource path="res://Combat/Health/HealthUnder.png" type="Texture" id=4]
@@ -21,17 +22,19 @@ script = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 1 )
+texture = ExtResource( 1 )
 hframes = 4
+vframes = 2
 
 [node name="GenderIcons" type="Sprite" parent="."]
-position = Vector2( -9, 43 )
+position = Vector2( -9, 49 )
 texture = ExtResource( 5 )
 hframes = 2
 
 [node name="Name" type="RichTextLabel" parent="."]
-margin_left = 21.0
+margin_left = 37.0
 margin_top = -9.0
-margin_right = 375.0
+margin_right = 391.0
 margin_bottom = 28.0
 custom_fonts/normal_font = SubResource( 1 )
 text = "Pisngalbyurslfhndsm"
@@ -41,9 +44,9 @@ __meta__ = {
 
 [node name="HealthBar" type="TextureProgress" parent="."]
 margin_left = -8.0
-margin_top = 25.0
+margin_top = 32.0
 margin_right = 72.0
-margin_bottom = 34.0
+margin_bottom = 41.0
 max_value = 1000.0
 value = 1000.0
 texture_under = ExtResource( 4 )
@@ -66,9 +69,9 @@ __meta__ = {
 
 [node name="XPBar" type="TextureProgress" parent="."]
 margin_left = 208.0
-margin_top = 23.0
+margin_top = 32.0
 margin_right = 288.0
-margin_bottom = 32.0
+margin_bottom = 41.0
 max_value = 1000.0
 value = 1000.0
 texture_under = ExtResource( 4 )
@@ -78,13 +81,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="XPNumber" type="RichTextLabel" parent="XPBar"]
+[node name="Level" type="RichTextLabel" parent="XPBar"]
 margin_left = 4.0
 margin_top = 12.0
 margin_right = 133.0
 margin_bottom = 36.0
 custom_fonts/normal_font = SubResource( 2 )
-text = "XP: 16/16"
+text = "Level: "
 __meta__ = {
 "_edit_use_anchors_": false
 }

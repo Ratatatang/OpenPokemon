@@ -44,16 +44,16 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Pokemon" type="RichTextLabel" parent="Menu/NinePatchRect/VBoxContainer"]
+[node name="Inventory" type="RichTextLabel" parent="Menu/NinePatchRect/VBoxContainer"]
 margin_right = 54.0
 margin_bottom = 11.0
 rect_min_size = Vector2( 50, 11 )
 custom_colors/default_color = Color( 0.407843, 0.407843, 0.407843, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
 custom_fonts/normal_font = SubResource( 7 )
-text = "Pokémon"
+text = "Invtory"
 
-[node name="Inventory" type="RichTextLabel" parent="Menu/NinePatchRect/VBoxContainer"]
+[node name="Crafting" type="RichTextLabel" parent="Menu/NinePatchRect/VBoxContainer"]
 margin_top = 15.0
 margin_right = 54.0
 margin_bottom = 26.0
@@ -61,7 +61,7 @@ rect_min_size = Vector2( 50, 11 )
 custom_colors/default_color = Color( 0.407843, 0.407843, 0.407843, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
 custom_fonts/normal_font = SubResource( 7 )
-text = "Invtory"
+text = "Crafting"
 
 [node name="Journal" type="RichTextLabel" parent="Menu/NinePatchRect/VBoxContainer"]
 margin_top = 30.0

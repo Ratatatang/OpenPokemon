@@ -22,8 +22,9 @@ the structure is this
                 "spDef": 65,
                 "speed": 45
                 },
-            "EvoLv": 16,
-            "EvoPokemon": "Ivysaur"
+            "EvoLv": 16, (Optional Field)
+            "EvoPokemon": "Ivysaur", (Optional Field)
+	    "GenderRatio": 87.5 (Optional Field)
         },
 You start with the name, note that it should be capatalized, as this is the displayed name
 
@@ -40,10 +41,12 @@ EvoLv is the level they start to try to evolve
 
 EvoPokemon is the name of the pokemon they evolve into
 
+GenderRatio is the percent of that pokemon that will be male. if you don't add a GenderRatio field, it will be 50 automatically
+
 
 Ok, now to adress moves.
 
 so inside moves, each key is the level they get those moves available. inside that key, you put a list
 of all the new moves they get at that lv, not by displayName, but by the id name in the movedex
 
-note I say new moves, as you don't need to also put previously learned moves or egg moves. just level up moves
+note I say new moves, as you don't need to also put previously learned moves or egg moves. just level up moves.

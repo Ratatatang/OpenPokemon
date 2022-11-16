@@ -32,8 +32,8 @@ func _unhandled_input(event) -> void:
 			if event.is_action_pressed("openMenu"):
 				menu.visible = true
 				screen_loaded = ScreenLoaded.JUST_MENU
-				
-		
+
+
 		ScreenLoaded.JUST_MENU:
 			if event.is_action_pressed("openMenu"):
 				menu.visible = false
@@ -42,7 +42,7 @@ func _unhandled_input(event) -> void:
 				menu.visible = false
 				var loadScreen = options[selected_option]
 				get_parent().loadScreen(loadScreen)
-				
+
 				if(selected_option == 0):
 					screen_loaded = ScreenLoaded.PARTY_SCREEN
 				if(selected_option == 1):
@@ -53,45 +53,44 @@ func _unhandled_input(event) -> void:
 					screen_loaded = ScreenLoaded.SETTINGS_SCREEN
 				if(selected_option == 4):
 					screen_loaded = ScreenLoaded.SAVE_SCREEN
-	
-				
+
 			elif event.is_action_pressed("scrolldown") or event.is_action_pressed("ui_down"):
 				if selected_option == 4:
 					selected_option = -1
 				selected_option += 1
 				selectionArrow.rect_position.y = 11 + (selected_option % 5) * 15
-				
+
 			elif event.is_action_pressed("scrollup") or event.is_action_pressed("ui_up"):
 				if selected_option == 0:
 					selected_option = 4
 				else:
 					selected_option -= 1
 			selectionArrow.rect_position.y = 11 + (selected_option % 5) * 15
-					
+
 		ScreenLoaded.PARTY_SCREEN:
 			if event.is_action_pressed("openMenu"):
 				get_parent().exitScreen()
 				menu.visible = true
 				screen_loaded = ScreenLoaded.JUST_MENU
-				
+
 		ScreenLoaded.CRAFT_SCREEN:
 			if event.is_action_pressed("openMenu"):
 				get_parent().exitScreen()
 				menu.visible = true
 				screen_loaded = ScreenLoaded.JUST_MENU
-				
+
 		ScreenLoaded.JOURNAL_SCREEN:
 			if event.is_action_pressed("openMenu"):
 				get_parent().exitScreen()
 				menu.visible = true
 				screen_loaded = ScreenLoaded.JUST_MENU
-				
+
 		ScreenLoaded.SETTINGS_SCREEN:
 			if event.is_action_pressed("openMenu"):
 				get_parent().exitScreen()
 				menu.visible = true
 				screen_loaded = ScreenLoaded.JUST_MENU
-				
+
 		ScreenLoaded.SAVE_SCREEN:
 			if event.is_action_pressed("openMenu"):
 				get_parent().exitScreen()

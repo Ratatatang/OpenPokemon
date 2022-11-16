@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Combat/CombatContainer.png" type="Texture" id=1]
 [ext_resource path="res://Combat/Health/HealthFrame.png" type="Texture" id=2]
@@ -8,11 +8,20 @@
 [ext_resource path="res://Combat/Health/HealthUnder.png" type="Texture" id=6]
 [ext_resource path="res://pkmnfl.ttf" type="DynamicFontData" id=7]
 
+[sub_resource type="DynamicFont" id=4]
+size = 12
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+font_data = ExtResource( 7 )
+
 [sub_resource type="DynamicFont" id=1]
+size = 12
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 15
+size = 12
 extra_spacing_top = 8
 font_data = ExtResource( 7 )
 
@@ -50,6 +59,7 @@ margin_left = 1.0
 margin_top = -13.0
 margin_right = 130.0
 margin_bottom = 11.0
+custom_fonts/normal_font = SubResource( 4 )
 
 [node name="EnemyPosition" type="Position2D" parent="."]
 position = Vector2( 84, -24 )
@@ -77,6 +87,7 @@ margin_left = 1.0
 margin_top = -13.0
 margin_right = 130.0
 margin_bottom = 11.0
+custom_fonts/normal_font = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -225,15 +236,20 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="MoveSelect/Move1"]
-margin_left = 10.0
-margin_right = 99.0
-margin_bottom = 21.0
+margin_left = -10.0
+margin_top = -5.0
+margin_right = 79.0
+margin_bottom = 16.0
+rect_scale = Vector2( 1.5, 1.5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
 custom_fonts/font = SubResource( 1 )
 text = "Fight"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Move2" type="TextureButton" parent="MoveSelect"]
 margin_left = 315.0
@@ -248,9 +264,11 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="MoveSelect/Move2"]
-margin_left = 13.0
-margin_right = 101.0
-margin_bottom = 21.0
+margin_left = -10.0
+margin_top = -5.0
+margin_right = 78.0
+margin_bottom = 16.0
+rect_scale = Vector2( 1.5, 1.5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
 custom_fonts/font = SubResource( 1 )
@@ -273,11 +291,11 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="MoveSelect/Move3"]
-margin_left = 10.0
-margin_top = 1.0
-margin_right = 141.0
-margin_bottom = 23.0
-rect_scale = Vector2( 0.68, 1 )
+margin_left = -40.0
+margin_top = -5.0
+margin_right = 91.0
+margin_bottom = 17.0
+rect_scale = Vector2( 1.5, 1.5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
 custom_fonts/font = SubResource( 1 )
@@ -297,9 +315,11 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="MoveSelect/Move4"]
-margin_left = 13.0
-margin_right = 101.0
-margin_bottom = 22.0
+margin_left = -10.0
+margin_top = -5.0
+margin_right = 78.0
+margin_bottom = 17.0
+rect_scale = Vector2( 1.5, 1.5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
 custom_fonts/font = SubResource( 1 )
@@ -309,9 +329,10 @@ valign = 1
 
 [node name="PPDisplay" type="RichTextLabel" parent="MoveSelect"]
 margin_left = 439.0
-margin_top = 40.0
+margin_top = 36.0
 margin_right = 510.0
-margin_bottom = 69.0
+margin_bottom = 65.0
+rect_scale = Vector2( 1.2, 1.2 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
 custom_fonts/normal_font = SubResource( 2 )

@@ -14,7 +14,7 @@ size = 37
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 15
+size = 12
 font_data = ExtResource( 6 )
 
 [node name="PokeSlot" type="Node2D"]

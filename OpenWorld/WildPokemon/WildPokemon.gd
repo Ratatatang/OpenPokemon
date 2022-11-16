@@ -1,6 +1,6 @@
 extends Node2D
 
-var walkSpeed = 0.5
+var walkSpeed = 0.1
 
 var walkDown = [0, 1, 2, 3]
 var walkUp = [12, 13, 14, 15]
@@ -18,7 +18,7 @@ enum directions{
 
 func _ready():
 	loopAnimation()
-	
+
 func setSprite(spritePath):
 	$Sprite.texture = load(spritePath)
 

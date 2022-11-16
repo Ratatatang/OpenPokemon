@@ -103,7 +103,7 @@ func revealChoices(choice):
 # dialog choices
 
 func findDialog(key = "") -> void:
-	
+
 	if(key != ""):
 		setVisible("Dialog")
 		currenText = currenText.get(key)
@@ -112,34 +112,34 @@ func findDialog(key = "") -> void:
 			$Portrait.texture = load("res://Dialog/Portraits/"+str(currenText.get("Portrait"))+".png")
 		else:
 			$Portrait.visible = false
-		
+
 		if(currenText.has("Name")):
 			$Name.visible = true
 			$Name.bbcode_text = currenText.get("Name")
 		else:
 			$Name.visible = false
-			
+
 		$Dialog.bbcode_text = currenText.get("Text")
 		return
 
 	var keys = currenText.keys()
-	
+
 	if(keys.find("NextDia") >= 0):
 		setVisible("Dialog")
 		currenText = currenText.get(keys[keys.find("NextDia")])
-		
+
 		if(currenText.has("Portrait")):
 			$Portrait.visible = true
 			$Portrait.texture = load("res://Dialog/Portraits/"+str(currenText.get("Portrait"))+".png")
 		else:
 			$Portrait.visible = false
-		
+
 		if(currenText.has("Name")):
 			$Name.visible = true
 			$Name.bbcode_text = currenText.get("Name")
 		else:
 			$Name.visible = false
-			
+
 		$Dialog.bbcode_text = currenText.get("Text")
 		return
 	elif(keys.find("Decis") >= 0):
@@ -147,12 +147,12 @@ func findDialog(key = "") -> void:
 		setVisible("Choices")
 		currenText = currenText.get(keys[keys.find("Decis")])
 		$Portrait.visible = false
-			
+
 		var decisKeys = currenText.keys()
 		print(decisKeys)
 		for i in len(decisKeys):
 			choices[i].get_node("ChoiceText").bbcode_text = str(decisKeys[i])
-			
+
 		for i in len(choices)-len(decisKeys):
 			choices[i+len(decisKeys)].visible = false
 	else:

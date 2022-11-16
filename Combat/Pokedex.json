@@ -1,0 +1,149 @@
+{
+    "Pokedex": {
+        "Bulbasaur" : {
+            "ID": "001",
+            "Types": ["Grass", "Poison"],
+            "Moves": {
+                "1": ["tackle", "growl"],
+                "3": ["vine_whip"],
+                "6": ["growth"],
+                "9": ["leech_seed"],
+                "12": ["razor_leaf"],
+                "15": ["poison_powder"]
+            },
+            "BaseStats": {
+                "hp": 45,
+                "atk": 49,
+                "def": 49,
+                "spAtk": 65,
+                "spDef": 65,
+                "speed": 45
+                },
+            "ExperienceCurve": "MediumSlow",
+            "EvoLv": 16,
+            "EvoPokemon": "Ivysaur",
+            "GenderRatio": 87.5
+        },
+        "Ivysaur": {
+            "ID": "002",
+            "Types": ["Grass", "Poison"],
+            "Moves": {
+                "1": ["tackle", "growl", "vine_whip", "growth"],
+                "9": ["leech_seed"],
+                "12": ["razor_leaf"],
+                "15": ["poison_powder"]
+            },
+            "BaseStats": {
+                "hp": 60,
+                "atk": 62,
+                "def": 63,
+                "spAtk": 80,
+                "spDef": 80,
+                "speed": 60
+                },
+            "ExperienceCurve": "MediumSlow",
+            "EvoLv": 32,
+            "EvoPokemon": "Venasaur",
+            "GenderRatio": 87.5
+        },
+        "Venusaur": {
+            "ID": "003",
+            "Types": ["Grass", "Poison"],
+            "Moves": {
+                "1": ["tackle", "growl", "vine_whip", "growth"],
+                "9": ["leech_seed"],
+                "12": ["razor_leaf"],
+                "15": ["poison_powder"]
+            },
+            "BaseStats": {
+                "hp": 80,
+                "atk": 82,
+                "def": 83,
+                "spAtk": 100,
+                "spDef": 100,
+                "speed": 80
+                },
+            "ExperienceCurve": "MediumSlow",
+            "GenderRatio": 87.5
+        },
+        "Pidgey" : {
+            "ID": "016",
+            "Types": ["Normal", "Flying"],
+            "Moves": {
+                "1": ["tackle"],
+                "5": ["sand_attack"],
+                "9": ["gust"],
+                "13": ["quick_attack"]
+            },
+            "BaseStats": {
+                "hp": 40,
+                "atk": 45,
+                "def": 40,
+                "spAtk": 35,
+                "spDef": 35,
+                "speed": 56
+                },
+            "ExperienceCurve": "MediumSlow",
+            "EvoLv": 18,
+            "EvoPokemon": "Pidgeotto"
+        },
+        "Pidgeotto" : {
+            "ID": "017",
+            "Types": ["Normal", "Flying"],
+            "Moves": {},
+            "BaseStats": {
+                "hp": 63,
+                "atk": 60,
+                "def": 55,
+                "spAtk": 50,
+                "spDef": 50,
+                "speed": 71
+                },
+            "ExperienceCurve": "MediumSlow",
+            "EvoLv": 36,
+            "EvoPokemon": "Pidgeot"
+        },
+        "Pidgeot" : {
+            "ID": "018",
+            "Types": ["Normal", "Flying"],
+            "Moves": {},
+            "BaseStats": {
+                "hp": 83,
+                "atk": 80,
+                "def": 75,
+                "spAtk": 70,
+                "spDef": 70,
+                "speed": 101
+                },
+            "ExperienceCurve": "MediumSlow"
+        },
+        "Spinarak" : {
+            "ID": "167",
+            "Types": ["Bug", "Poison"],
+            "Moves": {},
+            "BaseStats": {
+                "hp": 40,
+                "atk": 60,
+                "def": 40,
+                "spAtk": 40,
+                "spDef": 40,
+                "speed": 30
+                },
+            "EvoLv": 22,
+            "EvoPokemon": "Ariados"
+        },
+        "Ariados" : {
+            "ID": "168",
+            "Types": ["Bug", "Poison"],
+            "Moves": {},
+            "BaseStats": {
+                "hp": 70,
+                "atk": 90,
+                "def": 70,
+                "spAtk": 60,
+                "spDef": 70,
+                "speed": 40
+                }
+        }
+    }
+}

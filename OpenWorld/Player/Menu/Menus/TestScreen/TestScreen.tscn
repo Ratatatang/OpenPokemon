@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Combat/Sprites/001.png" type="Texture" id=1]
+[ext_resource path="res://OpenWorld/Player/Menu/Menus/TestScreen/testScreen.gd" type="Script" id=4]
+
+[node name="TestScreen" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = -166.0
+margin_top = -108.0
+margin_right = 154.0
+margin_bottom = -1.0
+bbcode_enabled = true
+bbcode_text = "[wave amp=100 freq=2][rainbow freq=0.4 sat=10 val=20]                  
+                    WOOOOOOO TEST SCREEN![/rainbow] [/wave]"
+text = "                  
+                    WOOOOOOO TEST SCREEN! "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="001" type="Sprite" parent="."]
+rotation = 0.109956
+texture = ExtResource( 1 )
+hframes = 4
+script = ExtResource( 4 )

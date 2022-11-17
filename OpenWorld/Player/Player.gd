@@ -1,9 +1,9 @@
-extends KinematicBody2D
+extends KinematicBody
 
-const ACCELERATION = 500
-const MAX_SPEED = 80
-const FRICTION = 550
-const ROLL_SPEED = 110
+const ACCELERATION = 30
+const MAX_SPEED = 1
+const FRICTION = 40
+const ROLL_SPEED = 2
 
 signal player_entering_door
 
@@ -18,8 +18,9 @@ enum stateMachine{
 }
 
 var state = stateMachine.MOVE
-var velocity = Vector2.ZERO
-var roll_vector = Vector2.DOWN
+var velocity = Vector3.ZERO
+var roll_vector = Vector3.BACK
+var animVector = Vector3.ZERO
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
@@ -56,22 +57,24 @@ func _process(delta):
 # player is cleared after they walk into a door 
 			
 func freeze_state(delta):
-	velocity = Vector2.ZERO
+	velocity = Vector3.ZERO
 	animationState.travel("Idle")
 	
 # State that sets all the animations to the input, and is used when moving
 
 func move_state(delta):
-	var input_vector = Vector2.ZERO
+	var input_vector = Vector3.ZERO
 	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	input_vector.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	input_vector.z = Input.get_action_strength("down") - Input.get_action_strength("up")
 	input_vector = input_vector.normalized()
 	
-	if input_vector != Vector2.ZERO:
+	animVector = Vector2(input_vector.x, input_vector.z)
+	
+	if input_vector != Vector3.ZERO:
 		roll_vector = input_vector
-		animationTree.set("parameters/Idle/blend_position", input_vector)
-		animationTree.set("parameters/Run/blend_position", input_vector)
-		animationTree.set("parameters/Roll/blend_position", input_vector)
+		animationTree.set("parameters/Idle/blend_position", animVector)
+		animationTree.set("parameters/Run/blend_position", animVector)
+		animationTree.set("parameters/Roll/blend_position", animVector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 		
@@ -79,7 +82,7 @@ func move_state(delta):
 
 	else:
 		animationState.travel("Idle")
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		velocity = velocity.move_toward(Vector3.ZERO, FRICTION * delta)
 	
 	if Input.is_action_just_pressed("Roll"):
 		state = stateMachine.ROLL
@@ -130,7 +133,7 @@ func set_spawn(location, direction):
 	animationTree.set("parameters/Run/blend_position", direction)
 	animationTree.set("parameters/Roll/blend_position", direction)
 	print(location)
-	position = location
+	translation = location
 	
 	
 func camera_set():

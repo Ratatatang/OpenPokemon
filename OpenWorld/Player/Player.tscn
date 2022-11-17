@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://OpenWorld/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://OpenWorld/Player/Animations/PlayerRollRight.tres" type="Animation" id=4]
@@ -14,130 +14,6 @@
 [ext_resource path="res://OpenWorld/Player/Animations/PlayerRollDown.tres" type="Animation" id=16]
 [ext_resource path="res://OpenWorld/Player/Player.gd" type="Script" id=17]
 [ext_resource path="res://OpenWorld/Player/Dialog/DialogBox.tscn" type="PackedScene" id=18]
-
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 5.0
-height = 0.0
-
-[sub_resource type="Animation" id=40]
-resource_name = "AttackDown"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 36, 37, 38, 39 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
-}
-
-[sub_resource type="Animation" id=41]
-resource_name = "AttackLeft"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 32, 33, 34, 35 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
-}
-
-[sub_resource type="Animation" id=42]
-resource_name = "AttackRight"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 24, 25, 26, 27 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
-}
-
-[sub_resource type="Animation" id=43]
-resource_name = "AttackUp"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 28, 29, 30, 31 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
-}
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -320,27 +196,16 @@ radius = 6.0
 radius = 7.5
 height = 7.5
 
-[node name="Player" type="KinematicBody2D"]
-position = Vector2( 1, -8 )
-scale = Vector2( 0.8, 0.8 )
+[node name="Player" type="KinematicBody"]
 collision_layer = 2
 script = ExtResource( 17 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -0.499998, 4.5 )
+[node name="Sprite" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.682585, 0.730806, 0, -0.730806, 0.682585, 0, 0, -0.23858 )
 texture = ExtResource( 1 )
 hframes = 60
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.5, 9.5 )
-rotation = -1.5708
-shape = SubResource( 1 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/AttackDown = SubResource( 40 )
-anims/AttackLeft = SubResource( 41 )
-anims/AttackRight = SubResource( 42 )
-anims/AttackUp = SubResource( 43 )
 anims/IdleDown = ExtResource( 12 )
 anims/IdleLeft = ExtResource( 14 )
 anims/IdleRight = ExtResource( 10 )
@@ -365,6 +230,7 @@ parameters/Roll/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 1.03201, 0.0831354 )
 
 [node name="CollectionBox" type="Area2D" parent="."]
+visible = false
 position = Vector2( -0.499998, 4.5 )
 collision_layer = 0
 
@@ -373,6 +239,7 @@ position = Vector2( -1, 2 )
 shape = SubResource( 36 )
 
 [node name="DoorBox" type="Area2D" parent="."]
+visible = false
 position = Vector2( 0, 5 )
 collision_layer = 2048
 collision_mask = 2048
@@ -382,6 +249,7 @@ position = Vector2( -1, 5 )
 shape = SubResource( 37 )
 
 [node name="PlayerInteractionBox" type="Area2D" parent="."]
+visible = false
 position = Vector2( 11.25, 0 )
 collision_layer = 1024
 collision_mask = 1024
@@ -390,13 +258,12 @@ collision_mask = 1024
 position = Vector2( -12.5, 6.25 )
 shape = SubResource( 39 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, 5 )
-z_index = 9
+[node name="Camera2D" type="Camera" parent="."]
+transform = Transform( 0.999983, 0.00587831, 0.000717436, -0.00373068, 0.53124, 0.847213, 0.00459905, -0.847201, 0.531253, -0.0484942, 1.88742, 1.20995 )
 current = true
-zoom = Vector2( 0.5, 0.5 )
+fov = 56.1467
 
 [node name="DialogBox" parent="Camera2D" instance=ExtResource( 18 )]
+visible = true
 
 [connection signal="area_entered" from="DoorBox" to="." method="_on_DoorBox_area_entered"]
-[connection signal="area_entered" from="PlayerInteractionBox" to="." method="_on_InteractionBox_area_entered"]

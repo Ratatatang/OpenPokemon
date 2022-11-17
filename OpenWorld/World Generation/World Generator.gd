@@ -1,25 +1,25 @@
-extends Node2D
+extends Spatial
 
 export var width = 600
 export var height = 200
-onready var tilemap = $TileMap
+onready var tilemap = $GridMap
 var temperature = {}
 var altitude = {}
 var moisture = {}
 var biome = {}
 var openSimplexNoise = OpenSimplexNoise.new()
 
-var biomeTiles = {"Plains": 0, "Forest": 1, "Swamp": 2, "Taiga": 3, "Tundra": 4, "Jungle": 5, "Savannah": 6, "Desert": 7,  "Sulfur": 8, "TaigaPlains": 9, "Ocean": 10, "Beach": 11,}
+var biomeTiles = {"Plains": 0, "Ocean": 1, "Beach": 2}
 
 #Generates maps for temp, moisture & altitude used to decide biomes
 func _ready():
 	randomize()
-	temperature = generateMap(250, 5)
-	moisture = generateMap(250, 5)
-	altitude = generateMap(150, 5)
+	temperature = generateMap(450, 5)
+	moisture = generateMap(450, 5)
+	altitude = generateMap(250, 5)
 	setTile(width, height)
 
-
+#Generates 2D noise maps
 func generateMap(per, oct):
 	openSimplexNoise.seed = randi()
 	openSimplexNoise.period = per
@@ -27,28 +27,28 @@ func generateMap(per, oct):
 	var gridName = {}
 	
 	for x in width:
-		for y in height:
-			var rand := 2*(abs(openSimplexNoise.get_noise_2d(x, y)))
-			gridName[Vector2(x, y)] = rand
+		for z in height:
+			var rand := 2*(abs(openSimplexNoise.get_noise_2d(x, z)))
+			gridName[Vector2(x, z)] = rand
 	return gridName
 
-
+#Sets the tile in accordance of the moisture, altitude, and temperature of the tile
 func setTile(width, height):
 	for x in width:
-		for y in height:
-			var pos = Vector2(x, y)
+		for z in height:
+			var pos = Vector2(x, z)
 			var alt = altitude[pos]
 			var temp = temperature[pos]
 			var moist = moisture[pos]
 			
 			#Ocean
 			if alt < 0.2:
-				tilemap.set_cellv(pos, biomeTiles.Ocean)
+				tilemap.set_cell_item(x, 0, z, biomeTiles.Ocean)
 				biome[pos] = "Ocean"
 			
 			#Beach
 			elif between(alt, 0.2, 0.27):
-				tilemap.set_cellv(pos, biomeTiles.Beach)
+				tilemap.set_cell_item(x, 0, z, biomeTiles.Beach)
 				biome[pos] = "Beach"
 				
 			#Other Biomes
@@ -56,7 +56,7 @@ func setTile(width, height):
 				
 				#Plains
 				#if between(moist, 0.2, 0.5) and between(temp, 0.2, 0.5):
-				tilemap.set_cellv(pos, biomeTiles.Plains)
+				tilemap.set_cell_item(x, 0, z, biomeTiles.Plains)
 				biome[pos] = "Plains"
 					
 				"""#Taiga Plains

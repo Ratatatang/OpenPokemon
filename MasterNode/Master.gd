@@ -1,4 +1,4 @@
-extends Node2D
+extends Spatial
 
 var pokedex = File.new()
 var movedex = File.new()
@@ -203,12 +203,14 @@ func _ready():
 
 #Adds a base screen node, and then adds the given screen onto that
 func loadScreen(screen):
+	currentScene.get_child(0).visible = false
 	player.external_set_state("freeze")
 	currentScene.add_child(load(screenBase).instance())
 	currentScene.get_screen().add_child(load(screen).instance())
 
 #Removes the current base screen & frees the player to move
 func exitScreen():
+	currentScene.get_child(0).visible = true
 	currentScene.get_screen().queue_free()
 	player.external_set_state("move")
 	player.camera_set()

@@ -182,10 +182,7 @@ func _ready():
 	var typeEffectFileData = JSON.parse(typeFile.get_as_text())
 	typeFile.close()
 	typeEffect = typeEffectFileData.result
-	
-	var lenButtons = len(buttons.values())
-	for i in lenButtons:
-		buttons["Move"+str(i+1)].visible = true
+		
 	ActionSelect.get_child(0).disabled = false
 	
 # _process just for managing inputs. don't try to match state here.
@@ -193,7 +190,8 @@ func _ready():
 func _process(delta):
 	randomize()
 	if Input.is_action_pressed("spin"):
-		playerActive1.sprite.texture.rotation_degrees += 999999999999999999
+		enemyActive1.sprite.rotation_degrees += 999999999999999999
+		playerActive1.sprite.rotation_degrees += 999999999999999999
 	if Input.is_action_just_pressed("escape") and $ActionSelect.visible == false and Dialoge.visible == false:
 		set_control("Action")
 	elif(Input.is_action_just_pressed("escape") and Dialoge.visible == true):
@@ -219,11 +217,11 @@ func set_control(control):
 func buttonMoves():
 	var numMoves = playerMoves.values()
 	while numMoves.find("") >= 0:
-		buttons["Move"+str(numMoves.find("")+1)].visible = false
 		numMoves.erase("")
 	numMoves = len(numMoves)
 
 	for i in numMoves:
+		buttons["Move"+str(i+1)].visible = true
 		var buttonMove = playerMoves["move"+str(i+1)]
 		var buttonType = buttonMove.get("Type")
 		buttonType.capitalize()

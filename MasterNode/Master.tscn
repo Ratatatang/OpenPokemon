@@ -78,8 +78,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[node name="Master" type="Node2D"]
-position = Vector2( -1, 3 )
+[node name="Master" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="Menu" parent="." instance=ExtResource( 4 )]
@@ -102,11 +101,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CurrentScene" type="Node2D" parent="."]
+[node name="CurrentScene" type="Spatial" parent="."]
 script = ExtResource( 5 )
 
-[node name="World" type="YSort" parent="CurrentScene"]
-
-[node name="Player" parent="CurrentScene/World" instance=ExtResource( 2 )]
+[node name="World" type="Spatial" parent="CurrentScene"]
 
 [node name="World Generator" parent="CurrentScene/World" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -7.61666, 0.09, -8.11608 )
+
+[node name="Player" parent="CurrentScene/World" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.931232, 0 )

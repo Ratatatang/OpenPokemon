@@ -11,6 +11,10 @@ func _ready():
 	pass # Replace with function body.
 
 
+func checkItems():
+	for i in range(len(inventory)):
+		pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

@@ -1,4 +1,4 @@
-extends Node2D
+extends Spatial
 
 func get_player():
 	return get_child(0).get_node("Player")

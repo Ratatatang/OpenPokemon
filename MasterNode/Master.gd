@@ -194,12 +194,7 @@ func _ready():
 
 	screenEffectPlayer.play("Reset")
 
-	playerPokemonList[3] = pokemon.new("Bulbasaur", 5, pokedex, movedex)
-	playerPokemonList[1] = pokemon.new("Ivysaur", 16, pokedex, movedex)
-	playerPokemonList[2] = pokemon.new("Venusaur", 32, pokedex, movedex)
-	playerPokemonList[0] = pokemon.new("Pidgey", 5, pokedex, movedex)
-	playerPokemonList[4] = pokemon.new("Ivysaur", 16, pokedex, movedex)
-	playerPokemonList[5] = pokemon.new("Venusaur", 32, pokedex, movedex)
+	playerPokemonList[0] = pokemon.new("Pidgey", 13, pokedex, movedex)
 
 #Adds a base screen node, and then adds the given screen onto that
 func loadScreen(screen):
@@ -230,5 +225,29 @@ func callWildEncounter(species, lv):
 	combatScene.wild_combat_start(playerPokemonList, pokemon.new(species, lv, pokedex, movedex))
 	combatScene.connect("finished_combat", self, "fade_from_combat")
 	combatScene.connect("lose_combat", self, "lose_from_combat")
+	combatScene.connect("caught_pokemon", self, "capturePokemon")
 
 	screenEffectPlayer.play("FadeToCombat")
+	
+func fade_from_combat():
+	$ScreenEffects/ColorRect.visible = true
+	screenEffectPlayer.play("FadeToBlack")
+	
+	yield(screenEffectPlayer, "animation_finished")
+	
+	var combatScene = currentScene.get_combatScene()
+	combatScene.queue_free()
+	currentScene.get_child(0).visible = true
+	player = currentScene.get_player()
+	player.external_set_state("move")
+	player.camera_set()
+	menu.enabled = true
+	screenEffectPlayer.play("FadeToClear")
+	
+func capturePokemon(pokemon):
+	for i in range(len(playerPokemonList)):
+		if(str(playerPokemonList[i]) == ""):
+			playerPokemonList[i] = pokemon
+			break
+			
+	fade_from_combat()

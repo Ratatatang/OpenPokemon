@@ -5,3 +5,6 @@ func get_player():
 
 func get_screen():
 	return get_node("Screen")
+	
+func get_combatScene():
+	return get_node("CombatScene")

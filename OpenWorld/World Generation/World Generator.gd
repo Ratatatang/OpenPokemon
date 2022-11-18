@@ -32,6 +32,26 @@ func generateMap(per, oct):
 			gridName[Vector2(x, z)] = rand
 	return gridName
 
+"""const WIDTH := 1024
+const HEIGHT := 1024
+const SCALE := 1
+
+onready var island := $island as TextureRect
+
+var noise : OpenSimplexNoise = OpenSimplexNoise.new()
+
+func generateMap(per, oct):
+	randomize()
+	noise.seed = randi()
+	noise.octaves = 9
+	noise.period = 192
+	noise.persistence = 0.6
+	var imgt := ImageTexture.new()
+	imgt.create_from_image(noise.get_image(island.get_rect().size.x * SCALE, island.get_rect().size.y * SCALE))
+	var mat := island.get_material()
+	mat.set_shader_param("island_tex", imgt)"""
+	
+
 #Sets the tile in accordance of the moisture, altitude, and temperature of the tile
 func setTile(width, height):
 	for x in width:

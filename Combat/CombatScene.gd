@@ -48,6 +48,8 @@ var playerMoves
 
 signal finished_combat
 signal lose_combat
+signal escape
+signal caught_pokemon
 
 var combatPokedex
 var combatMovedex
@@ -59,8 +61,6 @@ var playerList = ["", "", "", "", "", ""]
 var enemyList = ["", "", "", "", "", ""]
 
 var trainerBattle = false
-
-signal escape
 
 # class for a selected move, used by the text queue and
 # damage calculations
@@ -283,7 +283,7 @@ func Outcome(playerSelectedMove):
 		yield(self, "escape")
 		
 		if(str(moves[0]) == "captured"):
-			find_parent("SceneManager").capturePokemon(enemyActive1.pokemon)
+			emit_signal("caught_pokemon", enemyActive1.pokemon)
 			moves.insert(0, " ")
 		
 		if(1 == len(moves)):

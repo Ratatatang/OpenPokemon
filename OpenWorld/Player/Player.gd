@@ -129,7 +129,7 @@ func _on_DoorBox_area_entered(area):
 # Moves you to the correct location and direction for when you enter a room
 	
 func set_spawn(location, direction):
-	animationTree.set("parameters/Idle/blend_position", direction)
+	animationTree.set("parameters/'Idle/blend_position", direction)
 	animationTree.set("parameters/Run/blend_position", direction)
 	animationTree.set("parameters/Roll/blend_position", direction)
 	print(location)

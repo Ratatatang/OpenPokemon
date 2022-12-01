@@ -1,2 +1,2 @@
 func levelFunction(n):
-	return n^3
+	return pow(n, 3.0)

@@ -18,16 +18,7 @@ func init(pokemon):
 		$GenderIcons.frame = 1
 		
 	$HealthBar.value = round($HealthBar.value * (pokemon.tempHp/pokemon.hp))
-	$XPBar.value = round($XPBar.value * (pokemon.xp/pokemon.neededXP))
+	$XPBar.value = round($XPBar.value * ((pokemon.xp-pokemon.neededXP)/pokemon.neededXP))
 	
 	$HealthBar/HealthNumber.text = str(pokemon.tempHp)+"/"+str(pokemon.hp)
 	$XPBar/Level.text = "Level: "+str(pokemon.level)
-	
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

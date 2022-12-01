@@ -1,0 +1,35 @@
+0000000000000000000000000000000000000000 28af3735b6f464317ea5b3f72ab5fe38d5f1ac99 Ratatatang/Figgity <zandermclane@gmail.com> 1667307516 -0400	commit (initial): Initial commit
+28af3735b6f464317ea5b3f72ab5fe38d5f1ac99 4237e9fd9a6ce9408c5daeaa3948eadb2472f219 Ratatatang/Figgity <zandermclane@gmail.com> 1667307564 -0400	commit: Init
+4237e9fd9a6ce9408c5daeaa3948eadb2472f219 b5259725f1d31242c170355ff85cfa4c65be2643 Ratatatang/Figgity <zandermclane@gmail.com> 1667307877 -0400	pull --ff --recurse-submodules --progress origin: Fast-forward
+b5259725f1d31242c170355ff85cfa4c65be2643 b5259725f1d31242c170355ff85cfa4c65be2643 Ratatatang/Figgity <zandermclane@gmail.com> 1667307913 -0400	checkout: moving from main to RandomTiles
+b5259725f1d31242c170355ff85cfa4c65be2643 a6aeb68ecd03ac830c789a4e69986d63480ef39d Ratatatang/Figgity <zandermclane@gmail.com> 1667309140 -0400	commit: Migrated Player Node
+a6aeb68ecd03ac830c789a4e69986d63480ef39d cff3c47431a5c4ab587fde28b07097a07e36c4b4 Ratatatang/Figgity <zandermclane@gmail.com> 1667309448 -0400	commit: Made master the main scene
+cff3c47431a5c4ab587fde28b07097a07e36c4b4 229d1313ec944eb8751e5ee88251931631531ec0 Ratatatang/Figgity <zandermclane@gmail.com> 1667311122 -0400	commit: removed some dead code
+229d1313ec944eb8751e5ee88251931631531ec0 d6fd88d6fa0144c165dfaafb2d49f79479045613 Ratatatang/Figgity <zandermclane@gmail.com> 1667311899 -0400	commit: merged menu to project
+d6fd88d6fa0144c165dfaafb2d49f79479045613 d66424ab11c8e038aa95e22cb882e0fbf7f7dce0 Ratatatang/Figgity <zandermclane@gmail.com> 1667312708 -0400	commit: Further merged menu, fixed some input map issues
+d66424ab11c8e038aa95e22cb882e0fbf7f7dce0 8e308eac960d0ef050df6639c3dc382b3a600de2 Ratatatang/Figgity <zandermclane@gmail.com> 1667313290 -0400	pull --ff --recurse-submodules --progress origin: Fast-forward
+8e308eac960d0ef050df6639c3dc382b3a600de2 8e308eac960d0ef050df6639c3dc382b3a600de2 Ratatatang/Figgity <zandermclane@gmail.com> 1667313401 -0400	checkout: moving from RandomTiles to Merging-Code
+8e308eac960d0ef050df6639c3dc382b3a600de2 3995b2c7308f1ea9464a34a61bb910c12888df7a Ratatatang/Figgity <zandermclane@gmail.com> 1667313454 -0400	commit: Update Dialog.gd
+3995b2c7308f1ea9464a34a61bb910c12888df7a b4f1295d3e3a2d6c59d3e0775352ac51a5c0d894 Ratatatang/Figgity <zandermclane@gmail.com> 1667313469 -0400	checkout: moving from Merging-Code to main
+b4f1295d3e3a2d6c59d3e0775352ac51a5c0d894 3995b2c7308f1ea9464a34a61bb910c12888df7a Ratatatang/Figgity <zandermclane@gmail.com> 1667313472 -0400	checkout: moving from main to Merging-Code
+3995b2c7308f1ea9464a34a61bb910c12888df7a 95751c9dec8187e9600acf638ebdf2207064b249 Ratatatang/Figgity <zandermclane@gmail.com> 1667315873 -0400	commit: tweaked biomegen
+95751c9dec8187e9600acf638ebdf2207064b249 79619ef41658195d77f545ddbb993aabbd0c68bb Ratatatang/Figgity <zandermclane@gmail.com> 1667331876 -0400	commit: Update project.godot
+79619ef41658195d77f545ddbb993aabbd0c68bb fb88e3c22c24c7682e6fbed0f5024f6c3b7c203e Ratatatang/Figgity <zandermclane@gmail.com> 1667335227 -0400	commit: started merging combat code
+fb88e3c22c24c7682e6fbed0f5024f6c3b7c203e 7fb27edfd3c8333b95faf9dffdacd4dc143f3490 Ratatatang/Figgity <zandermclane@gmail.com> 1667390602 -0400	commit: tweaked worldGen
+7fb27edfd3c8333b95faf9dffdacd4dc143f3490 5e24c6d32e9917a3e7b3e0d2f2ef9990ea971085 Ratatatang/Figgity <zandermclane@gmail.com> 1667393429 -0400	commit: worked on merging the menu code, test screen loading
+5e24c6d32e9917a3e7b3e0d2f2ef9990ea971085 917be71081f7c5ea670c91bbc837c64191f07059 Ratatatang/Figgity <zandermclane@gmail.com> 1667427700 -0400	commit: menu's are instancing correctly, camera centers on them automatically
+917be71081f7c5ea670c91bbc837c64191f07059 9772e2b62af566a266b43602041157ed5ef15476 Ratatatang/Figgity <zandermclane@gmail.com> 1667436750 -0400	commit: started adding wild pokemon
+9772e2b62af566a266b43602041157ed5ef15476 0c24aa07dec6f4b5a2256dfef5782f1a3f7c2f89 Ratatatang/Figgity <zandermclane@gmail.com> 1667614743 -0400	commit: Merged more of the combat code, cleaned up some of the code
+0c24aa07dec6f4b5a2256dfef5782f1a3f7c2f89 93c81993067798b28f5c9111c92e596fa2b57603 Ratatatang/Figgity <zandermclane@gmail.com> 1667659617 -0400	commit: Merged / simplified combat code
+93c81993067798b28f5c9111c92e596fa2b57603 eb45ad41612c136f7eb47df27fbb640c2a3955e9 Ratatatang/Figgity <zandermclane@gmail.com> 1667917409 -0500	commit: Started creating the pokemon screen
+eb45ad41612c136f7eb47df27fbb640c2a3955e9 35a1413573d1a057cb50f938a34d5ff498670368 Ratatatang/Figgity <zandermclane@gmail.com> 1668174034 -0500	commit: added pokemon/moves, more work on pkmn screen
+35a1413573d1a057cb50f938a34d5ff498670368 5b21bc63c874b16bea0c0d2632b07024f25732ad Ratatatang/Figgity <zandermclane@gmail.com> 1668183606 -0500	commit: fixed some problems with combat, worked on wild pokemon
+5b21bc63c874b16bea0c0d2632b07024f25732ad d4e90b7655c90a5d9a5037ff054aee1e4229c65d Ratatatang/Figgity <zandermclane@gmail.com> 1668566603 -0500	commit: added item slots to inv screen, worked on wild pokemon a little
+d4e90b7655c90a5d9a5037ff054aee1e4229c65d b4f1295d3e3a2d6c59d3e0775352ac51a5c0d894 Ratatatang/Figgity <zandermclane@gmail.com> 1668566707 -0500	checkout: moving from Merging-Code to main
+b4f1295d3e3a2d6c59d3e0775352ac51a5c0d894 d4e90b7655c90a5d9a5037ff054aee1e4229c65d Ratatatang/Figgity <zandermclane@gmail.com> 1668566898 -0500	checkout: moving from main to Merging-Code
+d4e90b7655c90a5d9a5037ff054aee1e4229c65d b4f1295d3e3a2d6c59d3e0775352ac51a5c0d894 Ratatatang/Figgity <zandermclane@gmail.com> 1668567011 -0500	checkout: moving from Merging-Code to main
+b4f1295d3e3a2d6c59d3e0775352ac51a5c0d894 d4e90b7655c90a5d9a5037ff054aee1e4229c65d Ratatatang/Figgity <zandermclane@gmail.com> 1668567032 -0500	checkout: moving from main to Merging-Code
+d4e90b7655c90a5d9a5037ff054aee1e4229c65d 1da5998006bab1621998ff95f44d8246d4d49b7a Ratatatang/Figgity <zandermclane@gmail.com> 1668567051 -0500	checkout: moving from Merging-Code to production
+1da5998006bab1621998ff95f44d8246d4d49b7a b53e4876e073d50862836066335015081c4a60b6 Ratatatang/Figgity <zandermclane@gmail.com> 1668609970 -0500	commit: small tweaks
+b53e4876e073d50862836066335015081c4a60b6 645138d1e340eee8cfaa3e3f1cb9d1e2ef5d2ca2 Ratatatang/Figgity <zandermclane@gmail.com> 1668704328 -0500	commit: started porting to 3d
+645138d1e340eee8cfaa3e3f1cb9d1e2ef5d2ca2 cdd8f71ced5696dd75c614b8c20314624ee3607d Ratatatang/Figgity <zandermclane@gmail.com> 1668782062 -0500	commit: added exiting combat & capturing pokemon, and some code optimizations

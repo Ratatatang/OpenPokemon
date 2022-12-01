@@ -1,15 +1,17 @@
 extends Spatial
 
-export var width = 600
-export var height = 200
+export var width = 300
+export var height = 300
 onready var tilemap = $GridMap
 var temperature = {}
 var altitude = {}
 var moisture = {}
-var biome = {}
 var openSimplexNoise = OpenSimplexNoise.new()
 
 var biomeTiles = {"Plains": 0, "Ocean": 1, "Beach": 2}
+var tileBiomes = {0: "Plains", 1: "Ocean", 2: "Beach"}
+
+onready var nest = load("res://OpenWorld/WildPokemon/Nest.tscn")
 
 #Generates maps for temp, moisture & altitude used to decide biomes
 func _ready():
@@ -64,20 +66,17 @@ func setTile(width, height):
 			#Ocean
 			if alt < 0.2:
 				tilemap.set_cell_item(x, 0, z, biomeTiles.Ocean)
-				biome[pos] = "Ocean"
 			
 			#Beach
 			elif between(alt, 0.2, 0.27):
 				tilemap.set_cell_item(x, 0, z, biomeTiles.Beach)
-				biome[pos] = "Beach"
-				
+
 			#Other Biomes
 			elif between(alt, 0.27, 1):
 				
 				#Plains
 				#if between(moist, 0.2, 0.5) and between(temp, 0.2, 0.5):
 				tilemap.set_cell_item(x, 0, z, biomeTiles.Plains)
-				biome[pos] = "Plains"
 					
 				"""#Taiga Plains
 				elif between(moist, 0, 0.2) and between(temp, 0.2, 0.4):
@@ -117,8 +116,28 @@ func setTile(width, height):
 				
 #				if biome[Vector2(pos.x-1, pos.y-1)] == "Ocean" or biome[Vector2(pos.x-1, pos.y+1)] == "Ocean" or biome[Vector2(pos.x+1, pos.y-1)] == "Ocean" or biome[Vector2(pos.x+1, pos.y+1)] == "Ocean":
 #					tilemap.set_cellv(pos, biomeTiles.Beach)
-#					biome[pos] = "Beach"
-					
+	generateObjects(width, height)
+
+# Generates objects onto the tiles. trans is the Vector3 for putting the objects in their place and pos is for the biome map
+func generateObjects(width, height):
+	randomize()
+	for x in width:
+		for z in height:
+			var seedNum = round(rand_range(0, 100))
+			
+			if(seedNum < 70):
+				continue
+			
+			#Holy shit transgender
+			var pos = Vector3(x, 0, z)
+			var trans = Vector3(x, 0.931, z)
+				
+			if(tileBiomes[getBiome(pos)] == "Beach"):
+				if(seedNum > 90):
+					var newObject = nest.instance()
+					newObject.translate(trans)
+					add_child(newObject)
+
 #Helper func for start < val < end
 func between(val, start, end):
 	if start <= val and val <= end:
@@ -127,3 +146,21 @@ func between(val, start, end):
 #func _input(event):
 #	if event.is_action_pressed("ui_accept"):
 #		get_tree().reload_current_scene()
+
+func groundTile(pos : Vector3):
+	if(tilemap.get_cell_item(pos.x, pos.y, pos.z) !=  "Ocean"):
+		return true
+	return false
+	
+func waterTile(pos : Vector3):
+	if(tilemap.get_cell_item(pos.x, pos.y, pos.z) ==  "Ocean"):
+		return true
+	return false
+	
+func isTile(pos : Vector3, tile):
+	if(tilemap.get_cell_item(pos.x, pos.y, pos.z) ==  tile):
+		return true
+	return false
+	
+func getBiome(pos: Vector3):
+	return tilemap.get_cell_item(pos.x, pos.y, pos.z)

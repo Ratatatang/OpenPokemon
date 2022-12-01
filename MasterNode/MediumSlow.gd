@@ -1,2 +1,2 @@
 func levelFunction(n):
-	return (6/5 * n^3) - ((15 * n)^2) + (100 * n) - 140
+	return ((6.0/5.0) * pow(n, 3.0)) - (15.0 * pow(n, 2.0)) + (100.0 * n) - 140.0

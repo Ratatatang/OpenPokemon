@@ -1,4 +1,4 @@
-extends Node2D
+extends Spatial
 
 var walkSpeed = 0.1
 
@@ -15,6 +15,8 @@ enum directions{
 	RIGHT,
 	LEFT
 }
+
+var pokemon
 
 func _ready():
 	loopAnimation()

@@ -1,0 +1,4 @@
+0000000000000000000000000000000000000000 1da5998006bab1621998ff95f44d8246d4d49b7a Ratatatang/Figgity <zandermclane@gmail.com> 1668567051 -0500	branch: Created from origin/production
+1da5998006bab1621998ff95f44d8246d4d49b7a b53e4876e073d50862836066335015081c4a60b6 Ratatatang/Figgity <zandermclane@gmail.com> 1668609970 -0500	commit: small tweaks
+b53e4876e073d50862836066335015081c4a60b6 645138d1e340eee8cfaa3e3f1cb9d1e2ef5d2ca2 Ratatatang/Figgity <zandermclane@gmail.com> 1668704328 -0500	commit: started porting to 3d
+645138d1e340eee8cfaa3e3f1cb9d1e2ef5d2ca2 cdd8f71ced5696dd75c614b8c20314624ee3607d Ratatatang/Figgity <zandermclane@gmail.com> 1668782062 -0500	commit: added exiting combat & capturing pokemon, and some code optimizations

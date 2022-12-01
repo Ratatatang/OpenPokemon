@@ -19,6 +19,8 @@
                 "spDef": 65,
                 "speed": 45
                 },
+            "XPValue": 64,
+            "EVs": {"spAtk": 1},
             "ExperienceCurve": "MediumSlow",
             "EvoLv": 16,
             "EvoPokemon": "Ivysaur",
@@ -41,6 +43,8 @@
                 "spDef": 80,
                 "speed": 60
                 },
+            "XPValue": 142,
+            "EVs": {"spAtk": 1, "spDef": 1},
             "ExperienceCurve": "MediumSlow",
             "EvoLv": 32,
             "EvoPokemon": "Venasaur",
@@ -63,6 +67,8 @@
                 "spDef": 100,
                 "speed": 80
                 },
+            "XPValue": 236,
+            "EVs": {"spAtk": 1, "spDef": 2},
             "ExperienceCurve": "MediumSlow",
             "GenderRatio": 87.5
         },

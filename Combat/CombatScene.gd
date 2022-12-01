@@ -48,6 +48,9 @@ var playerMoves
 
 signal finished_combat
 signal lose_combat
+signal escape
+signal caught_pokemon
+signal xp
 
 var combatPokedex
 var combatMovedex
@@ -59,8 +62,6 @@ var playerList = ["", "", "", "", "", ""]
 var enemyList = ["", "", "", "", "", ""]
 
 var trainerBattle = false
-
-signal escape
 
 # class for a selected move, used by the text queue and
 # damage calculations
@@ -98,6 +99,7 @@ class battlingMon:
 	var tempEvsn
 	
 	func _init(mon, slot):
+		mon.participant = true
 		self.pokemon = mon
 		self.healthBar = slot.get_node("healthbar")
 		self.sprite = slot.get_node("sprite")
@@ -182,10 +184,7 @@ func _ready():
 	var typeEffectFileData = JSON.parse(typeFile.get_as_text())
 	typeFile.close()
 	typeEffect = typeEffectFileData.result
-	
-	var lenButtons = len(buttons.values())
-	for i in lenButtons:
-		buttons["Move"+str(i+1)].visible = true
+		
 	ActionSelect.get_child(0).disabled = false
 	
 # _process just for managing inputs. don't try to match state here.
@@ -193,11 +192,13 @@ func _ready():
 func _process(delta):
 	randomize()
 	if Input.is_action_pressed("spin"):
-		playerActive1.sprite.texture.rotation_degrees += 999999999999999999
+		enemyActive1.sprite.rotation_degrees += 999999999999999999
+		playerActive1.sprite.rotation_degrees += 999999999999999999
 	if Input.is_action_just_pressed("escape") and $ActionSelect.visible == false and Dialoge.visible == false:
 		set_control("Action")
 	elif(Input.is_action_just_pressed("escape") and Dialoge.visible == true):
 		emit_signal("escape")
+		
 # just sets what control should be visable
 
 func set_control(control):
@@ -219,11 +220,11 @@ func set_control(control):
 func buttonMoves():
 	var numMoves = playerMoves.values()
 	while numMoves.find("") >= 0:
-		buttons["Move"+str(numMoves.find("")+1)].visible = false
 		numMoves.erase("")
 	numMoves = len(numMoves)
 
 	for i in numMoves:
+		buttons["Move"+str(i+1)].visible = true
 		var buttonMove = playerMoves["move"+str(i+1)]
 		var buttonType = buttonMove.get("Type")
 		buttonType.capitalize()
@@ -285,7 +286,7 @@ func Outcome(playerSelectedMove):
 		yield(self, "escape")
 		
 		if(str(moves[0]) == "captured"):
-			find_parent("SceneManager").capturePokemon(enemyActive1.pokemon)
+			emit_signal("caught_pokemon", enemyActive1.pokemon)
 			moves.insert(0, " ")
 		
 		if(1 == len(moves)):
@@ -330,43 +331,43 @@ func doesMoveHit(move):
 		
 func moveAttack(move, effectiveness):
 	var attack = move.attack
-	var straightDamage = move.attack.Power
+	var straightDamage = float(move.attack.Power)
 	var attackerMod
 	var victimMod
-	var attackerLv = move.attacker.pokemon.level
+	var attackerLv = float(move.attacker.pokemon.level)
 	
 	
 	if(attack.Category == "Physical"):
-		attackerMod = move.attacker.pokemon.atk * (statChanges.get(str(move.attacker.tempAtk)))
-		victimMod = move.victim.pokemon.def * (statChanges.get(str(move.victim.tempDef)))
+		attackerMod = float(move.attacker.pokemon.atk * (statChanges.get(str(move.attacker.tempAtk))))
+		victimMod = float(move.victim.pokemon.def * (statChanges.get(str(move.victim.tempDef))))
 	elif(attack.Category == "Special"):
-		attackerMod = move.attacker.pokemon.spAtk * (statChanges.get(str(move.attacker.tempSpAtk)))
-		victimMod = move.victim.pokemon.spDef * (statChanges.get(str(move.victim.tempSpDef)))
+		attackerMod = float(move.attacker.pokemon.spAtk * (statChanges.get(str(move.attacker.tempSpAtk))))
+		victimMod = float(move.victim.pokemon.spDef * (statChanges.get(str(move.victim.tempSpDef))))
 	
-	var random = round(rand_range(85, 100))
+	var random = round(rand_range(85.0, 100.0))
 	random = float("0." + str(random))
 	
 	print("percentage of damage: " + str(random))
 	
-	var STAB = 1
+	var STAB = 1.0
 	
 	if(move.attacker.pokemon.types.find(move.attack.Type) >= 0):
 		STAB += 0.5
 	
-	var damage = 2 * attackerLv
-	damage /= 5
-	damage += 2
+	var damage = 2.0 * attackerLv
+	damage /= 5.0
+	damage += 2.0
 	damage *= straightDamage
 	damage *= (attackerMod / victimMod)
-	damage /= 50
-	damage += 2
+	damage /= 50.0
+	damage += 2.0
 	damage *= random
 	damage *= STAB
 	damage *= effectiveness
 	
 	damage = round(damage)
 	
-	if(damage == 0):
+	if(damage <= 0):
 		damage = 1
 	
 	print("move damage: " + str(damage))
@@ -509,6 +510,8 @@ func effectiveness(atkType, defTypes):
 	
 	return typeEffective
 	
+# Changes a stat for the appropriate victim
+	
 func change_stats(move):
 	var changes = move.attack.StatChanges.keys()
 	
@@ -538,6 +541,7 @@ func changeStat(stat, target):
 		
 func combatEnd(victor):
 	if(victor == playerActive1):
+		emit_signal("xp", enemyActive1.pokemon)
 		emit_signal("finished_combat")
 	if(victor == enemyActive1):
 		emit_signal("lose_combat")

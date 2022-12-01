@@ -54,8 +54,13 @@ func generateMap(per, oct):
 	mat.set_shader_param("island_tex", imgt)"""
 	
 
-#Sets the tile in accordance of the moisture, altitude, and temperature of the tile
+#Preliminary, sets every tile to be plains so there are no gaps in the world
 func setTile(width, height):
+	for x in width:
+		for z in height:
+			tilemap.set_cell_item(x, 0, z, biomeTiles.Plains)
+
+#Sets the tile in accordance of the moisture, altitude, and temperature of the tile
 	for x in width:
 		for z in height:
 			var pos = Vector2(x, z)
@@ -129,13 +134,15 @@ func generateObjects(width, height):
 				continue
 			
 			#Holy shit transgender
-			var pos = Vector3(x, 0, z)
 			var trans = Vector3(x, 0.931, z)
+			var pos = Vector3(x, 0, z)
 				
-			if(tileBiomes[getBiome(pos)] == "Beach"):
+			if(getBiome(pos) == "Beach"):
 				if(seedNum > 90):
 					var newObject = nest.instance()
-					newObject.translate(trans)
+					var realTrans = tilemap.map_to_world(pos.x, pos.y, pos.z)
+					realTrans.y = 1.638
+					newObject.global_translate(realTrans)
 					add_child(newObject)
 
 #Helper func for start < val < end
@@ -163,4 +170,4 @@ func isTile(pos : Vector3, tile):
 	return false
 	
 func getBiome(pos: Vector3):
-	return tilemap.get_cell_item(pos.x, pos.y, pos.z)
+	return tileBiomes[tilemap.get_cell_item(pos.x, pos.y, pos.z)]

@@ -114,7 +114,6 @@ tracks/0/keys = {
 script = ExtResource( 5 )
 
 [node name="FPS_Counter" type="Label" parent="."]
-visible = false
 margin_right = 1025.0
 margin_bottom = 605.0
 text = "100"

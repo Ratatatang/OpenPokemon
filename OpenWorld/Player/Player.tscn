@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://OpenWorld/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://OpenWorld/EntityShadow.png" type="Texture" id=2]
@@ -186,8 +186,15 @@ graph_offset = Vector2( -601.253, -9.36123 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
+[sub_resource type="OccluderShapePolygon" id=41]
+polygon_points = PoolVector2Array( 5.52003, -2.14801, 6.85077, 1.74627, -7.38517, 1.43249, -7.50492, -2.05989 )
+
 [sub_resource type="BoxShape" id=39]
 extents = Vector3( 0.200696, 0.435618, 0.202076 )
+
+[sub_resource type="CapsuleShape" id=40]
+radius = 0.103735
+height = 0.002
 
 [node name="Player" type="KinematicBody"]
 collision_layer = 2
@@ -232,6 +239,22 @@ transform = Transform( 0.999983, 0.00587831, 0.000717436, -0.00373068, 0.53124, 
 current = true
 fov = 56.1467
 
+[node name="Occluder" type="Occluder" parent="Camera2D"]
+transform = Transform( 1, 1.16415e-10, 0, 0, 0.707107, -0.707107, -9.31323e-10, 0.707106, 0.707107, -0.0203685, 3.79018, -2.66457 )
+shape = SubResource( 41 )
+
+[node name="Occluder2" type="Occluder" parent="Camera2D"]
+transform = Transform( -0.00232501, 0.201854, -0.979408, -0.861281, 0.497261, 0.104528, 0.508123, 0.843793, 0.172697, 4.60566, 1.5157, -0.838695 )
+shape = SubResource( 41 )
+
+[node name="Occluder3" type="Occluder" parent="Camera2D"]
+transform = Transform( 0.999993, -0.00320395, -0.00144072, 0.000627843, 0.566512, -0.82405, 0.00345641, 0.824047, 0.566508, -0.369285, -1.78831, 1.21116 )
+shape = SubResource( 41 )
+
+[node name="Occluder4" type="Occluder" parent="Camera2D"]
+transform = Transform( -0.00117236, -0.0459182, 0.99894, 0.846965, 0.531038, 0.0254037, -0.531643, 0.846102, 0.0382681, -4.13486, 2.60295, -1.55894 )
+shape = SubResource( 41 )
+
 [node name="DialogBox" parent="Camera2D" instance=ExtResource( 18 )]
 visible = true
 
@@ -241,3 +264,7 @@ transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, 0.28, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 39 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000412978, 0, -0.192587 )
+shape = SubResource( 40 )

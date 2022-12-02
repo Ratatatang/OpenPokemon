@@ -12,6 +12,7 @@ var biomeTiles = {"Plains": 0, "Ocean": 1, "Beach": 2}
 var tileBiomes = {0: "Plains", 1: "Ocean", 2: "Beach"}
 
 onready var nest = load("res://OpenWorld/WildPokemon/Nest.tscn")
+onready var tree = load("res://OpenWorld/World Generation/Tree.tscn")
 
 #Generates maps for temp, moisture & altitude used to decide biomes
 func _ready():
@@ -137,13 +138,21 @@ func generateObjects(width, height):
 			var trans = Vector3(x, 0.931, z)
 			var pos = Vector3(x, 0, z)
 				
-			if(getBiome(pos) == "Beach"):
+			if(getBiome(pos) == "Plains"):
 				if(seedNum > 90):
-					var newObject = nest.instance()
+					var newObject = tree.instance()
 					var realTrans = tilemap.map_to_world(pos.x, pos.y, pos.z)
-					realTrans.y = 1.638
+					realTrans.y = 1.838
 					newObject.global_translate(realTrans)
 					add_child(newObject)
+					
+#			if(getBiome(pos) == "Beach"):
+#				if(seedNum > 90):
+#					var newObject = nest.instance()
+#					var realTrans = tilemap.map_to_world(pos.x, pos.y, pos.z)
+#					realTrans.y = 1.638
+#					newObject.global_translate(realTrans)
+#					add_child(newObject)
 
 #Helper func for start < val < end
 func between(val, start, end):

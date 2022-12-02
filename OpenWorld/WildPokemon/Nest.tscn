@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://OpenWorld/WildPokemon/Nest.gd" type="Script" id=1]
+[ext_resource path="res://OpenWorld/EntityShadow.png" type="Texture" id=2]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.275492, 0.225214, 0.226539 )
@@ -8,8 +9,11 @@ extents = Vector3( 0.275492, 0.225214, 0.226539 )
 [node name="Nest" type="Spatial"]
 script = ExtResource( 1 )
 
-[node name="Area" type="Area" parent="."]
+[node name="Nest_Zone" type="Area" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
+[node name="CollisionShape" type="CollisionShape" parent="Nest_Zone"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00501996, 0, 0 )
 shape = SubResource( 1 )
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource( 2 )

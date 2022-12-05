@@ -201,7 +201,7 @@ collision_layer = 2
 script = ExtResource( 17 )
 
 [node name="Sprite" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.682585, 0.730806, 0, -0.730806, 0.682585, 0.00473438, 0, -0.239 )
+transform = Transform( 1, 0, 0, 0, 0.682585, 0.730806, 0, -0.730806, 0.682585, 0.005, 0, -0.23 )
 alpha_cut = 2
 texture = ExtResource( 1 )
 hframes = 60

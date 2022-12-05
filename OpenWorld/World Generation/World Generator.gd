@@ -1,7 +1,8 @@
 extends Spatial
 
-export var width = 300
-export var height = 300
+export var width = 100
+export var height = 100
+
 onready var tilemap = $GridMap
 var temperature = {}
 var altitude = {}
@@ -13,13 +14,14 @@ var tileBiomes = {0: "Plains", 1: "Ocean", 2: "Beach"}
 
 onready var nest = load("res://OpenWorld/WildPokemon/Nest.tscn")
 onready var tree = load("res://OpenWorld/World Generation/Tree.tscn")
+onready var bulbTest = load("res://OpenWorld/WildPokemon/WildPokemon.tscn")
 
 #Generates maps for temp, moisture & altitude used to decide biomes
 func _ready():
 	randomize()
 	temperature = generateMap(450, 5)
 	moisture = generateMap(450, 5)
-	altitude = generateMap(250, 5)
+	altitude = generateMap(180, 5)
 	setTile(width, height)
 
 #Generates 2D noise maps
@@ -78,7 +80,7 @@ func setTile(width, height):
 				tilemap.set_cell_item(x, 0, z, biomeTiles.Beach)
 
 			#Other Biomes
-			elif between(alt, 0.27, 1):
+			elif alt > 0.27:
 				
 				#Plains
 				#if between(moist, 0.2, 0.5) and between(temp, 0.2, 0.5):
@@ -135,16 +137,20 @@ func generateObjects(width, height):
 				continue
 			
 			#Holy shit transgender
-			var trans = Vector3(x, 0.931, z)
+
 			var pos = Vector3(x, 0, z)
 				
 			if(getBiome(pos) == "Plains"):
 				if(seedNum > 90):
 					var newObject = tree.instance()
 					var realTrans = tilemap.map_to_world(pos.x, pos.y, pos.z)
-					realTrans.y = 1.838
-					newObject.global_translate(realTrans)
-					add_child(newObject)
+					realTrans.x += rand_range(0, 0.3)
+					realTrans.z += rand_range(0, 0.3)
+					var objectTrans = realTrans
+					objectTrans.y = newObject.translation.y
+					newObject.global_translate(objectTrans)
+					if(getBiome(tilemap.world_to_map(realTrans)) == "Plains"):
+						add_child(newObject)
 					
 #			if(getBiome(pos) == "Beach"):
 #				if(seedNum > 90):

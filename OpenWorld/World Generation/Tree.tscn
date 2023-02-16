@@ -4,19 +4,19 @@
 [ext_resource path="res://OpenWorld/EntityShadow.png" type="Texture" id=2]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.0970038, 0.422647, 0.0857955 )
+extents = Vector3( 0.097, 0.646, 0.05 )
 
 [node name="Tree" type="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.926877, 0 )
 
 [node name="Sprite" type="Sprite3D" parent="."]
 transform = Transform( 1.93282, 0, 0, 0, 1.20194, -0.686724, 0, -0.789395, 1.41126, 0, 0.0402189, 0 )
 texture = ExtResource( 1 )
 
 [node name="Shadow" type="Sprite3D" parent="."]
-transform = Transform( 3.9, 0, 0, 0, -8.74228e-08, -3, 0, 2, -1.31134e-07, 0.0805299, -0.450198, 0.0248602 )
+transform = Transform( 3.9, 0, 0, 0, -8.74228e-08, -3, 0, 2, -1.31134e-07, -0.00953105, -0.375252, 0.22756 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1.91918, 0, 0, 0, 1, 0, 0, 0, 1, -0.0101104, -0.246759, 0.193686 )
+transform = Transform( 1.91918, 0, 0, 0, 1, 0, 0, 0, 1, -0.0101104, -0.246759, 0.152093 )
 shape = SubResource( 1 )

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Combat/Sprites/001.png" type="Texture" id=1]
+
+[node name="EvolutionScreen" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 496, 296 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+hframes = 4

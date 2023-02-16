@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://OpenWorld/World Generation/World Generator.gd" type="Script" id=1]
 
@@ -15,6 +15,8 @@ albedo_color = Color( 0.203922, 0.478431, 0.92549, 1 )
 [sub_resource type="PlaneMesh" id=5]
 material = SubResource( 4 )
 size = Vector2( 1, 1 )
+
+[sub_resource type="NavigationMesh" id=9]
 
 [sub_resource type="SpatialMaterial" id=6]
 albedo_color = Color( 0.933333, 0.866667, 0.509804, 1 )
@@ -35,6 +37,7 @@ item/1/name = "Ocean"
 item/1/mesh = SubResource( 5 )
 item/1/mesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 item/1/shapes = [  ]
+item/1/navmesh = SubResource( 9 )
 item/1/navmesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 item/2/name = "Beach"
 item/2/mesh = SubResource( 7 )

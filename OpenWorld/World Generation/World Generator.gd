@@ -10,7 +10,7 @@ var moisture = {}
 var openSimplexNoise = OpenSimplexNoise.new()
 
 var biomeTiles = {"Plains": 0, "Ocean": 1, "Beach": 2}
-var tileBiomes = {0: "Plains", 1: "Ocean", 2: "Beach"}
+var tileBiomes = {-1: "", 0: "Plains", 1: "Ocean", 2: "Beach"}
 
 onready var nest = load("res://OpenWorld/WildPokemon/Nest.tscn")
 onready var tree = load("res://OpenWorld/World Generation/Tree.tscn")
@@ -131,34 +131,19 @@ func generateObjects(width, height):
 	randomize()
 	for x in width:
 		for z in height:
-			var seedNum = round(rand_range(0, 100))
-			
-			if(seedNum < 70):
+			if(round(rand_range(0, 100)) < 70):
 				continue
-			
-			#Holy shit transgender
-
-			var pos = Vector3(x, 0, z)
+			else:
+				var objectNum = round(rand_range(0, 100))
+				var pos = Vector3(x, 0, z)
 				
-			if(getBiome(pos) == "Plains"):
-				if(seedNum > 90):
-					var newObject = tree.instance()
-					var realTrans = tilemap.map_to_world(pos.x, pos.y, pos.z)
-					realTrans.x += rand_range(0, 0.3)
-					realTrans.z += rand_range(0, 0.3)
-					var objectTrans = realTrans
-					objectTrans.y = newObject.translation.y
-					newObject.global_translate(objectTrans)
-					if(getBiome(tilemap.world_to_map(realTrans)) == "Plains"):
-						add_child(newObject)
-					
-#			if(getBiome(pos) == "Beach"):
-#				if(seedNum > 90):
-#					var newObject = nest.instance()
-#					var realTrans = tilemap.map_to_world(pos.x, pos.y, pos.z)
-#					realTrans.y = 1.638
-#					newObject.global_translate(realTrans)
-#					add_child(newObject)
+				if(getBiome(pos) == "Plains"):
+					if(objectNum > 90):
+						placeObject(tree, pos, "Plains")
+				
+				if(round(rand_range(0, 100)) > 50):
+					if(getBiome(pos) == "Beach"):
+						placeObject(nest, pos, "Beach")
 
 #Helper func for start < val < end
 func between(val, start, end):
@@ -169,13 +154,34 @@ func between(val, start, end):
 #	if event.is_action_pressed("ui_accept"):
 #		get_tree().reload_current_scene()
 
+func placeForeignObject(newObject, pos : Vector3, biome = ""):
+	placeObject(newObject, to_local(pos), biome)
+
+func placeObject(objectPath, pos : Vector3, biome = ""):
+	var newObject = objectPath.instance()
+	#Holy Shit Transgender
+	var realTrans = tilemap.map_to_world(pos.x, pos.y, pos.z)
+	realTrans.x += rand_range(0, 0.3)
+	realTrans.z += rand_range(0, 0.3)
+	var objectTrans = realTrans
+	objectTrans.y = newObject.translation.y
+	newObject.global_translate(objectTrans)
+	if(getBiome(tilemap.world_to_map(realTrans)) == biome or biome == ""):
+		add_child(newObject)
+
+
+
+func groundTileGlobal(pos: Vector3):
+	pos = tilemap.world_to_map(to_local(pos))
+	return groundTile(pos)
+
 func groundTile(pos : Vector3):
-	if(tilemap.get_cell_item(pos.x, pos.y, pos.z) !=  "Ocean"):
+	if(getBiome(pos) !=  "Ocean"):
 		return true
 	return false
 	
 func waterTile(pos : Vector3):
-	if(tilemap.get_cell_item(pos.x, pos.y, pos.z) ==  "Ocean"):
+	if(getBiome(pos) ==  "Ocean"):
 		return true
 	return false
 	

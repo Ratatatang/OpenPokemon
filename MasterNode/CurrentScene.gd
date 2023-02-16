@@ -8,3 +8,6 @@ func get_screen():
 	
 func get_combatScene():
 	return get_node("CombatScene")
+	
+func getWorldGen():
+	return get_node("World/World Generator")

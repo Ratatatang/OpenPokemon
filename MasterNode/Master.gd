@@ -135,6 +135,7 @@ func givePokemonXP(victim):
 				
 			var victor = currentPokemon.level
 			
+			#I have a deep hatred of everything
 			var addedXp = round((((base * lv)/5.0) * (1.0/contribute)) * pow((((2.0*1.0)+10.0)/(1.0+victor+10.0)), 2.5) + 1.0)
 
 			currentPokemon.calculateLevel(addedXp)

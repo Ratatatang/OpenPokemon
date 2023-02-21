@@ -29,6 +29,13 @@ font_data = ExtResource( 7 )
 position = Vector2( 23, 0 )
 script = ExtResource( 4 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -172.0
+margin_top = -108.0
+margin_right = 173.0
+margin_bottom = 101.0
+color = Color( 0.290196, 0.290196, 0.290196, 1 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.312, 0.3 )

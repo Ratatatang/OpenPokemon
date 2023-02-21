@@ -98,6 +98,19 @@ class selectedAction:
 	func get_type():
 		return "selectedAction"
 		
+class flavorText:
+	var move
+	var speed
+	var priority
+	
+	func _init(move):
+		self.move = move
+		self.speed = 0
+		self.priority = 0
+	
+	func get_type():
+		return "flavorText"
+		
 # Helper class that stores data for the sorting loop
 		
 class unsortedMove:
@@ -307,8 +320,10 @@ func Outcome(playerSelectedAction):
 		
 		var category
 		
-		if(moves[0].get_type() == "selectedAction"):
-			otherText(moves[0])
+		
+		
+		if(moves[0].get_type() == "flavorText"):
+			Dialoge.text = moves[0].move
 		else:
 			var moveHit = doesMoveHit(moves[0])
 			moveText(moveHit, moves[0])
@@ -323,8 +338,7 @@ func Outcome(playerSelectedAction):
 		
 		yield(self, "escape")
 		
-		
-		if(str(moves[0].move) == "captured"):
+		if(moves[0].get_type() == "captured"):
 			emit_signal("caught_pokemon", enemyActive1.pokemon)
 			moves.insert(0, selectedAction.new(" "))
 		
@@ -502,21 +516,6 @@ func moveText(miss, move):
 	else:
 		Dialoge.text = move.attacker.displayName + " missed."
 		
-# Updates the Dialog box with the text approprate for what just happened.
-# Separate from moveText but really the should be collapsed into one function
-func otherText(type):
-	type = type.move
-	if type == "notEffective":
-		Dialoge.text = "Not Very Effective..."
-	elif type == "effective":	
-		Dialoge.text = "It Was Super Effective!"
-	elif type == "captured":	
-		Dialoge.text = "You captured the " + enemyActive1.pokemon.speciesName +"!"
-	elif type == "notCaptured":	
-		Dialoge.text = "You failed to capture the " + enemyActive1.pokemon.speciesName +"..."
-	else:
-		Dialoge.text = " "
-		
 # updates the healthbar values by getting what percent health
 # the pokemon has and setting the bar to the same percent
 		
@@ -577,9 +576,9 @@ func effectiveness(atkType, defTypes):
 		typeEffective += 0
 	
 	if(typeEffective > 1):
-		moves.insert(1, "effective")
+		moves.insert(1, flavorText.new("It Was Super Effective!"))
 	elif(typeEffective < 1 and typeEffective > 0):
-		moves.insert(1, "notEffective")
+		moves.insert(1, flavorText.new("Not Very Effective..."))
 	
 	return typeEffective
 	

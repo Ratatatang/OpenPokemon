@@ -73,7 +73,6 @@ func callWildEncounter(species, lv):
 	player.external_set_state("freeze")
 	screenEffectPlayer.play("WildCombatStart")
 	yield(screenEffectPlayer, "animation_finished")
-	currentScene.get_child(0).visible = false
 	currentScene.add_child(load(combatScenePath).instance())
 	var combatScene = currentScene.get_node("CombatScene")
 	combatScene.wild_combat_start(playerPokemonList, pokemon.new(species, lv, pokedex, movedex))

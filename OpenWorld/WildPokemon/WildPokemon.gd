@@ -30,7 +30,10 @@ func _ready():
 
 func _physics_process(delta):
 	
-	$Sprite.animation = "down"
+	var animVector = velocity.normalized()
+	animVector = Vector2(animVector.x, animVector.z)
+	$AnimationTree.set("parameters/blend_position", animVector)
+	
 	
 	match state:
 		IDLE:

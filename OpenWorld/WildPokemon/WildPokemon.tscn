@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://OpenWorld/WildPokemon/WildPokemon.gd" type="Script" id=1]
 [ext_resource path="res://OpenWorld/WildPokemon/Sprites/1-b-n.png" type="Texture" id=2]
@@ -112,6 +112,93 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="Animation" id=19]
+resource_name = "down"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "down" ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "left"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "left" ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "right"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "right" ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "up"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "up" ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "up"
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "down"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "left"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=27]
+blend_point_0/node = SubResource( 23 )
+blend_point_0/pos = Vector2( 0, -1 )
+blend_point_1/node = SubResource( 24 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 25 )
+blend_point_2/pos = Vector2( -1, -0.1 )
+blend_point_3/node = SubResource( 26 )
+blend_point_3/pos = Vector2( 1, -0.1 )
+blend_mode = 1
+
 [node name="WildPokemon" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515, 0 )
 script = ExtResource( 1 )
@@ -123,7 +210,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1.01488, 0, 0, 0, 0.805072, 0.617932, 0, -0.617932, 0.805072, 0.001, 0.115, -0.0471722 )
 frames = SubResource( 18 )
-animation = "left"
+animation = "up"
 frame = 3
 playing = true
 
@@ -137,5 +224,19 @@ script = ExtResource( 4 )
 
 [node name="Timer" type="Timer" parent="WanderController"]
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+method_call_mode = 1
+anims/down = SubResource( 19 )
+anims/left = SubResource( 20 )
+anims/right = SubResource( 21 )
+anims/up = SubResource( 22 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 27 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+process_mode = 0
+parameters/blend_position = Vector2( -0.673213, -0.922414 )
 
 [connection signal="timeout" from="WanderController/Timer" to="WanderController" method="_on_Timer_timeout"]

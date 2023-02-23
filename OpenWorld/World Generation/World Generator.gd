@@ -14,7 +14,8 @@ var tileBiomes = {-1: "", 0: "Plains", 1: "Ocean", 2: "Beach"}
 
 onready var nest = load("res://OpenWorld/WildPokemon/Nest.tscn")
 onready var tree = load("res://OpenWorld/World Generation/Tree.tscn")
-onready var bulbTest = load("res://OpenWorld/WildPokemon/WildPokemon.tscn")
+onready var pokemon = load("res://OpenWorld/WildPokemon/WildPokemon.tscn")
+
 
 #Generates maps for temp, moisture & altitude used to decide biomes
 func _ready():
@@ -169,7 +170,14 @@ func placeObject(objectPath, pos : Vector3, biome = ""):
 	if(getBiome(tilemap.world_to_map(realTrans)) == biome or biome == ""):
 		add_child(newObject)
 
-
+# Place object, without the random tweaking
+func placeObjectExact(objectPath, pos : Vector3):
+	var newObject = objectPath.instance()
+	#Holy Shit Transgender
+	var objectTrans = tilemap.map_to_world(pos.x, pos.y, pos.z)
+	objectTrans.y = newObject.translation.y
+	newObject.global_translate(objectTrans)
+	add_child(newObject)
 
 func groundTileGlobal(pos: Vector3):
 	pos = tilemap.world_to_map(to_local(pos))

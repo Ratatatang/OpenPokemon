@@ -33,6 +33,11 @@ func _ready():
 # Matches the state machine to the correct state
 
 func _process(delta):
+	
+	rset("puppet_pos", global_translation)
+	rset("puppet_motion", animVector)
+	rset("puppet_animation", animationState.get_current_node())
+	
 	if(frozen == true):
 		state = stateMachine.FREEZE
 	match state:
@@ -52,6 +57,10 @@ func _process(delta):
 					var dialog = $PlayerInteractionBox.get_overlapping_areas()[0].interact()
 					$Camera2D/DialogBox.start(dialog)
 					frozen = true
+					
+	rset("puppet_pos", global_translation)
+	rset("puppet_motion", animVector)
+	rset("puppet_animation", animationState.get_current_node())
 			
 # Used for when you move into a door so you can't move. you don't have to unfreeze as this
 # player is cleared after they walk into a door 

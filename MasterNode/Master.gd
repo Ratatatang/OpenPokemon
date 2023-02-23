@@ -1,5 +1,17 @@
 extends Spatial
 
+const DEFAULT_PORT = 10567
+const MAX_PEERS = 12
+
+var peer = null
+var player_name = "Unnamed"
+
+var players = {}
+
+signal player_list_changed()
+signal connection_failed()
+signal connection_succeeded()
+
 var pokedex = File.new()
 var movedex = File.new()
 
@@ -24,6 +36,12 @@ onready var screenEffectPlayer = $ScreenEffects/AnimationPlayer
 var pokemon
 
 func _ready():
+	
+	get_tree().connect("network_peer_connected", self, "_player_connected")
+	get_tree().connect("network_peer_disconnected", self,"_player_disconnected")
+	get_tree().connect("connected_to_server", self, "_connected_ok")
+	get_tree().connect("connection_failed", self, "_connected_fail")
+	get_tree().connect("server_disconnected", self, "_server_disconnected")
 	
 	pokemon = load("res://MasterNode/PokemonClass.gd")
 	
@@ -138,3 +156,45 @@ func givePokemonXP(victim):
 			var addedXp = round((((base * lv)/5.0) * (1.0/contribute)) * pow((((2.0*1.0)+10.0)/(1.0+victor+10.0)), 2.5) + 1.0)
 
 			currentPokemon.calculateLevel(addedXp)
+	
+func host_game(new_player_name):
+	player_name = new_player_name
+	peer = NetworkedMultiplayerENet.new()
+	peer.create_server(DEFAULT_PORT, MAX_PEERS)
+	get_tree().set_network_peer(peer)
+
+func join_game(ip, new_player_name):
+	player_name = new_player_name
+	peer = NetworkedMultiplayerENet.new()
+	peer.create_client(ip, DEFAULT_PORT)
+	get_tree().set_network_peer(peer)
+	
+func get_player_list():
+	return players.values()
+	
+func get_player_name():
+	return player_name
+
+func _player_connected(id):
+	# Registration of a client beings here, tell the connected player that we are here.
+	rpc_id(id, "register_player", player_name)
+
+func _player_disconnected(id):
+	unregister_player(id)
+
+remote func register_player(new_player_name):
+	var id = get_tree().get_rpc_sender_id()
+	print(id)
+	players[id] = new_player_name
+	emit_signal("player_list_changed")
+
+func unregister_player(id):
+	players.erase(id)
+	emit_signal("player_list_changed")
+	
+func _connected_ok():
+	emit_signal("connection_succeeded")
+	
+func _connected_fail():
+	get_tree().set_network_peer(null) # Remove peer
+	emit_signal("connection_failed")

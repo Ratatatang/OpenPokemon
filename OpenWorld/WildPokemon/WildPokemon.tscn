@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://OpenWorld/WildPokemon/WildPokemon.gd" type="Script" id=1]
 [ext_resource path="res://OpenWorld/WildPokemon/Sprites/1-b-n.png" type="Texture" id=2]
 [ext_resource path="res://OpenWorld/EntityShadow.png" type="Texture" id=3]
 [ext_resource path="res://OpenWorld/WildPokemon/Wander Controller.gd" type="Script" id=4]
+[ext_resource path="res://OpenWorld/WildPokemon/Emotes/Happy.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.0635116
@@ -128,6 +129,34 @@ tracks/0/keys = {
 "values": [ "down" ]
 }
 
+[sub_resource type="Animation" id=28]
+resource_name = "emote"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Emote:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Emote:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
 [sub_resource type="Animation" id=20]
 resource_name = "left"
 length = 0.001
@@ -210,13 +239,19 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1.01488, 0, 0, 0, 0.805072, 0.617932, 0, -0.617932, 0.805072, 0.001, 0.115, -0.0471722 )
 frames = SubResource( 18 )
-animation = "up"
-frame = 3
+animation = "down"
+frame = 1
 playing = true
 
 [node name="Shadow" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00508097, 0, -0.0123016 )
 texture = ExtResource( 3 )
+
+[node name="Emote" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.733576, 0.679608, 0, -0.679608, 0.733576, 0.0151519, 0.171788, -0.075269 )
+visible = false
+texture = ExtResource( 5 )
+hframes = 2
 
 [node name="WanderController" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515, 0 )
@@ -226,8 +261,8 @@ script = ExtResource( 4 )
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-method_call_mode = 1
 anims/down = SubResource( 19 )
+anims/emote = SubResource( 28 )
 anims/left = SubResource( 20 )
 anims/right = SubResource( 21 )
 anims/up = SubResource( 22 )

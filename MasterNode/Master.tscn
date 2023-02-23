@@ -151,3 +151,5 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 
 [node name="Player" parent="CurrentScene/World" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.338756, 0 )
+
+[node name="PuppetPlayers" type="Spatial" parent="CurrentScene/World"]

@@ -1,18 +1,19 @@
 extends KinematicBody
 
 var pokemon
+export var pokemonName = "Bulbasaur"
 
 export var ACCELERATION = 0.15
 export var MAX_SPEED = 0.2
 export var FRICTION = 0.1
 
-var walkSpeed = 5
+export var walkSpeed = 5
 
 var velocity = Vector3.ZERO
 var state = IDLE
 
-var currHeight = 0.515
-var lockedHeight = true
+export var currHeight = 0.515
+export var lockedHeight = true
 
 enum {
 	IDLE,
@@ -20,14 +21,13 @@ enum {
 	EMOTE
 }
 
-# Passive Actions List: previous state, idle, wander, emote
-
 onready var wanderController = $WanderController
 
 func _ready():
 	wanderController.start_wander_timer(0.1)
 	currHeight = global_translation.y
-
+	pokemon = get_node("/root/Master").getPokemon(pokemonName)
+	
 func _physics_process(delta):
 	
 	var animVector = velocity.normalized()

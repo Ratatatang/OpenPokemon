@@ -1,7 +1,7 @@
 extends Spatial
 
 var validSpawns = {1: "Bulbasaur"}
-var wildPokemonPath = load("res://OpenWorld/WildPokemon/WildPokemon.tscn")
+var wildPokemonPath = load("res://OpenWorld/WildPokemon/WildPokemon/Bulbasaur.tscn")
 
 func _ready():
 	#$Nest_Zone/CollisionShape.scale.x = round(rand_range(1, 6))

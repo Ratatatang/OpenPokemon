@@ -35,16 +35,7 @@ onready var screenEffectPlayer = $ScreenEffects/AnimationPlayer
 
 var pokemon
 
-func _ready():
-	
-	get_tree().connect("network_peer_connected", self, "_player_connected")
-	get_tree().connect("network_peer_disconnected", self,"_player_disconnected")
-	get_tree().connect("connected_to_server", self, "_connected_ok")
-	get_tree().connect("connection_failed", self, "_connected_fail")
-	get_tree().connect("server_disconnected", self, "_server_disconnected")
-	
-	pokemon = load("res://MasterNode/PokemonClass.gd")
-	
+func _init():
 	#Gets the pokedex
 	var pokedexFile = File.new()
 	pokedexFile.open("res://Combat/Pokedex.json", File.READ)
@@ -58,10 +49,20 @@ func _ready():
 	var movedexFileData = JSON.parse(movedexFile.get_as_text())
 	movedexFile.close()
 	movedex = movedexFileData.result
+	
+	pokemon = load("res://MasterNode/PokemonClass.gd")
+
+func _ready():
+	
+	get_tree().connect("network_peer_connected", self, "_player_connected")
+	get_tree().connect("network_peer_disconnected", self,"_player_disconnected")
+	get_tree().connect("connected_to_server", self, "_connected_ok")
+	get_tree().connect("connection_failed", self, "_connected_fail")
+	get_tree().connect("server_disconnected", self, "_server_disconnected")
 
 	screenEffectPlayer.play("Reset")
 
-	playerPokemonList[0] = pokemon.new("Pidgey", 13, pokedex, movedex)
+	playerPokemonList[0] = pokemon.new(pokedex, movedex, "Pidgey", 13)
 
 
 #Updates FPS counter every process
@@ -84,16 +85,16 @@ func exitScreen():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("test"):
-		callWildEncounter("Bulbasaur", 13)
+		callWildEncounter("Bulbasaur")
 
-func callWildEncounter(species, lv):
+func callWildEncounter(species, lv = 0):
 	menu.enabled = false
 	player.external_set_state("freeze")
 	screenEffectPlayer.play("WildCombatStart")
 	yield(screenEffectPlayer, "animation_finished")
 	currentScene.add_child(load(combatScenePath).instance())
 	var combatScene = currentScene.get_node("CombatScene")
-	combatScene.wild_combat_start(playerPokemonList, pokemon.new(species, lv, pokedex, movedex))
+	combatScene.wild_combat_start(playerPokemonList, pokemon.new(pokedex, movedex, species, lv))
 	combatScene.connect("finished_combat", self, "fade_from_combat")
 	combatScene.connect("xp", self, "givePokemonXP")
 	combatScene.connect("lose_combat", self, "lose_from_combat")
@@ -156,6 +157,9 @@ func givePokemonXP(victim):
 			var addedXp = round((((base * lv)/5.0) * (1.0/contribute)) * pow((((2.0*1.0)+10.0)/(1.0+victor+10.0)), 2.5) + 1.0)
 
 			currentPokemon.calculateLevel(addedXp)
+
+func getPokemon(species, lv = 0):
+	return pokemon.new(pokedex, movedex, species, lv)
 	
 func host_game(new_player_name):
 	player_name = new_player_name

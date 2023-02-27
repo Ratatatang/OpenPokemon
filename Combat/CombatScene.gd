@@ -151,6 +151,7 @@ class battlingMon:
 		self.sprite = slot.get_node("sprite")
 		self.displayName = self.pokemon.displayName
 		healthBar.get_node("name").text = displayName
+		healthBar.get_node("level").text = str(mon.level)
 		setStats()
 	
 	func changeStat(stat, value):
@@ -196,17 +197,21 @@ func wild_combat_start(playerTeam, enemyPokemon):
 	playerList = playerTeam
 	playerActive1 = battlingMon.new(playerList[0], $PlayerPosition)
 	
-	playerActive1.sprite.texture = load("res://Combat/Sprites/"+playerActive1.pokemon.pokedexInfo.get("ID")+".png")
+	playerActive1.sprite.texture = load("res://Combat/Sprites/Back/"+playerActive1.pokemon.speciesName.to_upper()+".png")
+	if(playerActive1.pokemon.dimorphism):
+		playerActive1.sprite.texture = load("res://Combat/Sprites/Back/"+playerActive1.pokemon.speciesName.to_upper()+"_female.png")
+		
 	playerMoves = playerActive1.pokemon.moves
 	
 	enemyActive1 = battlingMon.new(enemyPokemon, $EnemyPosition)
-	enemyActive1.sprite.texture = load("res://Combat/Sprites/"+enemyActive1.pokemon.pokedexInfo.get("ID")+".png")
+	enemyActive1.sprite.texture = load("res://Combat/Sprites/Front/"+enemyActive1.pokemon.speciesName.to_upper()+".png")
+	if(enemyActive1.pokemon.dimorphism):
+		enemyActive1.sprite.texture = load("res://Combat/Sprites/Front/"+enemyActive1.pokemon.speciesName.to_upper()+"_female.png")
+	
 	enemyMoves = enemyActive1.pokemon.moves.values()
 	enemyActive1.displayName = "Enemy " + enemyActive1.displayName
-	
-	for i in len(enemyMoves):
-		if str(enemyMoves[i]) == "":
-			enemyMoves.resize(len(enemyMoves)-1)
+	while str(enemyMoves[len(enemyMoves)-1]) == "":
+		enemyMoves.resize(len(enemyMoves)-1)
 	
 	var percentHealth = playerActive1.pokemon.tempHp/playerActive1.pokemon.hp
 	playerActive1.healthBar.value = round(playerActive1.healthBar.value * percentHealth)
@@ -222,8 +227,8 @@ func wild_combat_start(playerTeam, enemyPokemon):
 
 func _ready():
 	
-	combatMovedex = get_parent().get_parent().movedex
-	combatPokedex = get_parent().get_parent().pokedex
+	combatMovedex = get_node("/root/Master").movedex
+	combatPokedex = get_node("/root/Master").pokedex
 	
 	var typeFile = File.new()
 	typeFile.open("res://Combat/TypeMatchups.json", File.READ)

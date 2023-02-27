@@ -167,6 +167,7 @@ func placeObject(objectPath, pos : Vector3, biome = ""):
 	var objectTrans = realTrans
 	objectTrans.y = newObject.translation.y
 	newObject.global_translate(objectTrans)
+	
 	if(getBiome(tilemap.world_to_map(realTrans)) == biome or biome == ""):
 		add_child(newObject)
 

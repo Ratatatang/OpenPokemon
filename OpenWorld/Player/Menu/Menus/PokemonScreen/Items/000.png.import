@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/000.png-67d1ce6e523e57d9abd77f17e356814d.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://OpenWorld/Player/Menu/Menus/PokemonScreen/Items/000.png"
+dest_files=[ "res://.import/000.png-67d1ce6e523e57d9abd77f17e356814d.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

@@ -1,9 +1,13 @@
 extends Spatial
 
-const DEFAULT_PORT = 10567
-const MAX_PEERS = 12
+const DEFAULT_PORT = 28960
+const MAX_CLIENTS = 6
 
-var peer = null
+var server = null
+var client = null
+
+var ip_address = ""
+
 var player_name = "Unnamed"
 
 var players = {}
@@ -54,11 +58,9 @@ func _init():
 
 func _ready():
 	
-	get_tree().connect("network_peer_connected", self, "_player_connected")
-	get_tree().connect("network_peer_disconnected", self,"_player_disconnected")
-	get_tree().connect("connected_to_server", self, "_connected_ok")
-	get_tree().connect("connection_failed", self, "_connected_fail")
+	get_tree().connect("connected_to_server", self, "_connected_to_server")
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
+#	get_tree().connect("connection_failed", self, "_connection_failed")
 
 	screenEffectPlayer.play("Reset")
 
@@ -160,45 +162,30 @@ func givePokemonXP(victim):
 
 func getPokemon(species, lv = 0):
 	return pokemon.new(pokedex, movedex, species, lv)
-	
-func host_game(new_player_name):
-	player_name = new_player_name
-	peer = NetworkedMultiplayerENet.new()
-	peer.create_server(DEFAULT_PORT, MAX_PEERS)
-	get_tree().set_network_peer(peer)
 
-func join_game(ip, new_player_name):
-	player_name = new_player_name
-	peer = NetworkedMultiplayerENet.new()
-	peer.create_client(ip, DEFAULT_PORT)
-	get_tree().set_network_peer(peer)
+
+func host_game(new_name):
+	player_name = new_name
+	server = NetworkedMultiplayerENet.new()
+	server.create_server(DEFAULT_PORT, MAX_CLIENTS)
+	get_tree().set_network_peer(server)
+
+func join_game(con_ip_address, new_name):
+	player_name = new_name
+	client = NetworkedMultiplayerENet.new()
+	client.create_client(con_ip_address, DEFAULT_PORT)
+	get_tree().set_network_peer(client)
+
+
+func _connected_to_server():
+	print("--Connected To Server!")
+
+func _server_disconnected():
+	print("--Disconnected From Server!")
 	
+
 func get_player_list():
 	return players.values()
-	
+
 func get_player_name():
 	return player_name
-
-func _player_connected(id):
-	# Registration of a client beings here, tell the connected player that we are here.
-	rpc_id(id, "register_player", player_name)
-
-func _player_disconnected(id):
-	unregister_player(id)
-
-remote func register_player(new_player_name):
-	var id = get_tree().get_rpc_sender_id()
-	print(id)
-	players[id] = new_player_name
-	emit_signal("player_list_changed")
-
-func unregister_player(id):
-	players.erase(id)
-	emit_signal("player_list_changed")
-	
-func _connected_ok():
-	emit_signal("connection_succeeded")
-	
-func _connected_fail():
-	get_tree().set_network_peer(null) # Remove peer
-	emit_signal("connection_failed")

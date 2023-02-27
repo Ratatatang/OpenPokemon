@@ -38,6 +38,8 @@ var participant = false
 
 var dimorphism = false
 
+var shiny = false
+
 var movePP = {
 	"move1PP" : 0,
 	"move2PP" : 0,

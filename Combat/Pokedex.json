@@ -70,7 +70,8 @@
             "XPValue": 236,
             "EVs": {"spAtk": 1, "spDef": 2},
             "ExperienceCurve": "MediumSlow",
-            "GenderRatio": 87.5
+            "GenderRatio": 87.5,
+            "Dimorphism": true
         },
         "Pidgey" : {
             "ID": "016",
@@ -89,6 +90,8 @@
                 "spDef": 35,
                 "speed": 56
                 },
+            "XPValue": 50,
+            "EVs": {"speed": 1},
             "ExperienceCurve": "MediumSlow",
             "EvoLv": 18,
             "EvoPokemon": "Pidgeotto"
@@ -105,6 +108,8 @@
                 "spDef": 50,
                 "speed": 71
                 },
+            "XPValue": 122,
+            "EVs": {"speed": 2},
             "ExperienceCurve": "MediumSlow",
             "EvoLv": 36,
             "EvoPokemon": "Pidgeot"
@@ -121,6 +126,8 @@
                 "spDef": 70,
                 "speed": 101
                 },
+            "XPValue": 216,
+            "EVs": {"speed": 3},
             "ExperienceCurve": "MediumSlow"
         },
         "Spinarak" : {
@@ -135,6 +142,9 @@
                 "spDef": 40,
                 "speed": 30
                 },
+            "XPValue": 50,
+            "EVs": {"atk": 1},
+            "ExperienceCurve": "Fast",
             "EvoLv": 22,
             "EvoPokemon": "Ariados"
         },
@@ -149,7 +159,59 @@
                 "spAtk": 60,
                 "spDef": 70,
                 "speed": 40
-                }
+                },
+            "XPValue": 140,
+            "EVs": {"atk": 2},
+            "ExperienceCurve": "Fast"
+        },
+        "Corphish" : {
+            "ID": "341",
+            "Types": ["Water"],
+            "Moves": {
+                "1": ["water_gun", "harden"],
+                "4": ["leer"],
+                "8": ["taunt"],
+                "12": ["bubble_beam"],
+                "16": ["knock_off"],
+                "20": ["double_hit"],
+                "24": ["protect"],
+                "28": ["night_slash"],
+                "32": ["razor_shell"],
+                "36": ["swords_dance"],
+                "40": ["crunch"],
+                "44": ["crabhammer"],
+                "48": ["endeavor"],
+                "52": ["gillotine"]
+            },
+            "BaseStats": {
+                "hp": 43,
+                "atk": 80,
+                "def": 65,
+                "spAtk": 50,
+                "spDef": 35,
+                "speed": 35
+                },
+            "XPValue": 62,
+            "EVs": {"atk": 1},
+            "ExperienceCurve": "Fluctuating",
+            "EvoLv": 30,
+            "EvoPokemon": "Crawdaunt"
+        },
+        "Crawdaunt" : {
+            "ID": "168",
+            "Types": ["Bug", "Poison"],
+            "Moves": {},
+            "BaseStats": {
+                "hp": 70,
+                "atk": 90,
+                "def": 70,
+                "spAtk": 60,
+                "spDef": 70,
+                "speed": 40
+                },
+            "XPValue": 140,
+            "EVs": {"atk": 2},
+            "ExperienceCurve": "Fast"
         }
     }
 }

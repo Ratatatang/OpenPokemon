@@ -198,15 +198,16 @@ func wild_combat_start(playerTeam, enemyPokemon):
 	playerActive1 = battlingMon.new(playerList[0], $PlayerPosition)
 	
 	playerActive1.sprite.texture = load("res://Combat/Sprites/Back/"+playerActive1.pokemon.speciesName.to_upper()+".png")
-	if(playerActive1.pokemon.dimorphism):
-		playerActive1.sprite.texture = load("res://Combat/Sprites/Back/"+playerActive1.pokemon.speciesName.to_upper()+"_female.png")
+#	if(playerActive1.pokemon.dimorphism):
+#		playerActive1.sprite.texture = load("res://Combat/Sprites/Back/"+playerActive1.pokemon.speciesName.to_upper()+"_female.png")
 		
 	playerMoves = playerActive1.pokemon.moves
 	
+	
 	enemyActive1 = battlingMon.new(enemyPokemon, $EnemyPosition)
 	enemyActive1.sprite.texture = load("res://Combat/Sprites/Front/"+enemyActive1.pokemon.speciesName.to_upper()+".png")
-	if(enemyActive1.pokemon.dimorphism):
-		enemyActive1.sprite.texture = load("res://Combat/Sprites/Front/"+enemyActive1.pokemon.speciesName.to_upper()+"_female.png")
+#	if(enemyActive1.pokemon.dimorphism):
+#		enemyActive1.sprite.texture = load("res://Combat/Sprites/Front/"+enemyActive1.pokemon.speciesName.to_upper()+"_female.png")
 	
 	enemyMoves = enemyActive1.pokemon.moves.values()
 	enemyActive1.displayName = "Enemy " + enemyActive1.displayName
@@ -375,11 +376,11 @@ func Outcome(playerSelectedAction):
 # does not account for accuracy / evasion changes yet
 
 func doesMoveHit(move):
-	if(move.attack.Accuracy != 101):
+	if(move.attack.Accuracy < 101):
 		var Accuracy = move.attack.Accuracy
-		var hit = rand_range(0, 100)
+		var hit = rand_range(1, 100)
 		hit = round(hit)
-		if hit >= Accuracy:
+		if hit <= Accuracy:
 			return true
 		else: 
 			return false

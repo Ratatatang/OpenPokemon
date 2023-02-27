@@ -2,22 +2,25 @@ extends Node2D
 
 var player_name
 onready var masterNode = get_node("/root/Master")
+var ip_address
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	masterNode.connect("player_list_changed", self, "refresh_lobby")
-	masterNode.connect("connection_failed", self, "_on_connection_failed")
-	masterNode.connect("connection_succeeded", self, "_on_connection_success")
+	get_tree().connect("network_peer_connected", self, "_player_connected")
+	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
+	get_tree().connect("connected_to_server", self, "_connected_to_server")
 	
 	$Connect.show()
 	$Hosting.hide()
+		
+	ip_address = IP.get_local_addresses()[3]
 	
-	if OS.has_environment("USERNAME"):
-		$Connect/Name.text = OS.get_environment("USERNAME")
-	else:
-		var desktop_path = OS.get_system_dir(0).replace("\\", "/").split("/")
-		$Connect/Name.text = desktop_path[desktop_path.size() - 2]
+	for ip in IP.get_local_addresses():
+		if ip.begins_with("192.168.") and not ip.ends_with(".1"):
+			ip_address = ip
+	
+	$Hosting/HostIP.text = "Host Address: "+str(ip_address)
 
 
 func _on_Host_pressed():
@@ -58,12 +61,3 @@ func refresh_lobby():
 	$Hosting/PlayersList.add_item(masterNode.get_player_name() + " (You)")
 	for p in players:
 		$Hosting/PlayersList.add_item(p)
-
-func _on_connection_success():
-	$Connect.hide()
-	$Hosting.show()
-
-func _on_connection_failed():
-	$Connect/Host.disabled = false
-	$Connect/Join.disabled = false
-	$Connect/ErrorSpace.set_text("Connection failed.")

@@ -44,7 +44,7 @@ zoom = Vector2( 0.312, 0.3 )
 position = Vector2( -93, 9 )
 
 [node name="sprite" type="Sprite" parent="PlayerPosition"]
-position = Vector2( 1, -20 )
+position = Vector2( -15, -17 )
 region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="healthbar" type="TextureProgress" parent="PlayerPosition"]

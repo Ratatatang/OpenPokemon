@@ -6,10 +6,9 @@ var ip_address
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	get_tree().connect("network_peer_connected", self, "_player_connected")
-	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
-	get_tree().connect("connected_to_server", self, "_connected_to_server")
+
+	masterNode.connect("player_list_changed", self, "refresh_lobby")
+	get_tree().connect("connected_to_server", self, "connected_to_server")
 	
 	$Connect.show()
 	$Hosting.hide()
@@ -21,6 +20,11 @@ func _ready():
 			ip_address = ip
 	
 	$Hosting/HostIP.text = "Host Address: "+str(ip_address)
+	
+	if(masterNode.connectedToServer):
+		$Connect.hide()
+		$Hosting.show()
+		refresh_lobby()
 
 
 func _on_Host_pressed():
@@ -53,6 +57,12 @@ func _on_Join_pressed():
 
 	var player_name = $Connect/Name.text
 	masterNode.join_game(ip, player_name)
+
+func connected_to_server():
+	$Connect.hide()
+	$Hosting.show()
+	
+	
 
 func refresh_lobby():
 	var players = masterNode.get_player_list()

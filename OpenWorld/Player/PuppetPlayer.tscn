@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://OpenWorld/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://OpenWorld/EntityShadow.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://OpenWorld/Player/Animations/PlayerRunRight.tres" type="Animation" id=6]
 [ext_resource path="res://OpenWorld/Player/Animations/PlayerRunLeft.tres" type="Animation" id=7]
 [ext_resource path="res://OpenWorld/Player/Animations/PlayerRunDown.tres" type="Animation" id=8]
+[ext_resource path="res://pkmnfl.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://OpenWorld/Player/Animations/IdleRight.tres" type="Animation" id=10]
 [ext_resource path="res://OpenWorld/Player/Animations/PlayerRollLeft.tres" type="Animation" id=11]
 [ext_resource path="res://OpenWorld/Player/Animations/IdleDown.tres" type="Animation" id=12]
@@ -193,6 +194,10 @@ graph_offset = Vector2( -601.253, -9.36123 )
 radius = 0.0383264
 height = 0.0878534
 
+[sub_resource type="DynamicFont" id=56]
+size = 12
+font_data = ExtResource( 9 )
+
 [node name="Player" type="KinematicBody"]
 collision_layer = 2
 script = ExtResource( 3 )
@@ -234,3 +239,8 @@ parameters/Run/blend_position = Vector2( 1.03201, 0.0831354 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.000412978, 0, -0.192587 )
 shape = SubResource( 40 )
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.682585, 0.730806, 0, -0.730806, 0.682585, 0, 0.134942, -0.367182 )
+text = "Figgity"
+font = SubResource( 56 )

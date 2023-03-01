@@ -30,9 +30,10 @@ func _ready():
 	
 func _physics_process(delta):
 	
-	var animVector = velocity.normalized()
-	animVector = Vector2(animVector.x, animVector.z)
-	$AnimationTree.set("parameters/blend_position", animVector)
+	if(state != IDLE and state != EMOTE):
+		var animVector = velocity.normalized()
+		animVector = Vector2(animVector.x, animVector.z)
+		$AnimationTree.set("parameters/blend_position", animVector)
 	
 	
 	match state:
@@ -40,8 +41,8 @@ func _physics_process(delta):
 			velocity = velocity.move_toward(Vector3.ZERO, FRICTION*delta)
 			
 			if wanderController.get_time_left() == 0.0:
-				state = pick_new_state([IDLE, WANDER, EMOTE, EMOTE])
-				wanderController.start_wander_timer(rand_range(1.8, 5))
+				state = pick_new_state([IDLE, WANDER, EMOTE])
+				wanderController.start_wander_timer(rand_range(1.8, 3.5))
 			
 		WANDER:
 			if wanderController.get_time_left() == 0.0:

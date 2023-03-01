@@ -11,6 +11,9 @@ onready var animationState = animationTree.get("parameters/playback")
 func _ready():
 	animationTree.active = true
 	visible = true
+	puppet_pos = global_translation
+	puppet_motion = Vector3.ZERO
+	puppet_animation = "Idle"
 
 func _physics_process(delta):
 	global_translation = puppet_pos

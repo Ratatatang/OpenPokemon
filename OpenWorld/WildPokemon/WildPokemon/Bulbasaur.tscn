@@ -221,7 +221,7 @@ animation = "right"
 blend_point_0/node = SubResource( 23 )
 blend_point_0/pos = Vector2( 0, -1 )
 blend_point_1/node = SubResource( 24 )
-blend_point_1/pos = Vector2( 0, 1 )
+blend_point_1/pos = Vector2( 0, 0.9 )
 blend_point_2/node = SubResource( 25 )
 blend_point_2/pos = Vector2( -1, -0.1 )
 blend_point_3/node = SubResource( 26 )
@@ -237,9 +237,9 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0039
 shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
-transform = Transform( 0.5, 0, 0, 0, 0.396634, 0.608872, 0, -0.304436, 0.793268, 0.001, 0.128024, -0.047 )
+transform = Transform( 0.5, 0, 0, 0, 0.396634, 0.608872, 0, -0.304436, 0.793268, 0.00100489, 0.130334, -0.0497977 )
 frames = SubResource( 18 )
-animation = "up"
+animation = "down"
 playing = true
 
 [node name="Shadow" type="Sprite3D" parent="Sprite"]
@@ -248,6 +248,7 @@ texture = ExtResource( 3 )
 
 [node name="Emote" type="Sprite3D" parent="Sprite"]
 transform = Transform( 2, 0, 0, 0, 1.99143, 0.0924578, 0, -0.184915, 0.995717, 0.0139444, 0.0966271, 0.0495571 )
+visible = false
 texture = ExtResource( 5 )
 hframes = 2
 
@@ -270,6 +271,6 @@ tree_root = SubResource( 27 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 process_mode = 0
-parameters/blend_position = Vector2( -0.673213, -0.922414 )
+parameters/blend_position = Vector2( -0.00078553, -0.00862074 )
 
 [connection signal="timeout" from="WanderController/Timer" to="WanderController" method="_on_Timer_timeout"]

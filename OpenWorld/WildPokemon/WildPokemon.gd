@@ -60,7 +60,7 @@ func _physics_process(delta):
 			$AnimationPlayer.play("emote")
 			
 			state = IDLE
-			wanderController.start_wander_timer(rand_range(2.5, 3))
+			wanderController.start_wander_timer(rand_range(2.5, 5))
 		
 	velocity = move_and_slide(velocity)
 	

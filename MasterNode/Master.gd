@@ -185,6 +185,7 @@ func join_game(con_ip_address, new_name):
 func _connected_to_server():
 	connectedToServer = true
 	print("--Connected To Server!")
+	
 
 func _server_disconnected():
 	connectedToServer = false
@@ -209,7 +210,16 @@ remote func register_player(new_player_name):
 	print(id)
 	players[id] = new_player_name
 	emit_signal("player_list_changed")
-
+	
+	for p in range(len(players)):
+		addPlayer(p)
+	
+	
+func addPlayer(id):
+	var player = $"CurrentScene/World/World Generator".addPlayer()
+	player.set_name(players[id])
+	player.set_network_master(id)
+	
 
 func unregister_player(id):
 	players.erase(id)

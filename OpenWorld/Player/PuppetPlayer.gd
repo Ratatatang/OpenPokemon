@@ -23,3 +23,6 @@ func _physics_process(delta):
 	animationTree.set("parameters/Roll/blend_position", puppet_motion)
 	
 	animationState.travel(puppet_animation)
+
+func set_name(new_name):
+	$Name.text = str(new_name)

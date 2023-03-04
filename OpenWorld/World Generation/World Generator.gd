@@ -9,13 +9,15 @@ var altitude = {}
 var moisture = {}
 var openSimplexNoise = OpenSimplexNoise.new()
 
+var globalSpawnPoint = Vector3.ZERO
+
 var biomeTiles = {"Plains": 0, "Ocean": 1, "Beach": 2}
 var tileBiomes = {-1: "", 0: "Plains", 1: "Ocean", 2: "Beach"}
 
 onready var nest = load("res://OpenWorld/WildPokemon/Nest.tscn")
 onready var tree = load("res://OpenWorld/World Generation/Tree.tscn")
 onready var pokemon = load("res://OpenWorld/WildPokemon/WildPokemon.tscn")
-
+onready var player = load("res://OpenWorld/Player/Player.tscn")
 
 #Generates maps for temp, moisture & altitude used to decide biomes
 func _ready():
@@ -24,6 +26,15 @@ func _ready():
 	moisture = generateMap(450, 5)
 	altitude = generateMap(180, 5)
 	setTile(width, height)
+	
+	generateObjects(width, height)
+	
+	while(globalSpawnPoint == Vector3.ZERO):
+		var point = Vector3(rand_range(1, 100), 0, rand_range(1, 100))
+		if(getBiome(point) == "Beach"):
+			globalSpawnPoint = point
+		
+	addPlayer()
 
 #Generates 2D noise maps
 func generateMap(per, oct):
@@ -122,10 +133,10 @@ func setTile(width, height):
 				#Desert
 				elif temp > 0.7 and moist < 0.4:
 					tilemap.set_cellv(pos, biomeTiles.Desert)"""
+			
 				
 #				if biome[Vector2(pos.x-1, pos.y-1)] == "Ocean" or biome[Vector2(pos.x-1, pos.y+1)] == "Ocean" or biome[Vector2(pos.x+1, pos.y-1)] == "Ocean" or biome[Vector2(pos.x+1, pos.y+1)] == "Ocean":
 #					tilemap.set_cellv(pos, biomeTiles.Beach)
-	generateObjects(width, height)
 
 # Generates objects onto the tiles. trans is the Vector3 for putting the objects in their place and pos is for the biome map
 func generateObjects(width, height):
@@ -150,11 +161,9 @@ func generateObjects(width, height):
 func between(val, start, end):
 	if start <= val and val <= end:
 		return true
-		
-#func _input(event):
-#	if event.is_action_pressed("ui_accept"):
-#		get_tree().reload_current_scene()
 
+#Place an object that has a position relative to a different node
+# EG: Adding a pokemon that is created inside the nest node
 func placeForeignObject(newObject, pos : Vector3, biome = ""):
 	placeObject(newObject, to_local(pos), biome)
 
@@ -174,11 +183,18 @@ func placeObject(objectPath, pos : Vector3, biome = ""):
 # Place object, without the random tweaking
 func placeObjectExact(objectPath, pos : Vector3):
 	var newObject = objectPath.instance()
-	#Holy Shit Transgender
 	var objectTrans = tilemap.map_to_world(pos.x, pos.y, pos.z)
 	objectTrans.y = newObject.translation.y
 	newObject.global_translate(objectTrans)
 	add_child(newObject)
+
+func addPlayer(pos = globalSpawnPoint):
+	var newObject = player.instance()
+	var objectTrans = tilemap.map_to_world(pos.x, 0.586, pos.z)
+	objectTrans.y = 0.586
+	newObject.global_translate(objectTrans)
+	add_child(newObject)
+	return newObject
 
 func groundTileGlobal(pos: Vector3):
 	pos = tilemap.world_to_map(to_local(pos))
@@ -201,3 +217,6 @@ func isTile(pos : Vector3, tile):
 	
 func getBiome(pos: Vector3):
 	return tileBiomes[tilemap.get_cell_item(pos.x, pos.y, pos.z)]
+	
+func exportMap():
+	pass

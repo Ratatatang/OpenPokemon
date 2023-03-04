@@ -31,19 +31,6 @@
             "SpecialEffect": null,
             "StatChanges": {}
         },
-        "peck":{
-            "DisplayName" : "Peck",
-            "Type": "Flying",
-            "Power": 35,
-            "PP": 35,
-            "Accuracy": 100,
-            "Category": "Physical",
-            "Flags": [],
-            "Target": "AdjacentFoe",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {}
-        },
         "stomp":{
             "DisplayName" : "Stomp",
             "Type": "Normal",
@@ -70,81 +57,6 @@
             "SpecialEffect": null,
             "StatChanges": {}
         },
-        "wing_attack":{
-            "DisplayName" : "Wing Attack",
-            "Type": "Flying",
-            "Power": 60,
-            "PP": 35,
-            "Accuracy": 100,
-            "Category": "Physical",
-            "Flags": [],
-            "Target": "AdjacentFoe",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {}
-        },
-        "aerial_ace":{
-            "DisplayName" : "Aerial Ace",
-            "Type": "Flying",
-            "Power": 60,
-            "PP": 20,
-            "Accuracy": 101,
-            "Category": "Physical",
-            "Flags": [],
-            "Target": "AdjacentFoe",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {}
-        },
-        "string_shot":{
-            "DisplayName" : "String Shot",
-            "Type": "Bug",
-            "Power": 0,
-            "PP": 40,
-            "Accuracy": 95,
-            "Category": "Status",
-            "Flags": [],
-            "Target": "AdjacentFoe",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {
-                "100":  {
-                    "Target": "Victim",
-                    "Speed": -1
-                }
-            }
-        },
-        "bug_bite":{
-            "DisplayName" : "Bug Bite",
-            "Type": "Bug",
-            "Power": 60,
-            "PP": 20,
-            "Accuracy": 100,
-            "Category": "Physical",
-            "Flags": [],
-            "Target": "AdjacentFoe",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {
-                "100":  {
-                    "Target": "Victim",
-                    "Speed": -1
-                }
-            }
-        },
-        "ember":{
-            "DisplayName" : "Ember",
-            "Type": "Fire",
-            "Power": 45,
-            "PP": 25,
-            "Accuracy": 100,
-            "Category": "Special",
-            "Flags": [],
-            "Target": "AdjacentFoe",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {}
-        },
         "growl":{
             "DisplayName" : "Growl",
             "Type": "Normal",
@@ -160,122 +72,6 @@
                 "100":  {
                     "Target": "Victim",
                     "Attack": -1
-                }
-            }
-        },
-        "sand_attack":{
-            "DisplayName" : "Sand Attack",
-            "Type": "Ground",
-            "Power": 0,
-            "PP": 15,
-            "Accuracy": 100,
-            "Category": "Status",
-            "Flags": ["IgnoreLevitate"],
-            "Target": "AllAdjacentFoes",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {
-                "100":  {
-                    "Target": "Victim",
-                    "Accuracy": -1
-                }
-            }
-        },
-        "feather_dance":{
-            "DisplayName" : "Feather Dance",
-            "Type": "Flying",
-            "Power": 0,
-            "PP": 15,
-            "Accuracy": 100,
-            "Category": "Status",
-            "Flags": [],
-            "Target": "AdjacentFoes",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {
-                "100":  {
-                    "Target": "Victim",
-                    "Attack": -2
-                }
-            }
-        },
-        "agility":{
-            "DisplayName" : "Agility",
-            "Type": "Psychic",
-            "Power": 0,
-            "PP": 30,
-            "Accuracy": 101,
-            "Category": "Status",
-            "Flags": [],
-            "Target": "Self",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {
-                "100":  {
-                    "Target": "Victim",
-                    "Speed": 2
-                }
-            }
-        },
-        "vine_whip":{
-            "DisplayName" : "Vine Whip",
-            "Type": "Grass",
-            "Power": 50,
-            "PP": 25,
-            "Accuracy": 100,
-            "Category": "Physical",
-            "Flags": [],
-            "Target": "AdjacentFoe",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {}
-        },
-        "gust":{
-            "DisplayName" : "Gust",
-            "Type": "Flying",
-            "Power": 40,
-            "PP": 35,
-            "Accuracy": 100,
-            "Category": "Special",
-            "Flags": [],
-            "Target": "All",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {}
-        },
-        "air_slash":{
-            "DisplayName" : "Air Slash",
-            "Type": "Flying",
-            "Power": 75,
-            "PP": 15,
-            "Accuracy": 95,
-            "Category": "Special",
-            "Flags": [],
-            "Target": "All",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {
-                "30": {
-                    "Target": "Victim",
-                    "VolatileEffect": "Flinch"
-                }
-            }
-        },
-        "twister":{
-            "DisplayName" : "Twister",
-            "Type": "Dragon",
-            "Power": 40,
-            "PP": 20,
-            "Accuracy": 100,
-            "Category": "Special",
-            "Flags": ["AirAttack"],
-            "Target": "AllAdjacentFoes",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {
-                "30": {
-                    "Target": "Victim",
-                    "VolatileEffect": "Flinch"
                 }
             }
         },
@@ -316,6 +112,389 @@
                 }
             }
         },
+        "harden":{
+            "DisplayName" : "Harden",
+            "Type": "Normal",
+            "Power": 0,
+            "PP": 30,
+            "Accuracy": 101,
+            "Category": "Status",
+            "Flags": [],
+            "Target": "Self",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Victim",
+                    "Defence": 1
+                }
+            }
+        },
+        "sweet_scent":{
+            "DisplayName" : "Sweet Scent",
+            "Type": "Normal",
+            "Power": 0,
+            "PP": 20,
+            "Accuracy": 100,
+            "Category": "Status",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Victim",
+                    "Evasion": -1
+                }
+            }
+        },
+        "take_down":{
+            "DisplayName" : "Take Down",
+            "Type": "Normal",
+            "Power": 90,
+            "PP": 20,
+            "Accuracy": 85,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Self",
+                    "Recoil": 0.25
+                }
+            }
+        },
+        "double_edge":{
+            "DisplayName" : "Double Edge",
+            "Type": "Normal",
+            "Power": 120,
+            "PP": 15,
+            "Accuracy": 85,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Self",
+                    "Recoil": 0.333
+                }
+            }
+        },
+        "tail_whip":{
+            "DisplayName" : "Tail Whip",
+            "Type": "Normal",
+            "Power": 0,
+            "PP": 30,
+            "Accuracy": 100,
+            "Category": "Status",
+            "Flags": [],
+            "Target": "AllAdjacentFoes",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Victim",
+                    "Defence": "-1"
+                }
+            }
+        },
+        "swords_dance":{
+            "DisplayName" : "Swords Dance",
+            "Type": "Normal",
+            "Power": 0,
+            "PP": 20,
+            "Accuracy": 101,
+            "Category": "Status",
+            "Flags": [],
+            "Target": "Self",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Victim",
+                    "Attack": 2
+                }
+            }
+        },
+        "protect":{
+            "DisplayName" : "Swords Dance",
+            "Type": "Normal",
+            "Power": 0,
+            "PP": 20,
+            "Accuracy": 101,
+            "Category": "Status",
+            "Flags": [],
+            "Target": "Self",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Victim",
+                    "Attack": 2
+                }
+            }
+        },
+        
+
+        
+        "water_gun":{
+            "DisplayName" : "Water Gun",
+            "Type": "Water",
+            "Power": 40,
+            "PP": 25,
+            "Accuracy": 100,
+            "Category": "Special",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {}
+        },
+        "bubble_beam":{
+            "DisplayName" : "Bubble Beam",
+            "Type": "Water",
+            "Power": 65,
+            "PP": 20,
+            "Accuracy": 100,
+            "Category": "Special",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "10": {
+                    "Target": "Victim",
+                    "StatusEffect": "Confusion"
+                }
+            }
+        },
+
+
+
+        "wing_attack":{
+            "DisplayName" : "Wing Attack",
+            "Type": "Flying",
+            "Power": 60,
+            "PP": 35,
+            "Accuracy": 100,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {}
+        },
+        "aerial_ace":{
+            "DisplayName" : "Aerial Ace",
+            "Type": "Flying",
+            "Power": 60,
+            "PP": 20,
+            "Accuracy": 101,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {}
+        },
+        "peck":{
+            "DisplayName" : "Peck",
+            "Type": "Flying",
+            "Power": 35,
+            "PP": 35,
+            "Accuracy": 100,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {}
+        },
+        "feather_dance":{
+            "DisplayName" : "Feather Dance",
+            "Type": "Flying",
+            "Power": 0,
+            "PP": 15,
+            "Accuracy": 100,
+            "Category": "Status",
+            "Flags": [],
+            "Target": "AdjacentFoes",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100":  {
+                    "Target": "Victim",
+                    "Attack": -2
+                }
+            }
+        },
+        "gust":{
+            "DisplayName" : "Gust",
+            "Type": "Flying",
+            "Power": 40,
+            "PP": 35,
+            "Accuracy": 100,
+            "Category": "Special",
+            "Flags": [],
+            "Target": "All",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {}
+        },
+        "air_slash":{
+            "DisplayName" : "Air Slash",
+            "Type": "Flying",
+            "Power": 75,
+            "PP": 15,
+            "Accuracy": 95,
+            "Category": "Special",
+            "Flags": [],
+            "Target": "All",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "30": {
+                    "Target": "Victim",
+                    "VolatileEffect": "Flinch"
+                }
+            }
+        },
+        "hurricane":{
+            "DisplayName" : "Hurricane",
+            "Type": "Flying",
+            "Power": 110,
+            "PP": 10,
+            "Accuracy": 70,
+            "Category": "Special",
+            "Flags": [],
+            "Target": "All",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {}
+        },
+        "roost":{
+            "DisplayName" : "Roost",
+            "Type": "Flying",
+            "Power": 0,
+            "PP": 10,
+            "Accuracy": 101,
+            "Category": "Status",
+            "Flags": [],
+            "Target": "Self",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Victim",
+                    "HealPercent": 0.50
+                }
+            }
+        },
+        
+
+
+
+        "string_shot":{
+            "DisplayName" : "String Shot",
+            "Type": "Bug",
+            "Power": 0,
+            "PP": 40,
+            "Accuracy": 95,
+            "Category": "Status",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100":  {
+                    "Target": "Victim",
+                    "Speed": -1
+                }
+            }
+        },
+        "bug_bite":{
+            "DisplayName" : "Bug Bite",
+            "Type": "Bug",
+            "Power": 60,
+            "PP": 20,
+            "Accuracy": 100,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100":  {
+                    "Target": "Victim",
+                    "Speed": -1
+                }
+            }
+        },
+
+
+        
+        "ember":{
+            "DisplayName" : "Ember",
+            "Type": "Fire",
+            "Power": 45,
+            "PP": 25,
+            "Accuracy": 100,
+            "Category": "Special",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {}
+        },
+
+
+
+        "sand_attack":{
+            "DisplayName" : "Sand Attack",
+            "Type": "Ground",
+            "Power": 0,
+            "PP": 15,
+            "Accuracy": 100,
+            "Category": "Status",
+            "Flags": ["IgnoreLevitate"],
+            "Target": "AllAdjacentFoes",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100":  {
+                    "Target": "Victim",
+                    "Accuracy": -1
+                }
+            }
+        },
+
+
+    
+        "twister":{
+            "DisplayName" : "Twister",
+            "Type": "Dragon",
+            "Power": 40,
+            "PP": 20,
+            "Accuracy": 100,
+            "Category": "Special",
+            "Flags": ["AirAttack"],
+            "Target": "AllAdjacentFoes",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "30": {
+                    "Target": "Victim",
+                    "VolatileEffect": "Flinch"
+                }
+            }
+        },
+
+
+        
         "confusion":{
             "DisplayName" : "Confusion",
             "Type": "Psychic",
@@ -352,19 +531,27 @@
                 }
             }
         },
-        "hurricane":{
-            "DisplayName" : "Hurricane",
-            "Type": "Flying",
-            "Power": 110,
-            "PP": 10,
-            "Accuracy": 70,
-            "Category": "Special",
+        "agility":{
+            "DisplayName" : "Agility",
+            "Type": "Psychic",
+            "Power": 0,
+            "PP": 30,
+            "Accuracy": 101,
+            "Category": "Status",
             "Flags": [],
-            "Target": "All",
+            "Target": "Self",
             "Priority": 0,
             "SpecialEffect": null,
-            "StatChanges": {}
+            "StatChanges": {
+                "100":  {
+                    "Target": "Victim",
+                    "Speed": 2
+                }
+            }
         },
+        
+
+
         "petal_blizzard":{
             "DisplayName" : "Petal Blizzard",
             "Type": "Grass",
@@ -406,41 +593,18 @@
                 "AbilityChange": "Insomnia"
             }
         },
-        "harden":{
-            "DisplayName" : "Harden",
-            "Type": "Normal",
-            "Power": 0,
-            "PP": 30,
-            "Accuracy": 101,
-            "Category": "Status",
-            "Flags": [],
-            "Target": "Self",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {
-                "100": {
-                    "Target": "Victim",
-                    "Defence": 1
-                }
-            }
-        },
-        "sweet_scent":{
-            "DisplayName" : "Sweet Scent",
-            "Type": "Normal",
-            "Power": 0,
-            "PP": 20,
+        "vine_whip":{
+            "DisplayName" : "Vine Whip",
+            "Type": "Grass",
+            "Power": 50,
+            "PP": 25,
             "Accuracy": 100,
-            "Category": "Status",
+            "Category": "Physical",
             "Flags": [],
             "Target": "AdjacentFoe",
             "Priority": 0,
             "SpecialEffect": null,
-            "StatChanges": {
-                "100": {
-                    "Target": "Victim",
-                    "Evasion": -1
-                }
-            }
+            "StatChanges": {}
         },
         "synthesis":{
             "DisplayName" : "Synthesis",
@@ -457,60 +621,6 @@
                 "100": {
                     "Target": "Victim",
                     "HealPercent": 0.25
-                }
-            }
-        },
-        "roost":{
-            "DisplayName" : "Roost",
-            "Type": "Flying",
-            "Power": 0,
-            "PP": 10,
-            "Accuracy": 101,
-            "Category": "Status",
-            "Flags": [],
-            "Target": "Self",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {
-                "100": {
-                    "Target": "Victim",
-                    "HealPercent": 0.50
-                }
-            }
-        },
-        "take_down":{
-            "DisplayName" : "Take Down",
-            "Type": "Normal",
-            "Power": 90,
-            "PP": 20,
-            "Accuracy": 85,
-            "Category": "Physical",
-            "Flags": [],
-            "Target": "AdjacentFoe",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {
-                "100": {
-                    "Target": "Self",
-                    "Recoil": 0.25
-                }
-            }
-        },
-        "double_edge":{
-            "DisplayName" : "Double Edge",
-            "Type": "Normal",
-            "Power": 120,
-            "PP": 15,
-            "Accuracy": 85,
-            "Category": "Physical",
-            "Flags": [],
-            "Target": "AdjacentFoe",
-            "Priority": 0,
-            "SpecialEffect": null,
-            "StatChanges": {
-                "100": {
-                    "Target": "Self",
-                    "Recoil": 0.333
                 }
             }
         },
@@ -558,24 +668,6 @@
             "SpecialEffect": null,
             "StatChanges": {}
         },
-        "poison_powder":{
-            "DisplayName" : "Poison Powder",
-            "Type": "Poison",
-            "Power": 0,
-            "PP": 35,
-            "Accuracy": 75,
-            "Category": "Status",
-            "Flags": ["Powder"],
-            "Target": "AdjacentFoe",
-            "Priority": 0,
-            "SpecialEffect": "",
-            "StatChanges": {
-                "100": {
-                    "Target": "Victim",
-                    "StatusEffect": "Poison"
-                }
-            }
-        },
         "stun_spore":{
             "DisplayName" : "Stun Spore",
             "Type": "Grass",
@@ -612,6 +704,47 @@
                 }
             }
         },
+
+
+        "taunt":{
+            "DisplayName" : "Taunt",
+            "Type": "Dark",
+            "Power": 0,
+            "PP": 20,
+            "Accuracy": 100,
+            "Category": "Status",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Victim",
+                    "VolatileEffect": "Taunt"
+                }
+            }
+        },
+        "knock_off":{
+            "DisplayName" : "Knock Off",
+            "Type": "Dark",
+            "Power": 65,
+            "PP": 20,
+            "Accuracy": 100,
+            "Category": "Physical",
+            "Flags": [],
+            "Target": "AdjacentFoe",
+            "Priority": 0,
+            "SpecialEffect": null,
+            "StatChanges": {
+                "100": {
+                    "Target": "Victim",
+                    "VolatileEffect": "KnockOff"
+                }
+            }
+        },
+
+
+
         "poison_sting":{
             "DisplayName" : "Poison Sting",
             "Type": "Poison",
@@ -630,21 +763,21 @@
                 }
             }
         },
-        "tail_whip":{
-            "DisplayName" : "Tail Whip",
-            "Type": "Normal",
+        "poison_powder":{
+            "DisplayName" : "Poison Powder",
+            "Type": "Poison",
             "Power": 0,
-            "PP": 30,
-            "Accuracy": 100,
+            "PP": 35,
+            "Accuracy": 75,
             "Category": "Status",
-            "Flags": [],
-            "Target": "AllAdjacentFoes",
+            "Flags": ["Powder"],
+            "Target": "AdjacentFoe",
             "Priority": 0,
             "SpecialEffect": "",
             "StatChanges": {
                 "100": {
                     "Target": "Victim",
-                    "Defence": "-1"
+                    "StatusEffect": "Poison"
                 }
             }
         }

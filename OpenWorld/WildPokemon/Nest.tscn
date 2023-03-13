@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.275492, 0.225214, 0.226539 )
 
-[node name="Nest" type="Spatial"]
+[node name="Nest" type="Spatial" groups=["persist"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.812405, 0 )
 script = ExtResource( 1 )
 

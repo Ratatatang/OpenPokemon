@@ -228,7 +228,7 @@ blend_point_3/node = SubResource( 26 )
 blend_point_3/pos = Vector2( 1, -0.1 )
 blend_mode = 1
 
-[node name="WildPokemon" type="KinematicBody"]
+[node name="WildPokemon" type="KinematicBody" groups=["persist"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.601, 0 )
 script = ExtResource( 1 )
 currHeight = 0.601
@@ -241,7 +241,7 @@ shape = SubResource( 1 )
 transform = Transform( 0.3, 0, 0, 0, 0.204776, 0.730806, 0, -0.219242, 0.682586, 0.001, 0, -0.05 )
 frames = SubResource( 18 )
 animation = "down"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Shadow" type="Sprite3D" parent="Sprite"]

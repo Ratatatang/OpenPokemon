@@ -2,6 +2,7 @@
     "Pokedex": {
         "Bulbasaur" : {
             "ID": "001",
+            "Name": "Bulbasaur",
             "Types": ["Grass", "Poison"],
             "Moves": {
                 "1": ["tackle", "growl"],
@@ -28,6 +29,7 @@
         },
         "Ivysaur": {
             "ID": "002",
+            "Name": "Ivysaur",
             "Types": ["Grass", "Poison"],
             "Moves": {
                 "1": ["tackle", "growl", "vine_whip", "growth"],
@@ -52,6 +54,7 @@
         },
         "Venusaur": {
             "ID": "003",
+            "Name": "Venusaur",
             "Types": ["Grass", "Poison"],
             "Moves": {
                 "1": ["tackle", "growl", "vine_whip", "growth"],
@@ -75,6 +78,7 @@
         },
         "Pidgey" : {
             "ID": "016",
+            "Name": "Pidgey",
             "Types": ["Normal", "Flying"],
             "Moves": {
                 "1": ["tackle"],
@@ -98,6 +102,7 @@
         },
         "Pidgeotto" : {
             "ID": "017",
+            "Name": "Pidgeotto",
             "Types": ["Normal", "Flying"],
             "Moves": {},
             "BaseStats": {
@@ -116,6 +121,7 @@
         },
         "Pidgeot" : {
             "ID": "018",
+            "Name": "Pidgeot",
             "Types": ["Normal", "Flying"],
             "Moves": {},
             "BaseStats": {
@@ -132,6 +138,7 @@
         },
         "Spinarak" : {
             "ID": "167",
+            "Name": "Spinarak",
             "Types": ["Bug", "Poison"],
             "Moves": {},
             "BaseStats": {
@@ -150,6 +157,7 @@
         },
         "Ariados" : {
             "ID": "168",
+            "Name": "Ariados",
             "Types": ["Bug", "Poison"],
             "Moves": {},
             "BaseStats": {
@@ -166,6 +174,7 @@
         },
         "Corphish" : {
             "ID": "341",
+            "Name": "Corphish",
             "Types": ["Water"],
             "Moves": {
                 "1": ["water_gun", "harden"],
@@ -199,7 +208,8 @@
         },
         "Crawdaunt" : {
             "ID": "168",
-            "Types": ["Bug", "Poison"],
+            "Name": "Crawdaunt",
+            "Types": ["Water", "Dark"],
             "Moves": {},
             "BaseStats": {
                 "hp": 70,
@@ -212,6 +222,87 @@
             "XPValue": 140,
             "EVs": {"atk": 2},
             "ExperienceCurve": "Fast"
+        },
+        "FeralBulbasaur" : {
+            "ID": "1011",
+            "Name": "Bulbasaur",
+            "Types": ["Poison"],
+            "Moves": {
+                "1": ["tackle", "stun_spore"],
+                "3": ["absorb"],
+                "6": ["poison_powder"],
+                "9": ["growth"],
+                "12": ["mega_drain"],
+                "15": ["leech_seed", "sleep_powder"],
+                "16": ["shadow_sneak"],
+                "18": ["venoshock"]
+            },
+            "BaseStats": {
+                "hp": 53,
+                "atk": 45,
+                "def": 45,
+                "spAtk": 65,
+                "spDef": 65,
+                "speed": 45
+                },
+            "XPValue": 64,
+            "EVs": {"spAtk": 1},
+            "ExperienceCurve": "MediumSlow",
+            "EvoLv": 16,
+            "EvoPokemon": "Ivysaur",
+            "GenderRatio": 87.5
+        },
+        "FeralIvysaur": {
+            "ID": "1012",
+            "Name": "Ivysaur",
+            "Types": ["Ghost", "Poison"],
+            "Moves": {
+                "1": ["tackle", "stun_spore"],
+                "3": ["absorb"],
+                "6": ["poison_powder"],
+                "9": ["growth"],
+                "12": ["mega_drain"],
+                "15": ["leech_seed", "sleep_powder"]
+            },
+            "BaseStats": {
+                "hp": 65,
+                "atk": 60,
+                "def": 65,
+                "spAtk": 80,
+                "spDef": 80,
+                "speed": 55
+                },
+            "XPValue": 142,
+            "EVs": {"spAtk": 1, "spDef": 1},
+            "ExperienceCurve": "MediumSlow",
+            "EvoLv": 32,
+            "EvoPokemon": "Venasaur",
+            "GenderRatio": 87.5
+        },
+        "FeralVenusaur": {
+            "ID": "1013",
+            "Name": "Venusaur",
+            "Types": ["Ghost", "Poison"],
+            "Moves": {
+                "1": ["tackle", "stun_spore"],
+                "3": ["absorb"],
+                "6": ["poison_powder"],
+                "9": ["growth"],
+                "12": ["mega_drain"],
+                "15": ["leech_seed", "sleep_powder"]
+            },
+            "BaseStats": {
+                "hp": 90,
+                "atk": 75,
+                "def": 90,
+                "spAtk": 100,
+                "spDef": 100,
+                "speed": 70
+                },
+            "XPValue": 236,
+            "EVs": {"spAtk": 1, "spDef": 2},
+            "ExperienceCurve": "MediumSlow",
+            "GenderRatio": 87.5
         }
     }
 }

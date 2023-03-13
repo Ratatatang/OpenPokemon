@@ -17,6 +17,7 @@ var connectedToServer = false
 signal player_list_changed()
 signal connection_failed()
 signal connection_succeeded()
+signal connected_to_multiplayer()
 
 var pokedex = File.new()
 var movedex = File.new()
@@ -174,26 +175,33 @@ func host_game(new_name):
 	server = NetworkedMultiplayerENet.new()
 	server.create_server(DEFAULT_PORT, MAX_CLIENTS)
 	get_tree().set_network_peer(server)
+	setupMultiplayer()
 
 func join_game(con_ip_address, new_name):
 	player_name = new_name
 	client = NetworkedMultiplayerENet.new()
 	client.create_client(con_ip_address, DEFAULT_PORT)
 	get_tree().set_network_peer(client)
+	setupMultiplayer()
 
+func setupMultiplayer():
+	player.name += player_name
+	player.set_name(player_name)
+	player.set_network_master(get_tree().get_network_unique_id())
+	player.startTimer()
 
 func _connected_to_server():
 	connectedToServer = true
 	print("--Connected To Server!")
 	
-
 func _server_disconnected():
 	connectedToServer = false
 	print("--Disconnected From Server!")
 
 func _player_connected(id):
 	print("--Peer Connected! ID: "+str(id))
-	rpc_id(id, "register_player", player_name)
+	rpc("register_player", player_name)
+#	rpc_id(id, "loadMap", getMap())
 
 func _player_disconnected(id):
 	print("--Peer Disconnected! ID: "+str(id))
@@ -207,20 +215,21 @@ func get_player_name():
 	
 remote func register_player(new_player_name):
 	var id = get_tree().get_rpc_sender_id()
-	print(id)
 	players[id] = new_player_name
 	emit_signal("player_list_changed")
-	
-	for p in range(len(players)):
-		addPlayer(p)
-	
-	
-func addPlayer(id):
-	var player = $"CurrentScene/World/World Generator".addPlayer()
-	player.set_name(players[id])
-	player.set_network_master(id)
-	
+	addPlayer(id)
 
+func addPlayer(id):
+	var newPlayer = $"CurrentScene/World/World Generator".addPlayer(players[id])
+	newPlayer.set_network_master(id)
+#	newPlayer.startTimer()
+	
 func unregister_player(id):
 	players.erase(id)
 	emit_signal("player_list_changed")
+
+remote func loadMap(mapData):
+	$"CurrentScene/World/World Generator".loadMap(mapData, player)
+
+func getMap():
+	return $"CurrentScene/World/World Generator".packMap()

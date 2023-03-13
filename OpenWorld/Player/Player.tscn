@@ -194,7 +194,7 @@ height = 0.0878534
 size = 12
 font_data = ExtResource( 3 )
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="KinematicBody" groups=["persist"]]
 collision_layer = 2
 script = ExtResource( 17 )
 
@@ -245,6 +245,5 @@ font = SubResource( 55 )
 
 [node name="networkTimer" type="Timer" parent="."]
 wait_time = 0.03
-autostart = true
 
 [connection signal="timeout" from="networkTimer" to="." method="_on_networkTimer_timeout"]

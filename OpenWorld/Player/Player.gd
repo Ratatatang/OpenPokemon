@@ -19,7 +19,7 @@ enum stateMachine{
 var state = stateMachine.MOVE
 var velocity = Vector3.ZERO
 var roll_vector = Vector3.BACK
-var animVector = Vector3.ZERO
+var animVector = Vector2.ZERO
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
@@ -32,8 +32,10 @@ puppet var puppet_animation = "Idle"
 onready var camera = load("res://OpenWorld/Player/Camera2D.tscn")
 
 func _ready():
-	if(is_network_master() or get_node("/root/Master").connectedToServer == false):
+	if(get_node("/root/Master").connectedToServer == false):
 		add_child(camera.instance())
+	if(is_network_master() and get_node("/root/Master").connectedToServer == true):
+		$networkTimer.start()
 	
 	animationTree.active = true
 	visible = true
@@ -41,28 +43,35 @@ func _ready():
 # Matches the state machine to the correct state
 
 func _process(delta):
-	if true:
-		if(frozen == true):
-			state = stateMachine.FREEZE
-		match state:
-			stateMachine.MOVE:	
-				move_state(delta)
+
+		if get_node("/root/Master").connectedToServer == false or is_network_master():
+			if(frozen == true):
+				state = stateMachine.FREEZE
+			match state:
+				stateMachine.MOVE:	
+					move_state(delta)
 			
-			stateMachine.ROLL:
-				roll_state(delta)
+				stateMachine.ROLL:
+					roll_state(delta)
+					
+				stateMachine.FREEZE:
+					freeze_state(delta)
 				
-			stateMachine.FREEZE:
-				freeze_state(delta)
-				
-		if Input.is_action_just_pressed("Interact"):
-			if($Camera2D/DialogBox.visible != true):
-				if($PlayerInteractionBox.get_overlapping_areas() != []):
-					if($Camera2D/DialogBox.visible == false):
-						var dialog = $PlayerInteractionBox.get_overlapping_areas()[0].interact()
-						$Camera2D/DialogBox.start(dialog)
-						frozen = true
-	else:
-		pass
+			if Input.is_action_just_pressed("Interact"):
+				if($Camera2D/DialogBox.visible != true):
+					if($PlayerInteractionBox.get_overlapping_areas() != []):
+						if($Camera2D/DialogBox.visible == false):
+							var dialog = $PlayerInteractionBox.get_overlapping_areas()[0].interact()
+							$Camera2D/DialogBox.start(dialog)
+							frozen = true
+		else:
+			global_translation = puppet_pos
+	
+			animationTree.set("parameters/Idle/blend_position", puppet_motion)
+			animationTree.set("parameters/Run/blend_position", puppet_motion)
+			animationTree.set("parameters/Roll/blend_position", puppet_motion)
+	
+			animationState.travel(puppet_animation)
 			
 # Used for when you move into a door so you can't move. you don't have to unfreeze as this
 # player is cleared after they walk into a door 
@@ -150,6 +159,7 @@ func camera_set():
 	$Camera2D.current = true
 
 func set_name(new_name):
+	$Name.visible = true
 	$Name.text = str(new_name)
 
 func _on_networkTimer_timeout():
@@ -157,3 +167,6 @@ func _on_networkTimer_timeout():
 		rset_unreliable("puppet_pos", global_translation)
 		rset_unreliable("puppet_motion", animVector)
 		rset_unreliable("puppet_animation", animationState.get_current_node())
+		
+func startTimer():
+	$networkTimer.start()

@@ -17,8 +17,10 @@ var tileBiomes = {-1: "", 0: "Plains", 1: "Ocean", 2: "Beach"}
 onready var nest = load("res://OpenWorld/WildPokemon/Nest.tscn")
 onready var tree = load("res://OpenWorld/World Generation/Tree.tscn")
 onready var pokemon = load("res://OpenWorld/WildPokemon/WildPokemon.tscn")
-onready var player = load("res://OpenWorld/Player/Player.tscn")
+onready var playerObj = load("res://OpenWorld/Player/Player.tscn")
 
+onready var masterNode = get_node("/root/Master")
+		
 #Generates maps for temp, moisture & altitude used to decide biomes
 func _ready():
 	randomize()
@@ -34,7 +36,7 @@ func _ready():
 		if(getBiome(point) == "Beach"):
 			globalSpawnPoint = point
 		
-	addPlayer()
+	var newPlayer = addPlayer("")
 
 #Generates 2D noise maps
 func generateMap(per, oct):
@@ -188,12 +190,18 @@ func placeObjectExact(objectPath, pos : Vector3):
 	newObject.global_translate(objectTrans)
 	add_child(newObject)
 
-func addPlayer(pos = globalSpawnPoint):
-	var newObject = player.instance()
-	var objectTrans = tilemap.map_to_world(pos.x, 0.586, pos.z)
+func addPlayer(playerName, pos = globalSpawnPoint):
+	var newObject = playerObj.instance()
+#	var objectTrans = tilemap.map_to_world(pos.x, 0.586, pos.z)
+	var objectTrans = tilemap.map_to_world(0, 0.586, 0)
 	objectTrans.y = 0.586
 	newObject.global_translate(objectTrans)
-	add_child(newObject)
+	newObject.name += playerName
+	$Players.add_child(newObject)
+	
+	if(playerName != ""):
+		newObject.set_name(playerName)
+	
 	return newObject
 
 func groundTileGlobal(pos: Vector3):
@@ -218,5 +226,8 @@ func isTile(pos : Vector3, tile):
 func getBiome(pos: Vector3):
 	return tileBiomes[tilemap.get_cell_item(pos.x, pos.y, pos.z)]
 	
-func exportMap():
-	pass
+#master func packMap(id):
+#	rpc_id(id, "loadMap", tilemap.duplicate(true))
+
+#puppet func loadMap(newMap):
+#	add_child(newMap)

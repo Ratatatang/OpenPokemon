@@ -193,7 +193,8 @@ func setupMultiplayer():
 func _connected_to_server():
 	connectedToServer = true
 	print("--Connected To Server!")
-	
+	rpc("sendData", get_tree().get_network_unique_id())
+
 func _server_disconnected():
 	connectedToServer = false
 	print("--Disconnected From Server!")
@@ -201,18 +202,18 @@ func _server_disconnected():
 func _player_connected(id):
 	print("--Peer Connected! ID: "+str(id))
 	rpc("register_player", player_name)
-#	rpc_id(id, "loadMap", getMap())
+	
 
 func _player_disconnected(id):
 	print("--Peer Disconnected! ID: "+str(id))
 	unregister_player(id)
-	
+
 func get_player_list():
 	return players.values()
 
 func get_player_name():
 	return player_name
-	
+
 remote func register_player(new_player_name):
 	var id = get_tree().get_rpc_sender_id()
 	players[id] = new_player_name
@@ -222,14 +223,14 @@ remote func register_player(new_player_name):
 func addPlayer(id):
 	var newPlayer = $"CurrentScene/World/World Generator".addPlayer(players[id])
 	newPlayer.set_network_master(id)
-#	newPlayer.startTimer()
-	
+
 func unregister_player(id):
 	players.erase(id)
 	emit_signal("player_list_changed")
 
-remote func loadMap(mapData):
-	$"CurrentScene/World/World Generator".loadMap(mapData, player)
-
-func getMap():
-	return $"CurrentScene/World/World Generator".packMap()
+master func sendData(id):
+	$"CurrentScene/World/World Generator".loadMaptoID(id)
+	rpc_id(id, "generateMap")
+	
+puppet func generateMap():
+	$"CurrentScene/World/World Generator".regenerateMap(player)

@@ -4,12 +4,12 @@ export var width = 100
 export var height = 100
 
 onready var tilemap = $GridMap
-var temperature = {}
-var altitude = {}
-var moisture = {}
+puppet var temperature = {}
+puppet var altitude = {}
+puppet var moisture = {}
 var openSimplexNoise = OpenSimplexNoise.new()
 
-var globalSpawnPoint = Vector3.ZERO
+puppet var globalSpawnPoint = Vector3.ZERO
 
 var biomeTiles = {"Plains": 0, "Ocean": 1, "Beach": 2}
 var tileBiomes = {-1: "", 0: "Plains", 1: "Ocean", 2: "Beach"}
@@ -35,6 +35,9 @@ func _ready():
 		var point = Vector3(rand_range(1, 100), 0, rand_range(1, 100))
 		if(getBiome(point) == "Beach"):
 			globalSpawnPoint = point
+	
+	globalSpawnPoint = tilemap.map_to_world(globalSpawnPoint.x, 0.586, globalSpawnPoint.z)
+	globalSpawnPoint.y = 0.586
 		
 	var newPlayer = addPlayer("")
 
@@ -192,12 +195,11 @@ func placeObjectExact(objectPath, pos : Vector3):
 
 func addPlayer(playerName, pos = globalSpawnPoint):
 	var newObject = playerObj.instance()
-#	var objectTrans = tilemap.map_to_world(pos.x, 0.586, pos.z)
-	var objectTrans = tilemap.map_to_world(0, 0.586, 0)
-	objectTrans.y = 0.586
-	newObject.global_translate(objectTrans)
+#	var objectTrans = tilemap.map_to_world(0, 0.586, 0)
 	newObject.name += playerName
 	$Players.add_child(newObject)
+	
+	newObject.set_spawn(pos, Vector3.ZERO)
 	
 	if(playerName != ""):
 		newObject.set_name(playerName)
@@ -225,9 +227,15 @@ func isTile(pos : Vector3, tile):
 	
 func getBiome(pos: Vector3):
 	return tileBiomes[tilemap.get_cell_item(pos.x, pos.y, pos.z)]
-	
-#master func packMap(id):
-#	rpc_id(id, "loadMap", tilemap.duplicate(true))
 
-#puppet func loadMap(newMap):
-#	add_child(newMap)
+func loadMaptoID(id):
+	
+	rset_id(id, "temperature", temperature)
+	rset_id(id, "altitude", altitude)
+	rset_id(id, "temperature", moisture)
+	rset_id(id, "globalSpawnPoint", globalSpawnPoint)
+
+remote func regenerateMap(player): 
+	setTile(width, height)
+	player.set_spawn(globalSpawnPoint, Vector2.ZERO)
+	

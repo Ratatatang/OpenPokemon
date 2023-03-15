@@ -21,6 +21,8 @@ var velocity = Vector3.ZERO
 var roll_vector = Vector3.BACK
 var animVector = Vector2.ZERO
 
+puppet var moving = false
+
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
@@ -28,6 +30,7 @@ onready var animationState = animationTree.get("parameters/playback")
 puppet var puppet_pos = global_translation
 puppet var puppet_motion = Vector3.ZERO
 puppet var puppet_animation = "Idle"
+puppet var puppet_velocity = Vector3.ZERO
 
 onready var camera = load("res://OpenWorld/Player/Camera2D.tscn")
 
@@ -64,14 +67,18 @@ func _process(delta):
 							var dialog = $PlayerInteractionBox.get_overlapping_areas()[0].interact()
 							$Camera2D/DialogBox.start(dialog)
 							frozen = true
-		else:
-			global_translation = puppet_pos
-	
-			animationTree.set("parameters/Idle/blend_position", puppet_motion)
-			animationTree.set("parameters/Run/blend_position", puppet_motion)
-			animationTree.set("parameters/Roll/blend_position", puppet_motion)
+		else:			
+			if moving == true:
+				animationTree.set("parameters/Idle/blend_position", puppet_motion)
+				animationTree.set("parameters/Run/blend_position", puppet_motion)
+				animationTree.set("parameters/Roll/blend_position", puppet_motion)
 	
 			animationState.travel(puppet_animation)
+			
+			if(puppet_velocity != Vector3.ZERO):
+				move_and_slide(puppet_velocity)
+			else:
+				global_translation = puppet_pos
 			
 # Used for when you move into a door so you can't move. you don't have to unfreeze as this
 # player is cleared after they walk into a door 
@@ -91,6 +98,7 @@ func move_state(delta):
 	animVector = Vector2(input_vector.x, input_vector.z)
 	
 	if input_vector != Vector3.ZERO:
+		moving = true
 		roll_vector = input_vector
 		animationTree.set("parameters/Idle/blend_position", animVector)
 		animationTree.set("parameters/Run/blend_position", animVector)
@@ -101,6 +109,7 @@ func move_state(delta):
 # If the player isn't moving, they are set to be idle
 
 	else:
+		moving = false
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector3.ZERO, FRICTION * delta)
 	
@@ -166,6 +175,8 @@ func _on_networkTimer_timeout():
 	if is_network_master():
 		rset_unreliable("puppet_pos", global_translation)
 		rset_unreliable("puppet_motion", animVector)
+		rset_unreliable("puppet_velocity", velocity)
+		rset_unreliable("moving", moving)
 		rset_unreliable("puppet_animation", animationState.get_current_node())
 		
 func startTimer():

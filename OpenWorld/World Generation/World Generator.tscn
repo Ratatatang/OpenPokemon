@@ -66,3 +66,5 @@ __meta__ = {
 }
 
 [node name="Players" type="Spatial" parent="."]
+
+[node name="GameObjects" type="Spatial" parent="."]

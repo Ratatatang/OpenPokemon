@@ -39,6 +39,7 @@ onready var screenBase = "res://OpenWorld/Player/Menu/Menus/Screen.tscn"
 onready var combatScenePath = "res://Combat/CombatScene.tscn"
 onready var menu = $Menu
 onready var screenEffectPlayer = $ScreenEffects/AnimationPlayer
+onready var worldGenerator = $"CurrentScene/World/World Generator"
 
 var pokemon
 
@@ -170,13 +171,14 @@ func getPokemon(species, lv = 0):
 
 
 func host_game(new_name):
-	connectedToServer = true
 	player_name = new_name
 	server = NetworkedMultiplayerENet.new()
 	server.create_server(DEFAULT_PORT, MAX_CLIENTS)
 	get_tree().set_network_peer(server)
 	setupMultiplayer()
-
+	setupHost()
+	connectedToServer = true
+	
 func join_game(con_ip_address, new_name):
 	player_name = new_name
 	client = NetworkedMultiplayerENet.new()
@@ -189,6 +191,13 @@ func setupMultiplayer():
 	player.set_name(player_name)
 	player.set_network_master(get_tree().get_network_unique_id())
 	player.startTimer()
+#	worldGenerator.set_network_master(1)
+
+func setupHost():
+	var save_nodes = get_tree().get_nodes_in_group("persist")
+	for i in save_nodes:
+		i.set_network_master(1)
+		i.startTimer()
 
 func _connected_to_server():
 	connectedToServer = true
@@ -221,7 +230,7 @@ remote func register_player(new_player_name):
 	addPlayer(id)
 
 func addPlayer(id):
-	var newPlayer = $"CurrentScene/World/World Generator".addPlayer(players[id])
+	var newPlayer = worldGenerator.addPlayer(players[id])
 	newPlayer.set_network_master(id)
 
 func unregister_player(id):
@@ -229,8 +238,11 @@ func unregister_player(id):
 	emit_signal("player_list_changed")
 
 master func sendData(id):
-	$"CurrentScene/World/World Generator".loadMaptoID(id)
+	worldGenerator.loadMaptoID(id)
 	rpc_id(id, "generateMap")
 	
 puppet func generateMap():
-	$"CurrentScene/World/World Generator".regenerateMap(player)
+	worldGenerator.regenerateMap(player)
+
+func multiplayerReady():
+	menu.multiplayerReady = true

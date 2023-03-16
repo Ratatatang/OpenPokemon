@@ -20,6 +20,8 @@ onready var pokemon = load("res://OpenWorld/WildPokemon/WildPokemon.tscn")
 onready var playerObj = load("res://OpenWorld/Player/Player.tscn")
 
 onready var masterNode = get_node("/root/Master")
+onready var gameObjects = $GameObjects
+
 		
 #Generates maps for temp, moisture & altitude used to decide biomes
 func _ready():
@@ -183,7 +185,7 @@ func placeObject(objectPath, pos : Vector3, biome = ""):
 	newObject.global_translate(objectTrans)
 	
 	if(getBiome(tilemap.world_to_map(realTrans)) == biome or biome == ""):
-		add_child(newObject)
+		gameObjects.add_child(newObject)
 
 # Place object, without the random tweaking
 func placeObjectExact(objectPath, pos : Vector3):
@@ -191,7 +193,7 @@ func placeObjectExact(objectPath, pos : Vector3):
 	var objectTrans = tilemap.map_to_world(pos.x, pos.y, pos.z)
 	objectTrans.y = newObject.translation.y
 	newObject.global_translate(objectTrans)
-	add_child(newObject)
+	gameObjects.add_child(newObject)
 
 func addPlayer(playerName, pos = globalSpawnPoint):
 	var newObject = playerObj.instance()
@@ -229,13 +231,36 @@ func getBiome(pos: Vector3):
 	return tileBiomes[tilemap.get_cell_item(pos.x, pos.y, pos.z)]
 
 func loadMaptoID(id):
-	
+
 	rset_id(id, "temperature", temperature)
 	rset_id(id, "altitude", altitude)
 	rset_id(id, "temperature", moisture)
 	rset_id(id, "globalSpawnPoint", globalSpawnPoint)
+	
+	rpc_id(id, "clearChildren")
+	
+	var save_nodes = get_tree().get_nodes_in_group("persist")
+	print("--duplicating children")
+	for i in save_nodes:
+		i.name = i.name
+		rpc_id(id, "loadChild", i.path, i.name)
 
-remote func regenerateMap(player): 
+remote func regenerateMap(player):
+	print("--remapping") 
 	setTile(width, height)
 	player.set_spawn(globalSpawnPoint, Vector2.ZERO)
+	masterNode.multiplayerReady()
+
+puppet func loadChild(objectPath, objectName):
+	var object = load(objectPath).instance()
+	object.runReady = false
+	object.set_network_master(1)
+	object.name = objectName
+	gameObjects.add_child(object)
+
+puppet func clearChildren():
+	print("--clearing children")
+	for n in gameObjects.get_children():
+		gameObjects.remove_child(n)
+		n.queue_free()
 	

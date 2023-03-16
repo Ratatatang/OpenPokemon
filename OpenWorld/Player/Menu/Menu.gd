@@ -15,6 +15,8 @@ onready var options = [partyScreen, crafting, journal, settings, save]
 enum ScreenLoaded {NOTHING, JUST_MENU, PARTY_SCREEN, CRAFT_SCREEN, JOURNAL_SCREEN, SETTINGS_SCREEN, SAVE_SCREEN}
 var screen_loaded = ScreenLoaded.NOTHING
 
+var multiplayerReady = true
+
 var selected_option = 0
 
 var enabled = true
@@ -88,7 +90,7 @@ func _unhandled_input(event) -> void:
 				screen_loaded = ScreenLoaded.JUST_MENU
 
 		ScreenLoaded.SETTINGS_SCREEN:
-			if event.is_action_pressed("openMenu"):
+			if event.is_action_pressed("openMenu") and multiplayerReady:
 				get_parent().exitScreen()
 				menu.visible = true
 				screen_loaded = ScreenLoaded.JUST_MENU

@@ -28,7 +28,7 @@ onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 
 puppet var puppet_pos = global_translation
-puppet var puppet_motion = Vector3.ZERO
+puppet var puppet_direction = Vector2.ZERO
 puppet var puppet_animation = "Idle"
 puppet var puppet_velocity = Vector3.ZERO
 
@@ -69,9 +69,9 @@ func _process(delta):
 							frozen = true
 		else:			
 			if moving == true:
-				animationTree.set("parameters/Idle/blend_position", puppet_motion)
-				animationTree.set("parameters/Run/blend_position", puppet_motion)
-				animationTree.set("parameters/Roll/blend_position", puppet_motion)
+				animationTree.set("parameters/Idle/blend_position", puppet_direction)
+				animationTree.set("parameters/Run/blend_position", puppet_direction)
+				animationTree.set("parameters/Roll/blend_position", puppet_direction)
 	
 			animationState.travel(puppet_animation)
 			
@@ -174,7 +174,7 @@ func set_name(new_name):
 func _on_networkTimer_timeout():
 	if is_network_master():
 		rset_unreliable("puppet_pos", global_translation)
-		rset_unreliable("puppet_motion", animVector)
+		rset_unreliable("puppet_direction", animVector)
 		rset_unreliable("puppet_velocity", velocity)
 		rset_unreliable("moving", moving)
 		rset_unreliable("puppet_animation", animationState.get_current_node())

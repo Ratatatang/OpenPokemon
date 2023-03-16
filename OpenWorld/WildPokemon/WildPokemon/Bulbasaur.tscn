@@ -231,6 +231,7 @@ blend_mode = 1
 [node name="WildPokemon" type="KinematicBody" groups=["persist"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.601, 0 )
 script = ExtResource( 1 )
+path = "res://OpenWorld/WildPokemon/WildPokemon/Bulbasaur.tscn"
 currHeight = 0.601
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -241,7 +242,6 @@ shape = SubResource( 1 )
 transform = Transform( 0.3, 0, 0, 0, 0.204776, 0.730806, 0, -0.219242, 0.682586, 0.001, 0, -0.05 )
 frames = SubResource( 18 )
 animation = "down"
-frame = 2
 playing = true
 
 [node name="Shadow" type="Sprite3D" parent="Sprite"]
@@ -276,4 +276,8 @@ active = true
 process_mode = 0
 parameters/blend_position = Vector2( -0.00078553, -0.00862074 )
 
+[node name="networkTimer" type="Timer" parent="."]
+wait_time = 0.03
+
 [connection signal="timeout" from="WanderController/Timer" to="WanderController" method="_on_Timer_timeout"]
+[connection signal="timeout" from="networkTimer" to="." method="_on_networkTimer_timeout"]

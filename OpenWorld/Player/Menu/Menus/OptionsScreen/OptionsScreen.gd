@@ -2,6 +2,7 @@ extends Node2D
 
 var player_name
 onready var masterNode = get_node("/root/Master")
+onready var menuNode = get_node("/root/Master/Menu")
 var ip_address
 
 # Called when the node enters the scene tree for the first time.
@@ -57,12 +58,12 @@ func _on_Join_pressed():
 
 	var player_name = $Connect/Name.text
 	masterNode.join_game(ip, player_name)
+	
+	menuNode.multiplayerReady = false
 
 func connected_to_server():
 	$Connect.hide()
 	$Hosting.show()
-	
-	
 
 func refresh_lobby():
 	var players = masterNode.get_player_list()

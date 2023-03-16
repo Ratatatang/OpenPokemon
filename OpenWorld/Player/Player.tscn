@@ -194,7 +194,7 @@ height = 0.0878534
 size = 12
 font_data = ExtResource( 3 )
 
-[node name="Player" type="KinematicBody" groups=["persist"]]
+[node name="Player" type="KinematicBody"]
 collision_layer = 2
 script = ExtResource( 17 )
 

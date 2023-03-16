@@ -4,15 +4,13 @@ var chaLimit = 20
 
 func init(pokemon):
 	#Sets the sprite, and the amount of frames (for pokemon that have alt looks for gender)
-	var newSprite = load("res://Combat/Sprites/"+pokemon.pokedexInfo.get("ID")+".png")
+	var newSprite = load("res://Combat/Sprites/Front/"+pokemon.speciesName.to_upper()+".png")
 	$Name.text = pokemon.displayName
 	$Sprite.texture = newSprite
-	if(newSprite.get_height() > 64):
-		$Sprite.vframes = 2
+	
+	if(pokemon.dimorphism):
 		if(pokemon.gender == "Female"):
-			$Sprite.frame = 4
-	else:
-		$Sprite.vframes = 1
+			load("res://Combat/Sprites/Front/"+pokemon.speciesName.to_upper()+"_female.png")
 	
 	if(pokemon.gender == "Female"):
 		$GenderIcons.frame = 1

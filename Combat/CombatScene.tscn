@@ -29,6 +29,13 @@ font_data = ExtResource( 7 )
 position = Vector2( 23, 0 )
 script = ExtResource( 4 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -172.0
+margin_top = -108.0
+margin_right = 173.0
+margin_bottom = 101.0
+color = Color( 0.290196, 0.290196, 0.290196, 1 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.312, 0.3 )
@@ -37,8 +44,8 @@ zoom = Vector2( 0.312, 0.3 )
 position = Vector2( -93, 9 )
 
 [node name="sprite" type="Sprite" parent="PlayerPosition"]
-region_enabled = true
-region_rect = Rect2( 128, 0, 64, 64 )
+position = Vector2( -15, -17 )
+region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="healthbar" type="TextureProgress" parent="PlayerPosition"]
 margin_left = -63.0
@@ -50,9 +57,6 @@ value = 1000.0
 texture_under = ExtResource( 6 )
 texture_over = ExtResource( 2 )
 texture_progress = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="name" type="RichTextLabel" parent="PlayerPosition/healthbar"]
 margin_left = 1.0
@@ -61,11 +65,20 @@ margin_right = 130.0
 margin_bottom = 11.0
 custom_fonts/normal_font = SubResource( 4 )
 
+[node name="level" type="RichTextLabel" parent="PlayerPosition/healthbar"]
+margin_left = 1.0
+margin_top = 10.0
+margin_right = 130.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_colors/default_color = Color( 0.521569, 0.521569, 0.521569, 1 )
+custom_fonts/normal_font = SubResource( 4 )
+text = "13"
+
 [node name="EnemyPosition" type="Position2D" parent="."]
 position = Vector2( 84, -24 )
 
 [node name="sprite" type="Sprite" parent="EnemyPosition"]
-region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="healthbar" type="TextureProgress" parent="EnemyPosition"]
@@ -78,9 +91,6 @@ value = 1000.0
 texture_under = ExtResource( 6 )
 texture_over = ExtResource( 2 )
 texture_progress = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="name" type="RichTextLabel" parent="EnemyPosition/healthbar"]
 margin_left = 1.0
@@ -91,6 +101,16 @@ custom_fonts/normal_font = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="level" type="RichTextLabel" parent="EnemyPosition/healthbar"]
+margin_left = 1.0
+margin_top = 10.0
+margin_right = 130.0
+margin_bottom = 34.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_colors/default_color = Color( 0.521569, 0.521569, 0.521569, 1 )
+custom_fonts/normal_font = SubResource( 3 )
+text = "100"
 
 [node name="TextureRect" type="TextureRect" parent="EnemyPosition"]
 margin_left = -243.0
@@ -216,13 +236,11 @@ __meta__ = {
 }
 
 [node name="MoveSelect" type="Control" parent="."]
+visible = false
 margin_left = -359.0
 margin_top = 26.0
 margin_right = -319.0
 margin_bottom = 66.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Move1" type="TextureButton" parent="MoveSelect"]
 visible = false
@@ -358,6 +376,7 @@ __meta__ = {
 }
 
 [node name="Dialouge" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 

@@ -36,6 +36,10 @@ var experienceCurve
 	
 var participant = false
 
+var dimorphism = false
+
+var shiny = false
+
 var movePP = {
 	"move1PP" : 0,
 	"move2PP" : 0,
@@ -56,13 +60,22 @@ var healthBar
 
 var types = []
 
-func _init(tempName, lv, instPokedex, instMovedex):
+func _init(instPokedex, instMovedex, tempName, lv = 0):
 
 	self.speciesName = tempName
 	self.displayName = tempName
-	self.level = lv
 
 	self.pokedexInfo = instPokedex.get("Pokedex").get(speciesName)
+	
+	self.dimorphism = pokedexInfo.has("EvoLv")
+	
+	if(lv > 0):
+		self.level = lv
+	elif(pokedexInfo.has("EvoLv")):
+		self.level = round(rand_range(1, pokedexInfo.get("EvoLv")))
+	else:
+		self.level = round(rand_range(1, 100))
+	
 	var moveLvs = pokedexInfo.get("Moves").keys()
 
 	var baseStats = pokedexInfo.get("BaseStats")

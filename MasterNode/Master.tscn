@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://MasterNode/CurrentScene.gd" type="Script" id=1]
-[ext_resource path="res://OpenWorld/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://OpenWorld/World Generation/World Generator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://OpenWorld/Player/Menu/Menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://MasterNode/Master.gd" type="Script" id=5]
@@ -118,9 +117,6 @@ visible = false
 margin_right = 1025.0
 margin_bottom = 605.0
 text = "100"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Menu" parent="." instance=ExtResource( 4 )]
 
@@ -150,7 +146,4 @@ script = ExtResource( 1 )
 [node name="World" type="Spatial" parent="CurrentScene"]
 
 [node name="World Generator" parent="CurrentScene/World" instance=ExtResource( 3 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -22.1231, 0.09, -64.965 )
-
-[node name="Player" parent="CurrentScene/World" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.931232, 0 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )

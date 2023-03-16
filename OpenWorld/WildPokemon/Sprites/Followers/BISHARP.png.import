@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/BISHARP.png-3698bf2a6404e082d9e8385b0fcb6efc.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://OpenWorld/WildPokemon/Sprites/Followers/BISHARP.png"
+dest_files=[ "res://.import/BISHARP.png-3698bf2a6404e082d9e8385b0fcb6efc.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=false
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

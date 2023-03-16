@@ -1,25 +1,47 @@
 extends Spatial
 
-export var width = 300
-export var height = 300
+export var width = 100
+export var height = 100
+
 onready var tilemap = $GridMap
-var temperature = {}
-var altitude = {}
-var moisture = {}
+puppet var temperature = {}
+puppet var altitude = {}
+puppet var moisture = {}
 var openSimplexNoise = OpenSimplexNoise.new()
 
+puppet var globalSpawnPoint = Vector3.ZERO
+
 var biomeTiles = {"Plains": 0, "Ocean": 1, "Beach": 2}
-var tileBiomes = {0: "Plains", 1: "Ocean", 2: "Beach"}
+var tileBiomes = {-1: "", 0: "Plains", 1: "Ocean", 2: "Beach"}
 
 onready var nest = load("res://OpenWorld/WildPokemon/Nest.tscn")
+onready var tree = load("res://OpenWorld/World Generation/Tree.tscn")
+onready var pokemon = load("res://OpenWorld/WildPokemon/WildPokemon.tscn")
+onready var playerObj = load("res://OpenWorld/Player/Player.tscn")
 
+onready var masterNode = get_node("/root/Master")
+onready var gameObjects = $GameObjects
+
+		
 #Generates maps for temp, moisture & altitude used to decide biomes
 func _ready():
 	randomize()
 	temperature = generateMap(450, 5)
 	moisture = generateMap(450, 5)
-	altitude = generateMap(250, 5)
+	altitude = generateMap(180, 5)
 	setTile(width, height)
+	
+	generateObjects(width, height)
+	
+	while(globalSpawnPoint == Vector3.ZERO):
+		var point = Vector3(rand_range(1, 100), 0, rand_range(1, 100))
+		if(getBiome(point) == "Beach"):
+			globalSpawnPoint = point
+	
+	globalSpawnPoint = tilemap.map_to_world(globalSpawnPoint.x, 0.586, globalSpawnPoint.z)
+	globalSpawnPoint.y = 0.586
+		
+	var newPlayer = addPlayer("")
 
 #Generates 2D noise maps
 func generateMap(per, oct):
@@ -54,8 +76,13 @@ func generateMap(per, oct):
 	mat.set_shader_param("island_tex", imgt)"""
 	
 
-#Sets the tile in accordance of the moisture, altitude, and temperature of the tile
+#Preliminary, sets every tile to be plains so there are no gaps in the world
 func setTile(width, height):
+	for x in width:
+		for z in height:
+			tilemap.set_cell_item(x, 0, z, biomeTiles.Plains)
+
+#Sets the tile in accordance of the moisture, altitude, and temperature of the tile
 	for x in width:
 		for z in height:
 			var pos = Vector2(x, z)
@@ -72,7 +99,7 @@ func setTile(width, height):
 				tilemap.set_cell_item(x, 0, z, biomeTiles.Beach)
 
 			#Other Biomes
-			elif between(alt, 0.27, 1):
+			elif alt > 0.27:
 				
 				#Plains
 				#if between(moist, 0.2, 0.5) and between(temp, 0.2, 0.5):
@@ -113,47 +140,85 @@ func setTile(width, height):
 				#Desert
 				elif temp > 0.7 and moist < 0.4:
 					tilemap.set_cellv(pos, biomeTiles.Desert)"""
+			
 				
 #				if biome[Vector2(pos.x-1, pos.y-1)] == "Ocean" or biome[Vector2(pos.x-1, pos.y+1)] == "Ocean" or biome[Vector2(pos.x+1, pos.y-1)] == "Ocean" or biome[Vector2(pos.x+1, pos.y+1)] == "Ocean":
 #					tilemap.set_cellv(pos, biomeTiles.Beach)
-	generateObjects(width, height)
 
 # Generates objects onto the tiles. trans is the Vector3 for putting the objects in their place and pos is for the biome map
 func generateObjects(width, height):
 	randomize()
 	for x in width:
 		for z in height:
-			var seedNum = round(rand_range(0, 100))
-			
-			if(seedNum < 70):
+			if(round(rand_range(0, 100)) < 70):
 				continue
-			
-			#Holy shit transgender
-			var pos = Vector3(x, 0, z)
-			var trans = Vector3(x, 0.931, z)
+			else:
+				var objectNum = round(rand_range(0, 100))
+				var pos = Vector3(x, 0, z)
 				
-			if(tileBiomes[getBiome(pos)] == "Beach"):
-				if(seedNum > 90):
-					var newObject = nest.instance()
-					newObject.translate(trans)
-					add_child(newObject)
+				if(getBiome(pos) == "Plains"):
+					if(objectNum > 90):
+						placeObject(tree, pos, "Plains")
+				
+				if(round(rand_range(0, 100)) > 50):
+					if(getBiome(pos) == "Beach"):
+						placeObject(nest, pos, "Beach")
 
 #Helper func for start < val < end
 func between(val, start, end):
 	if start <= val and val <= end:
 		return true
-		
-#func _input(event):
-#	if event.is_action_pressed("ui_accept"):
-#		get_tree().reload_current_scene()
+
+#Place an object that has a position relative to a different node
+# EG: Adding a pokemon that is created inside the nest node
+func placeForeignObject(newObject, pos : Vector3, biome = ""):
+	placeObject(newObject, to_local(pos), biome)
+
+func placeObject(objectPath, pos : Vector3, biome = ""):
+	var newObject = objectPath.instance()
+	#Holy Shit Transgender
+	var realTrans = tilemap.map_to_world(pos.x, pos.y, pos.z)
+	realTrans.x += rand_range(0, 0.3)
+	realTrans.z += rand_range(0, 0.3)
+	var objectTrans = realTrans
+	objectTrans.y = newObject.translation.y
+	newObject.global_translate(objectTrans)
+	
+	if(getBiome(tilemap.world_to_map(realTrans)) == biome or biome == ""):
+		gameObjects.add_child(newObject)
+
+# Place object, without the random tweaking
+func placeObjectExact(objectPath, pos : Vector3):
+	var newObject = objectPath.instance()
+	var objectTrans = tilemap.map_to_world(pos.x, pos.y, pos.z)
+	objectTrans.y = newObject.translation.y
+	newObject.global_translate(objectTrans)
+	gameObjects.add_child(newObject)
+
+func addPlayer(playerName, pos = globalSpawnPoint):
+	var newObject = playerObj.instance()
+#	var objectTrans = tilemap.map_to_world(0, 0.586, 0)
+	newObject.name += playerName
+	$Players.add_child(newObject)
+	
+	newObject.set_spawn(pos, Vector3.ZERO)
+	
+	if(playerName != ""):
+		newObject.set_name(playerName)
+	
+	return newObject
+
+func groundTileGlobal(pos: Vector3):
+	pos = tilemap.world_to_map(to_local(pos))
+	return groundTile(pos)
 
 func groundTile(pos : Vector3):
-	if(tilemap.get_cell_item(pos.x, pos.y, pos.z) !=  "Ocean"):
+	if(getBiome(pos) !=  "Ocean"):
 		return true
 	return false
 	
 func waterTile(pos : Vector3):
-	if(tilemap.get_cell_item(pos.x, pos.y, pos.z) ==  "Ocean"):
+	if(getBiome(pos) ==  "Ocean"):
 		return true
 	return false
 	
@@ -163,4 +228,39 @@ func isTile(pos : Vector3, tile):
 	return false
 	
 func getBiome(pos: Vector3):
-	return tilemap.get_cell_item(pos.x, pos.y, pos.z)
+	return tileBiomes[tilemap.get_cell_item(pos.x, pos.y, pos.z)]
+
+func loadMaptoID(id):
+
+	rset_id(id, "temperature", temperature)
+	rset_id(id, "altitude", altitude)
+	rset_id(id, "temperature", moisture)
+	rset_id(id, "globalSpawnPoint", globalSpawnPoint)
+	
+	rpc_id(id, "clearChildren")
+	
+	var save_nodes = get_tree().get_nodes_in_group("persist")
+	print("--duplicating children")
+	for i in save_nodes:
+		i.name = i.name
+		rpc_id(id, "loadChild", i.path, i.name)
+
+remote func regenerateMap(player):
+	print("--remapping") 
+	setTile(width, height)
+	player.set_spawn(globalSpawnPoint, Vector2.ZERO)
+	masterNode.multiplayerReady()
+
+puppet func loadChild(objectPath, objectName):
+	var object = load(objectPath).instance()
+	object.runReady = false
+	object.set_network_master(1)
+	object.name = objectName
+	gameObjects.add_child(object)
+
+puppet func clearChildren():
+	print("--clearing children")
+	for n in gameObjects.get_children():
+		gameObjects.remove_child(n)
+		n.queue_free()
+	

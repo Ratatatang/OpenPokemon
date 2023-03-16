@@ -6,7 +6,7 @@ onready var menu = $Menu
 onready var partyScreen = "res://OpenWorld/Player/Menu/Menus/PokemonScreen/PokemonScreen.tscn"
 onready var crafting = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
 onready var journal = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
-onready var settings = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
+onready var settings = "res://OpenWorld/Player/Menu/Menus/OptionsScreen/OptionsScreen.tscn"
 onready var save = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
 
 
@@ -14,6 +14,8 @@ onready var options = [partyScreen, crafting, journal, settings, save]
  
 enum ScreenLoaded {NOTHING, JUST_MENU, PARTY_SCREEN, CRAFT_SCREEN, JOURNAL_SCREEN, SETTINGS_SCREEN, SAVE_SCREEN}
 var screen_loaded = ScreenLoaded.NOTHING
+
+var multiplayerReady = true
 
 var selected_option = 0
 
@@ -53,14 +55,16 @@ func _unhandled_input(event) -> void:
 					screen_loaded = ScreenLoaded.SETTINGS_SCREEN
 				if(selected_option == 4):
 					screen_loaded = ScreenLoaded.SAVE_SCREEN
-
-			elif event.is_action_pressed("scrolldown") or event.is_action_pressed("ui_down"):
+					
+#			elif event.is_action_pressed("scrolldown") or event.is_action_pressed("ui_down")
+			elif event.is_action_pressed("scrolldown"):
 				if selected_option == 4:
 					selected_option = -1
 				selected_option += 1
 				selectionArrow.rect_position.y = 11 + (selected_option % 5) * 15
-
-			elif event.is_action_pressed("scrollup") or event.is_action_pressed("ui_up"):
+				
+#			elif event.is_action_pressed("scrollup") or event.is_action_pressed("ui_up"):
+			elif event.is_action_pressed("scrollup"):
 				if selected_option == 0:
 					selected_option = 4
 				else:
@@ -86,7 +90,7 @@ func _unhandled_input(event) -> void:
 				screen_loaded = ScreenLoaded.JUST_MENU
 
 		ScreenLoaded.SETTINGS_SCREEN:
-			if event.is_action_pressed("openMenu"):
+			if event.is_action_pressed("openMenu") and multiplayerReady:
 				get_parent().exitScreen()
 				menu.visible = true
 				screen_loaded = ScreenLoaded.JUST_MENU

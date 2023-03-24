@@ -22,6 +22,13 @@ window/stretch/mode="2d"
 
 occlusion=false
 
+[importer_defaults]
+
+texture={
+"detect_3d": false,
+"flags/filter": false
+}
+
 [input]
 
 ui_left={

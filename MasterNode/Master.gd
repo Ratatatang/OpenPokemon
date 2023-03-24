@@ -202,7 +202,7 @@ func setupHost():
 func _connected_to_server():
 	connectedToServer = true
 	print("--Connected To Server!")
-	rpc("sendData", get_tree().get_network_unique_id())
+	rpc("sendMap", get_tree().get_network_unique_id())
 
 func _server_disconnected():
 	connectedToServer = false
@@ -237,12 +237,19 @@ func unregister_player(id):
 	players.erase(id)
 	emit_signal("player_list_changed")
 
-master func sendData(id):
+master func sendMap(id):
 	worldGenerator.loadMaptoID(id)
-	rpc_id(id, "generateMap")
-	
-puppet func generateMap():
+
+func generateMap():
 	worldGenerator.regenerateMap(player)
+
+func finishedMap():
+	print("--finished map!")
+	rpc("generateObjects", get_tree().get_network_unique_id())
+
+master func generateObjects(id):
+	print("--generating objects!")
+	worldGenerator.loadChildrenToID(id)
 
 func multiplayerReady():
 	menu.multiplayerReady = true

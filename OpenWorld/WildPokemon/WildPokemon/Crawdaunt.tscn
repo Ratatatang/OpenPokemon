@@ -243,6 +243,7 @@ shape = SubResource( 1 )
 transform = Transform( 0.3, 0, 0, 0, 0.204776, 0.730806, 0, -0.219242, 0.682586, 0.001, 0, -0.05 )
 frames = SubResource( 18 )
 animation = "down"
+frame = 3
 playing = true
 
 [node name="Shadow" type="Sprite3D" parent="Sprite"]

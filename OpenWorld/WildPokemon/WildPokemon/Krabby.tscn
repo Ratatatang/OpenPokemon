@@ -243,11 +243,11 @@ shape = SubResource( 1 )
 transform = Transform( 0.3, 0, 0, 0, 0.204776, 0.730806, 0, -0.219242, 0.682586, 0.001, 0, -0.05 )
 frames = SubResource( 18 )
 animation = "down"
-frame = 3
+frame = 1
 playing = true
 
 [node name="Shadow" type="Sprite3D" parent="Sprite"]
-transform = Transform( 1.99978, -0.00750381, 0.0185753, 0.0194532, -1.13786, -0.505771, 0.0112914, 0.82233, -0.604614, -0.00677907, -0.288115, -0.0157844 )
+transform = Transform( 2.49984, 0.00642463, 0.00809588, 0.0243179, -1.13784, -0.461577, 0.0141147, 0.822492, -0.638612, -0.00677907, -0.288115, -0.0157844 )
 render_priority = -1
 texture = ExtResource( 3 )
 

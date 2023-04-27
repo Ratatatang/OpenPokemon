@@ -42,6 +42,7 @@ onready var buttons = {
 }
 
 var outcomeQueue = []
+var i = 0
 
 var enemyMoves
 var playerMoves
@@ -371,7 +372,8 @@ func Outcome(playerSelectedAction):
 			moves.remove(0)
 		
 	set_control("Action")
-		
+
+
 # function for if the move will hit
 # does not account for accuracy / evasion changes yet
 

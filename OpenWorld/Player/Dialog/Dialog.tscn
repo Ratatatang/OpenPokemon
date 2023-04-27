@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://MasterNode/Dialog.gd" type="Script" id=1]
+[ext_resource path="res://pkmnfl.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://OpenWorld/Player/Dialog/walkie.png" type="Texture" id=3]
+[ext_resource path="res://OpenWorld/Player/Dialog/staticOutline.png" type="Texture" id=4]
+[ext_resource path="res://OpenWorld/Player/Dialog/staticBubble.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+size = 12
+font_data = ExtResource( 2 )
+
+[node name="Dialog" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Walkie" type="Sprite" parent="."]
+position = Vector2( -40, 900 )
+z_index = -3
+texture = ExtResource( 3 )
+
+[node name="Outline" type="Sprite" parent="Walkie"]
+position = Vector2( 34, -128 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="StaticBubble" type="Sprite" parent="Walkie"]
+position = Vector2( 34, -128 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Walkie/StaticBubble"]
+margin_left = -44.0
+margin_top = -20.0
+margin_right = 49.0
+margin_bottom = 9.0
+custom_colors/default_color = Color( 0.329412, 0.329412, 0.329412, 1 )
+custom_fonts/normal_font = SubResource( 6 )
+text = "asdwasdwasdwasdwasdwasdwasdwasdwasdwasdwasdwasdw"
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 94, 421 )

@@ -40,13 +40,6 @@ var dimorphism = false
 
 var shiny = false
 
-var movePP = {
-	"move1PP" : 0,
-	"move2PP" : 0,
-	"move3PP" : 0,
-	"move4PP" : 0,
-}
-
 var moves = {
 	"move1": "",
 	"move2": "",
@@ -164,7 +157,6 @@ func get_moves(moveLvs, instMovedex):
 		self.moves[keys[i]] = availableMovesTemp[move]
 		availableMovesTemp.erase(moves[keys[i]])
 		self.moves[keys[i]] = instMovedex.get("Movedex").get(moves[keys[i]])
-		self.movePP["move"+str(i+1)+"PP"] = self.moves[keys[i]].get("PP")
 
 func calculateLevel(addedXP):
 	if(level >= 100):

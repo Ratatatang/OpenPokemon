@@ -1,7 +1,7 @@
 extends Spatial
 
-export var width = 100
-export var height = 100
+export var width = 50
+export var height = 50
 
 onready var tilemap = $GridMap
 puppet var temperature = {}
@@ -127,7 +127,6 @@ func setTile(width, height):
 	
 	for i in beachTiles:
 		autoTile(i)
-			
 				
 #				if biome[Vector2(pos.x-1, pos.y-1)] == "Ocean" or biome[Vector2(pos.x-1, pos.y+1)] == "Ocean" or biome[Vector2(pos.x+1, pos.y-1)] == "Ocean" or biome[Vector2(pos.x+1, pos.y+1)] == "Ocean":
 #					tilemap.set_cellv(pos, biomeTiles.Beach)
@@ -262,7 +261,7 @@ remote func regenerateMap(player):
 	
 	masterNode.finishedMap()
 
-puppet func loadChild(loadables):
+puppet func loadChildren(loadables):
 	print("--loading children")
 	for i in loadables:
 		var object = load(i[0]).instance()

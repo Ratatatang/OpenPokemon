@@ -3,34 +3,41 @@ extends Spatial
 export var width = 50
 export var height = 50
 
+onready var shaderProcess = $ShaderProcess
 onready var tilemap = $GridMap
 puppet var temperature = {}
 puppet var altitude = {}
 puppet var moisture = {}
-var openSimplexNoise = OpenSimplexNoise.new()
+var noise = OpenSimplexNoise.new()
 
 puppet var globalSpawnPoint = Vector3.ZERO
 
 var biomeTiles = {"Ocean": 0, "Plains": 1, "Beach": 2}
-var tileBiomes = {-1: "", 0: "Ocean", 1: "Plains", 2: "Beach", 3: "Beach", 4: "Beach", 5: "Beach", 6: "Beach"}
+var tileBiomes = {-1: "", 0: "Ocean", 1: "Plains", 6: "Beach"}
+
+var cells = {"Ocean": [], "Plains": [],"Beach": []}
 
 var biomeData = {"Beach": load("res://OpenWorld/World Generation/BiomeData/Beach.gd"),
 				 "Plains": load("res://OpenWorld/World Generation/BiomeData/Plains.gd"),
 				 "Ocean": load("res://OpenWorld/World Generation/BiomeData/Ocean.gd")}
-			
+
 onready var playerObj = load("res://OpenWorld/Player/Player.tscn")
 
 onready var masterNode = get_node("/root/Master")
 onready var gameObjects = $GameObjects
 
-var beachTiles = []
+signal finished_island
 		
 #Generates maps for temp, moisture & altitude used to decide biomes
 func _ready():
 	randomize()
 	temperature = generateMap(450, 5)
 	moisture = generateMap(450, 5)
-	altitude = generateMap(180, 5)
+	yield(VisualServer, "frame_post_draw")
+#	altitude = generateMap(180, 5)
+	altitude = generateIsland(103, 5, 0.25, 1.8)
+
+#	shaderProcess.queue_free()
 	setTile(width, height)
 	
 	generateObjects(width, height)
@@ -44,18 +51,46 @@ func _ready():
 	globalSpawnPoint.y = 0.586
 		
 	var newPlayer = addPlayer("")
+	masterNode.player = newPlayer
 
 #Generates 2D noise maps
 func generateMap(per, oct):
-	openSimplexNoise.seed = randi()
-	openSimplexNoise.period = per
-	openSimplexNoise.octaves = oct
+	noise.period = per
+	noise.octaves = oct
+	noise.seed = randi()
 	var gridName = {}
 	
 	for x in width:
 		for z in height:
-			var rand := 2*(abs(openSimplexNoise.get_noise_2d(x, z)))
+			var rand := 2*(abs(noise.get_noise_2d(x, z)))
 			gridName[Vector2(x, z)] = rand
+	return gridName
+
+
+#Runs a noise image through the island filter
+func generateIsland(per, oct, pers, lac):
+	noise.period = per
+	noise.octaves = oct
+	noise.persistence = pers
+	noise.lacunarity
+	noise.seed = randi()
+	var gridName = {}
+	
+	var imgt = ImageTexture.new()
+	imgt.create_from_image(noise.get_image(512, 512))
+#	var imgn = NoiseTexture.new()
+#	imgn.noise = noise
+	var mat = $ShaderProcess/ShaderProcess.get_material()
+	mat.set_shader_param("island_tex", imgt)
+#	mat.set_shader_param("island_tex", imgn.get_data())
+	var island = shaderProcess.get_texture().get_data()
+	island.lock()
+
+	for x in width:
+		for z in height:
+			var rand = (island.get_pixel(x, z))
+			gridName[Vector2(x, z)] = rand.r
+	
 	return gridName
 	
 
@@ -68,26 +103,27 @@ func setTile(width, height):
 #Sets the tile in accordance of the moisture, altitude, and temperature of the tile
 	for x in width:
 		for z in height:
-			var pos = Vector2(x, z)
-			var alt = altitude[pos]
-			var temp = temperature[pos]
-			var moist = moisture[pos]
+			var alt = altitude[Vector2(x, z)]
+			var temp = temperature[Vector2(x, z)]
+			var moist = moisture[Vector2(x, z)]
 			
 			#Ocean
-			if alt < 0.2:
+			if alt < 0.16:
 				tilemap.set_cell_item(x, 0, z, biomeTiles.Ocean)
-			
+				cells["Ocean"].append(Vector3(x, 0, z))
+				
 			#Beach
-			elif between(alt, 0.2, 0.25):
+			elif between(alt, 0.16, 0.34):
 				tilemap.set_cell_item(x, 0, z, biomeTiles.Beach)
-				beachTiles.append(Vector3(x, 0, z))
+				cells["Beach"].append(Vector3(x, 0, z))
 
 			#Other Biomes
-			elif alt > 0.25:
+			elif alt > 0.34:
 				
 				#Plains
 				#if between(moist, 0.2, 0.5) and between(temp, 0.2, 0.5):
 				tilemap.set_cell_item(x, 0, z, biomeTiles.Plains)
+				cells["Plains"].append(Vector3(x, 0, z))
 					
 				"""#Taiga Plains
 				elif between(moist, 0, 0.2) and between(temp, 0.2, 0.4):
@@ -125,11 +161,10 @@ func setTile(width, height):
 				elif temp > 0.7 and moist < 0.4:
 					tilemap.set_cellv(pos, biomeTiles.Desert)"""
 	
-	for i in beachTiles:
+	for i in cells["Plains"]:
 		autoTile(i)
-				
-#				if biome[Vector2(pos.x-1, pos.y-1)] == "Ocean" or biome[Vector2(pos.x-1, pos.y+1)] == "Ocean" or biome[Vector2(pos.x+1, pos.y-1)] == "Ocean" or biome[Vector2(pos.x+1, pos.y+1)] == "Ocean":
-#					tilemap.set_cellv(pos, biomeTiles.Beach)
+	for i in cells["Beach"]:
+		autoTile(i)
 
 # Generates objects onto the tiles. trans is the Vector3 for putting the objects in their place and pos is for the biome map
 func generateObjects(width, height):
@@ -198,7 +233,7 @@ func placeObjectExact(objectPath, pos : Vector3):
 
 func addPlayer(playerName, pos = globalSpawnPoint):
 	var newObject = playerObj.instance()
-#	var objectTrans = tilemap.map_to_world(0, 0.586, 0)
+	var objectTrans = tilemap.map_to_world(0, 0.586, 0)
 	newObject.name += playerName
 	$Players.add_child(newObject)
 	
@@ -229,7 +264,14 @@ func isTile(pos : Vector3, tile):
 	return false
 	
 func getBiome(pos: Vector3):
-	return tileBiomes[tilemap.get_cell_item(pos.x, pos.y, pos.z)]
+	var cell = tilemap.get_cell_item(pos.x, pos.y, pos.z)
+	var keys = tileBiomes.keys()
+	
+	for i in keys:
+		if i >= cell:
+			return tileBiomes[i]
+	
+#	return tileBiomes[tilemap.get_cell_item(pos.x, pos.y, pos.z)]
 
 func loadMaptoID(id):
 	
@@ -281,11 +323,6 @@ puppet func clearChildren():
 	
 func autoTile(pos):
 	
-	var newTile
-	var tileRotation = 0
-	
-	var oceanDirections = []
-	
 	#Down, Up, Right, Left
 	var tileD = Vector3(pos.x, pos.y, pos.z+1)
 	var tileU = Vector3(pos.x, pos.y, pos.z-1)
@@ -293,12 +330,34 @@ func autoTile(pos):
 	var tileL = Vector3(pos.x-1, pos.y, pos.z)
 	
 	#NorthWest, NorthEast, SouthWest, SouthEast
-	var tileNW = Vector3(pos.x, pos.y, pos.z+1)
-	var tileNE = Vector3(pos.x, pos.y, pos.z-1)
-	var tileSW = Vector3(pos.x+1, pos.y, pos.z)
-	var tileSE = Vector3(pos.x-1, pos.y, pos.z)
+	var tileNW = Vector3(pos.x-1, pos.y, pos.z-1)
+	var tileNE = Vector3(pos.x+1, pos.y, pos.z-1)
+	var tileSW = Vector3(pos.x-1, pos.y, pos.z+1)
+	var tileSE = Vector3(pos.x+1, pos.y, pos.z+1)
+	
+	var adjTiles = [tileD, tileU, tileR, tileL, tileNW, tileNE, tileSW, tileSE]
+	
+	if(getBiome(pos) == "Beach"):
+		beachAutoTile(adjTiles, pos)
+	elif(getBiome(pos) == "Plains"):
+		plainsAutoTile(adjTiles, pos)
 
-	for i in [tileU, tileD, tileR, tileL]:
+func plainsAutoTile(adj, pos):
+	
+	for i in adj:
+		if(waterTile(i)):
+			tilemap.set_cell_item(pos.x, pos.y, pos.z, 2)
+			cells["Beach"].append(pos)
+			cells["Plains"].erase(pos)
+			break
+
+func beachAutoTile(adj, pos):
+	adj.resize(4)
+	var newTile
+	var tileRotation = 0
+	var oceanDirections = []
+	
+	for i in adj:
 		if(waterTile(i)):
 			oceanDirections.append(i)
 	
@@ -322,7 +381,7 @@ func autoTile(pos):
 		elif(pos.x+1 == direction.x):
 			tileRotation = 10
 		
-	else:
+	elif(oceanDirections.size() == 2):
 		var coords = [0, 0]
 	
 		for i in oceanDirections:
@@ -343,6 +402,22 @@ func autoTile(pos):
 		
 		tileRotation = rotations.get(coords)
 	
-	
+	elif(oceanDirections.size() == 3):
+		var direction
+		
+		for i in oceanDirections:
+			if(adj.has(i)):
+				adj.erase(i)
+		
+		direction = adj[0]
+# 16, 22, 10
+		if(pos.z-1 == direction.z):
+			tileRotation = 10
+		elif(pos.x+1 == direction.z):
+			tileRotation = 16
+		elif(pos.x-1 == direction.x):
+			tileRotation = 22
 	
 	tilemap.set_cell_item(pos.x, pos.y, pos.z, newTile, tileRotation)
+
+

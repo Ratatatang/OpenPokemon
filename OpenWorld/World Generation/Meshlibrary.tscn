@@ -104,18 +104,22 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03567, 0, 3.85993 )
 mesh = SubResource( 18 )
 
 [node name="StaticBody" type="StaticBody" parent="Beach3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00603437 )
+transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0.00603437 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Beach3/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.387713, 0, 0 )
+[node name="CollisionShape4" type="CollisionShape" parent="Beach3/StaticBody"]
+transform = Transform( 4.62018, 0, 3.12106e-08, 0, 1, 0, -8.35055e-09, 0, 0.808962, -0.51499, -0.0161866, -0.0161369 )
 shape = SubResource( 19 )
 
-[node name="CollisionShape2" type="CollisionShape" parent="Beach3/StaticBody"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00125241, 0, -0.360793 )
+[node name="CollisionShape6" type="CollisionShape" parent="Beach3/StaticBody"]
+transform = Transform( -6.61942e-08, 0, -1.22505, 0, 1, 0, 1, 0, -3.53608e-08, 0.00483179, -0.00757501, -0.385942 )
+shape = SubResource( 19 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Beach3/StaticBody"]
+transform = Transform( 1.78819, 0, 3.77772e-09, 0, 1, 0, -8.35054e-09, 0, 0.808962, -0.445095, -0.0161866, -0.0887079 )
 shape = SubResource( 19 )
 
 [node name="CollisionShape3" type="CollisionShape" parent="Beach3/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42863, 0, 0 )
+transform = Transform( 1, 0, 5.79116e-09, 0, 1, 0, -6.87131e-09, 0, 0.842803, 0.483184, 0, -0.0194805 )
 shape = SubResource( 19 )
 
 [node name="Beach4" type="MeshInstance" parent="."]
@@ -123,7 +127,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03567, 0, 5.33033 )
 mesh = SubResource( 21 )
 
 [node name="StaticBody" type="StaticBody" parent="Beach4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00603437 )
+transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0.00603437 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Beach4/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.387713, 0, 0 )

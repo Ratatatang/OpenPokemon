@@ -29,7 +29,7 @@ onready var Dialoge = $Dialouge/RichTextLabel
 var queue = []
 var queueIndex = 0
 
-var enemyMoves
+var enemyMoves = []
 
 signal finished_combat
 signal lose_combat
@@ -360,14 +360,21 @@ func change_stats(move):
 			changeStat(move.attack.StatChanges.get(changes[i]), target)
 
 
+# This is a messy looking sort but it works it sorts 
+# priorityQueue into a list of lists, each one representing a
+# level of priority. usedPriorities works as the priorityQueue 
+# index, storing every used priority and its position in
+# priorityQueue. It then insertion sorts each priority and
+# puts them into queue in order.
+
 func sortQueue():
-	
+
 	var priorityQueue = []
 	var usedPriorities = []
 	
 	for i in range(len(queue)):
 		var action = queue[i]
-		var priority = action.Priority
+		var priority = action.priority
 		
 		if(usedPriorities.has(priority)):
 			pass
@@ -381,12 +388,27 @@ func sortQueue():
 			priorityQueue.insert(usedPriorities.find(priority), [])
 		
 		priorityQueue[usedPriorities.find(priority)].append(action)
-		
-	# https://www.programiz.com/dsa/insertion-sort
+
+	priorityQueue.invert()
+
 	for i in priorityQueue:
 		for j in range(1, len(i)):
-			pass
-		
+			var move = i[j]
+			var index = j-1
+			
+			while index >= 0 and move.speed > i[index].speed:
+				i[index + 1] = i[index]
+				index = index - 1
+			i[index+1] = move
+	
+	var finalQueue = []
+	
+	for i in priorityQueue:
+		for j in i:
+			finalQueue.append(j)
+	
+	queue = finalQueue
+	print(queue)
 	
 # change stat function
 func changeStat(stat, target):
@@ -428,5 +450,8 @@ func changePPDisplay(PP):
 
 
 func _on_move(move):
-	queue.append(move)
+	queue.append(selectedMove.new(move, playerActive1, enemyActive1))
+	enemyMoves.shuffle()
+	queue.append(selectedMove.new(enemyMoves[0], enemyActive1, playerActive1))
 	sortQueue()
+	print(queue)

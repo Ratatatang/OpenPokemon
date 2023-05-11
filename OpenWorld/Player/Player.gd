@@ -140,6 +140,7 @@ func roll_animation_finished():
 
 func move():
 	velocity = move_and_slide(velocity)
+	translation.y = 0.586
 
 # for when you enter a door to emit that signal
 

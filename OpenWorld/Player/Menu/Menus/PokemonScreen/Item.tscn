@@ -1,5 +1,5 @@
 [gd_scene format=2]
 
-[node name="Item" type="Spatial"]
+[node name="Item" type="Node3D"]
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]

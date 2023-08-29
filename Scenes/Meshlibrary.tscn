@@ -1,0 +1,131 @@
+[gd_scene load_steps=16 format=3 uid="uid://cug4ayj48pniq"]
+
+[sub_resource type="StandardMaterial3D" id="10"]
+
+[sub_resource type="PlaneMesh" id="2"]
+material = SubResource("10")
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="11"]
+
+[sub_resource type="PlaneMesh" id="6"]
+material = SubResource("11")
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="12"]
+
+[sub_resource type="PlaneMesh" id="8"]
+material = SubResource("12")
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="13"]
+
+[sub_resource type="PlaneMesh" id="14"]
+material = SubResource("13")
+size = Vector2(1, 1)
+
+[sub_resource type="BoxShape3D" id="19"]
+size = Vector3(0.0315506, 0.084751, 1.08639)
+
+[sub_resource type="StandardMaterial3D" id="15"]
+
+[sub_resource type="PlaneMesh" id="16"]
+material = SubResource("15")
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="17"]
+
+[sub_resource type="PlaneMesh" id="18"]
+material = SubResource("17")
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="20"]
+
+[sub_resource type="PlaneMesh" id="21"]
+material = SubResource("20")
+size = Vector2(1, 1)
+
+[node name="Meshlibrary" type="Node3D"]
+
+[node name="Ocean" type="MeshInstance3D" parent="."]
+mesh = SubResource("2")
+
+[node name="Plains" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02882, 0, 0)
+mesh = SubResource("6")
+
+[node name="Beach" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03567, 0, 0)
+mesh = SubResource("8")
+
+[node name="Beach1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03567, 0, 1.29469)
+mesh = SubResource("14")
+
+[node name="StaticBody" type="StaticBody3D" parent="Beach1"]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Beach1/StaticBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.486146, 0, -0.00139773)
+shape = SubResource("19")
+
+[node name="Beach2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03567, 0, 2.51938)
+mesh = SubResource("16")
+
+[node name="StaticBody" type="StaticBody3D" parent="Beach2"]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, -0.0304866)
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Beach2/StaticBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.494619, 0, -0.0214934)
+shape = SubResource("19")
+
+[node name="CollisionShape2" type="CollisionShape3D" parent="Beach2/StaticBody"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0518377, 0, -0.446253)
+shape = SubResource("19")
+
+[node name="Beach3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03567, 0, 3.85993)
+mesh = SubResource("18")
+
+[node name="StaticBody" type="StaticBody3D" parent="Beach3"]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0.00603437)
+
+[node name="CollisionShape4" type="CollisionShape3D" parent="Beach3/StaticBody"]
+transform = Transform3D(4.62018, 0, 3.12106e-08, 0, 1, 0, -8.35055e-09, 0, 0.808962, -0.51499, -0.0161866, -0.0161369)
+shape = SubResource("19")
+
+[node name="CollisionShape6" type="CollisionShape3D" parent="Beach3/StaticBody"]
+transform = Transform3D(-6.61942e-08, 0, -1.22505, 0, 1, 0, 1, 0, -3.53608e-08, 0.00483179, -0.00757501, -0.385942)
+shape = SubResource("19")
+
+[node name="CollisionShape5" type="CollisionShape3D" parent="Beach3/StaticBody"]
+transform = Transform3D(1.78819, 0, 3.77772e-09, 0, 1, 0, -8.35054e-09, 0, 0.808962, -0.445095, -0.0161866, -0.0887079)
+shape = SubResource("19")
+
+[node name="CollisionShape3" type="CollisionShape3D" parent="Beach3/StaticBody"]
+transform = Transform3D(1, 0, 5.79116e-09, 0, 1, 0, -6.87131e-09, 0, 0.842803, 0.483184, 0, -0.0194805)
+shape = SubResource("19")
+
+[node name="Beach4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03567, 0, 5.33033)
+mesh = SubResource("21")
+
+[node name="StaticBody" type="StaticBody3D" parent="Beach4"]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0.00603437)
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Beach4/StaticBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.387713, 0, 0)
+shape = SubResource("19")
+
+[node name="CollisionShape2" type="CollisionShape3D" parent="Beach4/StaticBody"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00125241, 0, -0.360793)
+shape = SubResource("19")
+
+[node name="CollisionShape3" type="CollisionShape3D" parent="Beach4/StaticBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42863, 0, 0)
+shape = SubResource("19")
+
+[node name="CollisionShape4" type="CollisionShape3D" parent="Beach4/StaticBody"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00125241, 0, 0.40624)
+shape = SubResource("19")

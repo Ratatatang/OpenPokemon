@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbgs55f41hqs8"]
+
+[ext_resource type="Script" path="res://Scripts/Master.gd" id="1_rn7d8"]
+[ext_resource type="PackedScene" uid="uid://ban4agfxv0snt" path="res://Scenes/World Generator.tscn" id="1_ym2i5"]
+
+[node name="Master" type="Node3D"]
+script = ExtResource("1_rn7d8")
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="ScreenFX" type="CanvasLayer" parent="."]
+
+[node name="FPS" type="Label" parent="."]
+offset_left = 1042.0
+offset_right = 1152.0
+offset_bottom = 45.0
+text = "FPS"
+
+[node name="CurrentScene" type="Node3D" parent="."]
+
+[node name="World" type="Node3D" parent="CurrentScene"]
+
+[node name="World Generator" parent="CurrentScene/World" instance=ExtResource("1_ym2i5")]

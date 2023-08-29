@@ -6,7 +6,7 @@ func init(pokemon):
 	#Sets the sprite, and the amount of frames (for pokemon that have alt looks for gender)
 	var newSprite = load("res://Combat/Sprites/Front/"+pokemon.speciesName.to_upper()+".png")
 	$Name.text = pokemon.displayName
-	$Sprite.texture = newSprite
+	$Sprite2D.texture = newSprite
 	
 	if(pokemon.dimorphism):
 		if(pokemon.gender == "Female"):

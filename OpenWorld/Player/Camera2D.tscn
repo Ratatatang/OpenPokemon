@@ -1,45 +1,39 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://bepdpsq3uojw1"]
 
-[ext_resource path="res://OpenWorld/Player/Dialog/Dialog.gd" type="Script" id=1]
-[ext_resource path="res://OpenWorld/Player/Dialog/DialogBox.tscn" type="PackedScene" id=2]
-
-[sub_resource type="Environment" id=54]
-ambient_light_color = Color( 1, 1, 1, 1 )
+[sub_resource type="Environment" id="54"]
+ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.7
 
-[sub_resource type="OccluderShapePolygon" id=41]
-polygon_points = PoolVector2Array( 5.52003, -2.14801, 6.85077, 1.74627, -7.38517, 1.43249, -7.50492, -2.05989 )
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_t2iab"]
+size = Vector2(12.9926, 4.56123)
 
-[node name="Camera2D" type="Camera"]
-transform = Transform( 0.999983, 0.00587831, 0.000717436, -0.00373068, 0.53124, 0.847213, 0.00459905, -0.847201, 0.531253, -0.0484942, 1.88742, 1.20995 )
-environment = SubResource( 54 )
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_2e1g1"]
+size = Vector2(9.66995, 2.55323)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_7qjjm"]
+size = Vector2(10.9595, 4.24381)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_tl8hv"]
+size = Vector2(9.07249, 3.31813)
+
+[node name="Camera2D" type="Camera3D"]
+transform = Transform3D(0.999983, 0.00587831, 0.000717436, -0.00373068, 0.53124, 0.847213, 0.00459905, -0.847201, 0.531253, -0.0484942, 1.88742, 1.20995)
+environment = SubResource("54")
 current = true
 fov = 56.1467
 
-[node name="Occluder" type="Occluder" parent="."]
-transform = Transform( 1, 1.16415e-10, 0, 0, 0.707107, -0.707107, -9.31323e-10, 0.707106, 0.707107, -0.0203685, 3.79018, -2.66457 )
-shape = SubResource( 41 )
+[node name="Occluder1" type="OccluderInstance3D" parent="."]
+transform = Transform3D(0.999998, 0.00149604, 0.000898909, 0, 0.515038, -0.857167, -0.00174533, 0.857166, 0.515037, -0.0203685, 3.79018, -2.66457)
+occluder = SubResource("QuadOccluder3D_t2iab")
 
-[node name="Occluder2" type="Occluder" parent="."]
-transform = Transform( -0.00232501, 0.201854, -0.979408, -0.861281, 0.497261, 0.104528, 0.508123, 0.843793, 0.172697, 4.60566, 1.5157, -0.838695 )
-shape = SubResource( 41 )
+[node name="Occluder2" type="OccluderInstance3D" parent="."]
+transform = Transform3D(-0.00232501, 0.201854, -0.979408, -0.861281, 0.497261, 0.104528, 0.508123, 0.843793, 0.172697, 4.60566, 1.5157, -0.838695)
+occluder = SubResource("QuadOccluder3D_2e1g1")
 
-[node name="Occluder3" type="Occluder" parent="."]
-transform = Transform( 0.999993, -0.00320395, -0.00144072, 0.000627843, 0.566512, -0.82405, 0.00345641, 0.824047, 0.566508, -0.369285, -1.78831, 1.21116 )
-shape = SubResource( 41 )
+[node name="Occluder3" type="OccluderInstance3D" parent="."]
+transform = Transform3D(0.999993, -0.00320395, -0.00144072, 0.000627843, 0.566512, -0.82405, 0.00345641, 0.824047, 0.566508, -0.369285, -1.78831, 1.21116)
+occluder = SubResource("QuadOccluder3D_7qjjm")
 
-[node name="Occluder4" type="Occluder" parent="."]
-transform = Transform( -0.00117236, -0.0459182, 0.99894, 0.846965, 0.531038, 0.0254037, -0.531643, 0.846102, 0.0382681, -4.13486, 2.60295, -1.55894 )
-shape = SubResource( 41 )
-
-[node name="DialogBox" type="ColorRect" parent="." instance=ExtResource( 2 )]
-margin_left = -139.5
-margin_top = 28.0
-margin_right = 137.5
-margin_bottom = 106.0
-mouse_filter = 2
-color = Color( 0.933333, 0.933333, 0.933333, 0 )
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Occluder4" type="OccluderInstance3D" parent="."]
+transform = Transform3D(-0.00117236, -0.0459182, 0.99894, 0.846965, 0.531038, 0.0254037, -0.531643, 0.846102, 0.0382681, -4.12961, 1.63505, -0.951999)
+occluder = SubResource("QuadOccluder3D_tl8hv")

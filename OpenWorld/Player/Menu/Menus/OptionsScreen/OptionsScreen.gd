@@ -1,15 +1,15 @@
 extends Node2D
 
 var player_name
-onready var masterNode = get_node("/root/Master")
-onready var menuNode = get_node("/root/Master/Menu")
+@onready var masterNode = get_node("/root/Master")
+@onready var menuNode = get_node("/root/Master/Menu")
 var ip_address
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 
-	masterNode.connect("player_list_changed", self, "refresh_lobby")
-	get_tree().connect("connected_to_server", self, "connected_to_server")
+	masterNode.connect("player_list_changed", Callable(self, "refresh_lobby"))
+	get_tree().connect("connected_to_server", Callable(self, "connected_to_server"))
 	
 	$Connect.show()
 	$Hosting.hide()
@@ -44,7 +44,7 @@ func _on_Host_pressed():
 
 func _on_Join_pressed():
 	if($Connect/Name.text == ""):
-		$Connect/ErrorSpace.text = "Invalid IP!"
+		$Connect/ErrorSpace.text = "No Name!"
 		return
 	
 	var ip = $Connect/IP.text

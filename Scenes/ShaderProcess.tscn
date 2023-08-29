@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://u3jgemplnvlv"]
+
+[ext_resource type="Texture2D" uid="uid://drka25qmbip1h" path="res://Sprites/SquareGradient.png" id="1"]
+
+[sub_resource type="Shader" id="1"]
+code = "shader_type canvas_item;
+
+uniform sampler2D island_tex;
+
+void fragment(){
+	
+	vec2 uvn=abs(UV-0.5) * 1.97;
+	float maxc=max(uvn.y,uvn.x);
+	vec3 mate=vec3(maxc);
+	
+	vec4 island = texture(island_tex, UV);
+	
+	float noise = 1.0;
+	vec2 uv_noise = vec2(noise, 1);
+	
+	
+	vec3 isl = island.xyz - mate;
+	vec3 grad = texture(TEXTURE, isl.xy).xyz;
+	
+	vec4 color = vec4(grad, 3);
+
+	COLOR = vec4(0.78 - color.rgb, color.a);
+}"
+
+[sub_resource type="FastNoiseLite" id="3"]
+frequency = 0.0049
+fractal_octaves = 9
+fractal_lacunarity = 1.65
+fractal_weighted_strength = 0.03
+
+[sub_resource type="NoiseTexture2D" id="4"]
+noise = SubResource("3")
+
+[sub_resource type="ShaderMaterial" id="2"]
+shader = SubResource("1")
+shader_parameter/island_tex = SubResource("4")
+
+[node name="ShaderProcess" type="SubViewport"]
+transparent_bg = true
+handle_input_locally = false
+debug_draw = 1
+gui_disable_input = true
+size = Vector2i(50, 50)
+render_target_update_mode = 3
+
+[node name="ShaderProcess" type="TextureRect" parent="."]
+material = SubResource("2")
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("1")

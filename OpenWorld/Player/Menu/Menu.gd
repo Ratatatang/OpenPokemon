@@ -1,16 +1,16 @@
 extends CanvasLayer
 
-onready var selectionArrow = $Menu/NinePatchRect/Arrow
-onready var menu = $Menu
+@onready var selectionArrow = $Menu/NinePatchRect/Arrow
+@onready var menu = $Menu
 
-onready var partyScreen = "res://OpenWorld/Player/Menu/Menus/PokemonScreen/PokemonScreen.tscn"
-onready var crafting = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
-onready var journal = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
-onready var settings = "res://OpenWorld/Player/Menu/Menus/OptionsScreen/OptionsScreen.tscn"
-onready var save = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
+@onready var partyScreen = "res://OpenWorld/Player/Menu/Menus/PokemonScreen/PokemonScreen.tscn"
+@onready var crafting = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
+@onready var journal = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
+@onready var settings = "res://OpenWorld/Player/Menu/Menus/OptionsScreen/OptionsScreen.tscn"
+@onready var save = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
 
 
-onready var options = [partyScreen, crafting, journal, settings, save]
+@onready var options = [partyScreen, crafting, journal, settings, save]
  
 enum ScreenLoaded {NOTHING, JUST_MENU, PARTY_SCREEN, CRAFT_SCREEN, JOURNAL_SCREEN, SETTINGS_SCREEN, SAVE_SCREEN}
 var screen_loaded = ScreenLoaded.NOTHING
@@ -23,7 +23,7 @@ var enabled = true
 
 func _ready():
 	menu.visible = false
-	selectionArrow.rect_position.y = 11 + (selected_option % 5) * 15
+	selectionArrow.position.y = 11 + (selected_option % 5) * 15
 
 func _unhandled_input(event) -> void:
 	if(enabled == false):
@@ -61,7 +61,7 @@ func _unhandled_input(event) -> void:
 				if selected_option == 4:
 					selected_option = -1
 				selected_option += 1
-				selectionArrow.rect_position.y = 11 + (selected_option % 5) * 15
+				selectionArrow.position.y = 11 + (selected_option % 5) * 15
 				
 #			elif event.is_action_pressed("scrollup") or event.is_action_pressed("ui_up"):
 			elif event.is_action_pressed("scrollup"):
@@ -69,7 +69,7 @@ func _unhandled_input(event) -> void:
 					selected_option = 4
 				else:
 					selected_option -= 1
-			selectionArrow.rect_position.y = 11 + (selected_option % 5) * 15
+			selectionArrow.position.y = 11 + (selected_option % 5) * 15
 
 		ScreenLoaded.PARTY_SCREEN:
 			if event.is_action_pressed("openMenu"):

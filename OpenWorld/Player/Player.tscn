@@ -1,247 +1,265 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=41 format=3 uid="uid://0vgun3gsy1iu"]
 
-[ext_resource path="res://OpenWorld/Player/Player.png" type="Texture" id=1]
-[ext_resource path="res://OpenWorld/EntityShadow.png" type="Texture" id=2]
-[ext_resource path="res://pkmnfl.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://OpenWorld/Player/Animations/PlayerRollRight.tres" type="Animation" id=4]
-[ext_resource path="res://OpenWorld/Player/Animations/IdleUp.tres" type="Animation" id=5]
-[ext_resource path="res://OpenWorld/Player/Animations/PlayerRunRight.tres" type="Animation" id=6]
-[ext_resource path="res://OpenWorld/Player/Animations/PlayerRunLeft.tres" type="Animation" id=7]
-[ext_resource path="res://OpenWorld/Player/Animations/PlayerRunDown.tres" type="Animation" id=8]
-[ext_resource path="res://OpenWorld/Player/Animations/IdleRight.tres" type="Animation" id=10]
-[ext_resource path="res://OpenWorld/Player/Animations/PlayerRollLeft.tres" type="Animation" id=11]
-[ext_resource path="res://OpenWorld/Player/Animations/IdleDown.tres" type="Animation" id=12]
-[ext_resource path="res://OpenWorld/Player/Animations/IdleLeft.tres" type="Animation" id=14]
-[ext_resource path="res://OpenWorld/Player/Animations/PlayerRollUp.tres" type="Animation" id=15]
-[ext_resource path="res://OpenWorld/Player/Animations/PlayerRollDown.tres" type="Animation" id=16]
-[ext_resource path="res://OpenWorld/Player/Player.gd" type="Script" id=17]
+[ext_resource type="Texture2D" uid="uid://013dtxl7nenb" path="res://OpenWorld/Player/Player.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://b6cqlh5b83mrx" path="res://Sprites/EntityShadow.png" id="3_bkq2v"]
+[ext_resource type="Animation" path="res://OpenWorld/Player/Animations/PlayerRollRight.tres" id="4"]
+[ext_resource type="Animation" path="res://OpenWorld/Player/Animations/IdleUp.tres" id="5"]
+[ext_resource type="Animation" path="res://OpenWorld/Player/Animations/PlayerRunRight.tres" id="6"]
+[ext_resource type="Animation" path="res://OpenWorld/Player/Animations/PlayerRunLeft.tres" id="7"]
+[ext_resource type="Animation" path="res://OpenWorld/Player/Animations/PlayerRunDown.tres" id="8"]
+[ext_resource type="Animation" path="res://OpenWorld/Player/Animations/IdleRight.tres" id="10"]
+[ext_resource type="Animation" path="res://OpenWorld/Player/Animations/PlayerRollLeft.tres" id="11"]
+[ext_resource type="Animation" path="res://OpenWorld/Player/Animations/IdleDown.tres" id="12"]
+[ext_resource type="Animation" path="res://OpenWorld/Player/Animations/IdleLeft.tres" id="14"]
+[ext_resource type="Animation" path="res://OpenWorld/Player/Animations/PlayerRollUp.tres" id="15"]
+[ext_resource type="Animation" path="res://OpenWorld/Player/Animations/PlayerRollDown.tres" id="16"]
+[ext_resource type="Script" path="res://OpenWorld/Player/Player.gd" id="17"]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 0 ]
+"values": [0]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ true ]
+"values": [true]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id="19"]
 resource_name = "RunUp"
 length = 0.6
-loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 7, 8, 9, 10, 11, 6 ]
+"values": [7, 8, 9, 10, 11, 6]
 }
 
-[sub_resource type="Animation" id=38]
+[sub_resource type="Animation" id="38"]
 resource_name = "disappear"
 length = 0.1
 tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "entered_door"
-} ]
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"entered_door"
+}]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ true, false ]
+"values": [true, false]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=42]
-animation = "IdleLeft"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_78y26"]
+_data = {
+"IdleDown": ExtResource("12"),
+"IdleLeft": ExtResource("14"),
+"IdleRight": ExtResource("10"),
+"IdleUp": ExtResource("5"),
+"RESET": SubResource("2"),
+"RollDown": ExtResource("16"),
+"RollLeft": ExtResource("11"),
+"RollRight": ExtResource("4"),
+"RollUp": ExtResource("15"),
+"RunDown": ExtResource("8"),
+"RunLeft": ExtResource("7"),
+"RunRight": ExtResource("6"),
+"RunUp": SubResource("19"),
+"disappear": SubResource("38")
+}
 
-[sub_resource type="AnimationNodeAnimation" id=43]
-animation = "IdleDown"
+[sub_resource type="AnimationNodeAnimation" id="42"]
+animation = &"IdleLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=44]
-animation = "IdleRight"
+[sub_resource type="AnimationNodeAnimation" id="43"]
+animation = &"IdleDown"
 
-[sub_resource type="AnimationNodeAnimation" id=45]
-animation = "IdleUp"
+[sub_resource type="AnimationNodeAnimation" id="44"]
+animation = &"IdleRight"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=7]
-blend_point_0/node = SubResource( 42 )
-blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 43 )
-blend_point_1/pos = Vector2( 0, 1.1 )
-blend_point_2/node = SubResource( 44 )
-blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 45 )
-blend_point_3/pos = Vector2( 0, -1.1 )
-min_space = Vector2( -1, -1.1 )
-max_space = Vector2( 1, 1.1 )
+[sub_resource type="AnimationNodeAnimation" id="45"]
+animation = &"IdleUp"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="7"]
+blend_point_0/node = SubResource("42")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("43")
+blend_point_1/pos = Vector2(0, 1.1)
+blend_point_2/node = SubResource("44")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("45")
+blend_point_3/pos = Vector2(0, -1.1)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=46]
-animation = "RollLeft"
+[sub_resource type="AnimationNodeAnimation" id="46"]
+animation = &"RollLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=47]
-animation = "RollRight"
+[sub_resource type="AnimationNodeAnimation" id="47"]
+animation = &"RollRight"
 
-[sub_resource type="AnimationNodeAnimation" id=48]
-animation = "RollDown"
+[sub_resource type="AnimationNodeAnimation" id="48"]
+animation = &"RollDown"
 
-[sub_resource type="AnimationNodeAnimation" id=49]
-animation = "RollUp"
+[sub_resource type="AnimationNodeAnimation" id="49"]
+animation = &"RollUp"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=33]
-blend_point_0/node = SubResource( 46 )
-blend_point_0/pos = Vector2( -1.1, 0 )
-blend_point_1/node = SubResource( 47 )
-blend_point_1/pos = Vector2( 1.1, 0 )
-blend_point_2/node = SubResource( 48 )
-blend_point_2/pos = Vector2( 0, 1 )
-blend_point_3/node = SubResource( 49 )
-blend_point_3/pos = Vector2( 0, -1 )
-min_space = Vector2( -1.1, -1 )
-max_space = Vector2( 1.1, 1 )
+[sub_resource type="AnimationNodeBlendSpace2D" id="33"]
+blend_point_0/node = SubResource("46")
+blend_point_0/pos = Vector2(-1.1, 0)
+blend_point_1/node = SubResource("47")
+blend_point_1/pos = Vector2(1.1, 0)
+blend_point_2/node = SubResource("48")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("49")
+blend_point_3/pos = Vector2(0, -1)
+min_space = Vector2(-1.1, -1)
+max_space = Vector2(1.1, 1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=50]
-animation = "RunLeft"
+[sub_resource type="AnimationNodeAnimation" id="50"]
+animation = &"RunLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=51]
-animation = "RunDown"
+[sub_resource type="AnimationNodeAnimation" id="51"]
+animation = &"RunDown"
 
-[sub_resource type="AnimationNodeAnimation" id=52]
-animation = "RunRight"
+[sub_resource type="AnimationNodeAnimation" id="52"]
+animation = &"RunRight"
 
-[sub_resource type="AnimationNodeAnimation" id=53]
-animation = "RunUp"
+[sub_resource type="AnimationNodeAnimation" id="53"]
+animation = &"RunUp"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=12]
-blend_point_0/node = SubResource( 50 )
-blend_point_0/pos = Vector2( -1.1, 0 )
-blend_point_1/node = SubResource( 51 )
-blend_point_1/pos = Vector2( 0, 1.1 )
-blend_point_2/node = SubResource( 52 )
-blend_point_2/pos = Vector2( 1.1, 0 )
-blend_point_3/node = SubResource( 53 )
-blend_point_3/pos = Vector2( 0, -1.1 )
-min_space = Vector2( -1.1, -1 )
-max_space = Vector2( 1.1, 1 )
+[sub_resource type="AnimationNodeBlendSpace2D" id="12"]
+blend_point_0/node = SubResource("50")
+blend_point_0/pos = Vector2(-1.1, 0)
+blend_point_1/node = SubResource("51")
+blend_point_1/pos = Vector2(0, 1.1)
+blend_point_2/node = SubResource("52")
+blend_point_2/pos = Vector2(1.1, 0)
+blend_point_3/node = SubResource("53")
+blend_point_3/pos = Vector2(0, -1.1)
+min_space = Vector2(-1.1, -1)
+max_space = Vector2(1.1, 1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+[sub_resource type="AnimationNodeStateMachineTransition" id="13"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+[sub_resource type="AnimationNodeStateMachineTransition" id="14"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+[sub_resource type="AnimationNodeStateMachineTransition" id="34"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+[sub_resource type="AnimationNodeStateMachineTransition" id="35"]
 
-[sub_resource type="AnimationNodeStateMachine" id=15]
-states/Idle/node = SubResource( 7 )
-states/Idle/position = Vector2( 293, 87 )
-states/Roll/node = SubResource( 33 )
-states/Roll/position = Vector2( 132, 87.6388 )
-states/Run/node = SubResource( 12 )
-states/Run/position = Vector2( 466, 87 )
-transitions = [ "Idle", "Run", SubResource( 13 ), "Run", "Idle", SubResource( 14 ), "Roll", "Idle", SubResource( 34 ), "Idle", "Roll", SubResource( 35 ) ]
-start_node = "Idle"
-graph_offset = Vector2( -601.253, -9.36123 )
+[sub_resource type="AnimationNodeStateMachine" id="15"]
+states/Idle/node = SubResource("7")
+states/Idle/position = Vector2(293, 87)
+states/Roll/node = SubResource("33")
+states/Roll/position = Vector2(132, 87.6388)
+states/Run/node = SubResource("12")
+states/Run/position = Vector2(466, 87)
+transitions = ["Idle", "Run", SubResource("13"), "Run", "Idle", SubResource("14"), "Roll", "Idle", SubResource("34"), "Idle", "Roll", SubResource("35")]
+graph_offset = Vector2(-601.253, -9.36123)
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
-
-[sub_resource type="CapsuleShape" id=40]
+[sub_resource type="CapsuleShape3D" id="40"]
 radius = 0.0383264
 height = 0.0878534
 
-[sub_resource type="DynamicFont" id=55]
-size = 12
-font_data = ExtResource( 3 )
+[sub_resource type="FontFile" id="55"]
+face_index = null
+embolden = null
+transform = null
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/32/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="CharacterBody3D"]
 collision_layer = 2
-script = ExtResource( 17 )
+script = ExtResource("17")
 
-[node name="Sprite" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.682585, 0.730806, 0, -0.730806, 0.682585, 0.005, 0, -0.23 )
+[node name="Sprite2D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.682585, 0.730806, 0, -0.730806, 0.682585, 0.005, 0, -0.23)
 alpha_cut = 2
-texture = ExtResource( 1 )
+texture_filter = 0
+texture = ExtResource("1")
 hframes = 60
 
 [node name="Shadow" type="Sprite3D" parent="."]
-transform = Transform( 1.3, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00561619, -0.079, -0.160024 )
+transform = Transform3D(1.3, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00561619, -0.079, -0.160024)
+texture_filter = 0
 render_priority = -1
-texture = ExtResource( 2 )
+texture = ExtResource("3_bkq2v")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/IdleDown = ExtResource( 12 )
-anims/IdleLeft = ExtResource( 14 )
-anims/IdleRight = ExtResource( 10 )
-anims/IdleUp = ExtResource( 5 )
-anims/RESET = SubResource( 2 )
-anims/RollDown = ExtResource( 16 )
-anims/RollLeft = ExtResource( 11 )
-anims/RollRight = ExtResource( 4 )
-anims/RollUp = ExtResource( 15 )
-anims/RunDown = ExtResource( 8 )
-anims/RunLeft = ExtResource( 7 )
-anims/RunRight = ExtResource( 6 )
-anims/RunUp = SubResource( 19 )
-anims/disappear = SubResource( 38 )
+libraries = {
+"": SubResource("AnimationLibrary_78y26")
+}
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 15 )
+tree_root = SubResource("15")
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 16 )
-parameters/Idle/blend_position = Vector2( 0, 0 )
-parameters/Roll/blend_position = Vector2( 0, 0 )
-parameters/Run/blend_position = Vector2( 1.03201, 0.0831354 )
+parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Roll/blend_position = Vector2(0, 0)
+parameters/Run/blend_position = Vector2(1.03201, 0.0831354)
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.000412978, 0, -0.192587 )
-shape = SubResource( 40 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.000412978, 0, -0.192587)
+shape = SubResource("40")
 
 [node name="Name" type="Label3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.829301, 0.558802, 0, -0.558802, 0.829301, 0, 0.193444, -0.339606 )
+transform = Transform3D(1, 0, 0, 0, 0.829301, 0.558802, 0, -0.558802, 0.829301, 0, 0.193444, -0.339606)
 visible = false
 text = "Figgity"
-font = SubResource( 55 )
+font = SubResource("55")
 
 [node name="networkTimer" type="Timer" parent="."]
 wait_time = 0.03

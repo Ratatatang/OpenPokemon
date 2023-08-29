@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://MasterNode/CurrentScene.gd" type="Script" id=1]
+[ext_resource path="res://OpenWorld/Player/Dialog/Dialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://OpenWorld/World Generation/World Generator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://OpenWorld/Player/Menu/Menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://MasterNode/Master.gd" type="Script" id=5]
@@ -139,6 +140,8 @@ color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Dialog" parent="." instance=ExtResource( 2 )]
 
 [node name="CurrentScene" type="Spatial" parent="."]
 script = ExtResource( 1 )

@@ -1,0 +1,457 @@
+extends Node2D
+
+var statChanges = {
+	"-6": 0.25,
+	"-5": 0.28,
+	"-4": 0.33,
+	"-3": 0.4,
+	"-2": 0.5,
+	"-1": 0.66,
+	"0": 1,
+	"1": 1.5,
+	"2": 2,
+	"3": 2.5,
+	"4": 3,
+	"5": 3.5,
+	"6": 4
+}
+
+var healthyBar = "res://Combat/Health/HealthyHealthProgress.png"
+var cautionBar = "res://Combat/Health/CautionHealthProgress.png"
+var dangerBar = "res://Combat/Health/DangerHealthProgress.png"
+
+var typeEffect
+
+onready var ActionSelect = $ActionSelect
+onready var MoveSelect = $MoveSelect
+onready var Dialoge = $Dialouge/RichTextLabel
+
+var queue = []
+var queueIndex = 0
+
+var enemyMoves = []
+
+signal finished_combat
+signal lose_combat
+signal escape
+signal caught_pokemon
+signal xp
+
+var combatPokedex
+var combatMovedex
+
+var playerActive1
+var enemyActive1
+
+var playerList = ["", "", "", "", "", ""]
+var enemyList = ["", "", "", "", "", ""]
+
+# Classes for different types of selected actions
+class selectedMove:
+	
+	var speed
+	var attack
+	var attacker
+	var victim
+	var priority
+	
+	func _init(mve, atkr, victm):
+		self.attack = mve
+		self.attacker = atkr
+		self.victim = victm
+		self.priority = self.attack.Priority
+		self.speed = self.attacker.pokemon.speed
+	
+	func get_type():
+		return "selectedMove"
+			
+		
+class selectedAction:
+	var move
+	var speed
+	var priority
+	
+	func _init(move, priority = 7):
+		self.move = move
+		self.speed = 0
+		self.priority = priority
+	
+	func get_type():
+		return "selectedAction"
+		
+class flavorText:
+	var move
+	var speed
+	var priority
+	
+	func _init(move):
+		self.move = move
+		self.speed = 0
+		self.priority = 0
+	
+	func get_type():
+		return "flavorText"
+		
+# class for a active battling pokemon
+class battlingMon:
+	
+	var displayName
+	
+	var healthBar
+	var sprite
+	
+	var pokemon
+	
+	var tempAtk
+	var tempSpAtk
+	var tempDef
+	var tempSpDef
+	var tempSpeed
+	var tempAcucy
+	var tempEvsn
+	
+	func _init(mon, slot):
+		mon.participant = true
+		self.pokemon = mon
+		self.healthBar = slot.get_node("healthbar")
+		self.sprite = slot.get_node("sprite")
+		self.displayName = self.pokemon.displayName
+		healthBar.get_node("name").text = displayName
+		healthBar.get_node("level").text = str(mon.level)
+		setStats()
+	
+	func changeStat(stat, value):
+		if(stat == "Attack"):
+			self.tempAtk += value
+		elif(stat == "Special Attack"):
+			self.tempSpAtk += value
+		elif(stat == "Defence"):
+			self.tempDef += value
+		elif(stat == "Special Defence"):
+			self.tempSpDef += value
+		elif(stat == "Speed"):
+			self.tempSpeed += value
+		elif(stat == "Evasion"):
+			self.tempEvsn += value
+		elif(stat == "Accuracy"):
+			self.tempAcucy += value
+	
+	func setStats():
+		self.tempAtk = 0
+		self.tempDef = 0
+		self.tempSpAtk = 0
+		self.tempSpDef = 0
+		self.tempSpeed = 0
+		self.tempAcucy = 0
+		self.tempEvsn = 0
+
+
+# starts wild combat by setting the correct sprites and name for the 
+# what will ____ do message
+func wild_combat_start(playerTeam, enemyPokemon):
+	playerList = playerTeam
+	playerActive1 = battlingMon.new(playerList[0], $PlayerPosition)
+	
+	playerActive1.sprite.texture = load("res://Combat/Sprites/Back/"+playerActive1.pokemon.speciesName.to_upper()+".png")
+#	if(playerActive1.pokemon.dimorphism):
+#		playerActive1.sprite.texture = load("res://Combat/Sprites/Back/"+playerActive1.pokemon.speciesName.to_upper()+"_female.png")
+	
+	
+	enemyActive1 = battlingMon.new(enemyPokemon, $EnemyPosition)
+	enemyActive1.sprite.texture = load("res://Combat/Sprites/Front/"+enemyActive1.pokemon.speciesName.to_upper()+".png")
+#	if(enemyActive1.pokemon.dimorphism):
+#		enemyActive1.sprite.texture = load("res://Combat/Sprites/Front/"+enemyActive1.pokemon.speciesName.to_upper()+"_female.png")
+	
+	enemyMoves = enemyActive1.pokemon.moves.values()
+	enemyActive1.displayName = "Enemy " + enemyActive1.displayName
+	while str(enemyMoves[len(enemyMoves)-1]) == "":
+		enemyMoves.resize(len(enemyMoves)-1)
+	
+	var percentHealth = playerActive1.pokemon.tempHp/playerActive1.pokemon.hp
+	playerActive1.healthBar.value = round(playerActive1.healthBar.value * percentHealth)
+	
+	update_healthbar_color(percentHealth, playerActive1.healthBar)
+	
+	
+	$ActionSelect/RichTextLabel.text = "What will " + playerActive1.displayName + " do?"
+	buttonMoves(playerActive1.pokemon.moves)
+	set_control("Action")
+
+
+# just makes sure that certain values are correct
+func _ready():
+	
+	randomize()
+	
+	combatMovedex = get_node("/root/Master").movedex
+	combatPokedex = get_node("/root/Master").pokedex
+	
+	var typeFile = File.new()
+	typeFile.open("res://Combat/TypeMatchups.json", File.READ)
+	var typeEffectFileData = JSON.parse(typeFile.get_as_text())
+	typeFile.close()
+	typeEffect = typeEffectFileData.result
+		
+	ActionSelect.get_child(0).disabled = false
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_cancel"):
+		if(MoveSelect.visible == true):
+			set_control("Action")
+
+# just sets what control should be visable
+func set_control(control):
+	if control == "ActionSelect" or control == "Action":
+		ActionSelect.visible = true
+		MoveSelect.visible = false
+		Dialoge.visible = false
+	if control == "MoveSelect" or control == "Move":
+		ActionSelect.visible = false
+		MoveSelect.visible = true
+		Dialoge.visible = false
+	if control == "Dialouge":
+		ActionSelect.visible = false
+		MoveSelect.visible = false
+		Dialoge.visible = true
+		
+# Gives the buttons their move
+func buttonMoves(playerMoves):
+	var moves = playerMoves.values()
+	while moves.find("") >= 0:
+		moves.erase("")
+	
+	var buttons = [$MoveSelect/Move1, $MoveSelect/Move2, $MoveSelect/Move3, $MoveSelect/Move4]
+	
+	for i in range(len(moves)):
+		buttons[i].setButtonInfo(moves[i])
+
+func DecideMove():
+	set_control("Action")
+
+# calcuates move damage
+func moveAttack(move, effectiveness):
+	var attack = move.attack
+	var straightDamage = float(move.attack.Power)
+	var attackerMod
+	var victimMod
+	var attackerLv = float(move.attacker.pokemon.level)
+	
+	#Figures the category that should be used, special or physical
+	if(attack.Category == "Physical"):
+		attackerMod = float(move.attacker.pokemon.atk * (statChanges.get(str(move.attacker.tempAtk))))
+		victimMod = float(move.victim.pokemon.def * (statChanges.get(str(move.victim.tempDef))))
+	elif(attack.Category == "Special"):
+		attackerMod = float(move.attacker.pokemon.spAtk * (statChanges.get(str(move.attacker.tempSpAtk))))
+		victimMod = float(move.victim.pokemon.spDef * (statChanges.get(str(move.victim.tempSpDef))))
+	
+	var random = round(rand_range(85.0, 100.0))
+	random = float("0." + str(random))
+	
+	print("percentage of damage: " + str(random))
+	
+	var STAB = 1.0
+	
+	if(move.attacker.pokemon.types.find(move.attack.Type) >= 0):
+		STAB += 0.5
+	
+	# Ew
+	var damage = 2.0 * attackerLv
+	damage /= 5.0
+	damage += 2.0
+	damage *= straightDamage
+	damage *= (attackerMod / victimMod)
+	damage /= 50.0
+	damage += 2.0
+	damage *= random
+	damage *= STAB
+	damage *= effectiveness
+	
+	#Ignore that ridiculous number lmao
+	damage = clamp(round(damage), 1, 99999999999999)
+	
+	print("move damage: " + str(damage))
+	print("prev hp: " + str(move.victim.pokemon.tempHp))
+	
+	move.victim.pokemon.tempHp -= damage
+	
+	if(move.victim.pokemon.tempHp < 0):
+		move.victim.pokemon.tempHp = 0
+	
+	print("new hp: " + str(move.victim.pokemon.tempHp))
+	
+	update_healthbar(move, damage)
+
+
+# updates the healthbar values by getting what percent health
+# the pokemon has and setting the bar to the same percent
+func update_healthbar(move, damage, duration = 0.45):
+	
+	var healthBar = move.victim.healthBar
+	var health = move.victim.pokemon.tempHp
+	var maxHealth = move.victim.pokemon.hp
+	
+	var percentHealth = health/maxHealth
+
+	var barPercent = round(1000 * percentHealth)
+	
+	if(barPercent <= 2 and percentHealth > 0):
+		barPercent = 2
+	
+	print("Bar Percent: " + str(percentHealth))
+	
+	$HealthTween.interpolate_property(healthBar, "value", healthBar.value, barPercent, duration, Tween.TRANS_LINEAR)
+	$HealthTween.start()
+	
+	print("healthbar value: " + str(barPercent))
+		
+	update_healthbar_color(percentHealth, healthBar)
+
+
+#Updates the displayed healthbar to the correct color
+func update_healthbar_color(percent, healthBar):
+		if(percent <= 0.2):
+			healthBar.texture_progress = load(dangerBar)
+		elif(percent <= 0.4):
+			healthBar.texture_progress = load(cautionBar)
+		else:
+			healthBar.texture_progress = load(healthyBar)
+
+
+# calculates move effectivness
+func effectiveness(atkType, defTypes):
+	
+	var defType1 = defTypes[0]
+	var defType2 = ""
+	
+	if(len(defTypes) > 1):
+		defType2 = defTypes[1]
+	
+	var keys = typeEffect[atkType].keys()
+	var typeEffective
+	
+	if(keys.find(defType1) >= 0):
+		typeEffective = typeEffect[atkType][defType1]
+	else:
+		typeEffective = 1
+	
+	if(defType2 != ""):
+		if(keys.find(defType2) >= 0):
+			typeEffective = typeEffective * typeEffect[atkType][defType2]
+	else:
+		typeEffective += 0
+	
+	return typeEffective
+
+
+# Changes a stat for the appropriate victim
+func change_stats(move):
+	var changes = move.attack.StatChanges.keys()
+	
+	for i in len(changes):
+		var hit = rand_range(0, 100)
+		hit = round(hit)
+		var accuracy = int(changes[i])
+		if(hit <= accuracy):
+			var target = move.attack.StatChanges.get(changes[i]).get("Target")
+			if target == "Victim":
+				target = move.victim
+			elif target == "Self":
+				target = move.attacker
+			changeStat(move.attack.StatChanges.get(changes[i]), target)
+
+
+# This is a messy looking sort but it works it sorts 
+# priorityQueue into a list of lists, each one representing a
+# level of priority. usedPriorities works as the priorityQueue 
+# index, storing every used priority and its position in
+# priorityQueue. It then insertion sorts each priority and
+# puts them into queue in order.
+
+func sortQueue():
+
+	var priorityQueue = []
+	var usedPriorities = []
+	
+	for i in range(len(queue)):
+		var action = queue[i]
+		var priority = action.priority
+		
+		if(usedPriorities.has(priority)):
+			pass
+		else:
+			for j in range(len(usedPriorities)):
+				if(usedPriorities[j] > priority):
+					usedPriorities.insert(j, priority)
+			if!usedPriorities.has(priority):
+				usedPriorities.append(priority)
+			
+			priorityQueue.insert(usedPriorities.find(priority), [])
+		
+		priorityQueue[usedPriorities.find(priority)].append(action)
+
+	priorityQueue.invert()
+
+	for i in priorityQueue:
+		for j in range(1, len(i)):
+			var move = i[j]
+			var index = j-1
+			
+			while index >= 0 and move.speed > i[index].speed:
+				i[index + 1] = i[index]
+				index = index - 1
+			i[index+1] = move
+	
+	var finalQueue = []
+	
+	for i in priorityQueue:
+		for j in i:
+			finalQueue.append(j)
+	
+	queue = finalQueue
+	print(queue)
+	
+# change stat function
+func changeStat(stat, target):
+	var keys = stat.keys()
+	keys.erase("Target")
+	for i in len(keys):
+		var value = stat.get(keys[i])
+		var changedStat = keys[i]
+		target.changeStat(changedStat, value)
+
+
+
+# ends combat
+func combatEnd(victor):
+	if(victor == playerActive1):
+		emit_signal("xp", enemyActive1.pokemon)
+		emit_signal("finished_combat")
+	if(victor == enemyActive1):
+		emit_signal("lose_combat")
+
+func loopOutcome():
+	pass
+
+# on button pressed functions
+func _on_Bag_pressed():
+	pass
+	
+func _on_Run_pressed():
+	pass
+	
+func _on_Fight_pressed():
+	set_control("Move")
+
+func _on_Pokemon_pressed():
+	pass
+
+func changePPDisplay(PP):
+	$MoveSelect/PPDisplay.text = "PP : " + str(PP[0]) + "/" + str(PP[1])
+
+
+func _on_move(move):
+	queue.append(selectedMove.new(move, playerActive1, enemyActive1))
+	enemyMoves.shuffle()
+	queue.append(selectedMove.new(enemyMoves[0], enemyActive1, playerActive1))
+	sortQueue()
+	print(queue)

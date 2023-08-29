@@ -147,7 +147,6 @@ __meta__ = {
 }
 
 [node name="ChoiceText" type="RichTextLabel" parent="Choices/Choice3"]
-margin_left = -7.62939e-06
 margin_right = 77.0
 margin_bottom = 28.0
 mouse_filter = 2
@@ -202,7 +201,6 @@ __meta__ = {
 }
 
 [node name="ChoiceText" type="RichTextLabel" parent="Choices/Choice6"]
-margin_left = -7.62939e-06
 margin_right = 77.0
 margin_bottom = 25.0
 mouse_filter = 2

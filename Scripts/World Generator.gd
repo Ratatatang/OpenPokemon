@@ -21,7 +21,7 @@ var biomeData = {"Beach": preload("res://Scripts/BiomeData/Beach.gd"),
 				 "Plains": preload("res://Scripts/BiomeData/Plains.gd"),
 				 "Ocean": preload("res://Scripts/BiomeData/Ocean.gd")}
 
-@onready var playerObj = preload("res://OpenWorld/Player/Player.tscn")
+@onready var playerObj = preload("res://Scenes/Player.tscn")
 
 @onready var masterNode = get_node("/root/Master")
 @onready var gameObjects = $GameObjects
@@ -40,7 +40,7 @@ func _ready():
 #	altitude = generateMap(180, 5)
 	altitude = generateIsland()
 
-#	shaderProcess.queue_free()
+	shaderProcess.queue_free()
 	setTile(width, height)
 	
 	generateObjects(width, height)
@@ -247,7 +247,7 @@ func addPlayer(playerName, pos = globalSpawnPoint):
 	newObject.name += playerName
 	$Players.add_child(newObject)
 	
-	newObject.set_spawn(pos, Vector3.ZERO)
+#	newObject.set_spawn(pos, Vector3.ZERO)
 	
 	if(playerName != ""):
 		newObject.set_name(playerName)

@@ -10,7 +10,14 @@
                 "6": ["growth"],
                 "9": ["leech_seed"],
                 "12": ["razor_leaf"],
-                "15": ["poison_powder"]
+                "15": ["poison_powder", "sleep_powder"],
+                "18": ["seed_bomb"],
+                "21": ["take_down"],
+                "24": ["sweet_scent"],
+                "27": ["synthesis"],
+                "30": ["worry_seed"],
+                "33": ["double_edge"],
+                "36": ["solar_beam"]
             },
             "BaseStats": {
                 "hp": 45,
@@ -35,7 +42,15 @@
                 "1": ["tackle", "growl", "vine_whip", "growth"],
                 "9": ["leech_seed"],
                 "12": ["razor_leaf"],
-                "15": ["poison_powder"]
+                "15": ["poison_powder", "sleep_powder"],
+                "20": ["seed_bomb"],
+                "25": ["take_down"],
+                "30": ["sweet_scent"],
+                "35": ["synthesis"],
+                "40": ["worry_seed"],
+                "45": ["double_edge"],
+                "50": ["solar_beam"]
+
             },
             "BaseStats": {
                 "hp": 60,
@@ -57,10 +72,18 @@
             "Name": "Venusaur",
             "Types": ["Grass", "Poison"],
             "Moves": {
+                "0": ["petal_blizzard"],
                 "1": ["tackle", "growl", "vine_whip", "growth"],
                 "9": ["leech_seed"],
                 "12": ["razor_leaf"],
-                "15": ["poison_powder"]
+                "15": ["poison_powder", "sleep_powder"],
+                "20": ["seed_bomb"],
+                "25": ["take_down"],
+                "30": ["sweet_scent"],
+                "37": ["synthesis"],
+                "44": ["worry_seed"],
+                "51": ["double_edge"],
+                "58": ["solar_beam"]
             },
             "BaseStats": {
                 "hp": 80,
@@ -84,7 +107,17 @@
                 "1": ["tackle"],
                 "5": ["sand_attack"],
                 "9": ["gust"],
-                "13": ["quick_attack"]
+                "13": ["quick_attack"],
+                "17": ["whirlwind"],
+                "21": ["twister"],
+                "25": ["feather_dance"],
+                "29": ["agility"],
+                "33": ["wing_attack"],
+                "37": ["roost"],
+                "41": ["tailwind"],
+                "45": ["aerial_ace"],
+                "49": ["air_slash"],
+                "53": ["hurricane"]
             },
             "BaseStats": {
                 "hp": 40,
@@ -104,7 +137,22 @@
             "ID": "017",
             "Name": "Pidgeotto",
             "Types": ["Normal", "Flying"],
-            "Moves": {},
+            "Moves": {
+                "1": ["tackle", "sand_attack", "gust"],
+                "5": ["sand_attack"],
+                "9": ["gust"],
+                "13": ["quick_attack"],
+                "17": ["whirlwind"],
+                "22": ["twister"],
+                "27": ["feather_dance"],
+                "32": ["agility"],
+                "37": ["wing_attack"],
+                "42": ["roost"],
+                "47": ["tailwind"],
+                "52": ["aerial_ace"],
+                "57": ["air_slash"],
+                "62": ["hurricane"]
+            },
             "BaseStats": {
                 "hp": 63,
                 "atk": 60,
@@ -123,7 +171,22 @@
             "ID": "018",
             "Name": "Pidgeot",
             "Types": ["Normal", "Flying"],
-            "Moves": {},
+            "Moves": {
+                "1": ["tackle", "sand_attack", "gust", "quick_attack", "hurricane"],
+                "5": ["sand_attack"],
+                "9": ["gust"],
+                "13": ["quick_attack"],
+                "17": ["whirlwind"],
+                "22": ["twister"],
+                "27": ["feather_dance"],
+                "32": ["agility"],
+                "38": ["wing_attack"],
+                "44": ["roost"],
+                "50": ["tailwind"],
+                "56": ["aerial_ace"],
+                "62": ["air_slash"],
+                "68": ["hurricane"]
+            },
             "BaseStats": {
                 "hp": 83,
                 "atk": 80,
@@ -204,7 +267,24 @@
             "ID": "167",
             "Name": "Spinarak",
             "Types": ["Bug", "Poison"],
-            "Moves": {},
+            "Moves": {
+                "1": ["poison_sting", "string_shot"],
+                "5": ["absorb"],
+                "8": ["infestation"],
+                "12": ["scary_face"],
+                "15": ["night_shade"],
+                "19": ["shadow_sneak"],
+                "22": ["fury_swipes"],
+                "26": ["sucker_punch"],
+                "29": ["leech_life"],
+                "33": ["agility"],
+                "36": ["pin_missile"],
+                "40": ["psychic"],
+                "43": ["poison_jab"],
+                "47": ["cross_poison"],
+                "50": ["sticky_web"],
+                "54": ["toxic_thread"]
+            },
             "BaseStats": {
                 "hp": 40,
                 "atk": 60,
@@ -223,7 +303,25 @@
             "ID": "168",
             "Name": "Ariados",
             "Types": ["Bug", "Poison"],
-            "Moves": {},
+            "Moves": {
+                "0": ["swords_dance"],
+                "1": ["poison_sting", "string_shot", "swords_dance", "focus_energy", "venom_drench", "fell_stinger", "bug_bite"],
+                "5": ["absorb"],
+                "8": ["infestation"],
+                "12": ["scary_face"],
+                "15": ["night_shade"],
+                "19": ["shadow_sneak"],
+                "23": ["fury_swipes"],
+                "28": ["sucker_punch"],
+                "32": ["leech_life"],
+                "37": ["agility"],
+                "41": ["pin_missile"],
+                "46": ["psychic"],
+                "50": ["poison_jab"],
+                "55": ["cross_poison"],
+                "58": ["sticky_web"],
+                "63": ["toxic_thread"]
+            },
             "BaseStats": {
                 "hp": 70,
                 "atk": 90,

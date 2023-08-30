@@ -21,7 +21,7 @@ var biomeData = {"Beach": preload("res://Scripts/BiomeData/Beach.gd"),
 				 "Plains": preload("res://Scripts/BiomeData/Plains.gd"),
 				 "Ocean": preload("res://Scripts/BiomeData/Ocean.gd")}
 
-@onready var playerObj = preload("res://Scenes/Player.tscn")
+@onready var playerObj = preload("res://Scenes/Objects/Player.tscn")
 
 @onready var masterNode = get_node("/root/Master")
 @onready var gameObjects = $GameObjects
@@ -223,7 +223,7 @@ func placeForeignObject(newObject, pos : Vector3, biome = ""):
 func placeObject(objectPath, pos : Vector3, biome = ""):
 	var newObject = load(objectPath).instantiate()
 	#Holy Shit Transgender
-	var realTrans = tilemap.map_to_local(Vector3i(pos.x, pos.y, pos.z))
+	var realTrans = tilemap.map_to_local(pos)
 	realTrans.x += randf_range(0, 0.3)
 	realTrans.z += randf_range(0, 0.3)
 	var objectTrans = realTrans
@@ -236,7 +236,7 @@ func placeObject(objectPath, pos : Vector3, biome = ""):
 # Place object, without the random tweaking
 func placeObjectExact(objectPath, pos : Vector3):
 	var newObject = objectPath.instantiate()
-	var objectTrans = tilemap.map_to_local(Vector3i(pos.x, pos.y, pos.z))
+	var objectTrans = tilemap.map_to_local(pos)
 	objectTrans.y = newObject.translation.y
 	newObject.global_translate(objectTrans)
 	gameObjects.add_child(newObject)
@@ -247,7 +247,7 @@ func addPlayer(playerName, pos = globalSpawnPoint):
 	newObject.name += playerName
 	$Players.add_child(newObject)
 	
-#	newObject.set_spawn(pos, Vector3.ZERO)
+	newObject.set_spawn(pos, Vector3.ZERO)
 	
 	if(playerName != ""):
 		newObject.set_name(playerName)
@@ -269,12 +269,12 @@ func waterTile(pos : Vector3):
 	return false
 	
 func isTile(pos : Vector3, tile):
-	if(tilemap.get_cell_item(Vector3i(pos.x, pos.y, pos.z)) ==  tile):
+	if(tilemap.get_cell_item(pos ==  tile)):
 		return true
 	return false
 	
 func getBiome(pos: Vector3):
-	var cell = tilemap.get_cell_item(Vector3i(pos.x, pos.y, pos.z))
+	var cell = tilemap.get_cell_item(pos)
 	var keys = tileBiomes.keys()
 	
 	for i in keys:
@@ -356,7 +356,7 @@ func plainsAutoTile(adj, pos):
 	
 	for i in adj:
 		if(waterTile(i)):
-			tilemap.set_cell_item(Vector3i(pos.x, pos.y, pos.z), 2)
+			tilemap.set_cell_item(pos, 2)
 			cells["Beach"].append(pos)
 			cells["Plains"].erase(pos)
 			break

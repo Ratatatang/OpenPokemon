@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ttt8v"]
 [ext_resource type="Texture2D" uid="uid://013dtxl7nenb" path="res://Sprites/Player.png" id="2_vmjbd"]
-[ext_resource type="Texture2D" uid="uid://b6cqlh5b83mrx" path="res://Sprites/EntityShadow.png" id="3_ani7v"]
 [ext_resource type="Animation" path="res://Sprites/PlayerAnimations/IdleDown.tres" id="4_4l4h6"]
 [ext_resource type="Animation" uid="uid://dk7qtaeb2rnhj" path="res://Sprites/PlayerAnimations/IdleLeft.tres" id="5_ldmh2"]
 [ext_resource type="Animation" path="res://Sprites/PlayerAnimations/IdleRight.tres" id="6_maeul"]
@@ -14,6 +13,9 @@
 [ext_resource type="Animation" uid="uid://ccfyspolt07lt" path="res://Sprites/PlayerAnimations/PlayerRunDown.tres" id="12_wrbpm"]
 [ext_resource type="Animation" uid="uid://dkv2syf5lhiy1" path="res://Sprites/PlayerAnimations/PlayerRunLeft.tres" id="13_08l7i"]
 [ext_resource type="Animation" uid="uid://bnjojykutltp2" path="res://Sprites/PlayerAnimations/PlayerRunRight.tres" id="14_86ffa"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n804x"]
+load_path = "res://.godot/imported/EntityShadow.png-d38a00afc142916ce08392832669a753.s3tc.ctex"
 
 [sub_resource type="Animation" id="2"]
 length = 0.001
@@ -239,7 +241,7 @@ hframes = 60
 transform = Transform3D(1.3, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00561619, -0.079, -0.160024)
 texture_filter = 0
 render_priority = -1
-texture = ExtResource("3_ani7v")
+texture = SubResource("CompressedTexture2D_n804x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

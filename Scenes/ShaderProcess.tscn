@@ -9,7 +9,7 @@ uniform sampler2D island_tex;
 
 void fragment(){
 	
-	vec2 uvn=abs(UV-0.5) * 1.97;
+	vec2 uvn=abs(UV-0.5) * 1.83;
 	float maxc=max(uvn.y,uvn.x);
 	vec3 mate=vec3(maxc);
 	
@@ -24,7 +24,7 @@ void fragment(){
 	
 	vec4 color = vec4(grad, 3);
 
-	COLOR = vec4(0.78 - color.rgb, color.a);
+	COLOR = vec4(0.76 - color.rgb, color.a);
 }"
 
 [sub_resource type="FastNoiseLite" id="3"]

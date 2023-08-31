@@ -89,11 +89,10 @@ func generateIsland():
 	texNoise.seed = randi()
 	
 	islandNoise.noise = texNoise
+
+	shaderProcess.material.set_shader_parameter("island_tex", islandNoise)
 	
-	var tex = shaderProcess.material.get_shader_parameter("island_tex")
-	tex = islandNoise
-	
-	var island = shaderProcess.get_texture().get_image()
+	var island = $ShaderProcess.get_texture().get_image()
 
 
 	for x in width:
@@ -118,17 +117,17 @@ func setTile(width, height):
 			var moist = moisture[Vector2(x, z)]
 			
 			#Ocean
-			if alt < 0.16:
+			if alt < 0.15:
 				tilemap.set_cell_item(Vector3i(x, 0, z), biomeTiles.Ocean)
 				cells["Ocean"].append(Vector3(x, 0, z))
 				
 			#Beach
-			elif between(alt, 0.16, 0.34):
+			elif between(alt, 0.15, 0.369):
 				tilemap.set_cell_item(Vector3i(x, 0, z), biomeTiles.Beach)
 				cells["Beach"].append(Vector3(x, 0, z))
 
 			#Other Biomes
-			elif alt > 0.34:
+			elif alt > 0.369:
 				
 				#Plains
 				#if between(moist, 0.2, 0.5) and between(temp, 0.2, 0.5):
@@ -208,7 +207,7 @@ func generateObjects(width, height):
 					#Picks a random object from the priority bracket
 					var newObject = possibleObjects[randi_range(0, possibleObjects.size()-1)]
 					
-					placeObject(newObject, pos)
+					placeObject(load(newObject), pos)
 
 #Helper func for start < val < end
 func between(val, start, end):
@@ -221,7 +220,7 @@ func placeForeignObject(newObject, pos : Vector3, biome = ""):
 	placeObject(newObject, to_local(pos), biome)
 
 func placeObject(objectPath, pos : Vector3, biome = ""):
-	var newObject = load(objectPath).instantiate()
+	var newObject = objectPath.instantiate()
 	#Holy Shit Transgender
 	var realTrans = tilemap.map_to_local(pos)
 	realTrans.x += randf_range(0, 0.3)

@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.1", "Forward Plus")
 
 [autoload]
 
-MasterInfo="*res://Scripts/MasterInfo.gd"
+MasterInfo="*res://Scenes/MasterInfo.tscn"
 
 [display]
 

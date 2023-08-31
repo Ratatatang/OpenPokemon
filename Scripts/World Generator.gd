@@ -23,7 +23,6 @@ var biomeData = {"Beach": preload("res://Scripts/BiomeData/Beach.gd"),
 
 @onready var playerObj = preload("res://Scenes/Objects/Player.tscn")
 
-@onready var masterNode = get_node("/root/Master")
 @onready var gameObjects = $GameObjects
 
 signal finished_island
@@ -54,7 +53,6 @@ func _ready():
 	globalSpawnPoint.y = 0.586
 		
 	var newPlayer = addPlayer("")
-	masterNode.player = newPlayer
 
 #Generates 2D noise maps
 func generateMap(fre, oct):

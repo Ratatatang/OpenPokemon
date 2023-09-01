@@ -115,12 +115,12 @@ func setTile(width, height):
 			var moist = moisture[Vector2(x, z)]
 			
 			#Ocean
-			if alt < 0.15:
+			if alt < 0.14:
 				tilemap.set_cell_item(Vector3i(x, 0, z), biomeTiles.Ocean)
 				cells["Ocean"].append(Vector3(x, 0, z))
 				
 			#Beach
-			elif between(alt, 0.15, 0.369):
+			elif between(alt, 0.14, 0.369):
 				tilemap.set_cell_item(Vector3i(x, 0, z), biomeTiles.Beach)
 				cells["Beach"].append(Vector3(x, 0, z))
 
@@ -328,6 +328,8 @@ puppet func clearChildren():
 	
 	masterNode.generateMap()"""
 	
+	
+#Makes a list of all the other tiles around it
 func autoTile(pos):
 	
 	#Down, Up, Right, Left
@@ -358,6 +360,10 @@ func plainsAutoTile(adj, pos):
 			cells["Plains"].erase(pos)
 			break
 
+#Okay fuck this
+#This function figures out all the directions the water is facing. 
+#It replaces the tile accordingly, and then gets a matrix coordinate
+#For the directions of the water tiles, and rotates it.
 func beachAutoTile(adj, pos):
 	adj.resize(4)
 	var newTile
@@ -423,7 +429,7 @@ func beachAutoTile(adj, pos):
 		elif(pos.x+1 == direction.z):
 			tileRotation = 16
 		elif(pos.x-1 == direction.x):
-			tileRotation = 22
+			tileRotation = 22 #Works
 	
 	tilemap.set_cell_item(Vector3i(pos.x, pos.y, pos.z), newTile, tileRotation)
 

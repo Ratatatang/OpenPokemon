@@ -14,13 +14,16 @@ size = Vector2(9.66995, 2.55323)
 size = Vector2(10.9595, 4.24381)
 
 [sub_resource type="QuadOccluder3D" id="QuadOccluder3D_tl8hv"]
-size = Vector2(9.07249, 3.31813)
+size = Vector2(10, 3.31813)
 
 [node name="Camera2D" type="Camera3D"]
 transform = Transform3D(0.999983, 0.00587831, 0.000717436, -0.00373068, 0.53124, 0.847213, 0.00459905, -0.847201, 0.531253, -0.0484942, 1.88742, 1.20995)
 environment = SubResource("54")
 current = true
 fov = 56.1467
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 3.25963e-09, 9.31323e-10, -3.0268e-09, 1, -4.17233e-07, -6.98492e-10, 4.47035e-07, 1, 0.00521021, -1.89577, 8.27079)
 
 [node name="Occluder1" type="OccluderInstance3D" parent="."]
 transform = Transform3D(0.999998, 0.00149604, 0.000898909, 0, 0.515038, -0.857167, -0.00174533, 0.857166, 0.515037, -0.0203685, 3.79018, -2.66457)

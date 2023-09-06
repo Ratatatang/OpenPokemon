@@ -302,6 +302,10 @@ script = ExtResource("5_0ajfv")
 wait_time = 0.1
 one_shot = true
 
+[node name="EmoteTimer" type="Timer" parent="WanderController"]
+wait_time = 0.1
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_8yeq1")
@@ -314,3 +318,4 @@ active = true
 parameters/blend_position = Vector2(-0.00078553, -0.00862074)
 
 [connection signal="timeout" from="WanderController/Timer" to="WanderController" method="_on_Timer_timeout"]
+[connection signal="timeout" from="WanderController/EmoteTimer" to="." method="_on_emote_timer_timeout"]

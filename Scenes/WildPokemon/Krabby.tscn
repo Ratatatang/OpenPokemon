@@ -306,6 +306,8 @@ script = ExtResource("5_sgkjt")
 [node name="Timer" type="Timer" parent="WanderController"]
 one_shot = true
 
+[node name="EmoteTimer" type="Timer" parent="WanderController"]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_gdqpg")

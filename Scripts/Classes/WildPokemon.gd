@@ -15,10 +15,12 @@ var state = WANDER
 @export var currHeight = 0.515
 @export var lockedHeight = true
 
+var canEmote = true
+
 enum {
 	IDLE,
 	WANDER,
-	EMOTE
+	EMOTE,
 }
 
 @onready var wanderController = $WanderController
@@ -38,7 +40,6 @@ func _ready():
 	pokemon = get_node("/root/MasterInfo").getPokemon(pokemonName)
 	
 func _physics_process(delta):
-
 	if true:
 #	if get_node("/root/Master").connectedToServer == false or is_multiplayer_authority():
 		if(state != IDLE and state != EMOTE):
@@ -52,7 +53,10 @@ func _physics_process(delta):
 				velocity2D = velocity2D.move_toward(Vector3.ZERO, FRICTION*delta)
 			
 				if wanderController.get_time_left() == 0.0:
-					state = pick_new_state([IDLE, WANDER, EMOTE])
+					var options = [IDLE, WANDER]
+					if(canEmote):
+						options.append(EMOTE)
+					state = pick_new_state(options)
 					wanderController.start_wander_timer(randf_range(1.8, 3.5))
 			
 			WANDER:
@@ -68,10 +72,14 @@ func _physics_process(delta):
 					wanderController.start_wander_timer(randf_range(1, 3))
 			
 			EMOTE:
-				$AnimationPlayer.play("emote")
+				if(!canEmote):
+					state = pick_new_state([IDLE, WANDER])
+				else:
+					$AnimationPlayer.play("emote")
 			
-				state = IDLE
-				wanderController.start_wander_timer(randf_range(2.5, 5))
+					state = IDLE
+					wanderController.start_wander_timer(randf_range(1, 3))
+					wanderController.start_emote_timer(randf_range(1, 2.5))
 		
 		set_velocity(velocity2D)
 		move_and_slide()
@@ -107,3 +115,7 @@ func pick_new_state(state_list):
 
 func startTimer():
 	$networkTimer.start()"""
+
+
+func _on_emote_timer_timeout():
+	canEmote = true

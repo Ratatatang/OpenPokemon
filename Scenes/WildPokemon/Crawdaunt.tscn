@@ -273,7 +273,6 @@ blend_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.601, 0)
 script = ExtResource("1")
 pokemonName = "Crawdaunt"
-path = "res://OpenWorld/WildPokemon/WildPokemon/Crawdaunt.tscn"
 currHeight = 0.601
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -306,6 +305,8 @@ script = ExtResource("4")
 
 [node name="Timer" type="Timer" parent="WanderController"]
 one_shot = true
+
+[node name="EmoteTimer" type="Timer" parent="WanderController"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

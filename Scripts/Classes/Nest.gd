@@ -9,15 +9,35 @@ var dominantPokemon
 @export var maxPokemon = 1
 var linkedPokemon
 
+@onready var NestZone = $Nest_Zone
+
+var connectedNodes = []
+
+enum {
+	RANDOMSPAWMS,
+	ESTABLISHEDNEST
+}
+
 func _ready():
 	if(runReady):
 	#$Nest_Zone/CollisionShape.scale.x = round(rand_range(1, 6))
 	#$Nest_Zone/CollisionShape.scale.z = round(rand_range(1, 6))
-		var pokeList = decidePokemon()
-		
-		for p in pokeList:
-			var num = randf_range(0, p.size()-1)
-			spawnPokemon(p[num])
+		if(NestZone.has_overlapping_areas()):
+			#0 = They merge into an established nest
+			#1 = Deletes this node
+			#var pick = [0, 0, 1].pick_random()
+			var pick = 0
+			if(pick == 0):
+				var nests = NestZone.get_overlapping_areas()
+				pass
+			#elif(pick == 1):
+				#queue_free()
+		else:
+			var pokeList = decidePokemon()
+			
+			for p in pokeList:
+				var num = randf_range(0, p.size()-1)
+				spawnPokemon(p[num])
 
 func decidePokemon():
 	var pokeList = []

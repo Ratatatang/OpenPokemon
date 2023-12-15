@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfs7co128ougk"]
+
+[ext_resource type="Script" path="res://Scripts/World/Objects/Nest.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cd4hs8fh055wu" path="res://Assets/World/EntityShadow.png" id="2"]
+
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(0.275492, 0.225214, 0.226539)
+
+[node name="Nest" type="Node3D" groups=["persist"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.812405, 0)
+script = ExtResource("1")
+validSpawns = {
+25: ["Crawdaunt"],
+75: ["Corphish"]
+}
+
+[node name="Nest_Zone" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nest_Zone"]
+transform = Transform3D(4.6597, 0, 0, 0, 0.611018, 0, 0, 0, 5.12588, -0.00501996, 0, 0)
+shape = SubResource("1")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.224178, 0)
+visible = false
+texture = ExtResource("2")

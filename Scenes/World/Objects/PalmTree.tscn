@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsxytd37vuur2"]
+
+[ext_resource type="Script" path="res://Scripts/World/Objects/Tree.gd" id="1_37a6u"]
+
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(0.097, 0.646, 0.0861482)
+
+[sub_resource type="BoxShape3D" id="2"]
+size = Vector3(0.401487, 0.001, 0.496625)
+
+[node name="Tree" type="StaticBody3D" groups=["persist"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.884, 0)
+script = ExtResource("1_37a6u")
+
+[node name="Sprite2D" type="Sprite3D" parent="."]
+transform = Transform3D(1.93282, 0, 0, 0, 1.20194, -0.686724, 0, -0.789395, 1.41126, 0, 0, 0)
+texture_filter = 0
+
+[node name="Shadow" type="Sprite3D" parent="."]
+transform = Transform3D(3.9, 0, 0, 0, -8.74228e-08, -3, 0, 2, -1.31134e-07, -0.00953105, -0.375252, 0.22756)
+render_priority = -1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.91918, 0, 0, 0, 1, 0, 0, 0, 1, 0.100687, -0.246759, 0.182136)
+shape = SubResource("1")
+
+[node name="CollisionShape2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0764145, -0.386289, 0.129812)
+shape = SubResource("2")

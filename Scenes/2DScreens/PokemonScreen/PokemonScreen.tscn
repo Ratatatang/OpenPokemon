@@ -1,0 +1,260 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/2DScreens/PokemonScreen/PokemonScreen.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dye2pfeg4yiv3" path="res://Scenes/2DScreens/PokemonScreen/ItemSlot.tscn" id="2"]
+[ext_resource type="Script" path="res://Assets/2DScreens/PokemonScreen/Inventory.gd" id="3"]
+
+[node name="PokemonScreen" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -594.0
+offset_top = -317.0
+offset_right = 679.0
+offset_bottom = 373.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.337255 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inventory" type="GridContainer" parent="."]
+offset_left = -164.0
+offset_top = -277.0
+offset_right = 475.0
+offset_bottom = 317.0
+scale = Vector2( 4, 4 )
+columns = 6
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemSlot" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="ItemSlot2" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 28.0
+offset_right = 52.0
+offset_bottom = 24.0
+
+[node name="ItemSlot3" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 56.0
+offset_right = 80.0
+offset_bottom = 24.0
+
+[node name="ItemSlot4" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 84.0
+offset_right = 108.0
+offset_bottom = 24.0
+
+[node name="ItemSlot5" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 112.0
+offset_right = 136.0
+offset_bottom = 24.0
+
+[node name="ItemSlot6" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 140.0
+offset_right = 164.0
+offset_bottom = 24.0
+
+[node name="ItemSlot7" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 28.0
+offset_right = 24.0
+offset_bottom = 52.0
+
+[node name="ItemSlot8" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 28.0
+offset_top = 28.0
+offset_right = 52.0
+offset_bottom = 52.0
+
+[node name="ItemSlot9" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 56.0
+offset_top = 28.0
+offset_right = 80.0
+offset_bottom = 52.0
+
+[node name="ItemSlot10" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 84.0
+offset_top = 28.0
+offset_right = 108.0
+offset_bottom = 52.0
+
+[node name="ItemSlot11" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 112.0
+offset_top = 28.0
+offset_right = 136.0
+offset_bottom = 52.0
+
+[node name="ItemSlot12" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 140.0
+offset_top = 28.0
+offset_right = 164.0
+offset_bottom = 52.0
+
+[node name="ItemSlot13" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 56.0
+offset_right = 24.0
+offset_bottom = 80.0
+
+[node name="ItemSlot14" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 28.0
+offset_top = 56.0
+offset_right = 52.0
+offset_bottom = 80.0
+
+[node name="ItemSlot15" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="ItemSlot16" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 84.0
+offset_top = 56.0
+offset_right = 108.0
+offset_bottom = 80.0
+
+[node name="ItemSlot17" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 112.0
+offset_top = 56.0
+offset_right = 136.0
+offset_bottom = 80.0
+
+[node name="ItemSlot18" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 140.0
+offset_top = 56.0
+offset_right = 164.0
+offset_bottom = 80.0
+
+[node name="ItemSlot19" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 84.0
+offset_right = 24.0
+offset_bottom = 108.0
+
+[node name="ItemSlot20" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 28.0
+offset_top = 84.0
+offset_right = 52.0
+offset_bottom = 108.0
+
+[node name="ItemSlot21" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 56.0
+offset_top = 84.0
+offset_right = 80.0
+offset_bottom = 108.0
+
+[node name="ItemSlot22" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 84.0
+offset_top = 84.0
+offset_right = 108.0
+offset_bottom = 108.0
+
+[node name="ItemSlot23" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 112.0
+offset_top = 84.0
+offset_right = 136.0
+offset_bottom = 108.0
+
+[node name="ItemSlot24" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 140.0
+offset_top = 84.0
+offset_right = 164.0
+offset_bottom = 108.0
+
+[node name="ItemSlot25" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 112.0
+offset_right = 24.0
+offset_bottom = 136.0
+
+[node name="ItemSlot26" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 28.0
+offset_top = 112.0
+offset_right = 52.0
+offset_bottom = 136.0
+
+[node name="ItemSlot27" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 56.0
+offset_top = 112.0
+offset_right = 80.0
+offset_bottom = 136.0
+
+[node name="ItemSlot28" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 84.0
+offset_top = 112.0
+offset_right = 108.0
+offset_bottom = 136.0
+
+[node name="ItemSlot29" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 112.0
+offset_top = 112.0
+offset_right = 136.0
+offset_bottom = 136.0
+
+[node name="ItemSlot30" parent="Inventory" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 140.0
+offset_top = 112.0
+offset_right = 164.0
+offset_bottom = 136.0

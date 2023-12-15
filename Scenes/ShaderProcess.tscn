@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://u3jgemplnvlv"]
 
-[ext_resource type="Texture2D" uid="uid://drka25qmbip1h" path="res://Sprites/SquareGradient.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://drka25qmbip1h" path="res://Assets/World/SquareGradient.png" id="1"]
 
 [sub_resource type="Shader" id="1"]
 code = "shader_type canvas_item;

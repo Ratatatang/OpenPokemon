@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dye2pfeg4yiv3"]
+
+[ext_resource type="Texture2D" uid="uid://c0pcjalt048lo" path="res://Assets/2DScreens/PokemonScreen/ItemSlotTile.png" id="1_3tsvb"]
+[ext_resource type="Texture2D" uid="uid://b5a0r0hrte1rp" path="res://Assets/2DScreens/PokemonScreen/ItemSlotHovered.png" id="2_8ouyx"]
+
+[node name="ItemSlot" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1000.0
+offset_bottom = -576.0
+mouse_filter = 2
+
+[node name="Sprite2D" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("1_3tsvb")
+texture_pressed = ExtResource("2_8ouyx")
+texture_hover = ExtResource("2_8ouyx")
+
+[node name="Item" type="TextureRect" parent="."]
+layout_mode = 2
+mouse_filter = 2

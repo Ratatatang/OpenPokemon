@@ -1,3 +1,3 @@
 var objects = {
-	100: ["res://Scenes/Objects/OakTree.tscn"]
+	100: ["res://Scenes/World/Objects/OakTree.tscn"]
 }

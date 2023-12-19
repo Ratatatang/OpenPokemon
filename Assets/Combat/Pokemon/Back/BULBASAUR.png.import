@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf6oawc6765rq"
+uid="uid://cm3yyrhggg0df"
 path="res://.godot/imported/BULBASAUR.png-b18a931011fd434140164c6bcf6c7004.ctex"
 metadata={
 "vram_texture": false
@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BULBASAUR.png-b18a931011fd434140164c6bcf6c700
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -1,7 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://i6vkavyuduk5"]
+[gd_scene load_steps=35 format=3 uid="uid://ij8c6aowgmmt"]
 
 [ext_resource type="Script" path="res://Scripts/World/Entities/WildPokemon.gd" id="1_gi22u"]
-[ext_resource type="Texture2D" uid="uid://t60v2lioq77y" path="res://Assets/Combat/Pokemon/Front/BULBASAUR.png" id="2_4r4lh"]
+[ext_resource type="Texture2D" uid="uid://bbwshtftyoche" path="res://Assets/Combat/Pokemon/Front/BULBASAUR.png" id="2_4r4lh"]
 [ext_resource type="Texture2D" uid="uid://cd4hs8fh055wu" path="res://Assets/World/EntityShadow.png" id="3_q2j1n"]
 [ext_resource type="Texture2D" uid="uid://em2ys1xwgqb6" path="res://Assets/World/Entities/Emotes/Happy.png" id="4_blrtn"]
 [ext_resource type="Script" path="res://Scripts/World/Entities/Wander Controller.gd" id="5_0ajfv"]

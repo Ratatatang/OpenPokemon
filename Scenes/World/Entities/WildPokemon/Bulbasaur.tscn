@@ -272,7 +272,6 @@ blend_mode = 1
 [node name="WildPokemon" type="CharacterBody3D" groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.601, 0)
 script = ExtResource("1")
-currHeight = 0.601
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, -0.00390719, -0.0138645, -0.0124963)
@@ -282,7 +281,7 @@ shape = SubResource("1")
 transform = Transform3D(0.3, 0, 0, 0, 0.204776, 0.730806, 0, -0.219242, 0.682586, 0.001, 0, -0.05)
 texture_filter = 0
 sprite_frames = SubResource("18")
-animation = &"up"
+animation = &"down"
 
 [node name="Shadow" type="Sprite3D" parent="Sprite2D"]
 transform = Transform3D(1.99978, -0.00750381, 0.0185753, 0.0194532, -1.13786, -0.505771, 0.0112914, 0.82233, -0.604614, -0.00677907, -0.288115, -0.0157844)

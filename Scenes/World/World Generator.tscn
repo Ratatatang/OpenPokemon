@@ -1,19 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://ban4agfxv0snt"]
 
 [ext_resource type="Script" path="res://Scripts/World/World Generator.gd" id="1_kr5ny"]
-[ext_resource type="MeshLibrary" uid="uid://dexooie0xbphy" path="res://Assets/World/WorldMap.tres" id="2_0qvq0"]
+[ext_resource type="MeshLibrary" uid="uid://cet3sknl0ffqp" path="res://Assets/World/WorldMap.tres" id="2_msqyu"]
 [ext_resource type="PackedScene" uid="uid://u3jgemplnvlv" path="res://Scenes/ShaderProcess.tscn" id="3"]
 
 [node name="World Generator" type="Node3D"]
 script = ExtResource("1_kr5ny")
 
 [node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("2_0qvq0")
+mesh_library = ExtResource("2_msqyu")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 150
 data = {
 "cells": PackedInt32Array(327892, 9, 2, 328112, 17, 2, 328128, 17, 2, 328132, 17, 2, 328133, 19, 2, 328085, 21, 2, 327906, 24, 2, 328128, 25, 2, 327922, 33, 2, 328037, 33, 2, 328140, 43, 2, 327942, 44, 2, 327991, 47, 2, 328103, 96, 2, 327858, 137, 2, 327868, 155, 2, 328042, 157, 2, 327894, 182, 2, 327975, 193, 2, 327924, 195, 2, 328050, 65336, 2, 328010, 65337, 2, 327959, 65356, 2, 328099, 65374, 2, 327921, 65385, 2, 327895, 65420, 2, 328129, 65422, 2, 327874, 65458, 2, 327863, 65489, 2, 328132, 65490, 2, 327871, 65518, 2, 327880, 65531, 2)
 }
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Players" type="Node3D" parent="."]
 

@@ -42,12 +42,7 @@ var dimorphism = false
 
 var shiny = false
 
-var moves = {
-	"move1": "",
-	"move2": "",
-	"move3": "",
-	"move4": ""
-}
+var moves = []
 
 var availableMoves = []
 
@@ -92,20 +87,27 @@ func _init(tempName, lv = 0, info = MasterInfo):
 		gender = "Male"
 
 		#Sets random IV's
-	self.hpIV = round(randf_range(0, 31))
-	self.atkIV = round(randf_range(0, 31))
-	self.defIV = round(randf_range(0, 31))
-	self.spAtkIV = round(randf_range(0, 31))
-	self.spDefIV = round(randf_range(0, 31))
-	self.speedIV = round(randf_range(0, 31))
+#	self.hpIV = round(randf_range(0, 31))
+#	self.atkIV = round(randf_range(0, 31))
+#	self.defIV = round(randf_range(0, 31))
+#	self.spAtkIV = round(randf_range(0, 31))
+#	self.spDefIV = round(randf_range(0, 31))
+#	self.speedIV = round(randf_range(0, 31))
+	
+	self.hpIV = 31
+	self.atkIV = 31
+	self.defIV = 31
+	self.spAtkIV = 31
+	self.spDefIV = 31
+	self.speedIV = 31
 
 	#Calculates stats based on base stats & IV's
-	self.hp =  round((((2 * baseStats.get("hp") + hpIV + 0) * level)/100) + level + 10)
-	self.atk = round((((2 * baseStats.get("atk") + atkIV + 0) * level)/100) + 5)
-	self.def = round((((2 * baseStats.get("def") + defIV + 0) * level)/100) + 5)
-	self.spAtk = round((((2 * baseStats.get("spAtk") + spAtkIV + 0) * level)/100) + 5)
-	self.spDef = round((((2 * baseStats.get("spDef") + spDefIV + 0) * level)/100) + 5)
-	self.speed = round((((2 * baseStats.get("speed") + speedIV + 0) * level)/100) + 5)
+	self.hp =  round(floor(((2 * baseStats.get("hp") + hpIV + 0) * level)/100) + level + 10)
+	self.atk = round(floor(((2 * baseStats.get("atk") + atkIV + 0) * level)/100) + 5)
+	self.def = round(floor(((2 * baseStats.get("def") + defIV + 0) * level)/100) + 5)
+	self.spAtk = round(floor(((2 * baseStats.get("spAtk") + spAtkIV + 0) * level)/100) + 5)
+	self.spDef = round(floor(((2 * baseStats.get("spDef") + spDefIV + 0) * level)/100) + 5)
+	self.speed = round(floor(((2 * baseStats.get("speed") + speedIV + 0) * level)/100) + 5)
 
 	self.tempHp = self.hp
 
@@ -117,12 +119,12 @@ func _init(tempName, lv = 0, info = MasterInfo):
 func recalculateStats():
 	var baseStats = pokedexInfo.get("BaseStats")
 
-	self.hp =  round((((2 * baseStats.get("hp") + hpIV + 0) * level)/100) + level + 10)
-	self.atk = round((((2 * baseStats.get("atk") + atkIV + 0) * level)/100) + 5)
-	self.def = round((((2 * baseStats.get("def") + defIV + 0) * level)/100) + 5)
-	self.spAtk = round((((2 * baseStats.get("spAtk") + spAtkIV + 0) * level)/100) + 5)
-	self.spDef = round((((2 * baseStats.get("spDef") + spDefIV + 0) * level)/100) + 5)
-	self.speed = round((((2 * baseStats.get("speed") + speedIV + 0) * level)/100) + 5)
+	self.hp =  round(floor(((2 * baseStats.get("hp") + hpIV + 0) * level)/100) + level + 10)
+	self.atk = round(floor(((2 * baseStats.get("atk") + atkIV + 0) * level)/100) + 5)
+	self.def = round(floor(((2 * baseStats.get("def") + defIV + 0) * level)/100) + 5)
+	self.spAtk = round(floor(((2 * baseStats.get("spAtk") + spAtkIV + 0) * level)/100) + 5)
+	self.spDef = round(floor(((2 * baseStats.get("spDef") + spDefIV + 0) * level)/100) + 5)
+	self.speed = round(floor(((2 * baseStats.get("speed") + speedIV + 0) * level)/100) + 5)
 
 	# this is fucking stupid.
 	#(figures out what key values in the moves dictionary need to be appended to availableMoves)
@@ -138,28 +140,6 @@ func getMoves(moveLvs, instMovedex):
 				if self.availableMoves.find(movesToAppend[j]) <= 0:
 					self.availableMoves.append(movesToAppend[j])
 						#print("added " + movesToAppend[j])
-
-	availableMovesTemp = availableMoves.duplicate(true)
-
-	# sets the amount of keys to set, and set a key to be a unique move
-	# off the tempAvailableMoves list
-
-	var keys = moves.keys()
-		
-	if len(keys) > len(availableMoves):
-		keys.resize(len(availableMoves))
-
-	var move = randf_range(0, len(availableMoves))
-	move = round(move)
-
-	for i in len(keys):
-		move = randf_range(0, len(availableMovesTemp)-1)
-		move = round(move)
-		#print(move)
-		#print(availableMovesTemp)
-		self.moves[keys[i]] = availableMovesTemp[move]
-		availableMovesTemp.erase(moves[keys[i]])
-		self.moves[keys[i]] = instMovedex.get(moves[keys[i]])
 
 func calculateLevel(addedXP):
 	if(level >= 100):
@@ -180,10 +160,10 @@ func setRandomMoves():
 	var pickedMoves = availableMoves.duplicate()
 	while(pickedMoves.size() > num):
 		pickedMoves.erase(pickedMoves.pick_random())
-	
-	var keys = moves.keys()
+		
 	for i in num:
-		moves[keys[i]] = pickedMoves[i]
+		var newMove = MasterInfo.getMove(pickedMoves[i]).duplicate(true)
+		moves.append(newMove)
 
 func calculateXP():
 	pass

@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsxytd37vuur2"]
+[gd_scene load_steps=6 format=3 uid="uid://bsxytd37vuur2"]
 
 [ext_resource type="Script" path="res://Scripts/World/Objects/Tree.gd" id="1_37a6u"]
+[ext_resource type="Texture2D" uid="uid://c0k4pn107qega" path="res://Assets/World/Objects/PalmTree.png" id="2_jy25h"]
+[ext_resource type="Texture2D" uid="uid://cd4hs8fh055wu" path="res://Assets/World/EntityShadow.png" id="3_7b0jo"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(0.097, 0.646, 0.0861482)
@@ -15,10 +17,13 @@ script = ExtResource("1_37a6u")
 [node name="Sprite2D" type="Sprite3D" parent="."]
 transform = Transform3D(1.93282, 0, 0, 0, 1.20194, -0.686724, 0, -0.789395, 1.41126, 0, 0, 0)
 texture_filter = 0
+texture = ExtResource("2_jy25h")
 
 [node name="Shadow" type="Sprite3D" parent="."]
-transform = Transform3D(3.9, 0, 0, 0, -8.74228e-08, -3, 0, 2, -1.31134e-07, -0.00953105, -0.375252, 0.22756)
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -3, 0, 2, -1.31134e-07, 0.105337, -0.375252, 0.22756)
+texture_filter = 0
 render_priority = -1
+texture = ExtResource("3_7b0jo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.91918, 0, 0, 0, 1, 0, 0, 0, 1, 0.100687, -0.246759, 0.182136)

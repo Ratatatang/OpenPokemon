@@ -1,5 +1,5 @@
 {
-	"Flags": ["Sound", "Powder", "SwapCat", "Healing", "Support", "Charge", "IgnoreLevitate", "AirAttack"],
+	"Flags": ["Sound", "Powder", "Healing", "Support", "Charge", "IgnoreLevitate", "AirAttack"],
 	"StatusEffects": ["Poison", "Paralyze", "Burn", "Sleep", "Freeze"],
 	"VolatileEffects":  ["Confusion", "Infatuated", "Seeded", "Flinch"],
 	"EctEffects": ["HealPercent", "HealAmount", "Recoil"],

@@ -456,6 +456,7 @@ cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_h7dm2")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.682585, 0.730806, 0, -0.730806, 0.682585, 0.005, 0, -0.23)

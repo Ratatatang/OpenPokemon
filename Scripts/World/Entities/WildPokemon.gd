@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name WildPokemon
 
 var pokemonData
 @export var pokemonName = "Bulbasaur"
@@ -12,8 +13,8 @@ var pokemonData
 var velocity2D = Vector3.ZERO
 var state = WANDER
 
-@export var currHeight = 0.515
-@export var lockedHeight = true
+var currHeight = 0.515
+var lockedHeight = true
 
 var canEmote = true
 
@@ -38,6 +39,15 @@ func _ready():
 	wanderController.start_wander_timer(0.1)
 	currHeight = global_position.y
 	pokemonData = MasterInfo.getPokemon(pokemonName)
+	
+	if(pokemonData.has("Acceleration")):
+		ACCELERATION = pokemonData.get("Acceleration")
+	if(pokemonData.has("Max Speed")):
+		MAX_SPEED = pokemonData.get("Max Speed")
+	if(pokemonData.has("Friction")):
+		FRICTION = pokemonData.get("Friction")
+	if(pokemonData.has("Walk Speed")):
+		walkSpeed = pokemonData.get("Walk Speed")
 	
 func _physics_process(delta):
 	if true:

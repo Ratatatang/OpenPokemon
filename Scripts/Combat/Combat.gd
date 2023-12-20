@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal pressedComfirm
+signal moveDone
 
 @onready var enemySprite = $Enemy/Sprite2D
 @onready var playerSprite = $Player/Sprite2D
@@ -9,16 +10,26 @@ signal pressedComfirm
 @onready var enemy : battlePlayer = $Enemy
 @onready var player : battlePlayer = $Player
 
+var moveQueue = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player.generateBack = true
 	enemy.loadPokemon("Bulbasaur")
-	player.loadPokemon("Pidgey")
+	player.loadPokemon("Bulbasaur")
 	loadMoves(player)
 
 func _input(event):
 	if event.is_action_pressed("confirm"):
 		pressedComfirm.emit()
+
+func resolveQueue():
+	for move in moveQueue:
+		preMoveUse(move[0], move[1], move[2])
+		await moveDone
+	
+	UI.showMenu()
+	moveQueue = []
 
 #Overview from pokemon showdown
 	#Pre-Move interruptions, ex. flinch/paralysis
@@ -35,6 +46,7 @@ func _input(event):
 	#Animation/Damage
 	#Healing, Status Effects
 	#Recoil, Drain Heals
+	
 func preMoveUse(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 	UI.showDialog()
 	UI.setDialog(attacker.getName() + " used " + move.DisplayName + "!")
@@ -53,33 +65,33 @@ func moveExectute(move : Dictionary, attacker : battlePlayer, victim : battlePla
 
 func moveHit(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 	
-	var	damage = calculateDamage(move, attacker, victim)
+	var	outcome = calculateDamage(move, attacker, victim)
 	
-	if(damage[0] > 0):
-		victim.reduceHP(damage[0])
-		print(damage)
+	if(outcome[0] > 0):
+		victim.reduceHP(outcome[0])
+		print(outcome)
 		
 	await pressedComfirm
 	
-	if(damage[1] != 1):
-		if(damage[1] == 0):
-			UI.setDialog("It doesn't affect the opposing "+victim.getName())
-		else:
-			UI.setDialog(MasterInfo.effectiveDialog.get(str(clamp(damage[1], 0.5, 2))))
-		
-		await pressedComfirm
+	if(outcome[1] != 1):
+		if(outcome[1] == 0):
+			UI.setDialog("It doesn't affect the opposing "+victim.getName()+"...")
+			await pressedComfirm
+		elif(outcome[0] > 0):
+			UI.setDialog(MasterInfo.effectiveDialog.get(str(clamp(outcome[1], 0.5, 2))))
+			await pressedComfirm
 	
-	if(move.StatChanges != {} and damage[1] != 0):
+	if(move.StatChanges != {} and outcome[1] != 0):
 		changeStats(move, attacker, victim)
 		await pressedComfirm
 	
-	UI.showMenu()
+	moveDone.emit()
 
 func calculateDamage(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 	
-	var damage = 2
-	var level = attacker.getLevel()
-	var power = move.Power
+	var damage = 2.0
+	var level = float(attacker.getLevel())
+	var power = float(move.Power)
 	var attack
 	var defense
 	
@@ -89,26 +101,26 @@ func calculateDamage(move : Dictionary, attacker : battlePlayer, victim : battle
 	
 	for type in victim.getTypes():
 		if(typeMatchups.has(type)):
-			typeMultiplier *= typeMatchups.get(type)
+			typeMultiplier *= float(typeMatchups.get(type))
 	
 	if(move.Category == "Physical"):
-		attack = attacker.getAttack()
-		defense = victim.getDefense()
+		attack = float(attacker.getAttack())
+		defense = float(victim.getDefense())
 	elif(move.Category == "Special"):
-		attack = attacker.getSpAttack()
-		defense = victim.getSpDefense()
+		attack = float(attacker.getSpAttack())
+		defense = float(victim.getSpDefense())
 	else:
 		return [0, typeMultiplier]
 	
 	if(move.Flags.has("useDefense")):
-		defense = victim.def
+		defense = float(victim.def)
 	
 	#The big part of the damage formula
 	damage *= level
 	damage /= 5.0
 	damage += 2.0
 	damage *= power
-	damage *= (attack/defense)
+	damage *= float(attack/defense)
 	damage /= 50.0
 	damage += 2.0
 	#Multipliers
@@ -140,6 +152,10 @@ func changeStats(move : Dictionary, attacker : battlePlayer, victim : battlePlay
 			var change = statChange.get(step)
 			if(step == "Target"):
 				target = change
+			elif(step == "VolatileEffect"):
+				pressedComfirm.emit()
+				pressedComfirm.emit()
+				print("volatile")
 			else:
 				if(target == "Victim"):
 					victim.changeStat(step, change)
@@ -176,15 +192,23 @@ func decideAIMove(attacker : battlePlayer, victim : battlePlayer):
 	var move = attacker.getMoves().pick_random()
 	
 	if(move.Target == "Self"):
-		preMoveUse(move, enemy, enemy)
+		moveQueue.append([move, attacker, attacker])
+		#preMoveUse(move, enemy, enemy)
 	else:
-		preMoveUse(move, enemy, player)
+		moveQueue.append([move, attacker, victim])
+		#preMoveUse(move, enemy, player)
 
 func _on_move_pressed(move : Dictionary):
 	if(move.PP[0] <= 0):
 		pass
 	else:
+		var queue
 		if(move.Target == "Self"):
-			preMoveUse(move, player, player)
+			moveQueue.append([move, player, player])
+			#preMoveUse(move, player, player)
 		else:
-			preMoveUse(move, player, enemy)
+			moveQueue.append([move, player, enemy])
+			#preMoveUse(move, player, enemy)
+		
+		decideAIMove(enemy, player)
+		resolveQueue()

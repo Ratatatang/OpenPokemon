@@ -3,6 +3,8 @@ class_name battlePlayer
 
 var loadedPokemon
 var moves
+var volatileEffects = []
+var statusEffects = []
 
 var generateBack = false
 
@@ -59,6 +61,9 @@ func changeStat(stat, value):
 	statsDict[stat] += value
 	print(statsDict.get(stat))
 
+func inflictVolatile(value):
+	volatileEffects.append(value)
+
 func getName() -> String:
 	return loadedPokemon.displayName
 
@@ -80,5 +85,5 @@ func getSpAttack() -> int:
 func getSpDefense() -> int:
 	return loadedPokemon.spDef
 
-func getTypes() -> Array[String]:
+func getTypes() -> Array:
 	return loadedPokemon.types

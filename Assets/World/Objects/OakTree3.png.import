@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfhrbaqq5d35f"
-path="res://.godot/imported/1.png-58edbba84ac648160f00ce14b8c58e2f.ctex"
+uid="uid://oq4crvba87lw"
+path="res://.godot/imported/OakTree3.png-5252fb4b30993f4c78ef1c8de46f30c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Combat/1.png"
-dest_files=["res://.godot/imported/1.png-58edbba84ac648160f00ce14b8c58e2f.ctex"]
+source_file="res://Assets/World/Objects/OakTree3.png"
+dest_files=["res://.godot/imported/OakTree3.png-5252fb4b30993f4c78ef1c8de46f30c7.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

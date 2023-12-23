@@ -180,12 +180,12 @@ var statChanges = {
 }
 
 var changesDialog = {
-	"-3": " severely fell!",
-	"-2": " harshly fell!",
-	"-1": " fell!",
-	"1": " rose!",
-	"2": " rose sharply!",
-	"3": " drastically!"
+	"-3": "%s's %s severely fell!",
+	"-2": "%s's %s harshly fell!",
+	"-1": "%s's %s fell!",
+	"1": "%s's %s rose!",
+	"2": "%s's %s rose sharply!",
+	"3": "%s's %s drastically!"
 }
 
 var effectiveDialog = {

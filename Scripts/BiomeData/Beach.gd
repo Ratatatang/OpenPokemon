@@ -1,4 +1,5 @@
 var objects = {
-	100: ["res://Scenes/World/Objects/Nests/BeachCommon.tscn", "res://Scenes/World/Objects/PalmTree.tscn"]
+	50: ["res://Scenes/World/Objects/Nests/BeachCommon.tscn"],
+	100: ["res://Scenes/World/Objects/PalmTree.tscn"]
 }
 

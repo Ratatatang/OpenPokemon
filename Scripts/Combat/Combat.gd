@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal pressedComfirm
 signal moveDone
+signal statusDone
 
 @onready var enemySprite = $Enemy/Sprite2D
 @onready var playerSprite = $Player/Sprite2D
@@ -11,12 +12,14 @@ signal moveDone
 @onready var player : battlePlayer = $Player
 
 var moveQueue = []
+@onready var battlerQueue = [player, enemy]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player.generateBack = true
-	enemy.loadPokemon("Bulbasaur")
-	player.loadPokemon("Bulbasaur")
+	enemy.loadPokemon("Pidgey")
+	player.loadPokemon("Vulpix", 24)
+	enemy.enemy = true
 	loadMoves(player)
 
 func _input(event):
@@ -28,6 +31,13 @@ func resolveQueue():
 		preMoveUse(move[0], move[1], move[2])
 		await moveDone
 	
+	for battler in battlerQueue:
+		if(battler.getStatuses() != []):
+			for status in battler.getStatuses():
+				var statusPassed = status._effect_afterMoves(battler, UI)
+				if(statusPassed):
+					await pressedComfirm
+
 	UI.showMenu()
 	moveQueue = []
 
@@ -65,7 +75,7 @@ func moveExectute(move : Dictionary, attacker : battlePlayer, victim : battlePla
 
 func moveHit(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 	
-	var	outcome = calculateDamage(move, attacker, victim)
+	var outcome = calculateDamage(move, attacker, victim)
 	
 	if(outcome[0] > 0):
 		victim.reduceHP(outcome[0])
@@ -83,7 +93,7 @@ func moveHit(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 	
 	if(move.StatChanges != {} and outcome[1] != 0):
 		changeStats(move, attacker, victim)
-		await pressedComfirm
+		await statusDone
 	
 	moveDone.emit()
 
@@ -152,24 +162,41 @@ func changeStats(move : Dictionary, attacker : battlePlayer, victim : battlePlay
 			var change = statChange.get(step)
 			if(step == "Target"):
 				target = change
-			elif(step == "VolatileEffect"):
-				pressedComfirm.emit()
-				pressedComfirm.emit()
-				print("volatile")
-			else:
-				if(target == "Victim"):
-					victim.changeStat(step, change)
+
+			elif(target == "Victim"):
+				if(step == "VolatileEffect"):
+					victim.inflictVolatile(change)
+					UI.setDialog("Inflicted Volatile Status Effect!")
 					
-					UI.setDialog(
-						victim.getName() + "'s "+ step + 
-						MasterInfo.changesDialog.get(str(clamp(change, -3, 3))))
+				elif(step == "StatusEffect"):
+					inflictStatus(victim, change)
+					
+				else:
+					victim.changeStat(step, int(change))
+					UI.setDialog(MasterInfo.changesDialog.get(str(clamp(change, -3, 3))) % [victim.getName(), step])
+				await pressedComfirm
 						
-				if(target == "Self"):
-					attacker.changeStat(step, change)
+			elif(target == "Self"):
+				if(step == "VolatileEffect"):
+					inflictVolatile(attacker, change)
 					
-					UI.setDialog(
-						attacker.getName() + "'s "+ step + 
-						MasterInfo.changesDialog.get(str(clamp(change, -3, 3))))
+				elif(step == "StatusEffect"):
+					inflictStatus(attacker, change)
+					
+				else:
+					attacker.changeStat(step, int(change))
+					UI.setDialog(MasterInfo.changesDialog.get(str(clamp(change, -3, 3))) % [attacker.getName(), step])
+				await pressedComfirm
+					
+	statusDone.emit()
+
+func inflictVolatile(target : battlePlayer, change):
+	target.inflictVolatile(change)
+	UI.setDialog("Inflicted Volatile Status Effect!")
+
+func inflictStatus(target : battlePlayer, change):
+	target.inflictStatus(change)
+	UI.setDialog("Inflicted Status Effect!")
 
 func loadMoves(battleNode : battlePlayer):
 	var moves = battleNode.getMoves()

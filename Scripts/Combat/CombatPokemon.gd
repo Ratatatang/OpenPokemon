@@ -4,9 +4,10 @@ class_name battlePlayer
 var loadedPokemon
 var moves
 var volatileEffects = []
-var statusEffects = []
+var statusEffect
 
 var generateBack = false
+var enemy = false
 
 @onready var sprite = $Sprite2D
 @onready var healthBar = $Healthbar
@@ -24,7 +25,7 @@ var statsDict = {
 }
 
 func loadPokemon(pokemonName, level = 10):
-	loadedPokemon = pokemon.new(pokemonName, 10)
+	loadedPokemon = pokemon.new(pokemonName, level)
 	moves = loadedPokemon.moves.duplicate()
 	healthBar.max_value = loadedPokemon.hp
 	healthBar.value = loadedPokemon.tempHp
@@ -34,10 +35,10 @@ func loadPokemon(pokemonName, level = 10):
 
 func loadSprite(pokemonName):
 	var texture
+	var gen = "Front"
 	if(generateBack):
-		texture = load("res://Assets/Combat/Pokemon/Back/"+ pokemonName.to_upper() +".png")
-	else:
-		texture = load("res://Assets/Combat/Pokemon/Front/"+ pokemonName.to_upper() +".png")
+		gen = "Back"
+	texture = load("res://Assets/Combat/Pokemon/%s/%s.png" % [gen, pokemonName.to_upper()])
 	
 	sprite.texture = texture
 	
@@ -54,18 +55,36 @@ func loadSprite(pokemonName):
 
 func reduceHP(amount):
 	loadedPokemon.tempHp -= amount
+	
+	if(loadedPokemon.tempHp < 0):
+		loadedPokemon.tempHp = 0
+		
 	var tween = create_tween()
 	tween.tween_property(healthBar, "value", loadedPokemon.tempHp, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-func changeStat(stat, value):
+func reducePercentHP(percent):
+	reduceHP(loadedPokemon.hp / percent)
+
+func changeStat(stat, value : int):
 	statsDict[stat] += value
-	print(statsDict.get(stat))
 
 func inflictVolatile(value):
 	volatileEffects.append(value)
 
+func inflictStatus(value : String):
+	if(statusEffect == null):
+		statusEffect = load("res://Scripts/Combat/StatusConditions/%s.gd" % [value]).new()
+		
 func getName() -> String:
-	return loadedPokemon.displayName
+	if(enemy):
+		return "Enemy " + loadedPokemon.displayName
+	else:
+		return loadedPokemon.displayName
+
+func getStatuses():
+	if(statusEffect != null):
+		return volatileEffects + [statusEffect]
+	return volatileEffects
 
 func getMoves() -> Array:
 	return moves
@@ -73,17 +92,21 @@ func getMoves() -> Array:
 func getLevel() -> int:
 	return loadedPokemon.level
 
+
 func getAttack() -> int:
-	return loadedPokemon.atk
+	return clamp(loadedPokemon.atk, 1, 999)
 
 func getDefense() -> int:
-	return loadedPokemon.def
+	return clamp(loadedPokemon.def, 1, 999)
 
 func getSpAttack() -> int:
-	return loadedPokemon.spAtk
+	return clamp(loadedPokemon.spAtk, 1, 999)
 
 func getSpDefense() -> int:
-	return loadedPokemon.spDef
+	return clamp(loadedPokemon.spDef, 1, 999)
+
+func getSpeed() -> int:
+	return clamp(loadedPokemon.speed, 1, 999)
 
 func getTypes() -> Array:
 	return loadedPokemon.types

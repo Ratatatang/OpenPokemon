@@ -1,3 +1,4 @@
+class_name Nest
 extends Node3D
 
 @export var validSpawns = {100: ["Bulbasaur"]}

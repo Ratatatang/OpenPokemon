@@ -1,41 +1,7 @@
 {
 	"Pokedex": {
-		"Dialga" : {
-			"ID": "000",
-			"Name": "Abomasnow",
-			"Types": ["Grass", "Poison"],
-			"Moves": {
-				"1": ["tackle", "growl"],
-				"3": ["vine_whip"],
-				"6": ["growth"],
-				"9": ["leech_seed"],
-				"12": ["razor_leaf"],
-				"15": ["poison_powder", "sleep_powder"],
-				"18": ["seed_bomb"],
-				"21": ["take_down"],
-				"24": ["sweet_scent"],
-				"27": ["synthesis"],
-				"30": ["worry_seed"],
-				"33": ["double_edge"],
-				"36": ["solar_beam"]
-			},
-			"BaseStats": {
-				"hp": 45,
-				"atk": 49,
-				"def": 49,
-				"spAtk": 65,
-				"spDef": 65,
-				"speed": 45
-				},
-			"XPValue": 64,
-			"EVs": {"spAtk": 1},
-			"ExperienceCurve": "MediumSlow",
-			"EvoLv": 16,
-			"EvoPokemon": "Ivysaur",
-			"GenderRatio": 87.5
-		},
 		"Bulbasaur" : {
-			"ID": "001",
+			"ID": "0001",
 			"Name": "Bulbasaur",
 			"Types": ["Grass", "Poison"],
 			"Moves": {
@@ -69,7 +35,7 @@
 			"GenderRatio": 87.5
 		},
 		"Ivysaur": {
-			"ID": "002",
+			"ID": "0002",
 			"Name": "Ivysaur",
 			"Types": ["Grass", "Poison"],
 			"Moves": {
@@ -102,7 +68,7 @@
 			"GenderRatio": 87.5
 		},
 		"Venusaur": {
-			"ID": "003",
+			"ID": "0003",
 			"Name": "Venusaur",
 			"Types": ["Grass", "Poison"],
 			"Moves": {
@@ -134,7 +100,7 @@
 			"Dimorphism": true
 		},
 		"Pidgey" : {
-			"ID": "016",
+			"ID": "0016",
 			"Name": "Pidgey",
 			"Types": ["Normal", "Flying"],
 			"Moves": {
@@ -168,7 +134,7 @@
 			"EvoPokemon": "Pidgeotto"
 		},
 		"Pidgeotto" : {
-			"ID": "017",
+			"ID": "0017",
 			"Name": "Pidgeotto",
 			"Types": ["Normal", "Flying"],
 			"Moves": {
@@ -202,7 +168,7 @@
 			"EvoPokemon": "Pidgeot"
 		},
 		"Pidgeot" : {
-			"ID": "018",
+			"ID": "0018",
 			"Name": "Pidgeot",
 			"Types": ["Normal", "Flying"],
 			"Moves": {
@@ -233,8 +199,45 @@
 			"EVs": {"speed": 3},
 			"ExperienceCurve": "MediumSlow"
 		},
+		"Vulpix" : {
+			"ID": "0037",
+			"Name": "Vulpix",
+			"Types": ["Fire"],
+			"Moves": {
+				"1": ["ember", "tail_whip"],
+				"4": ["disable"],
+				"24": ["will_o_wisp"],
+				"28": ["extrasensory"],
+				"32": ["flamethrower"],
+				"36": ["imprison"],
+				"40": ["fire_spin"],
+				"44": ["safeguard"],
+				"48": ["inferno"],
+				"52": ["fire_blast"]
+			},
+			"BaseStats": {
+				"hp": 38,
+				"atk": 41,
+				"def": 40,
+				"spAtk": 50,
+				"spDef": 65,
+				"speed": 65
+				},
+			"XPValue": 60,
+			"EVs": {"speed": 1},
+			"ExperienceCurve": "MediumFast",
+			"EvoItem": "fire_stone",
+			"EvoPokemon": "Ninetails"
+		},
+		"Ninetails" : {},
+		"Placeholder": {
+				"8": ["quick_attack"],
+				"12": ["spite"],
+				"16": ["incinerate"],
+				"20": ["confuse_ray"],
+		},
 		"Krabby" : {
-			"ID": "098",
+			"ID": "0098",
 			"Name": "Krabby",
 			"Types": ["Water"],
 			"Moves": {
@@ -267,7 +270,7 @@
 			"EvoPokemon": "Kingler"
 		},
 		"Kingler" : {
-			"ID": "099",
+			"ID": "0099",
 			"Name": "Kingler",
 			"Types": ["Water"],
 			"Moves": {
@@ -298,7 +301,7 @@
 			"ExperienceCurve": "MediumFast"
 		},
 		"Spinarak" : {
-			"ID": "167",
+			"ID": "0167",
 			"Name": "Spinarak",
 			"Types": ["Bug", "Poison"],
 			"Moves": {
@@ -334,7 +337,7 @@
 			"EvoPokemon": "Ariados"
 		},
 		"Ariados" : {
-			"ID": "168",
+			"ID": "0168",
 			"Name": "Ariados",
 			"Types": ["Bug", "Poison"],
 			"Moves": {
@@ -369,7 +372,7 @@
 			"ExperienceCurve": "Fast"
 		},
 		"Corphish" : {
-			"ID": "341",
+			"ID": "0341",
 			"Name": "Corphish",
 			"Types": ["Water"],
 			"Moves": {
@@ -403,7 +406,7 @@
 			"EvoPokemon": "Crawdaunt"
 		},
 		"Crawdaunt" : {
-			"ID": "342",
+			"ID": "0342",
 			"Name": "Crawdaunt",
 			"Types": ["Water", "Dark"],
 			"Moves": {

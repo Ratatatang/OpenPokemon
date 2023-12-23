@@ -74,7 +74,7 @@
 			"StatChanges": {
 				"100": {
 					"Target": "Victim",
-					"Defence": 1
+					"Defense": 1
 				}
 			}
 		},
@@ -198,7 +198,7 @@
 			"StatChanges": {
 				"100": {
 					"Target": "Victim",
-					"Defence": "-1"
+					"Defense": -1
 				}
 			}
 		},
@@ -217,6 +217,24 @@
 				"100": {
 					"Target": "Self",
 					"Recoil": 0.25
+				}
+			}
+		},
+		"disable": {
+			"DisplayName" : "Disable",
+			"Type": "Normal",
+			"Power": 0,
+			"PP": [20, 20],
+			"Accuracy": 100,
+			"Category": "Status",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100": {
+					"Target": "Victim",
+					"VolatileEffect": "Disable"
 				}
 			}
 		},
@@ -421,7 +439,7 @@
 		"ember":{
 			"DisplayName" : "Ember",
 			"Type": "Fire",
-			"Power": 45,
+			"Power": 40,
 			"PP": [25, 25],
 			"Accuracy": 100,
 			"Category": "Special",
@@ -429,7 +447,61 @@
 			"Target": "AdjacentFoe",
 			"Priority": 0,
 			"SpecialEffect": null,
+			"StatChanges": {
+				"10": {
+					"Target": "Victim",
+					"StatusEffect": "Burn"
+				}
+			}
+		},
+		"flamethrower":{
+			"DisplayName" : "Flamethrower",
+			"Type": "Fire",
+			"Power": 90,
+			"PP": [15, 15],
+			"Accuracy": 100,
+			"Category": "Special",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"10": {
+					"Target": "Victim",
+					"StatusEffect": "Burn"
+				}
+			}
+		},
+		"incinerate":{
+			"DisplayName" : "Incinerate",
+			"Type": "Fire",
+			"Power": 60,
+			"PP": [15, 15],
+			"Accuracy": 100,
+			"Category": "Special",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": "destroyItem",
 			"StatChanges": {}
+		},
+		"will_o_wisp":{
+			"DisplayName" : "Will-O-Wisp",
+			"Type": "Fire",
+			"Power": 0,
+			"PP": [15, 15],
+			"Accuracy": 100,
+			"Category": "Status",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100": {
+					"Target": "Victim",
+					"StatusEffect": "Burn"
+				}
+			}
 		},
 
 
@@ -530,7 +602,25 @@
 				}
 			}
 		},
-		
+		"extrasensory":{
+			"DisplayName" : "Extrasensory",
+			"Type": "Psychic",
+			"Power": 80,
+			"PP": [20, 20],
+			"Accuracy": 100,
+			"Category": "Special",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"10": {
+					"Target": "Victim",
+					"VolatileEffect": "Flinch"
+				}
+			}
+		},
+
 
 
 		"leech_seed":{
@@ -721,6 +811,45 @@
 				"100": {
 					"Target": "Victim",
 					"VolatileEffect": "Taunt"
+				}
+			}
+		},
+
+
+
+		"spite":{
+			"DisplayName" : "Spite",
+			"Type": "Ghost",
+			"Power": 0,
+			"PP": [10, 10],
+			"Accuracy": 100,
+			"Category": "Status",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100": {
+					"Target": "Victim",
+					"DeductPP": "1"
+				}
+			}
+		},
+		"confuse_ray":{
+			"DisplayName" : "Confuse Ray",
+			"Type": "Ghost",
+			"Power": 0,
+			"PP": [10, 10],
+			"Accuracy": 100,
+			"Category": "Status",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100": {
+					"Target": "Victim",
+					"VolatileEffect": "Confusion"
 				}
 			}
 		},

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd4hs8fh055wu"
-path="res://.godot/imported/EntityShadow.png-d77ea7a7e7577473bab4d8f3b350c0a1.ctex"
+uid="uid://0s7ikbvv5s7x"
+path="res://.godot/imported/Rock1.png-802e6611e0340a7c9496b3d11a8c12d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/World/EntityShadow.png"
-dest_files=["res://.godot/imported/EntityShadow.png-d77ea7a7e7577473bab4d8f3b350c0a1.ctex"]
+source_file="res://Assets/World/Objects/Rock1.png"
+dest_files=["res://.godot/imported/Rock1.png-802e6611e0340a7c9496b3d11a8c12d8.ctex"]
 
 [params]
 

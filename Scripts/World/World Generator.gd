@@ -179,7 +179,7 @@ func generateObjects(width, height):
 	randomize()
 	for x in width:
 		for z in height:
-			if(randi_range(0, 100) < 70):
+			if(randi_range(0, 100) < 65):
 				continue
 			else:
 				var objectNum = randi_range(0, 100)

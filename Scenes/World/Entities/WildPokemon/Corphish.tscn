@@ -1,93 +1,93 @@
-[gd_scene load_steps=35 format=3 uid="uid://dl7omu2jacgyx"]
+[gd_scene load_steps=35 format=3 uid="uid://de1bq6qj0dd48"]
 
-[ext_resource type="Script" path="res://Scripts/World/Entities/WildPokemon.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://bcrbxtumouux5" path="res://Assets/World/Entities/Pokemon/Walking/CORPHISH.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://cd4hs8fh055wu" path="res://Assets/World/EntityShadow.png" id="3"]
-[ext_resource type="Script" path="res://Scripts/World/Entities/Wander Controller.gd" id="4"]
-[ext_resource type="Texture2D" uid="uid://em2ys1xwgqb6" path="res://Assets/World/Entities/Emotes/Happy.png" id="5"]
+[ext_resource type="Script" path="res://Scripts/World/Entities/WildPokemon.gd" id="1_8fedh"]
+[ext_resource type="Texture2D" uid="uid://bcrbxtumouux5" path="res://Assets/World/Entities/Pokemon/Walking/CORPHISH.png" id="2_1tdkb"]
+[ext_resource type="Texture2D" uid="uid://cd4hs8fh055wu" path="res://Assets/World/EntityShadow.png" id="2_2nkt2"]
+[ext_resource type="Texture2D" uid="uid://em2ys1xwgqb6" path="res://Assets/World/Entities/Emotes/Happy.png" id="4_nk31m"]
+[ext_resource type="Script" path="res://Scripts/World/Entities/Wander Controller.gd" id="5_w2jwy"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.0949792
 height = 0.277646
 
-[sub_resource type="AtlasTexture" id="29"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc50k"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="30"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4in6h"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="31"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4co75"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="32"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnw03"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="33"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn7ej"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(0, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="34"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_74j8t"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(64, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="35"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsd04"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(128, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="36"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcn8o"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(192, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="37"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5ac0"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(0, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="38"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjqjo"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(64, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="39"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3eju"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(128, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="40"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2cbl"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(192, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="41"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay5ou"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(0, 192, 64, 64)
 
-[sub_resource type="AtlasTexture" id="42"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwdts"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(64, 192, 64, 64)
 
-[sub_resource type="AtlasTexture" id="43"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4tw3"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(128, 192, 64, 64)
 
-[sub_resource type="AtlasTexture" id="44"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsmwm"]
+atlas = ExtResource("2_1tdkb")
 region = Rect2(192, 192, 64, 64)
 
 [sub_resource type="SpriteFrames" id="18"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("29")
+"texture": SubResource("AtlasTexture_oc50k")
 }, {
 "duration": 1.0,
-"texture": SubResource("30")
+"texture": SubResource("AtlasTexture_4in6h")
 }, {
 "duration": 1.0,
-"texture": SubResource("31")
+"texture": SubResource("AtlasTexture_4co75")
 }, {
 "duration": 1.0,
-"texture": SubResource("32")
+"texture": SubResource("AtlasTexture_gnw03")
 }],
 "loop": true,
 "name": &"down",
@@ -95,16 +95,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("33")
+"texture": SubResource("AtlasTexture_vn7ej")
 }, {
 "duration": 1.0,
-"texture": SubResource("34")
+"texture": SubResource("AtlasTexture_74j8t")
 }, {
 "duration": 1.0,
-"texture": SubResource("35")
+"texture": SubResource("AtlasTexture_dsd04")
 }, {
 "duration": 1.0,
-"texture": SubResource("36")
+"texture": SubResource("AtlasTexture_dcn8o")
 }],
 "loop": true,
 "name": &"left",
@@ -112,16 +112,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("37")
+"texture": SubResource("AtlasTexture_p5ac0")
 }, {
 "duration": 1.0,
-"texture": SubResource("38")
+"texture": SubResource("AtlasTexture_tjqjo")
 }, {
 "duration": 1.0,
-"texture": SubResource("39")
+"texture": SubResource("AtlasTexture_u3eju")
 }, {
 "duration": 1.0,
-"texture": SubResource("40")
+"texture": SubResource("AtlasTexture_c2cbl")
 }],
 "loop": true,
 "name": &"right",
@@ -129,16 +129,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("41")
+"texture": SubResource("AtlasTexture_ay5ou")
 }, {
 "duration": 1.0,
-"texture": SubResource("42")
+"texture": SubResource("AtlasTexture_uwdts")
 }, {
 "duration": 1.0,
-"texture": SubResource("43")
+"texture": SubResource("AtlasTexture_c4tw3")
 }, {
 "duration": 1.0,
-"texture": SubResource("44")
+"texture": SubResource("AtlasTexture_hsmwm")
 }],
 "loop": true,
 "name": &"up",
@@ -237,7 +237,7 @@ tracks/0/keys = {
 "values": ["up"]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_oysnu"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1j0hj"]
 _data = {
 "down": SubResource("19"),
 "emote": SubResource("28"),
@@ -271,37 +271,35 @@ blend_mode = 1
 
 [node name="WildPokemon" type="CharacterBody3D" groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.601, 0)
-script = ExtResource("1")
-pokemonName = "Corphish"
-currHeight = 0.601
+script = ExtResource("1_8fedh")
+pokemonName = "Crawdaunt"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, -0.00390719, -0.0138645, -0.0124963)
 shape = SubResource("1")
 
 [node name="Sprite2D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.204776, 0.730806, 0, -0.219242, 0.682586, 0.001, 0, -0.05)
+transform = Transform3D(0.3, 0, 0, 0, 0.204776, 0.730806, 0, -0.219242, 0.682586, 0.001, -0.0195436, -0.0490979)
 texture_filter = 0
 sprite_frames = SubResource("18")
 animation = &"down"
-frame = 1
-
-[node name="Shadow" type="Sprite3D" parent="Sprite2D"]
-transform = Transform3D(1.99978, -0.00750381, 0.0185753, 0.0194532, -1.13786, -0.505771, 0.0112914, 0.82233, -0.604614, -0.00677907, -0.288115, -0.0157844)
-texture_filter = 0
-render_priority = -1
-texture = ExtResource("3")
 
 [node name="Emote" type="Sprite3D" parent="Sprite2D"]
 transform = Transform3D(2, 0, 0, 0, 1.99143, 0.0924578, 0, -0.184915, 0.995717, 0.0139444, 0.0966271, 0.0495571)
 visible = false
 texture_filter = 0
-texture = ExtResource("5")
+texture = ExtResource("4_nk31m")
 hframes = 2
+
+[node name="Shadow" type="Sprite3D" parent="Sprite2D"]
+transform = Transform3D(2.33333, 0, 0, 0, -1.70521, -0.539242, 0, 0.47781, -0.173201, -0.00333333, -0.239278, -0.00199512)
+texture_filter = 0
+render_priority = -1
+texture = ExtResource("2_2nkt2")
 
 [node name="WanderController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515, 0)
-script = ExtResource("4")
+script = ExtResource("5_w2jwy")
 
 [node name="Timer" type="Timer" parent="WanderController"]
 one_shot = true
@@ -310,7 +308,7 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_oysnu")
+"": SubResource("AnimationLibrary_1j0hj")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

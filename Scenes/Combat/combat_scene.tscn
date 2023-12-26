@@ -60,6 +60,12 @@ offset_bottom = 14.5
 scale = Vector2(0.3, 0.3)
 text = "LV 100"
 
+[node name="IconStatuses" type="Sprite2D" parent="Player/Healthbar"]
+position = Vector2(88.25, 4.5)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_yhi22")
+vframes = 9
+
 [node name="Enemy" type="Node2D" parent="."]
 position = Vector2(740, 423)
 script = ExtResource("6_cxj0h")
@@ -101,20 +107,10 @@ scale = Vector2(0.3, 0.3)
 text = "LV 100"
 
 [node name="IconStatuses" type="Sprite2D" parent="Enemy/Healthbar"]
-position = Vector2(7, 12.5)
+position = Vector2(88.25, 4.5)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_yhi22")
 vframes = 9
-
-[node name="Marker2D" type="Marker2D" parent="Enemy"]
-visible = false
-position = Vector2(-207, 67)
-
-[node name="ColorRect" type="ColorRect" parent="Enemy/Marker2D"]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -238,7 +234,7 @@ color = Color(0.309804, 0.309804, 0.309804, 0.823529)
 layout_mode = 0
 offset_left = 5.0
 offset_top = -2.0
-offset_right = 530.0
+offset_right = 372.0
 offset_bottom = 65.0
 scale = Vector2(1.5, 1.5)
 bbcode_enabled = true

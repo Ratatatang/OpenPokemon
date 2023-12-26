@@ -14,49 +14,79 @@ signal statusDone
 var moveQueue = []
 @onready var battlerQueue = [player, enemy]
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	player.generateBack = true
-	enemy.loadPokemon("Pidgey")
-	player.loadPokemon("Vulpix", 24)
 	enemy.enemy = true
-	loadMoves(player)
+	player.UI = UI
+	enemy.UI = UI
+	player.opponent = enemy
+	enemy.opponent = player
 
 func _input(event):
 	if event.is_action_pressed("confirm"):
 		pressedComfirm.emit()
 
+func startCombat(playerPokemon, enemyPokemon):
+	enemy.loadPokemon(enemyPokemon)
+	player.loadPokemon(playerPokemon)
+	loadMoves(player)
+
 func resolveQueue():
+	var deadPlayer : battlePlayer
 	for move in moveQueue:
 		preMoveUse(move[0], move[1], move[2])
 		await moveDone
+		
+		for battler in battlerQueue:
+			if(battler.getHP() == 0):
+				deadPlayer = battler
+				break
+		if(deadPlayer != null):
+			break
 	
-	for battler in battlerQueue:
-		if(battler.getStatuses() != []):
-			for status in battler.getStatuses():
-				var statusPassed = status._effect_afterMoves(battler, UI)
-				if(statusPassed):
-					await pressedComfirm
-
-	UI.showMenu()
+	if(deadPlayer == null):
+		for battler in battlerQueue:
+			if(battler.getStatuses() != []):
+			
+				for status in battler.getStatuses():
+					var statusPassed = status._effect_afterMoves(battler, battler.opponent, UI)
+				
+					if(statusPassed):
+						await pressedComfirm
+					
+					if(battler.getHP() == 0):
+						deadPlayer = battler
+						break
+			if(deadPlayer != null):
+				break
+				
+		if(deadPlayer == null):
+			UI.showMenu()
+		
+	if(deadPlayer != null):
+		UI.setDialog("%s fainted!" % deadPlayer.getName())
+		await pressedComfirm
+		UI.clearAll()
+		deadPlayer.deathTween()
+	
 	moveQueue = []
 
 #Overview from pokemon showdown
-	#Pre-Move interruptions, ex. flinch/paralysis
-	#Move Usage
-	#Internal interruption, ex. solar beam charge
-	#Sub-Move start (Metronome, Sleep Talk)
-	#Move Execution
-	#Is there a target still?
-	#PP deduction
-	#Move Hit
-	#Check if misses
-	#External failure Ex. Protect, Substitute
-	#Immunity
-	#Animation/Damage
-	#Healing, Status Effects
-	#Recoil, Drain Heals
-	
+#Pre-Move interruptions, ex. flinch/paralysis
+#Move Usage
+#Internal interruption, ex. solar beam charge
+#Sub-Move start (Metronome, Sleep Talk)
+#Move Execution
+#Is there a target still?
+#PP deduction
+#Move Hit
+#Check if misses
+#External failure Ex. Protect, Substitute
+#Immunity
+#Animation/Damage
+#Healing, Status Effects
+#Recoil, Drain Heals
+
 func preMoveUse(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 	UI.showDialog()
 	UI.setDialog(attacker.getName() + " used " + move.DisplayName + "!")
@@ -85,7 +115,7 @@ func moveHit(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 	
 	if(outcome[1] != 1):
 		if(outcome[1] == 0):
-			UI.setDialog("It doesn't affect the opposing "+victim.getName()+"...")
+			UI.setDialog("It doesn't affect the opposing %s..." % [victim.getName()])
 			await pressedComfirm
 		elif(outcome[0] > 0):
 			UI.setDialog(MasterInfo.effectiveDialog.get(str(clamp(outcome[1], 0.5, 2))))
@@ -135,17 +165,24 @@ func calculateDamage(move : Dictionary, attacker : battlePlayer, victim : battle
 	damage += 2.0
 	#Multipliers
 	
+	#Burn
+	if(attacker.statusEffect != null):
+		if(attacker.statusEffect.reduceDamage and move.Category == "Physical"):
+			damage /= 2
+	
 	#Critical
 	
 	#Random
-	damage = floor(damage * (randf_range(85, 100)/100.0))
+	damage = damage * (randf_range(85, 100)/100.0)
 	
 	#STAB
 	if(attacker.getTypes().has(move.Type)):
-		damage = floor(float(damage) * 1.5)
+		damage = float(damage) * 1.5
 		
 	#Type Effectiveness
-	damage = floor(damage * typeMultiplier)
+	damage = damage * typeMultiplier
+	
+	damage = floor(damage)
 	
 	return [int(damage), typeMultiplier]
 
@@ -160,43 +197,50 @@ func changeStats(move : Dictionary, attacker : battlePlayer, victim : battlePlay
 		#Go through each step of the change
 		for step in statChange.keys():
 			var change = statChange.get(step)
+			var hasStartMessage = false
+			
 			if(step == "Target"):
 				target = change
 
 			elif(target == "Victim"):
 				if(step == "VolatileEffect"):
-					victim.inflictVolatile(change)
-					UI.setDialog("Inflicted Volatile Status Effect!")
+					hasStartMessage = inflictVolatile(victim, change)
 					
 				elif(step == "StatusEffect"):
-					inflictStatus(victim, change)
+					hasStartMessage = inflictStatus(victim, change)
 					
 				else:
 					victim.changeStat(step, int(change))
 					UI.setDialog(MasterInfo.changesDialog.get(str(clamp(change, -3, 3))) % [victim.getName(), step])
-				await pressedComfirm
+					hasStartMessage = true
+					
+				if(hasStartMessage):
+					await pressedComfirm
 						
 			elif(target == "Self"):
 				if(step == "VolatileEffect"):
-					inflictVolatile(attacker, change)
+					hasStartMessage = inflictVolatile(attacker, change)
 					
 				elif(step == "StatusEffect"):
-					inflictStatus(attacker, change)
+					hasStartMessage = inflictStatus(attacker, change)
 					
 				else:
 					attacker.changeStat(step, int(change))
 					UI.setDialog(MasterInfo.changesDialog.get(str(clamp(change, -3, 3))) % [attacker.getName(), step])
-				await pressedComfirm
+					hasStartMessage = true
+					
+				if(hasStartMessage):
+					await pressedComfirm
 					
 	statusDone.emit()
 
 func inflictVolatile(target : battlePlayer, change):
-	target.inflictVolatile(change)
-	UI.setDialog("Inflicted Volatile Status Effect!")
+	var statusMessage = target.inflictVolatile(change)
+	return statusMessage
 
 func inflictStatus(target : battlePlayer, change):
-	target.inflictStatus(change)
-	UI.setDialog("Inflicted Status Effect!")
+	var statusMessage = target.inflictStatus(change)
+	return statusMessage
 
 func loadMoves(battleNode : battlePlayer):
 	var moves = battleNode.getMoves()
@@ -232,10 +276,8 @@ func _on_move_pressed(move : Dictionary):
 		var queue
 		if(move.Target == "Self"):
 			moveQueue.append([move, player, player])
-			#preMoveUse(move, player, player)
 		else:
 			moveQueue.append([move, player, enemy])
-			#preMoveUse(move, player, enemy)
 		
 		decideAIMove(enemy, player)
 		resolveQueue()

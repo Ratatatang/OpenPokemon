@@ -3,6 +3,11 @@ extends Control
 func setDialog(text):
 	$Dialog/DialogText.text = str(text)
 
+func clearAll():
+	$Dialog.hide()
+	$Fight.hide()
+	$Menu.hide()
+
 func showDialog():
 	$Dialog.show()
 	$Fight.hide()

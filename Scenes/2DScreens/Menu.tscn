@@ -1,18 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://wheagikwl2pa"]
+[gd_scene load_steps=5 format=3 uid="uid://wheagikwl2pa"]
 
 [ext_resource type="Script" path="res://Scripts/World/Entities/Player/Menu.gd" id="1_21qdj"]
 [ext_resource type="Texture2D" uid="uid://bkjmgx6qi7ndm" path="res://Assets/MenuBox.png" id="2_6w2tv"]
-
-[sub_resource type="FontFile" id="7"]
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+[ext_resource type="FontFile" uid="uid://b55ek2u1muwn6" path="res://Assets/Fonts/m5x7.ttf" id="3_a1qkl"]
+[ext_resource type="Texture2D" uid="uid://e2m7gphu8aqs" path="res://Assets/ui_arrow_left_right.png" id="4_riryr"]
 
 [node name="Menu" type="CanvasLayer"]
 scale = Vector2(3, 3)
@@ -22,10 +13,10 @@ script = ExtResource("1_21qdj")
 [node name="Menu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 274.333
-offset_top = 2.66667
-offset_right = 314.333
-offset_bottom = 42.6667
+offset_left = 313.667
+offset_top = 5.33333
+offset_right = 353.667
+offset_bottom = 45.3334
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Menu"]
 layout_mode = 0
@@ -40,53 +31,70 @@ patch_margin_bottom = 6
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/NinePatchRect"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 12.0
+offset_top = 5.0
 offset_right = 70.0
-offset_bottom = 98.0
+offset_bottom = 86.0
 
 [node name="Inventory" type="RichTextLabel" parent="Menu/NinePatchRect/VBoxContainer"]
 custom_minimum_size = Vector2(50, 11)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.407843, 0.407843, 0.407843, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_fonts/normal_font = SubResource("7")
-text = "Invtory"
+theme_override_fonts/normal_font = ExtResource("3_a1qkl")
+text = "    Bag"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="Crafting" type="RichTextLabel" parent="Menu/NinePatchRect/VBoxContainer"]
 custom_minimum_size = Vector2(50, 11)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.407843, 0.407843, 0.407843, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_fonts/normal_font = SubResource("7")
-text = "Crafting"
+theme_override_fonts/normal_font = ExtResource("3_a1qkl")
+text = "  Craft"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="Journal" type="RichTextLabel" parent="Menu/NinePatchRect/VBoxContainer"]
 custom_minimum_size = Vector2(50, 11)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.407843, 0.407843, 0.407843, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_fonts/normal_font = SubResource("7")
-text = " Journal"
+theme_override_fonts/normal_font = ExtResource("3_a1qkl")
+text = "Journal"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="Options" type="RichTextLabel" parent="Menu/NinePatchRect/VBoxContainer"]
 custom_minimum_size = Vector2(50, 11)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.407843, 0.407843, 0.407843, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_fonts/normal_font = SubResource("7")
-text = " Options"
+theme_override_fonts/normal_font = ExtResource("3_a1qkl")
+text = "Options"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="Save" type="RichTextLabel" parent="Menu/NinePatchRect/VBoxContainer"]
 custom_minimum_size = Vector2(50, 11)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.407843, 0.407843, 0.407843, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_fonts/normal_font = SubResource("7")
-text = "     Save"
+theme_override_fonts/normal_font = ExtResource("3_a1qkl")
+text = "   Save"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="Arrow" type="TextureRect" parent="Menu/NinePatchRect"]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 12.0
-offset_right = 18.0
-offset_bottom = 23.0
+offset_left = 7.334
+offset_top = 7.5
+offset_right = 16.334
+offset_bottom = 18.5
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_riryr")

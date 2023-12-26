@@ -1,26 +1,31 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bgtndjbpjvj78"]
 
-[ext_resource type="Texture2D" path="res://Combat/Sprites/001.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bbwshtftyoche" path="res://Assets/Combat/Pokemon/Front/BULBASAUR.png" id="1_82meq"]
 [ext_resource type="Script" path="res://Scripts/2DScreens/testScreen.gd" id="4"]
 
 [node name="TestScreen" type="Node2D"]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = -166.0
-offset_top = -108.0
-offset_right = 154.0
-offset_bottom = -1.0
-bbcode_enabled = true
-text = "[wave amp=100 freq=2][rainbow freq=0.4 sat=10 val=20]                  
-                    WOOOOOOO TEST SCREEN![/rainbow] [/wave]"
-text = "                  
-                    WOOOOOOO TEST SCREEN! "
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -817.0
+offset_top = -450.0
+offset_right = 698.0
+offset_bottom = 528.0
+color = Color(0.294118, 0.294118, 0.294118, 1)
 
 [node name="001" type="Sprite2D" parent="."]
+position = Vector2(0, 26)
 rotation = 0.109956
-texture = ExtResource( 1 )
-hframes = 4
-script = ExtResource( 4 )
+texture = ExtResource("1_82meq")
+script = ExtResource("4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -166.0
+offset_top = -82.0
+offset_right = 154.0
+offset_bottom = 25.0
+bbcode_enabled = true
+text = "                  
+                    WOOOOOOO TEST SCREEN! "
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)

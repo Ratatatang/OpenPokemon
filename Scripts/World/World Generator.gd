@@ -5,15 +5,9 @@ extends Node3D
 
 @onready var shaderProcess = $ShaderProcess/ShaderProcess
 @onready var tilemap = $GridMap
-var temperature = {}
-var altitude = {}
-var moisture = {}
-var noise = FastNoiseLite.new()
+@onready var gameObjects = $GameObjects
 
-var globalSpawnPoint = Vector3.ZERO
-
-var biomeTiles = {"Ocean": 0, "Plains": 1, "Beach": 2}
-var tileBiomes = {-1: "", 0: "Ocean", 1: "Plains", 6: "Beach"}
+signal finished_island
 
 var cells = {"Ocean": [], "Plains": [],"Beach": []}
 
@@ -21,11 +15,17 @@ var biomeData = {"Beach": preload("res://Scripts/BiomeData/Beach.gd"),
 				 "Plains": preload("res://Scripts/BiomeData/Plains.gd"),
 				 "Ocean": preload("res://Scripts/BiomeData/Ocean.gd")}
 
-@onready var playerObj = preload("res://Scenes/World/Entities/Player/Player.tscn")
+var playerObj = preload("res://Scenes/World/Entities/Player/Player.tscn")
 
-@onready var gameObjects = $GameObjects
+var temperature = {}
+var altitude = {}
+var moisture = {}
+var noise = FastNoiseLite.new()
 
-signal finished_island
+var biomeTiles = {"Ocean": 0, "Plains": 1, "Beach": 2}
+var tileBiomes = {-1: "", 0: "Ocean", 1: "Plains", 6: "Beach"}
+
+var globalSpawnPoint = Vector3.ZERO
 		
 #Generates maps for temp, moisture & altitude used to decide biomes
 func _ready():

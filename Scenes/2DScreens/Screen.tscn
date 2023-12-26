@@ -1,17 +1,13 @@
-[gd_scene format=2]
+[gd_scene format=3 uid="uid://bnao310b5dvwp"]
 
 [node name="Screen" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -574.0
-offset_top = -341.0
+offset_left = -745.0
+offset_top = -465.0
 offset_right = 707.0
 offset_bottom = 416.0
 mouse_filter = 1
-color = Color( 0.301961, 0.301961, 0.301961, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color(0.301961, 0.301961, 0.301961, 1)
 
 [node name="Camera3D" type="Camera2D" parent="."]
-current = true

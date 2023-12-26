@@ -273,24 +273,17 @@ blend_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.601, 0)
 script = ExtResource("1")
 pokemonName = "Crawdaunt"
-currHeight = 0.601
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, -0.00390719, -0.0138645, -0.0124963)
 shape = SubResource("1")
 
 [node name="Sprite2D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.204776, 0.730806, 0, -0.219242, 0.682586, 0.001, 0, -0.05)
+transform = Transform3D(0.3, 0, 0, 0, 0.204776, 0.730806, 0, -0.219242, 0.682586, 0.001, -0.0195436, -0.0490979)
 texture_filter = 0
 sprite_frames = SubResource("18")
 animation = &"down"
 frame = 3
-
-[node name="Shadow" type="Sprite3D" parent="Sprite2D"]
-transform = Transform3D(1.99978, -0.00750381, 0.0185753, 0.0194532, -1.13786, -0.505771, 0.0112914, 0.82233, -0.604614, -0.00677907, -0.288115, -0.0157844)
-texture_filter = 0
-render_priority = -1
-texture = ExtResource("3")
 
 [node name="Emote" type="Sprite3D" parent="Sprite2D"]
 transform = Transform3D(2, 0, 0, 0, 1.99143, 0.0924578, 0, -0.184915, 0.995717, 0.0139444, 0.0966271, 0.0495571)
@@ -298,6 +291,12 @@ visible = false
 texture_filter = 0
 texture = ExtResource("5")
 hframes = 2
+
+[node name="Shadow" type="Sprite3D" parent="Sprite2D"]
+transform = Transform3D(2.433, 0, 0, 0, -1.8979, -0.152715, 0, 0.531803, -0.545008, -0.00333333, -0.239278, -0.00199512)
+texture_filter = 0
+render_priority = -1
+texture = ExtResource("3")
 
 [node name="WanderController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515, 0)

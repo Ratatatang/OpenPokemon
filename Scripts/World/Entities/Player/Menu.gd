@@ -3,11 +3,11 @@ extends CanvasLayer
 @onready var selectionArrow = $Menu/NinePatchRect/Arrow
 @onready var menu = $Menu
 
-@onready var partyScreen = "res://OpenWorld/Player/Menu/Menus/PokemonScreen/PokemonScreen.tscn"
-@onready var crafting = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
-@onready var journal = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
-@onready var settings = "res://OpenWorld/Player/Menu/Menus/OptionsScreen/OptionsScreen.tscn"
-@onready var save = "res://OpenWorld/Player/Menu/Menus/TestScreen/TestScreen.tscn"
+@onready var partyScreen = "res://Scenes/2DScreens/TestScreen.tscn"
+@onready var crafting = "res://Scenes/2DScreens/TestScreen.tscn"
+@onready var journal = "res://Scenes/2DScreens/TestScreen.tscn"
+@onready var settings = "res://Scenes/2DScreens/TestScreen.tscn"
+@onready var save = "res://Scenes/2DScreens/TestScreen.tscn"
 
 
 @onready var options = [partyScreen, crafting, journal, settings, save]
@@ -23,24 +23,24 @@ var enabled = true
 
 func _ready():
 	menu.visible = false
-	selectionArrow.position.y = 11 + (selected_option % 5) * 15
+	selectionArrow.position.y = 7.5 + (selected_option % 5) * 17.4
 
-func _unhandled_input(event) -> void:
+func _input(event) -> void:
 	if(enabled == false):
 		menu.visible = false
 		return
 	match screen_loaded:
 		ScreenLoaded.NOTHING:
-			if event.is_action_pressed("openMenu"):
+			if event.is_action_pressed("menu"):
 				menu.visible = true
 				screen_loaded = ScreenLoaded.JUST_MENU
 
 
 		ScreenLoaded.JUST_MENU:
-			if event.is_action_pressed("openMenu"):
+			if event.is_action_pressed("menu"):
 				menu.visible = false
 				screen_loaded = ScreenLoaded.NOTHING
-			elif event.is_action_pressed("ui_accept"):
+			elif event.is_action_pressed("confirm"):
 				menu.visible = false
 				var loadScreen = options[selected_option]
 				get_parent().loadScreen(loadScreen)
@@ -61,7 +61,7 @@ func _unhandled_input(event) -> void:
 				if selected_option == 4:
 					selected_option = -1
 				selected_option += 1
-				selectionArrow.position.y = 11 + (selected_option % 5) * 15
+				selectionArrow.position.y = 7.5 + (selected_option % 5) * 17.4
 				
 #			elif event.is_action_pressed("scrollup") or event.is_action_pressed("ui_up"):
 			elif event.is_action_pressed("scrollup"):
@@ -69,34 +69,37 @@ func _unhandled_input(event) -> void:
 					selected_option = 4
 				else:
 					selected_option -= 1
-			selectionArrow.position.y = 11 + (selected_option % 5) * 15
+			selectionArrow.position.y = 7.5 + (selected_option % 5) * 17.4
 
 		ScreenLoaded.PARTY_SCREEN:
-			if event.is_action_pressed("openMenu"):
+			if event.is_action_pressed("menu"):
 				get_parent().exitScreen()
 				menu.visible = true
 				screen_loaded = ScreenLoaded.JUST_MENU
 
 		ScreenLoaded.CRAFT_SCREEN:
-			if event.is_action_pressed("openMenu"):
+			if event.is_action_pressed("menu"):
 				get_parent().exitScreen()
 				menu.visible = true
 				screen_loaded = ScreenLoaded.JUST_MENU
 
 		ScreenLoaded.JOURNAL_SCREEN:
-			if event.is_action_pressed("openMenu"):
+			if event.is_action_pressed("menu"):
 				get_parent().exitScreen()
 				menu.visible = true
 				screen_loaded = ScreenLoaded.JUST_MENU
 
 		ScreenLoaded.SETTINGS_SCREEN:
-			if event.is_action_pressed("openMenu") and multiplayerReady:
+			if event.is_action_pressed("menu") and multiplayerReady:
 				get_parent().exitScreen()
 				menu.visible = true
 				screen_loaded = ScreenLoaded.JUST_MENU
 
 		ScreenLoaded.SAVE_SCREEN:
-			if event.is_action_pressed("openMenu"):
+			if event.is_action_pressed("menu"):
 				get_parent().exitScreen()
 				menu.visible = true
 				screen_loaded = ScreenLoaded.JUST_MENU
+
+func toggleMenu(visiblity = !menu.visible):
+	menu.visible = visiblity

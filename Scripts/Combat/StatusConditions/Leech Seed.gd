@@ -1,14 +1,13 @@
 extends StatusCondition
 
 func _init():
-	statusName = "Burned"
-	iconFrame = 3
-	activeMessage = "{Pokemon} was hurt by the burn!"
-	startMessage = "{Pokemon} was burned!"
+	statusName = "Seeded"
+	activeMessage = "{Pokemon}'s health was sapped by the Leech Seed!"
+	startMessage = "{Pokemon} was seeded!"
 	hasStartMessage = true
-	reduceDamage = true
 
 func _effect_afterMoves(inflicted : battlePlayer, opposing : battlePlayer, UI):
 	UI.setDialog(activeMessage.format({"Pokemon":inflicted.getName()}))
-	inflicted.reducePercentHP(6.25)
+	var healAmount = inflicted.reducePercentHP(12.5)
+	opposing.heal(healAmount)
 	return true

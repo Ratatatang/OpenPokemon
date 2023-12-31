@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SKIPLOOM.png-1d47197d2e09e5a8683772177b948be7
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

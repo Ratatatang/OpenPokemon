@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PANCHAM.png-e1e1a9e8f8a527d514e67a566d9f6dab.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

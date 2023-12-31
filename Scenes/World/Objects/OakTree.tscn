@@ -14,14 +14,18 @@ size = Vector3(0.401487, 0.001, 0.496625)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.884, 0)
 script = ExtResource("1_13bij")
 textureVariations = Array[String](["res://Assets/World/Objects/OakTree1.png", "res://Assets/World/Objects/OakTree2.png", "res://Assets/World/Objects/OakTree3.png"])
+objectName = "Oak Tree"
 
-[node name="Sprite2D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1.93282, 0, 0, 0, 1.20194, -0.686724, 0, -0.789395, 1.41126, 0, 0, 0)
+shaded = true
+alpha_cut = 2
 texture_filter = 0
 texture = ExtResource("2_68up3")
 
 [node name="Shadow" type="Sprite3D" parent="."]
 transform = Transform3D(3.9, 0, 0, 0, -8.74228e-08, -3, 0, 2, -1.31134e-07, -0.00953105, -0.375252, 0.22756)
+visible = false
 texture_filter = 0
 render_priority = -1
 texture = ExtResource("3_fa0sp")
@@ -33,3 +37,11 @@ shape = SubResource("1")
 [node name="CollisionShape2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0126977, -0.386289, 0)
 shape = SubResource("2")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.91918, 0, 0, 0, 1, 0, 0, 0, 1, 0.00146103, -0.246759, 0.182136)
+shape = SubResource("1")

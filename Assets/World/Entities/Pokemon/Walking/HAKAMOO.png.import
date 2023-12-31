@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HAKAMOO.png-09a1a36c52134c53382083e47d555a70.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

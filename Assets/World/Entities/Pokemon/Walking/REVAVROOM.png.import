@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/REVAVROOM.png-0e2bd85185e7f0e784d016f71d5b64e
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/STARAVIA.png-8e6d3d26a806a6d687049e9620025f30
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

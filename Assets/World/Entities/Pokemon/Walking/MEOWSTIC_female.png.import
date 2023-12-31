@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MEOWSTIC_female.png-101ee2d92781d9fd6d0d7f998
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

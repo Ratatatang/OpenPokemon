@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CROCONAW.png-b212f26a7cd28504ff798a1550cba625
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

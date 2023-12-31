@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/THUNDURUS_1.png-dba24915d4e5aab0b815beee7a43d
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

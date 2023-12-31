@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MESPRIT.png-409fa91328f8e7f8ae1950251a73cb26.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GARDEVOIR.png-42bea73f1325ed8284eb2158fb8d53c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

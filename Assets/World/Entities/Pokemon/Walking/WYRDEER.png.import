@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/WYRDEER.png-84692cc5dcc4ccd77bb45a15307fd1e8.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

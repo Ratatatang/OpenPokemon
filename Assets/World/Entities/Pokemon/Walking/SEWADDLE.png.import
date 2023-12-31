@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SEWADDLE.png-8adb601649bd0a10058112d9af8d7db0
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

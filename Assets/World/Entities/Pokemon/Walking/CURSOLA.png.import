@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CURSOLA.png-a56e99d3e5bc4b67bae96a64a20c7c23.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FLABEBE_3.png-9da4458446b41deb9e24518d4062057
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

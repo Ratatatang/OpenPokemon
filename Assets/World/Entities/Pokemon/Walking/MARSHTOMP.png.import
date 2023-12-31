@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MARSHTOMP.png-84650e0707034d362ed5d7c551e2f28
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HERDIER.png-c06dffa6c830ebe0876e034b44a7cc6b.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

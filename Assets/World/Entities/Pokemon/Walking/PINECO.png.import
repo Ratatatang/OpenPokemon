@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PINECO.png-22e86208fc3f77f0a8096e62e15b1338.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/EMPOLEON.png-25b4babef708baa617b8687aaf6fa033
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

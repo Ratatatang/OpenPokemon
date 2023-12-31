@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SHIELDON.png-5993d19dd0c0f971c7466c0770e53d80
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

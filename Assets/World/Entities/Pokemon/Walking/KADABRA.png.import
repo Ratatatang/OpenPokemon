@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/KADABRA.png-a3129c21d50bb7c10c3becddcd8bbac9.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

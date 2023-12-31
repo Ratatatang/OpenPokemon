@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/QUILLADIN.png-92819ac7b55803b3058aef61a118bdf
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

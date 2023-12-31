@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CHERUBI.png-e9a5acb2b8526b9278418919cdd6d32f.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/REGIELEKI.png-c1327f57868c37cf82dd2cb72a83f24
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

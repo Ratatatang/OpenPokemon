@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DRIFBLIM.png-27699262ab7a8bef724cf9076064d70c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

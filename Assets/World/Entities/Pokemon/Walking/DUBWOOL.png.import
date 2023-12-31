@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DUBWOOL.png-949a092e5942e1c1c26c1baf8a654d9b.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

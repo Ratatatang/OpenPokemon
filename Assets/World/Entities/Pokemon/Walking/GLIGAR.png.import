@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GLIGAR.png-cb02de20876411615b7cf72bc809857d.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

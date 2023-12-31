@@ -27,6 +27,8 @@ var animVector = Vector2.ZERO
 @onready var animationTree = $AnimationTree
 @onready var animationState = animationTree.get("parameters/playback")
 
+@onready var rayCast = $RayCast3D
+
 #puppet var puppet_pos = global_position
 #puppet var puppet_direction = Vector2.ZERO
 #puppet var puppet_animation = "Idle"
@@ -43,9 +45,15 @@ func _ready():
 	animationTree.active = true
 	visible = true
 	
-# Matches the state machine to the correct state
+	get_node("/root/Master").checkLoad()
+	
+func _input(event):
+	if(event.is_action_pressed("interact")):
+		if(rayCast.is_colliding()):
+			print(rayCast.get_collider().get_parent().getName())
 
-func _process(delta):
+# Matches the state machine to the correct state
+func _physics_process(delta):
 
 		if true:
 #		if get_node("/root/Master").connectedToServer == false or is_multiplayer_authority():

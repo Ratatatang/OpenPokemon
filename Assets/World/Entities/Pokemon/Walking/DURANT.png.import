@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DURANT.png-c8b59639669b3ad9f7ee50a1e419f798.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

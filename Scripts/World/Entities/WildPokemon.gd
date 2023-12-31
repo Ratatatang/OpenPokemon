@@ -112,6 +112,9 @@ func _physics_process(delta):
 
 func setSprite(spritePath):
 	$Sprite2D.texture = load(spritePath)
+
+func getName():
+	return pokemonName
 	
 func pick_new_state(state_list):
 	return state_list[round(randf_range(0, len(state_list)-1))]

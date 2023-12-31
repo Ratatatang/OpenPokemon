@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CHARCADET.png-8d6572314c6b40ba4123e9aa4a77ae3
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

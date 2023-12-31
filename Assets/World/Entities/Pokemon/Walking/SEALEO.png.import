@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SEALEO.png-0f6fd2229f7d2995a38a6f584fbfa8ec.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

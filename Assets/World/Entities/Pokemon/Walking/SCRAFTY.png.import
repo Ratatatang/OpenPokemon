@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SCRAFTY.png-4f25d6b5c938e3f42a19c40cb17e2f86.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

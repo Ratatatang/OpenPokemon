@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ONIX.png-fe1ee304d5c433c4d1d509ad6f510a5d.cte
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

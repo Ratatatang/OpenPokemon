@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgtndjbpjvj78"]
 
 [ext_resource type="Texture2D" uid="uid://bbwshtftyoche" path="res://Assets/Combat/Pokemon/Front/BULBASAUR.png" id="1_82meq"]
-[ext_resource type="Script" path="res://Scripts/2DScreens/testScreen.gd" id="4"]
+[ext_resource type="Script" path="res://Scripts/2DScreens/Rotating.gd" id="2_5fyi0"]
 
 [node name="TestScreen" type="Node2D"]
 
@@ -16,7 +16,7 @@ color = Color(0.294118, 0.294118, 0.294118, 1)
 position = Vector2(0, 26)
 rotation = 0.109956
 texture = ExtResource("1_82meq")
-script = ExtResource("4")
+script = ExtResource("2_5fyi0")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = -166.0

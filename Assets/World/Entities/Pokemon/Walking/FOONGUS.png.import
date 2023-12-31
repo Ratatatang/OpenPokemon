@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FOONGUS.png-22084afe27cbc5f5edc41e62a04027e1.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GOTHITELLE.png-3803aed6a8ef8493be8830f95573e8
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

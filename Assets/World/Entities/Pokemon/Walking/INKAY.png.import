@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/INKAY.png-4f1a9b04d3d2afe7514bb7f650ba5341.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

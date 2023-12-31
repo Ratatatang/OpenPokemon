@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SKWOVET.png-a6a25fe39f45948ca23d29f48c4b16ef.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

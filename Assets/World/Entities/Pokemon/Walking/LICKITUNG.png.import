@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/LICKITUNG.png-470add0fc6ce53e6749a2d3df6c97a1
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

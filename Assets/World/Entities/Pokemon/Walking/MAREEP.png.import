@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MAREEP.png-7153cad796201e2d6b3684e9c6bdf1e2.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

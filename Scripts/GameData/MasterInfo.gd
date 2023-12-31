@@ -218,5 +218,8 @@ func _init():
 func getPokemon(pokeName):
 	return pokedex.get("Pokedex").get(pokeName)
 
+func getAllPokemon():
+	return pokedex.get("Pokedex").keys()
+
 func getMove(moveName):
 	return movedex.get("Movedex").get(moveName)

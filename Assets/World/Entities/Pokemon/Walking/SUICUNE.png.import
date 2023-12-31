@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SUICUNE.png-5d84113d6b50cd052e868154d8ed2e01.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BRUTEBONNET.png-791348d42cdc6ee3c61f3bcd63aa7
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

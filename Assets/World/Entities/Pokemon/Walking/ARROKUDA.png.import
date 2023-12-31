@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ARROKUDA.png-7133f41c2347f5d622ece842731829bc
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

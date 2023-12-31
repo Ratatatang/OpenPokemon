@@ -68,6 +68,8 @@ func resolveQueue():
 		await pressedComfirm
 		UI.clearAll()
 		deadPlayer.deathTween()
+		await deadPlayer.tween.finished
+		pass
 	
 	moveQueue = []
 

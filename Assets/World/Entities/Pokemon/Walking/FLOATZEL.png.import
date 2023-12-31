@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FLOATZEL.png-e9546dbbfb20b9a7e12cf284c6451a1a
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

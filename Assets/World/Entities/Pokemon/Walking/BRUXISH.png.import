@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BRUXISH.png-035f5b7bb6f8d79a707372dc0ea9908e.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/LATIOS.png-c77bd734036b7c9879e0cbfa7860c0c8.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

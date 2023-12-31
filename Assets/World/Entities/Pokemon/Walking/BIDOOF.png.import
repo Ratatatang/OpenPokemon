@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BIDOOF.png-b7e8129995db344040d6ada3ba5ad91a.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

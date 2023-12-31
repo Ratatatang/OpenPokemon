@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FINNEON.png-4a1c6c3a7957121e68abd9e63814e627.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

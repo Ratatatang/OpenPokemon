@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GUMSHOOS.png-28a615ad41a4625b278c45e9a829dc70
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

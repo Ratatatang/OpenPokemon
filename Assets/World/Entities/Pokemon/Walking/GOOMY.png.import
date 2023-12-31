@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GOOMY.png-25112c1a4f7675f98ff4a1c2bd3e9610.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

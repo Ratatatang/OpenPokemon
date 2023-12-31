@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/KLINK.png-613810b297a7bc2ea4787f53f98b3032.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

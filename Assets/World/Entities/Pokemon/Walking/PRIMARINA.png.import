@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PRIMARINA.png-403fcb4b408f98becbadff7091f2331
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

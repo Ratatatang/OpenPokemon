@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GROVYLE.png-adc493c69588cf1e6552cd8c1872d619.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

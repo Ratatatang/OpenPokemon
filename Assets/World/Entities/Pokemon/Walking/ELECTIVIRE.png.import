@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ELECTIVIRE.png-f9beaa9e97362583e8226a0f2a4352
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

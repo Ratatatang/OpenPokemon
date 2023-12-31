@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GROUDON.png-3d9769cec400e2e1a3675866b8e2d0af.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

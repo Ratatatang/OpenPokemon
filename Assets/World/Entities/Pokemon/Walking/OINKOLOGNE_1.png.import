@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/OINKOLOGNE_1.png-b3ed86f9b287f30580163091a8a5
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

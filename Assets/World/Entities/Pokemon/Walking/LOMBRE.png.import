@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/LOMBRE.png-ba1728a4da34f8fe0e3b53d10116d3c4.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

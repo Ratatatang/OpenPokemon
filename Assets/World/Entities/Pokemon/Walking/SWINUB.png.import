@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SWINUB.png-4381c5b9bbf4af390871512aef1e4a18.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

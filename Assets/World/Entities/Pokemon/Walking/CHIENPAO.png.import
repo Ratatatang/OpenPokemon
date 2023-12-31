@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CHIENPAO.png-037853fb08ade4be78f0f2b15b64c97f
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

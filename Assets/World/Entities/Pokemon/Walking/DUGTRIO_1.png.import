@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DUGTRIO_1.png-1484d12445dcdc14d226fef9a609deb
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

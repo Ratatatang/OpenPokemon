@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/TINKATUFF.png-2e797da09f7a848725701f0163c555d
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

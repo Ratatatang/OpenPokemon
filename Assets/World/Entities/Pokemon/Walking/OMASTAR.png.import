@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/OMASTAR.png-b51e7eb633c66bed9f3202ac18957b70.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

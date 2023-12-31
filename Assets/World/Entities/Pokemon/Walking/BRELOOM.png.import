@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BRELOOM.png-ed9694509c8a8d5865803303e62b8759.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

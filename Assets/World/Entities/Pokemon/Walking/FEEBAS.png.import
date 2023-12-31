@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FEEBAS.png-d2d334149868c543a07d1b7947ae1042.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

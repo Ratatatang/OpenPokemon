@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SHROOMISH.png-1fc22d55d626599ac8d249a60b310b0
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

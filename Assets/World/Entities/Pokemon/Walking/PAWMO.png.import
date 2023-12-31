@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PAWMO.png-3458229cd783ef0f8dc601f1260a927b.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

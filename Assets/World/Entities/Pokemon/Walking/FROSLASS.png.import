@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FROSLASS.png-0f1c5d6089af51767595ba7b3ac1f0c5
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

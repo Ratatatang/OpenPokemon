@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/LILEEP.png-5b94dee6e26b746f7525798014019d52.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

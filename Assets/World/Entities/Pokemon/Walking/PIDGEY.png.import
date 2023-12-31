@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PIDGEY.png-36c7ee880616cf33fe89d4b4ecb1f2a7.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

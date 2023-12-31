@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ESPEON.png-0e3f17247e2d0c339a6d3dc71b9faa3a.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

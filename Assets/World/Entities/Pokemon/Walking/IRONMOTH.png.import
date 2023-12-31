@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/IRONMOTH.png-e985ff8a863d5377b13c767635f029fc
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

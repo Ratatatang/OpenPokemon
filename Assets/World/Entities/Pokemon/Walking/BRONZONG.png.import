@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BRONZONG.png-391deb157d18ec89f907794eebfe9a06
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CYCLIZAR.png-a6729e35ae0dc1632712c3cedb6ae5a9
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

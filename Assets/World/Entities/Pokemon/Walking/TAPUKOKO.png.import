@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/TAPUKOKO.png-d2c19e32f5e891f0bb9732f6f9e2c3b2
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

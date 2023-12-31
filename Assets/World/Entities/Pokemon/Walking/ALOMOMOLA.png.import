@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ALOMOMOLA.png-25723308d9ee420cbec547b8386a165
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

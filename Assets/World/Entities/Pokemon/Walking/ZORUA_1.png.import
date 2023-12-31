@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ZORUA_1.png-ac7baff8911a9f2f610fccd431a36496.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

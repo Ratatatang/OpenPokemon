@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BEAUTIFLY.png-b5cb066d743821c8fc94d7f3ae8e900
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

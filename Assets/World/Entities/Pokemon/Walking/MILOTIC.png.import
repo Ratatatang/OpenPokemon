@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MILOTIC.png-bfd5df7c5abd1ec287a05d96f5ccfbf9.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

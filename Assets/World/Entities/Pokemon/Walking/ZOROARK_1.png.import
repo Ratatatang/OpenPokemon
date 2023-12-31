@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ZOROARK_1.png-2588869b8302e19ee61a537a9c94e3d
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

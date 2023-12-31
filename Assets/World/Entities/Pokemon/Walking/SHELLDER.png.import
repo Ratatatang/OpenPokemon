@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SHELLDER.png-798e8b4bb1d9fefe75c2a3e7c5107648
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

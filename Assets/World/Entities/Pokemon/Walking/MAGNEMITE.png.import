@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MAGNEMITE.png-5b1de950249326bcb5db9bd9fc5ef46
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

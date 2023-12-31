@@ -1,9 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbgs55f41hqs8"]
+[gd_scene load_steps=13 format=3 uid="uid://bbgs55f41hqs8"]
 
 [ext_resource type="Script" path="res://Scripts/Master.gd" id="1_rn7d8"]
 [ext_resource type="PackedScene" uid="uid://ban4agfxv0snt" path="res://Scenes/World/World Generator.tscn" id="1_ym2i5"]
 [ext_resource type="PackedScene" uid="uid://wheagikwl2pa" path="res://Scenes/2DScreens/Menu.tscn" id="2_c8vqa"]
+[ext_resource type="Texture2D" uid="uid://bbwshtftyoche" path="res://Assets/Combat/Pokemon/Front/BULBASAUR.png" id="3_fo7s2"]
+[ext_resource type="Script" path="res://Scripts/2DScreens/Rotating.gd" id="4_f7hma"]
 [ext_resource type="Script" path="res://Scripts/2DScreens/CurrentScreen.gd" id="4_iamk4"]
+
+[sub_resource type="Environment" id="Environment_ob4mh"]
+ambient_light_source = 2
+ambient_light_energy = 16.0
+reflected_light_source = 2
 
 [sub_resource type="Animation" id="Animation_axo10"]
 length = 0.001
@@ -17,7 +24,31 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:process_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_ortg0"]
@@ -62,14 +93,88 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_a7xpr"]
+resource_name = "fadeFromLoading"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.133333, 0.133333, 0.133333, 1), Color(0.133333, 0.133333, 0.133333, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:process_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_w08xm"]
+resource_name = "loading"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.133333, 0.133333, 0.133333, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e20g4"]
 _data = {
 "RESET": SubResource("Animation_axo10"),
-"StartCombat": SubResource("Animation_ortg0")
+"StartCombat": SubResource("Animation_ortg0"),
+"fadeFromLoading": SubResource("Animation_a7xpr"),
+"loading": SubResource("Animation_w08xm")
 }
 
 [node name="Master" type="Node3D"]
 script = ExtResource("1_rn7d8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.93079, -0.027983, -0.364481, 0.270017, 0.72474, 0.633911, 0.246415, -0.688454, 0.682137, 0, 7.79365, 0)
+light_color = Color(0.231373, 0.231373, 0.231373, 1)
+light_energy = 16.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_bias = 0.01
+shadow_transmittance_bias = 16.0
+directional_shadow_mode = 1
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ob4mh")
 
 [node name="Menu" parent="." instance=ExtResource("2_c8vqa")]
 
@@ -77,16 +182,21 @@ script = ExtResource("1_rn7d8")
 
 [node name="ColorRect" type="ColorRect" parent="ScreenFX"]
 top_level = true
-offset_left = -1121.0
-offset_top = -657.0
-offset_right = 2723.0
-offset_bottom = 1373.0
-color = Color(0, 0, 0, 0)
+offset_left = -870.0
+offset_top = -892.0
+offset_right = 2974.0
+offset_bottom = 1138.0
+color = Color(0, 0, 0, 1)
 
 [node name="ScreenAnimation" type="AnimationPlayer" parent="ScreenFX"]
 libraries = {
 "": SubResource("AnimationLibrary_e20g4")
 }
+
+[node name="Sprite2D" type="Sprite2D" parent="ScreenFX"]
+position = Vector2(565, 372)
+texture = ExtResource("3_fo7s2")
+script = ExtResource("4_f7hma")
 
 [node name="FPS" type="Label" parent="."]
 offset_top = 1.0
@@ -102,3 +212,6 @@ text = "FPS"
 
 [node name="CurrentScreen" type="Node3D" parent="CurrentScene"]
 script = ExtResource("4_iamk4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.3

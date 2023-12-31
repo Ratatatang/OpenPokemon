@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ROARINGMOON.png-398f150da183fd4aa248da5e009f3
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

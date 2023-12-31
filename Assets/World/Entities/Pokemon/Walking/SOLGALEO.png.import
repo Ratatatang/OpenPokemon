@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SOLGALEO.png-54e1df2a16cb4e261b183487b34ba99f
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

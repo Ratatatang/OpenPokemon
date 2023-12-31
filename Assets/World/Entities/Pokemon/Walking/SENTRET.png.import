@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SENTRET.png-56eb29b6fb9732a2334403f873ebc5a8.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

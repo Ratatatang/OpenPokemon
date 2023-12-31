@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/KELDEO_1.png-067e3643ae0aea06237e4a2a7969948a
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

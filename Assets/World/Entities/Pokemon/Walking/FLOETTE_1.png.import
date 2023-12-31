@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FLOETTE_1.png-2e3931c52a82317b0f2b8488cd877ee
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HAUNTER.png-e5ed9b0f3b6f4d9773c2d2728b81347b.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

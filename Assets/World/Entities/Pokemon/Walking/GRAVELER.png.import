@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GRAVELER.png-1260a4e00c34d9e46c65f4f7512d4eb3
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

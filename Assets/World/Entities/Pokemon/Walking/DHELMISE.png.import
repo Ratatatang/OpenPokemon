@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DHELMISE.png-15c12cffdc9a1f96c432bca93f9a7cae
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

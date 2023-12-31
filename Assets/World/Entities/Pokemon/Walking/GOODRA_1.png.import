@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GOODRA_1.png-31f16fc50c1c0496ed69021d4ef29579
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

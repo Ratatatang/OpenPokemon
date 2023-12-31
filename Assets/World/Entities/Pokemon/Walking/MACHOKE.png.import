@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MACHOKE.png-4764c57d74799e01fd34aabbcd9fc7fc.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

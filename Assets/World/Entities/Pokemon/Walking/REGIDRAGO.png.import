@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/REGIDRAGO.png-df465e75b9f36d2695728e76c8cd217
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

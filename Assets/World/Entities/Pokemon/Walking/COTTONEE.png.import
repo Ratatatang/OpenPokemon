@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/COTTONEE.png-8ab2faf091491c8d0e66ed74f14eb77e
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

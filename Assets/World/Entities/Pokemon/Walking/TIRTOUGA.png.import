@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/TIRTOUGA.png-f4a1dd173db1fcdcc69a0168735488e6
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

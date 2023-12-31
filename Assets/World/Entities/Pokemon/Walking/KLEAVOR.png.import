@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/KLEAVOR.png-72e4dd81358015d9c85d8296516bc6e5.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

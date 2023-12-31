@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/KRICKETOT.png-13ce3eb8469cb94cf8c496e4c21a4a2
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

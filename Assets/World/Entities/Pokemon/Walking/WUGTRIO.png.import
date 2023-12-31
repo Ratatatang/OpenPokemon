@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/WUGTRIO.png-d9a232c80080425b02233e30640b42d7.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

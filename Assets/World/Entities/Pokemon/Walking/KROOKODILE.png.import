@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/KROOKODILE.png-5aab536b0905ce4ecb8fff642c9c6e
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SABLEYE.png-8eb0d3e81227bc9e379f3d59948d65ff.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

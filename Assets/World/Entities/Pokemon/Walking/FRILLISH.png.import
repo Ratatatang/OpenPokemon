@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FRILLISH.png-fe2afb2e8813bea2a18e43a332ee38d5
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

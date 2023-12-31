@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/AEGISLASH.png-2d451fe94f5397a10d3040465e7c6ee
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -1,10 +1,14 @@
-[gd_scene load_steps=35 format=3 uid="uid://de1bq6qj0dd48"]
+[gd_scene load_steps=36 format=3 uid="uid://de1bq6qj0dd48"]
 
 [ext_resource type="Script" path="res://Scripts/World/Entities/WildPokemon.gd" id="1_8fedh"]
 [ext_resource type="Texture2D" uid="uid://bcrbxtumouux5" path="res://Assets/World/Entities/Pokemon/Walking/CORPHISH.png" id="2_1tdkb"]
 [ext_resource type="Texture2D" uid="uid://cd4hs8fh055wu" path="res://Assets/World/EntityShadow.png" id="2_2nkt2"]
 [ext_resource type="Texture2D" uid="uid://em2ys1xwgqb6" path="res://Assets/World/Entities/Emotes/Happy.png" id="4_nk31m"]
 [ext_resource type="Script" path="res://Scripts/World/Entities/Wander Controller.gd" id="5_w2jwy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h1suh"]
+radius = 0.213676
+height = 0.522104
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.0949792
@@ -272,7 +276,15 @@ blend_mode = 1
 [node name="WildPokemon" type="CharacterBody3D" groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.601, 0)
 script = ExtResource("1_8fedh")
-pokemonName = "Crawdaunt"
+pokemonName = "Corphish"
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, -0.00390719, -0.0138645, -0.0124963)
+shape = SubResource("CapsuleShape3D_h1suh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, -0.00390719, -0.0138645, -0.0124963)
@@ -280,6 +292,8 @@ shape = SubResource("1")
 
 [node name="Sprite2D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.204776, 0.730806, 0, -0.219242, 0.682586, 0.001, -0.0195436, -0.0490979)
+shaded = true
+alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("18")
 animation = &"down"
@@ -293,6 +307,7 @@ hframes = 2
 
 [node name="Shadow" type="Sprite3D" parent="Sprite2D"]
 transform = Transform3D(2.33333, 0, 0, 0, -1.70521, -0.539242, 0, 0.47781, -0.173201, -0.00333333, -0.239278, -0.00199512)
+visible = false
 texture_filter = 0
 render_priority = -1
 texture = ExtResource("2_2nkt2")

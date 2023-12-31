@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/LEDYBA.png-dbb6cb72fdaade47dd9464bc5beb3e47.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

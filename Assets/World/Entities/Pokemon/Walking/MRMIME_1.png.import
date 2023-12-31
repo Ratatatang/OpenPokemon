@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MRMIME_1.png-15a447577905ae2395552944fb244309
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

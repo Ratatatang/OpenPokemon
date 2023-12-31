@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CHERRIM.png-590e635257fd4877b913cb622cf548dd.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

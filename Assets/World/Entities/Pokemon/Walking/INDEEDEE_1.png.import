@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/INDEEDEE_1.png-2163c80dce2bbc76c8a479a183dcbe
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

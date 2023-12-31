@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/EEVEE.png-f80df2e8956a6276f98bb967952a6ac1.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

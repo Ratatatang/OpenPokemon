@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CINCCINO.png-e66dd7de44b73b9a3fadb6de60caf576
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SCORBUNNY.png-bcfb4e9544c8b2caf7d603bdf01943a
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

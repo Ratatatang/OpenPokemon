@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DREEPY.png-c18371d600eb6db1cf73e4e24e8c807f.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

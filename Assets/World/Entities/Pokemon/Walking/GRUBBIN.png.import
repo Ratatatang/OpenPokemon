@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GRUBBIN.png-478b62dc3881718d0c6db33d5f71b95d.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

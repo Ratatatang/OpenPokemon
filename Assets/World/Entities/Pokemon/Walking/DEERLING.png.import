@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DEERLING.png-493902061c7df900753d83d73a93bef5
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GASTLY.png-f15fd8c3b1a2f9f43e0ef00e8df7fd01.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

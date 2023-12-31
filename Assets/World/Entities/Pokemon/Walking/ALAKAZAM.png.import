@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ALAKAZAM.png-9c6b43a9ea45a6e561526d0cd9d504da
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

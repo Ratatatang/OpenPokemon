@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/RIBOMBEE.png-425a5b4b9cf51a8af8ddc3cdae505ac2
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

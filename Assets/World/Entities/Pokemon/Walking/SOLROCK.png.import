@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SOLROCK.png-7d6371cee7371dc67bfe9f5e7f1c05b8.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CLAMPERL.png-1c0471aac73591e6b3f6208f7451b006
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

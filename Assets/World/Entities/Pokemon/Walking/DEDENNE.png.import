@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DEDENNE.png-0ad55e485339f5736cd6efb85502e178.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

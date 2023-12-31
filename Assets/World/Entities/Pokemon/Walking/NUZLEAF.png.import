@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/NUZLEAF.png-7981a4dc980f30cb466e4fa80b40d350.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

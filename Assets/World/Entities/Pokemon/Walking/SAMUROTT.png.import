@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SAMUROTT.png-12853df2fb01e47f2924e29abe6c0153
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

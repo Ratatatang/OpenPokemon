@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CYNDAQUIL.png-fbf5effb4c8c084482a542dc8ef8958
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

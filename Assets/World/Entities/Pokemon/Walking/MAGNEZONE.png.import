@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MAGNEZONE.png-a39ed02c34a9ec2302b1d79a2cb4262
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

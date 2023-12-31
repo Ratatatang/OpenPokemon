@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DUSTOX.png-fac7753e5e093f5b06ac886d4830f3bd.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

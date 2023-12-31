@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HYDREIGON.png-a2b35ea55746073f4d9c8d6e7112dff
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

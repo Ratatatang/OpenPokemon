@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DRAGALGE.png-0514103a33460633d282670d348e2fa6
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

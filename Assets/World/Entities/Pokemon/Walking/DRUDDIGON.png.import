@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DRUDDIGON.png-8d3f85f20a35b5e55f5d98a57c6648d
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

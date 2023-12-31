@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SLOWKING_1.png-bc98674e2636cfea7335816830da14
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

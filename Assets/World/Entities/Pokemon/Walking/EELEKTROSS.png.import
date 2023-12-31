@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/EELEKTROSS.png-ed70e915442e41cb866294841715a2
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

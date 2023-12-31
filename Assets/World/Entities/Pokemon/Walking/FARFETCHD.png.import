@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FARFETCHD.png-d5bd8d3da99d7f879e4f99a9d403fda
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GREAVARD.png-6cfb488e8c4c43493b4c39f98610c5e5
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

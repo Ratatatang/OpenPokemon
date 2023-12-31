@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ROOKIDEE.png-99c4b17f541b60537e07c5eedefc7c8f
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

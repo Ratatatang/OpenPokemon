@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MUK_1.png-cd52f8899cf856b4a85731d7ecaa71d3.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

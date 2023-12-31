@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DRIFLOON.png-000fc7ce9c372ef96a713d0c53e07987
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

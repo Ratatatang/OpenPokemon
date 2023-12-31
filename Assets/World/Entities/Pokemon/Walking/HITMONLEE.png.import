@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HITMONLEE.png-555e6aa3b2bfd634b3c13accf0d7d6f
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

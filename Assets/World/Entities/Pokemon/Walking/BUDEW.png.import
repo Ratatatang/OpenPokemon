@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BUDEW.png-19212c1db39ad8540e38fbbfccc38852.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

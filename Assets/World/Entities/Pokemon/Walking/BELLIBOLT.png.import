@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BELLIBOLT.png-f2929499898747f7ffabd9b11f45bd0
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

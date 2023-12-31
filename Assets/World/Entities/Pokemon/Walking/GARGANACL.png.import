@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GARGANACL.png-4b3c52ac3138e801556bf2606a4fe3e
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

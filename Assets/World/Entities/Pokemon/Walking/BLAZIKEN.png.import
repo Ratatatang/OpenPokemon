@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BLAZIKEN.png-15f7d8d2f7f29865dbe0e02eb98197ed
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

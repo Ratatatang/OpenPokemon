@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ORTHWORM.png-d0d413e1d3cdd52f2052a625dfd5af4e
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

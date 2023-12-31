@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MEOWTH_1.png-fcad93bdbe16e36c8bb5861c6a60b81e
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

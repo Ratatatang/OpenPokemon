@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SPEWPA.png-56eb4a12e44c3895e32d2546c91458b6.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

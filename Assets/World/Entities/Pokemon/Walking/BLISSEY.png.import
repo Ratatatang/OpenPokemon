@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BLISSEY.png-5a72c9659bc4872dfdb2b5f1a4f36f7d.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

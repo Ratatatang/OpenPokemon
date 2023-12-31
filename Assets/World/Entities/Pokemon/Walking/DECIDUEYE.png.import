@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DECIDUEYE.png-1aec691d0574c0c9b89522a14866c48
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

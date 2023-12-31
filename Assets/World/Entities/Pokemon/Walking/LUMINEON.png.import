@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/LUMINEON.png-e1c5e12e1888bcdddea6f0e63ab3213c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

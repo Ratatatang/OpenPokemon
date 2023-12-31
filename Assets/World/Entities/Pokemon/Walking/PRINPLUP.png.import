@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PRINPLUP.png-6af3e36159f1f41a376de50cd95f4e33
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

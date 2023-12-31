@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SANDSHREW.png-460584d49d14155de986bf7bfe40cd4
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

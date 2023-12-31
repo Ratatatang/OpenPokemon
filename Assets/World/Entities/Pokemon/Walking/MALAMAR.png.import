@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MALAMAR.png-62ba08f0ec225f1d58aa112435e656b1.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ARCHEOPS.png-1ab5e910a5b7cf10d4c940b40fdfaad1
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

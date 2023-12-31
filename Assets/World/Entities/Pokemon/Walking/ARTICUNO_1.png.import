@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ARTICUNO_1.png-06aa21a8d08100f13258d4ce80d898
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

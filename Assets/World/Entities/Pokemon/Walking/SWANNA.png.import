@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SWANNA.png-2c820cb418448a4d5ad6e49f1b5b6ec5.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

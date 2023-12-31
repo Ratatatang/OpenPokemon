@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/IRONJUGULIS.png-5629b7e4b98eeb8fb435b8e0faad7
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

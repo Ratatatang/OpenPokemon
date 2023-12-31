@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ROLYCOLY.png-1073885d63ef1de68805c52cee1fed19
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

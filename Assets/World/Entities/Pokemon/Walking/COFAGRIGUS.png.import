@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/COFAGRIGUS.png-06eb2d88e30aa5f3d4372dbd06e265
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

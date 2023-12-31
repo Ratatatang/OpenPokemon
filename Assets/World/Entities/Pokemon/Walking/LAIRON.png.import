@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/LAIRON.png-a395326bc7affb57e0918b23ce3b1fe6.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SKIDDO.png-0358160946822ab7e5c1d08efd887ad2.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SHAYMIN_1.png-3411125e1c0d0c8db903fcbb3eab295
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

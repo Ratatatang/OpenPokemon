@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GRIMER.png-12f4d1bbf14d533d756ef6240a9ec164.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

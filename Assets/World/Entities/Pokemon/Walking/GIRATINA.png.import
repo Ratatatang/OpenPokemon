@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GIRATINA.png-57d0b48a51dcf2db776b0b73f9b981e1
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

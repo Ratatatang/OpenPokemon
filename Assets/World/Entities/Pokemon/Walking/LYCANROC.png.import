@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/LYCANROC.png-b0d598fbd5615c95ddd5336a0d10b26d
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

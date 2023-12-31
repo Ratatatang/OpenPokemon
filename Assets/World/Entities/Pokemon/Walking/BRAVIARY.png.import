@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BRAVIARY.png-c733d21d966cd2cbaf03f916e51d440a
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

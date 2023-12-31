@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PIGNITE.png-261c54467369ada6ab3903398e88a8ae.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

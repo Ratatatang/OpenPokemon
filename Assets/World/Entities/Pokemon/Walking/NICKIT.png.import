@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/NICKIT.png-c14da149b79685dcc0ee88a23d45a365.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

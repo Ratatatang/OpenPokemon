@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/WIGLETT.png-081cfa4f57b4db581883f6cc9f53c79c.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

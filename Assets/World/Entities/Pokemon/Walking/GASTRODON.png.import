@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GASTRODON.png-33ccaba0be685d94b09eb803019237e
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

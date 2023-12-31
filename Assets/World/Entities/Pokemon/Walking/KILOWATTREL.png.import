@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/KILOWATTREL.png-624a511f94e8a1b56e11099973450
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

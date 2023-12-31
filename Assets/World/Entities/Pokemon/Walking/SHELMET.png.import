@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SHELMET.png-ec28d5b6d452e8df75596d6cec9e5472.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

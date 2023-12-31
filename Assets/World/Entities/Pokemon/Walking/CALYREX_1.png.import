@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CALYREX_1.png-64cc4c124cdd47acda315ae2131f19b
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

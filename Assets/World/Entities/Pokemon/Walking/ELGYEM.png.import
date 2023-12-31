@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ELGYEM.png-55ee2c625364bcf5bd928a4f48acf30a.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

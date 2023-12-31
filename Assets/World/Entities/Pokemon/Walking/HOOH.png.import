@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HOOH.png-f7d24b64a1fcfba020ea7207c4b8c6e5.cte
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

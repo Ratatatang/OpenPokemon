@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GREEDENT.png-f0ea98386271226fea8c491d2c3a635b
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

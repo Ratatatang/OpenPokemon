@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SUNKERN.png-068d6242e01a30faede58a023ac93d48.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

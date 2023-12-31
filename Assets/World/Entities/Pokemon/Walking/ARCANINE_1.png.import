@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ARCANINE_1.png-7586c9caa57309fa3dc5fc17384cc9
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

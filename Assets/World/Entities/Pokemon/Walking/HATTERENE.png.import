@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HATTERENE.png-757eb5a7d259d147fe52459c7a95d62
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

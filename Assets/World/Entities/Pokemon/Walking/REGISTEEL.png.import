@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/REGISTEEL.png-335f3b2e82cf961a32275443285390b
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

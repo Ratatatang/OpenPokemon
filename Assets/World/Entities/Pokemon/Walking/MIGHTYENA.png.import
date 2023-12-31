@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MIGHTYENA.png-d6f24bd5cd6bd85b91e659dc774c865
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

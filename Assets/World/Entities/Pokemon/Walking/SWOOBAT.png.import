@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SWOOBAT.png-72dc430d767eadd9cf64e3e1d27f67a9.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

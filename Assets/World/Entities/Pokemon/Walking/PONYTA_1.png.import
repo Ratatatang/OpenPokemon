@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PONYTA_1.png-85d649f3d2aaa5144d50583224948170
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

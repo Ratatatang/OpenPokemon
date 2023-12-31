@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BASCULIN.png-895face0005afbe2f255a932463f7dfb
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

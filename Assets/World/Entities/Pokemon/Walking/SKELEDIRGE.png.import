@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SKELEDIRGE.png-dc3d5c94a1f101b2fbab9f827bdf7e
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SPOINK.png-59fb050db7b3134b4b8194a1e087d061.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

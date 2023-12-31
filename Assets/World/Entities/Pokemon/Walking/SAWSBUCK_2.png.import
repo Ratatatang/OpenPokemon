@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SAWSBUCK_2.png-6eff13c4c6f7044515b19c8a9cf531
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

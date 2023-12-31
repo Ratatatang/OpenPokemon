@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PERSIAN_1.png-746b9d950854ed7a30a5c95ae82dd70
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GARCHOMP.png-b1ce21c150986798e9afa3e8a87e725e
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

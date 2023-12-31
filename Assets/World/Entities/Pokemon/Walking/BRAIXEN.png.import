@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BRAIXEN.png-9d75aab559d6b71aba4fea3e5c7b8b3c.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/JIGGLYPUFF.png-a08acc881f62e4bca87f0644c44a45
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

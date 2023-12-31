@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HEATRAN.png-aba5dc86a2fce78a7f4de9b4fd96f9a5.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

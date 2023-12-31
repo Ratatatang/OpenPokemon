@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PYUKUMUKU.png-a934df6d643a143e452f6e886f5d6af
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

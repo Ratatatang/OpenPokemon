@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FLITTLE.png-712a80c35e570b32f5390e6f93e6bdfb.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

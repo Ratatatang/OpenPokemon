@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/WOOPER_1.png-a990f5c91eb8f712dd2b08a4d89c8640
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

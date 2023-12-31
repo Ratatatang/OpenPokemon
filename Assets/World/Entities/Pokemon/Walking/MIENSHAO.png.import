@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MIENSHAO.png-f6c825697b222dcb66e1ba8d2d2052d2
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

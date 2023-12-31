@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MAGBY.png-d7c284e627a17dc81e05d6d35307de1c.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

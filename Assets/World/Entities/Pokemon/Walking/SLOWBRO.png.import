@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SLOWBRO.png-f7e2cf646c1c386fad7b4cfdb248fc54.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

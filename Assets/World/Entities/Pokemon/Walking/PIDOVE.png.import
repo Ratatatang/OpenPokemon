@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PIDOVE.png-b9e731a8f6b9e647e08d1de22b38cf28.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

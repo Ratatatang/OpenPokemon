@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/RHYHORN.png-234d3f8fb20b1e8f5bea22225dc65ea8.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

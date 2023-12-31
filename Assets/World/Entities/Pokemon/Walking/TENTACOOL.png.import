@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/TENTACOOL.png-8a1eabc0207c2fa7f359740b5370140
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

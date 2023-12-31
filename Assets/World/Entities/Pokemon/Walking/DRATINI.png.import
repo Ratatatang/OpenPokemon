@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DRATINI.png-51ae6ff163352c73b4ac0f436a8c1ebf.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/LOKIX.png-83dceed42b245a9867624b33e726029f.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

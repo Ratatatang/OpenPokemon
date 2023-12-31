@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/JUMPLUFF.png-5370787cc27c3c72fb1a0d9f81c2a254
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

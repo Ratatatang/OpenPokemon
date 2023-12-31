@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ESPATHRA.png-b962ae66a98ca11cd947fe54a0b11ce3
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

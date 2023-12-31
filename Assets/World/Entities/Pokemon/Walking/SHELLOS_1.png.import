@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SHELLOS_1.png-1ebc3dac63077f33a473cd9e859760c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

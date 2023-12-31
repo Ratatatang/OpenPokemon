@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SEADRA.png-4eba5c749f4ef6a31fcec2b23f5111f1.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

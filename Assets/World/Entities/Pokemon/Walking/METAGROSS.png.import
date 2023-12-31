@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/METAGROSS.png-5a4477d60c6db4387db475dc9f5c413
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

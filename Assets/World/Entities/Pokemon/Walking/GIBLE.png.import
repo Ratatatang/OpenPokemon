@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GIBLE.png-8aa2140c95de4c8dff6c830e81db57a2.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

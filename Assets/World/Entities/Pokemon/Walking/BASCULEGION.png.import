@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BASCULEGION.png-592ba5cfeb1f6816d21fc880a7a51
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MEDITITE.png-a75c9fe859a098a0c46095e395de11eb
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

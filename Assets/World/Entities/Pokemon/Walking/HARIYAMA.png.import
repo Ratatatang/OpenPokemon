@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HARIYAMA.png-db8be39444dc6bb3e948d57335d93b36
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

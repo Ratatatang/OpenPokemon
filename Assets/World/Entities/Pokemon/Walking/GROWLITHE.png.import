@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GROWLITHE.png-3df00bf16daf204b840b5c9f4b79894
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/LINOONE.png-35c78546d93138b861bfa763788f7984.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

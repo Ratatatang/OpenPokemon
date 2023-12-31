@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FALINKS.png-f1e3925b32d81d4c0f7068d4b96dd4d8.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PATRAT.png-451dded3d8f3834ef3ef2b10d79ada8a.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

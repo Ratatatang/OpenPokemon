@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/KOMMOO.png-4943c8e99046b70431f911b93386ff8c.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DRACOVISH.png-3a22c91b3d027de0cc9157e9234a080
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

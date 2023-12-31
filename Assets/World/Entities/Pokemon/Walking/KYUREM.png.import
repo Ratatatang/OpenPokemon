@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/KYUREM.png-8e7c4714b077b91ddc0d254c61892b11.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

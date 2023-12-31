@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SIMIPOUR.png-44d713f341fc2e6576cdbea2f8547c69
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/LICKILICKY.png-1de07059616a254d8f8a82c71e5a61
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FURFROU_6.png-e69fb20477caf2da697a9b8baf148ef
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

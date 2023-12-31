@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SALANDIT.png-f46abe4432f141c072d76d867d9b9d2c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

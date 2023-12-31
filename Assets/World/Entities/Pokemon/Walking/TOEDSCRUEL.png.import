@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/TOEDSCRUEL.png-6aa7c900e6c0e23c2f6f8c20cbb789
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

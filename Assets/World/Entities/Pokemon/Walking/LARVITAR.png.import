@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/LARVITAR.png-9a64b02c0d32985680e37c050282e4bd
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

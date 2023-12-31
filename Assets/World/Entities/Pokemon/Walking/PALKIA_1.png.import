@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PALKIA_1.png-4b734237b569abd3d6bb766f7eb3520d
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

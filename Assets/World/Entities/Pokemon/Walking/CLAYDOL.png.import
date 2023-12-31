@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CLAYDOL.png-2471441fb86f37380c84fe00211df1ae.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -9,6 +9,7 @@ var statusEffect
 var generateBack = false
 var enemy = false
 var opponent
+var tween
 
 @onready var sprite = $Sprite2D
 @onready var healthBar = $Healthbar
@@ -124,7 +125,7 @@ func inflictStatus(value : String):
 func deathTween():
 	var rect = sprite.region_rect
 	
-	var tween = create_tween()
+	tween = create_tween()
 	tween.tween_property(sprite, "region_rect", Rect2(0, -96, rect.size.x, rect.size.y), 0.3).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 
 		

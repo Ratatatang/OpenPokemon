@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/TATSUGIRI_1.png-10582a2b99eb988207f5c37d3173a
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

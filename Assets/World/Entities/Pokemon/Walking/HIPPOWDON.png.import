@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HIPPOWDON.png-c51c6889be348025c292cf820eb6195
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

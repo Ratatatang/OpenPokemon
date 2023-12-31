@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GARBODOR.png-851702ed1d0f5229893b7560e2f3b035
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

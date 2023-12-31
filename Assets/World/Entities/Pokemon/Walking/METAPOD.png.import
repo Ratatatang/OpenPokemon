@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/METAPOD.png-75b3cfe18b9800f672d2ad3575798346.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

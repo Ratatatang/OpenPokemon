@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MORPEKO_1.png-6ff3cbde3b425cdff8411a933b100a4
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

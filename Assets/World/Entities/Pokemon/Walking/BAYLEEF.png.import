@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BAYLEEF.png-d6c681dd5d26cfc3af5458f82e89d192.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HIPPOPOTAS.png-1681bef9bd9d015a1ed8519e67fb2f
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

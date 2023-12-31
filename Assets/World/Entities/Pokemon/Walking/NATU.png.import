@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/NATU.png-b98a2e3776616db56e35dda2141af23f.cte
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

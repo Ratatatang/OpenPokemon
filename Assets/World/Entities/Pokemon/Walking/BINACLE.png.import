@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BINACLE.png-dfa3296309bf9fbb43102d860bfefea6.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

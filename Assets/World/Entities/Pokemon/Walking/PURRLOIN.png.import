@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PURRLOIN.png-9052fa11efa7f4d685dcb727e6302f45
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

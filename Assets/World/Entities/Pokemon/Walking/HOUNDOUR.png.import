@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HOUNDOUR.png-df767d08fb9f423da573e9231342fa8a
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

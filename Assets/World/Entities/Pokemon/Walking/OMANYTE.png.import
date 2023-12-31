@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/OMANYTE.png-d968f8d1d048a61a3f161cb706831a1a.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

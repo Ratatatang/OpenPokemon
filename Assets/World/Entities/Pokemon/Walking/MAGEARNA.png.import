@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MAGEARNA.png-4480c39963633ac045d27a71749154d9
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

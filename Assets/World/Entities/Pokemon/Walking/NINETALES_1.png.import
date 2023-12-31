@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/NINETALES_1.png-826eaa285e7209dcc96b0640123c0
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

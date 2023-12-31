@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SANDILE.png-0ddf998df9cabc1131d31e3305cd1677.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

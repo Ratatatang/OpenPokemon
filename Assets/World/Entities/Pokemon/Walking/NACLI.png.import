@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/NACLI.png-023b8ff772e201627647f648fd72ea29.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

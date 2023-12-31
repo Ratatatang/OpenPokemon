@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/TEPIG.png-9b5f8664919960677d61d0d9201939e0.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

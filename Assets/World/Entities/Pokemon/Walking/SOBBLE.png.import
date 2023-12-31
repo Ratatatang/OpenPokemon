@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SOBBLE.png-095f3bcb23109b46ba33795cd0e6f856.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

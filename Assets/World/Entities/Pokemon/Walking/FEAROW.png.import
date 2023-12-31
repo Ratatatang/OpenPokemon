@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FEAROW.png-59a280f0a065e7c7e63faaee7e10212c.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

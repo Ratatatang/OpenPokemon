@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BRIONNE.png-cd1ba1ea6d7cad1c7dab594350e0d761.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

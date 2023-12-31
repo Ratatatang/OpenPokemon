@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SHARPEDO.png-12d9c0e0f14902f22f657d511a7b5d6e
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MAGMORTAR.png-fb7c278f03c82e9a6b6038d53737f1f
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

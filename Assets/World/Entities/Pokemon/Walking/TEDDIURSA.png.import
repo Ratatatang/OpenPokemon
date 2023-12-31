@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/TEDDIURSA.png-daae72a81c507fe2229a793920e28e8
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

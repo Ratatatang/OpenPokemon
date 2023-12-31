@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/TANGROWTH.png-534de4ea10c2c5a16aa19a64b949085
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://b5ioerkuslxbo"]
+
+[ext_resource type="Texture2D" uid="uid://c1bxuolkgry8k" path="res://Assets/World/Entities/Pokemon/Walking/ABOMASNOW.png" id="1_qb7nc"]
+
+[resource]
+atlas = ExtResource("1_qb7nc")
+region = Rect2(0, 128, 128, 64)

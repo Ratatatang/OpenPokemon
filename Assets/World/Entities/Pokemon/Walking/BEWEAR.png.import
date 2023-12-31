@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BEWEAR.png-e34f098b3385d92353a6764f3b7ff70b.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

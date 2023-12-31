@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DUCKLETT.png-29f0ec6e987684f69f4e3437483e2091
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

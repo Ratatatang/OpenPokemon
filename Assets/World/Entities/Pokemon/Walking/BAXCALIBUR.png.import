@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BAXCALIBUR.png-fc82a4d4cfb2aee7ed744c37237749
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/OVERQWIL.png-eb140a190ec5de634da76245f9bdbf4e
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

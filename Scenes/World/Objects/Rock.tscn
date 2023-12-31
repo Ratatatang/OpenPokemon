@@ -13,14 +13,18 @@ size = Vector3(0.768998, 0.001, 0.496625)
 [node name="Rock" type="StaticBody3D" groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.884, 0)
 script = ExtResource("1_f117a")
+objectName = "Rock"
 
-[node name="Sprite2D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.784027, 0.861316, 0, -0.514923, 1.31145, 0, -0.247814, 0.164378)
+shaded = true
+alpha_cut = 2
 texture_filter = 2
 texture = ExtResource("2_erqbg")
 
 [node name="Shadow" type="Sprite3D" parent="."]
 transform = Transform3D(2.9, 0, 0, 0, -6.55671e-08, -3, 0, 1.5, -1.31134e-07, -0.00933097, -0.375252, 0.227299)
+visible = false
 texture_filter = 0
 render_priority = -1
 texture = ExtResource("3_wypdn")
@@ -32,3 +36,11 @@ shape = SubResource("1")
 [node name="CollisionShape2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00993752, -0.386289, 0)
 shape = SubResource("2")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.91918, 0, 0, 0, 1, 0, 0, 0, 1, -0.0229299, -0.246759, 0.182136)
+shape = SubResource("1")

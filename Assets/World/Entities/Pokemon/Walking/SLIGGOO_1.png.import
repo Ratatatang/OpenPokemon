@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SLIGGOO_1.png-7c76696332fe15de5a43ac9b59c836a
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

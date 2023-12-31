@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/STARMIE.png-a3ac5a2d005820cb4c9e8b33d7df6aa6.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

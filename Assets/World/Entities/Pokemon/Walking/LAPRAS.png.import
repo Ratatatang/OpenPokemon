@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/LAPRAS.png-9b7934322dc5437f1d0fb7e30f8dc92c.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

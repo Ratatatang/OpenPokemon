@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MELMETAL.png-094f036ddbd888222523fa66e582ec80
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

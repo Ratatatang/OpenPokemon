@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CLOYSTER.png-6738da205ad8c267230139733709ec40
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

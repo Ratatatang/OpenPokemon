@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FERROTHORN.png-9852cfd402ae59b81625db0a686b44
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

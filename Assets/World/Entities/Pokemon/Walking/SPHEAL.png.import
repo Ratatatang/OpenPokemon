@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SPHEAL.png-49dbfe4deb64120c22b6ca6a54a17f37.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

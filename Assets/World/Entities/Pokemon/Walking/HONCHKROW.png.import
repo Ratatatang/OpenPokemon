@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HONCHKROW.png-889d9539a2a0672764e095f59dfae70
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

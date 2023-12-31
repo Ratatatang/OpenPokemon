@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CLODSIRE.png-15243f6fd99ecc14b6e4913b5d995035
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

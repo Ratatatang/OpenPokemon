@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/TAPUBULU.png-96139d1480b997b14a8d0c292bec4530
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

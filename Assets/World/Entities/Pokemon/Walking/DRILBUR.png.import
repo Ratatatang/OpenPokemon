@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DRILBUR.png-f860df7a9b612b33d54e8a6d58a12403.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

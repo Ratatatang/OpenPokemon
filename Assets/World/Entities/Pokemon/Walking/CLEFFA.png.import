@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CLEFFA.png-35e312111ea67d7c6426a580d6519143.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

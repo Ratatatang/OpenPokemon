@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GOLDUCK.png-531d4f2bd425abbb6b8c57fa0f7dd629.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

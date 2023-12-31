@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HYPNO.png-2809f9cb830686f6fb3d76e62977b7ea.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

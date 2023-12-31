@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FROAKIE.png-dfa49e66c7fe5a14e8982459ef25437d.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

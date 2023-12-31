@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/RILLABOOM.png-41398da1f91351043d85142d4905c8a
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

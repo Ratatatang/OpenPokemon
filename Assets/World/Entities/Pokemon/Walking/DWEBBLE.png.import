@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DWEBBLE.png-9e8790944bb0f7a9eb4ab2f2ab087875.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

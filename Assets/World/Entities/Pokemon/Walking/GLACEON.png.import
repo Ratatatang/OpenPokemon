@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GLACEON.png-9a84ba77cb0c7db95018df92d7794be7.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

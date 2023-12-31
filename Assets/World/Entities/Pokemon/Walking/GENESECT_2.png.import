@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GENESECT_2.png-a70a3844f4cd782320248b7f0f75de
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

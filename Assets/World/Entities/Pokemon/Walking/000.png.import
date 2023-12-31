@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://byrh3te5hvhho"
-path.s3tc="res://.godot/imported/000.png-e9b73b993574b9e6a8af7c95abbdcd38.s3tc.ctex"
+path="res://.godot/imported/000.png-e9b73b993574b9e6a8af7c95abbdcd38.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/World/Entities/Pokemon/Walking/000.png"
-dest_files=["res://.godot/imported/000.png-e9b73b993574b9e6a8af7c95abbdcd38.s3tc.ctex"]
+dest_files=["res://.godot/imported/000.png-e9b73b993574b9e6a8af7c95abbdcd38.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

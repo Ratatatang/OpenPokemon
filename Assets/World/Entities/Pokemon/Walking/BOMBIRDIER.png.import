@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BOMBIRDIER.png-c345f5fa3c655919ede039db4dfa2c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

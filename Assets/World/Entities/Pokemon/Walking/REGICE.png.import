@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/REGICE.png-d67176218e73e9aa3a2dc47f56d02d9d.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

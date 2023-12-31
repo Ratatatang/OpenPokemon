@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ROWLET.png-a2dd0cc4e47a09889f2f0adfd495fb64.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

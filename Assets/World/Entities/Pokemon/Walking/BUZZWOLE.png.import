@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BUZZWOLE.png-66a433cc8e81ee06366200c16d03331f
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

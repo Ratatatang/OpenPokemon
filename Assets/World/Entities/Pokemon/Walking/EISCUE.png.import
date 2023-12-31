@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/EISCUE.png-5b259172a86b5635a45a321b143e5bac.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/TAUROS_3.png-d323979f565ee263ec062ee0790a4821
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

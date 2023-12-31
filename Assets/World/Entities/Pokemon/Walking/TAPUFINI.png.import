@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/TAPUFINI.png-1db568f6f0475c3c8c3c5055326ae2e0
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ENTEI.png-8e8441d0ea354ecfebdd05c54f0846fd.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

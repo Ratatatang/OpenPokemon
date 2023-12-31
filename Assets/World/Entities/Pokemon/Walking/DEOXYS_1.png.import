@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DEOXYS_1.png-13b738cd060d5658393012e58e1baaeb
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

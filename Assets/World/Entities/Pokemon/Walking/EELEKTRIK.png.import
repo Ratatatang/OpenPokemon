@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/EELEKTRIK.png-ef6a1c462de0fd61931b27c15b7d67b
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PANPOUR.png-41877aec266b5de22825bb16dfb0e353.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FINIZEN.png-6bc9b372cda5ad742fb37e218bd3372b.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

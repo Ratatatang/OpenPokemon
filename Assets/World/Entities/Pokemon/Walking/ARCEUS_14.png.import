@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ARCEUS_14.png-535d52bbc61b3f0c495395f240d01c0
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/KANGASKHAN.png-5c897dee262e90a58b625bbe6398c6
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

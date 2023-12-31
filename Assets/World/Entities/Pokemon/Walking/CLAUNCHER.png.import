@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CLAUNCHER.png-7cf2e55786a7cf27b3d055994f9c9bf
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

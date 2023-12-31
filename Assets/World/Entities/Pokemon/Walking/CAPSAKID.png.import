@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CAPSAKID.png-c717fcdb35415146dd8409f0cd828b68
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

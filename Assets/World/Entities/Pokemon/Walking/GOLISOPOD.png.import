@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GOLISOPOD.png-555c64fbe1e43f5e821dfaf17973e74
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GUZZLORD.png-bf3ca7eb209dc63f1378f3fd62e46361
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

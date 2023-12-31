@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HUNTAIL.png-565e5a1d2760fe8aa9baaa8b94187c23.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

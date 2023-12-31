@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DELCATTY.png-a28d5cc6f1073663a66d1539b3da608d
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

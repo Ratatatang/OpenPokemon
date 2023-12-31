@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ODDISH.png-9ea5491d53094e3b3bfa4f0284b1b548.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

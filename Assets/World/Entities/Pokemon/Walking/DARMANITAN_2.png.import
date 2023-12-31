@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DARMANITAN_2.png-60ea468574f2d132d70edd01357a
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GROTLE.png-e84e2865935baa20b3d364a0012da788.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

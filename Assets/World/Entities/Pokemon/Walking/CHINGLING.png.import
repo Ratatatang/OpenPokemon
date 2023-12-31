@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CHINGLING.png-f156e171349223ecf6d3d194522c305
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

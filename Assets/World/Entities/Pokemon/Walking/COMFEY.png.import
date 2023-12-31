@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/COMFEY.png-675ffa7d95d7c8b6a6f7e184aa3f0d56.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

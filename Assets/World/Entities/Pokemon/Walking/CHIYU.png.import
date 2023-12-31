@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CHIYU.png-5c1761dbcf24a64e28d7f9f0e87c0a32.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

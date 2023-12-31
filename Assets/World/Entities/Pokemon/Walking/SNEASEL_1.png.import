@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SNEASEL_1.png-d66212e1e54a3ded089fe5302134bb0
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

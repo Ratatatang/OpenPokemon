@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/NOIVERN.png-703bc319767bfacf72d3efdd4599e6ed.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

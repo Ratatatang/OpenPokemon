@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ABRA.png-dc66f2b6a5c8f5db4e532550558bf650.cte
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

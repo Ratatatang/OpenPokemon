@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PALPITOAD.png-c42e573d9265e4968e616df10073472
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

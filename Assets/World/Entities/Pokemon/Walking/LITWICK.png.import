@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/LITWICK.png-36b76625321c9f53573ca0af44179878.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

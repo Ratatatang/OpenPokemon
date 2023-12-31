@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GRANBULL.png-536e32194951e9755400e5b034376ecd
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

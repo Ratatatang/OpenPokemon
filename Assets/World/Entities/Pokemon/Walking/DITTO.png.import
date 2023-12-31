@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DITTO.png-cafeaecad0ee9ad7b87942c546fb08c9.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

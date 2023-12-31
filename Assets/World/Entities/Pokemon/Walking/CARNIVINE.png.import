@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CARNIVINE.png-2205059defe1f2807c3a87e4356d194
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

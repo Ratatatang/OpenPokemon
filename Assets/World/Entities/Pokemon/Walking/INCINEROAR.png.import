@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/INCINEROAR.png-226a87ae3d99c559b1c8c30d1868ce
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

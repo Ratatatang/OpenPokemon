@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/GOTHORITA.png-40c69aa1aec8ffc3ec9872a26582850
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

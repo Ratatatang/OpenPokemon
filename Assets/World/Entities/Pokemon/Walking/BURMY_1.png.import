@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BURMY_1.png-34e68fb97cfbc0eb3974c6f41ce24640.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

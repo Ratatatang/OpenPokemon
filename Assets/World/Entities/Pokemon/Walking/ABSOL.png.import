@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ABSOL.png-10bffd22e25a9d550d01c73ac09bdb9b.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

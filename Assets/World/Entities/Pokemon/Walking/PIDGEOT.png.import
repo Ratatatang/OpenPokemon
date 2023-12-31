@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PIDGEOT.png-ee9be641a7b500b98ec548153abf1ee7.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

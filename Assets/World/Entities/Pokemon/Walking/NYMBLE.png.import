@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/NYMBLE.png-96283b691f2cc40e007ecf0ce5c0033b.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

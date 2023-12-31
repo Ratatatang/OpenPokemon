@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SNORUNT.png-c0f18e5a0c740ce39c8495d1639dc3e3.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MILTANK.png-a81019139f7aa8dcaea8f9a5f4f1e775.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

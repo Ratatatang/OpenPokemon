@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/ORICORIO_1.png-5e534edd4ce261f81d28f18c102d68
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

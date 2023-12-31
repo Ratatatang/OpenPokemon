@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SNOVER.png-f4f20532d0fffb0f6beb0f4d25f9fdc1.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

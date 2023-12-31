@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DARUMAKA_2.png-b96ebfa8d0154a2d3e3849b65f3de3
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

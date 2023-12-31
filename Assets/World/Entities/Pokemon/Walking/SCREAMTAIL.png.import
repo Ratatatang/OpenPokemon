@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SCREAMTAIL.png-8278d4528dd2ccded01aaaae9187e2
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

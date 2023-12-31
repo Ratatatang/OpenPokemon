@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/REMORAID.png-6ec2f41583a45f185fbb2c8190bb2b9b
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

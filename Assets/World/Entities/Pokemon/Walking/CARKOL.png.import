@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CARKOL.png-6db87bc1f742650c17a59b01849c9ab2.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

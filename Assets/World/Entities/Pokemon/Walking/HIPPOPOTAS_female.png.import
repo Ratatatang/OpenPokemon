@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/HIPPOPOTAS_female.png-bc5bea59de04560a568e58f
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

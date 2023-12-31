@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DIALGA_1.png-c31bd82180a3348f14879475e5db4c99
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

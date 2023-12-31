@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SIMISEAR.png-85d5f966d0affd8de6b77b4fc96009f5
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

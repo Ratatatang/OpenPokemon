@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/COPPERAJAH.png-24aedfb17c3cb81a0dce1ae22dbb8b
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

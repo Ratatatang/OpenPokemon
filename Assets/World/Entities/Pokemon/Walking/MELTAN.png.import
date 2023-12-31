@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MELTAN.png-27875828f4d05ab1d549f67bef76e544.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

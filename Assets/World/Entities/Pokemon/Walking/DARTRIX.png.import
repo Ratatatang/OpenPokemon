@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DARTRIX.png-114ce8296b09400a69e7be439cdb928e.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

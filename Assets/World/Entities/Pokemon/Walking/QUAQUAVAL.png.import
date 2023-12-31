@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/QUAQUAVAL.png-941e27fdb56537634d5d4d2cc10e9c2
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/NIDORANmA.png-b44001b16119f9a92749f96fe7b9311
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

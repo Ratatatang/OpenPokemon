@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MILCERY.png-16b1cf893929959935be123c969f44c0.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

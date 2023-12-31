@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CHEWTLE.png-25b175c793023151d27ebb94b2a0280e.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

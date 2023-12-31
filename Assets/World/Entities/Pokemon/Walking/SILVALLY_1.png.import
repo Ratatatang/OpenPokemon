@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SILVALLY_1.png-d8619440ca08b82c646b87e0838832
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

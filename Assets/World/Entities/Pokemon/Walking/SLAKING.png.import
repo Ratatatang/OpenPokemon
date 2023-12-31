@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SLAKING.png-c4935f1fd822ae226c991e45ab60ac10.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

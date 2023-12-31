@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/KABUTOPS.png-84c3b1beb643a6bf387191a64e50d895
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

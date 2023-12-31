@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/BRAMBLEGHAST.png-600c3a5195e96cccec705153610b
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

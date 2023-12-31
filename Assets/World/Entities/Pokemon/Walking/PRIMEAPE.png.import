@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PRIMEAPE.png-fddefe4b53363a0078f3f8c896e16403
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

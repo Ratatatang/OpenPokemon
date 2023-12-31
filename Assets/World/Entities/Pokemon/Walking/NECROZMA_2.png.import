@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/NECROZMA_2.png-50b4ef80ae89922f9e98bfcf5d8c48
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

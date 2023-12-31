@@ -199,6 +199,12 @@
 			"EVs": {"speed": 3},
 			"ExperienceCurve": "MediumSlow"
 		},
+		"Sandshrew" : {
+			"ID" : 0027
+		},
+		"Sandslash" : {
+			"ID" : 0028
+		},
 		"Vulpix" : {
 			"ID": "0037",
 			"Name": "Vulpix",
@@ -227,14 +233,15 @@
 			"EVs": {"speed": 1},
 			"ExperienceCurve": "MediumFast",
 			"EvoItem": "fire_stone",
-			"EvoPokemon": "Ninetails"
+			"EvoPokemon": "Ninetales"
 		},
-		"Ninetails" : {},
-		"Placeholder": {
+		"Ninetales" : {
+			"Placeholder": {
 				"8": ["quick_attack"],
 				"12": ["spite"],
 				"16": ["incinerate"],
 				"20": ["confuse_ray"],
+			}
 		},
 		"Krabby" : {
 			"ID": "0098",
@@ -299,6 +306,18 @@
 			"XPValue": 166,
 			"EVs": {"atk": 2},
 			"ExperienceCurve": "MediumFast"
+		},
+		"Eevee" : {
+			"ID" : 0133
+		},
+		"Vaporeon" : {
+			"ID" : 0134
+		},
+		"Jolteon" : {
+			"ID" : 0135
+		},
+		"Flareon" : {
+			"ID" : 0136
 		},
 		"Spinarak" : {
 			"ID": "0167",
@@ -371,6 +390,18 @@
 			"EVs": {"atk": 2},
 			"ExperienceCurve": "Fast"
 		},
+		"Espeon" : {
+			"ID" : 0196
+		},
+		"Umbreon"  : {
+			"ID" : 0197
+		},
+		"Wingull" : {
+			"ID": 0278
+		},
+		"Pelipper" : {
+			"ID": 0279
+		},
 		"Corphish" : {
 			"ID": "0341",
 			"Name": "Corphish",
@@ -437,6 +468,24 @@
 			"XPValue": 140,
 			"EVs": {"atk": 2},
 			"ExperienceCurve": "Fluctuating"
+		},
+		"Leafeon" : {
+			"ID" : 0470
+		},
+		"Glaceon" : {
+			"ID" : 0471
+		},
+		"Sylveon" : {
+			"ID" : 0700
+		},
+		"Charcadet" : {
+			"ID" : 0935
+		},
+		"Armarouge" : {
+			"ID" : 0936
+		},
+		"Ceruledge" : {
+			"ID" : 0937
 		}
 	}
 }

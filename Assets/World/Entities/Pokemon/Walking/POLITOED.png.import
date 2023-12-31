@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/POLITOED.png-6bc8dcf74288a1f5a078b36e58187fc7
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/MOLTRES.png-d24d380711b1b3f581a99a7fcba91a32.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

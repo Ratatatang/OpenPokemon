@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/RIOLU.png-3d090a5d23eeab9b8b14e680508bd90d.ct
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

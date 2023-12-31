@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SIGILYPH.png-871d9fae29843a6b1c468d5b0faef1ec
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

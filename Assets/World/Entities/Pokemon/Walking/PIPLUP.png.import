@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PIPLUP.png-6d8aa8dd2b250d322279359cc173bcb4.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

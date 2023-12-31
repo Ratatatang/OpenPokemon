@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SQUAWKABILLY_2.png-6ca1cccc6c8663520ef39abed3
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

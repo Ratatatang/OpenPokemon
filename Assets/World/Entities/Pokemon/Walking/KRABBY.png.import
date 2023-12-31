@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rlbh82d10gca"
-path.s3tc="res://.godot/imported/KRABBY.png-348d2cbf16f757cf6af1b3bd7e54c223.s3tc.ctex"
+path="res://.godot/imported/KRABBY.png-348d2cbf16f757cf6af1b3bd7e54c223.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/World/Entities/Pokemon/Walking/KRABBY.png"
-dest_files=["res://.godot/imported/KRABBY.png-348d2cbf16f757cf6af1b3bd7e54c223.s3tc.ctex"]
+dest_files=["res://.godot/imported/KRABBY.png-348d2cbf16f757cf6af1b3bd7e54c223.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

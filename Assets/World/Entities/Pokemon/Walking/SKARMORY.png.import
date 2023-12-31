@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SKARMORY.png-04e9dd72fe058b0e5fd4089d1f5a1e5c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/SILCOON.png-2b94971224b0db507a04991d740d82de.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/PHIONE.png-fca423552d2228324d191aa78d5402f1.c
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

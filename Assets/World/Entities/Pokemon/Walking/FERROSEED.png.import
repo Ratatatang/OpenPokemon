@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/FERROSEED.png-2d7696609a2f50b0385a7f79127a124
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

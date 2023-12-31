@@ -3,6 +3,7 @@ extends Node2D
 signal tweenDone
 
 var pokemonNames
+var currentPokemon
 
 func _ready():
 	var frames = $SetDressing/WanderingPokemon/Walkies.sprite_frames
@@ -22,8 +23,10 @@ func _ready():
 func loadAnimated():
 	var frames = $SetDressing/WanderingPokemon/Walkies.sprite_frames
 	var spriteSheet = "res://Assets/World/Entities/Pokemon/Walking/%s.png"
-
-	var sprite = load(spriteSheet % pokemonNames.pick_random().to_upper())
+	
+	currentPokemon = pokemonNames.pick_random().to_upper()
+	var sprite = load(spriteSheet % currentPokemon)
+	
 	for i in 4:
 		var atlas = AtlasTexture.new()
 		atlas.atlas = sprite

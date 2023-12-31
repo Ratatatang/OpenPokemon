@@ -595,7 +595,7 @@ parameters/Roll/blend_position = Vector2(0, 0)
 parameters/Run/blend_position = Vector2(0.6776, -0.113773)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-09, 0, 0, -0.197)
+transform = Transform3D(0.13, 0, 0, 0, -4.70599e-07, 0.13, 0, -0.13, -4.70599e-07, 0, 0, -0.197)
 collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false

@@ -307,6 +307,12 @@
 			"EVs": {"atk": 2},
 			"ExperienceCurve": "MediumFast"
 		},
+		"Magikarp" : {
+			"ID": 0129
+		},
+		"Gyarados" : {
+			"ID" : 0130
+		},
 		"Eevee" : {
 			"ID" : 0133
 		},
@@ -397,10 +403,13 @@
 			"ID" : 0197
 		},
 		"Wingull" : {
-			"ID": 0278
+			"ID" : 0278
 		},
 		"Pelipper" : {
-			"ID": 0279
+			"ID" : 0279
+		},
+		"Nosepass" : {
+			"ID" : 0299
 		},
 		"Corphish" : {
 			"ID": "0341",
@@ -469,14 +478,47 @@
 			"EVs": {"atk": 2},
 			"ExperienceCurve": "Fluctuating"
 		},
+		"Feebas" : {
+			"ID": 0349
+		},
+		"Milotic" : {
+			"ID": 0350
+		},
 		"Leafeon" : {
 			"ID" : 0470
 		},
 		"Glaceon" : {
 			"ID" : 0471
 		},
+		"Probopass" : {
+			"ID" : 0476
+		},
+		"Joltik" : {
+			"ID" : 0595
+		},
+		"Galvantula" : {
+			"ID" : 0596
+		},
+		"Pancham" : {
+			"ID" : 0674
+		},
+		"Pangoro" : {
+			"ID" : 0675
+		},
 		"Sylveon" : {
 			"ID" : 0700
+		},
+		"Jangmoo" : {
+			"Name" : "Jangmo-o",
+			"ID" : 0782
+		},
+		"Hakamoo" : {
+			"Name" : "Hakamo-o",
+			"ID" : 0783
+		},
+		"Kommoo" : {
+			"Name" : "Kommo-o",
+			"ID" : 0784
 		},
 		"Charcadet" : {
 			"ID" : 0935
@@ -486,6 +528,9 @@
 		},
 		"Ceruledge" : {
 			"ID" : 0937
+		},
+		"Cyclizar" : {
+			"ID" : 0967
 		}
 	}
 }

@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://xi8471evhtyr"]
+[gd_scene load_steps=7 format=3 uid="uid://xi8471evhtyr"]
 
 [ext_resource type="Script" path="res://Scenes/2DScreens/MainMenu/main_menu.gd" id="1_52ft7"]
+[ext_resource type="Texture2D" uid="uid://ckmpqrawu8iro" path="res://Assets/World/Objects/treeModel/treeBase.png" id="2_i42u3"]
 [ext_resource type="Texture2D" uid="uid://w0w8slw2vy2r" path="res://Assets/2DScreens/MainMenu/pokemonBanner.png" id="2_jkhy7"]
-[ext_resource type="Texture2D" uid="uid://b8ogcfcyba3n8" path="res://Assets/World/Objects/OakTree2.png" id="2_vek32"]
-[ext_resource type="Texture2D" uid="uid://c00r3h1kljgk5" path="res://Assets/World/Objects/OakTree1.png" id="3_itxac"]
+[ext_resource type="Texture2D" uid="uid://bjtqpmb5artjd" path="res://Assets/2DScreens/MainMenu/mainMenuBackGround.png" id="2_trqml"]
 [ext_resource type="FontFile" uid="uid://b55ek2u1muwn6" path="res://Assets/Fonts/m5x7.ttf" id="3_tceyx"]
-[ext_resource type="Texture2D" uid="uid://oq4crvba87lw" path="res://Assets/World/Objects/OakTree3.png" id="4_dwngk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ixo8"]
 
@@ -15,52 +14,161 @@ script = ExtResource("1_52ft7")
 [node name="SetDressing" type="Node2D" parent="."]
 scale = Vector2(6, 6)
 
+[node name="MainMenuBackGround" type="Sprite2D" parent="SetDressing"]
+position = Vector2(0.333333, -0.333333)
+scale = Vector2(0.166667, 0.166667)
+texture = ExtResource("2_trqml")
+
 [node name="BackTrees" type="Node2D" parent="SetDressing"]
+scale = Vector2(4, 4)
 
-[node name="OakTree12" type="Sprite2D" parent="SetDressing/BackTrees"]
-modulate = Color(0.858824, 0.858824, 0.858824, 1)
-position = Vector2(-14.1667, 22)
-texture = ExtResource("2_vek32")
+[node name="TreeBase2" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(-19.9166, 6.12494)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_i42u3")
 
-[node name="OakTree13" type="Sprite2D" parent="SetDressing/BackTrees"]
-modulate = Color(0.858824, 0.858824, 0.858824, 1)
-position = Vector2(81.8333, 22)
-texture = ExtResource("3_itxac")
+[node name="TreeBase6" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(-12.5416, 6.12494)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_i42u3")
 
-[node name="OakTree3" type="Sprite2D" parent="SetDressing/BackTrees"]
-modulate = Color(0.858824, 0.858824, 0.858824, 1)
-position = Vector2(-63.3334, 22)
-texture = ExtResource("3_itxac")
+[node name="TreeBase9" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(-10.8749, 6.12494)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_i42u3")
 
-[node name="OakTree4" type="Sprite2D" parent="SetDressing/BackTrees"]
-modulate = Color(0.894118, 0.894118, 0.894118, 1)
-position = Vector2(-45.1667, 22)
-texture = ExtResource("2_vek32")
+[node name="TreeBase14" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.686275, 0.686275, 0.686275, 1)
+position = Vector2(-5.20832, 6.12494)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_i42u3")
 
-[node name="OakTree1" type="Sprite2D" parent="SetDressing/BackTrees"]
-modulate = Color(0.92549, 0.92549, 0.92549, 1)
-position = Vector2(-81, 22)
-texture = ExtResource("4_dwngk")
+[node name="TreeBase15" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(7.79167, 6.12494)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_i42u3")
 
-[node name="OakTree6" type="Sprite2D" parent="SetDressing/BackTrees"]
-modulate = Color(0.858824, 0.858824, 0.858824, 1)
-position = Vector2(31.5, 22)
-texture = ExtResource("4_dwngk")
+[node name="TreeBase18" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(15.1665, 6.12494)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_i42u3")
 
-[node name="OakTree11" type="Sprite2D" parent="SetDressing/BackTrees"]
-modulate = Color(0.858824, 0.858824, 0.858824, 1)
-position = Vector2(3.83329, 22)
-texture = ExtResource("3_itxac")
+[node name="TreeBase25" type="Sprite2D" parent="SetDressing/BackTrees"]
+position = Vector2(2.83339, 6.12494)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_i42u3")
 
-[node name="OakTree7" type="Sprite2D" parent="SetDressing/BackTrees"]
-modulate = Color(0.894118, 0.894118, 0.894118, 1)
-position = Vector2(49.6666, 22)
-texture = ExtResource("3_itxac")
+[node name="TreeBase26" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(22.9585, 6.12494)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_i42u3")
 
-[node name="OakTree8" type="Sprite2D" parent="SetDressing/BackTrees"]
-modulate = Color(0.92549, 0.92549, 0.92549, 1)
-position = Vector2(13.8333, 22)
-texture = ExtResource("2_vek32")
+[node name="TreeBase" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(-20.3563, 7.57899)
+scale = Vector2(0.147, 0.147)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase4" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(-11.3146, 7.87068)
+scale = Vector2(0.147, 0.147)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase10" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(7.60203, 8.03734)
+scale = Vector2(0.147, 0.147)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase11" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(5.3103, 7.78733)
+scale = Vector2(0.147, 0.147)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase13" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(14.727, 8.24567)
+scale = Vector2(0.147, 0.147)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase22" type="Sprite2D" parent="SetDressing/BackTrees"]
+position = Vector2(3.18539, 7.82901)
+scale = Vector2(0.147, 0.147)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase8" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(-22.9167, 7.41665)
+scale = Vector2(0.157, 0.157)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase7" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(-18.8333, 7.41665)
+scale = Vector2(0.157, 0.157)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase3" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(-13.5, 7.49997)
+scale = Vector2(0.157, 0.157)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase5" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.686275, 0.686275, 0.686275, 1)
+position = Vector2(-6.16665, 7.54164)
+scale = Vector2(0.157, 0.157)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase19" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(19.5834, 7.16664)
+scale = Vector2(0.157, 0.157)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase12" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(9.29165, 7.66664)
+scale = Vector2(0.157, 0.157)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase24" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(12.6667, 7.79165)
+scale = Vector2(0.157, 0.157)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase20" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(-3.99999, 7.54165)
+scale = Vector2(0.157, 0.157)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase21" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(0.0833626, 7.4583)
+scale = Vector2(0.157, 0.157)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase16" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(16.2084, 7.62497)
+scale = Vector2(0.157, 0.157)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase17" type="Sprite2D" parent="SetDressing/BackTrees"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(22.1668, 7.49997)
+scale = Vector2(0.157, 0.157)
+texture = ExtResource("2_i42u3")
 
 [node name="WanderingPokemon" type="Node2D" parent="SetDressing"]
 
@@ -72,23 +180,45 @@ sprite_frames = SubResource("SpriteFrames_4ixo8")
 
 [node name="FrontTrees" type="Node2D" parent="SetDressing"]
 
-[node name="OakTree10" type="Sprite2D" parent="SetDressing/FrontTrees"]
-modulate = Color(0.960784, 0.960784, 0.960784, 1)
-position = Vector2(71.3333, 22)
-texture = ExtResource("4_dwngk")
+[node name="TreeBase2" type="Sprite2D" parent="SetDressing/FrontTrees"]
+position = Vector2(-69.1666, 32.6667)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_i42u3")
 
-[node name="OakTree2" type="Sprite2D" parent="SetDressing/FrontTrees"]
-modulate = Color(0.960784, 0.960784, 0.960784, 1)
-position = Vector2(-23.5, 22)
-texture = ExtResource("3_itxac")
+[node name="TreeBase9" type="Sprite2D" parent="SetDressing/FrontTrees"]
+position = Vector2(-84.3333, 32.6667)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_i42u3")
 
-[node name="OakTree9" type="Sprite2D" parent="SetDressing/FrontTrees"]
-position = Vector2(40.5, 22)
-texture = ExtResource("3_itxac")
+[node name="TreeBase6" type="Sprite2D" parent="SetDressing/FrontTrees"]
+position = Vector2(-39.8333, 32.6667)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_i42u3")
 
-[node name="OakTree5" type="Sprite2D" parent="SetDressing/FrontTrees"]
-position = Vector2(-54.3334, 22)
-texture = ExtResource("3_itxac")
+[node name="TreeBase18" type="Sprite2D" parent="SetDressing/FrontTrees"]
+position = Vector2(71.0001, 32.8333)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase14" type="Sprite2D" parent="SetDressing/FrontTrees"]
+position = Vector2(41.6667, 32.6667)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase15" type="Sprite2D" parent="SetDressing/FrontTrees"]
+position = Vector2(26.5001, 32.6667)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase23" type="Sprite2D" parent="SetDressing/FrontTrees"]
+position = Vector2(-8.6665, 32.6667)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_i42u3")
+
+[node name="TreeBase24" type="Sprite2D" parent="SetDressing/FrontTrees"]
+position = Vector2(7.16683, 32.6667)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_i42u3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -105,10 +235,10 @@ offset_bottom = 40.0
 
 [node name="Start" type="Button" parent="UI"]
 layout_mode = 0
-offset_left = -73.0
-offset_top = 53.0
-offset_right = 70.0
-offset_bottom = 125.0
+offset_left = -70.0
+offset_top = -27.0
+offset_right = 73.0
+offset_bottom = 45.0
 theme_override_fonts/font = ExtResource("3_tceyx")
 theme_override_font_sizes/font_size = 80
 text = "Start"

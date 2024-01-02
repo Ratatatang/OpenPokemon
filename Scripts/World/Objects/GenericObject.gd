@@ -7,11 +7,15 @@ class_name GenericObject
 var runReady = true
 
 func _ready():
-	if(textureVariations.size() > 0):
-		$Sprite3D.texture = load(textureVariations.pick_random())
+	pass
+	#if(textureVariations.size() > 0):
+	#	$Sprite3D.texture = load(textureVariations.pick_random())
 
 func startTimer():
 	pass
 
 func getName():
 	return objectName
+
+func getType():
+	return "Object"

@@ -459,11 +459,11 @@ animation = &"IdleUp"
 blend_point_0/node = SubResource("42")
 blend_point_0/pos = Vector2(-1, 0)
 blend_point_1/node = SubResource("43")
-blend_point_1/pos = Vector2(0, 1.1)
+blend_point_1/pos = Vector2(0, 1)
 blend_point_2/node = SubResource("44")
 blend_point_2/pos = Vector2(1, 0)
 blend_point_3/node = SubResource("45")
-blend_point_3/pos = Vector2(0, -1.1)
+blend_point_3/pos = Vector2(0, -1)
 min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 blend_mode = 1
@@ -510,14 +510,14 @@ auto_triangles = false
 blend_point_0/node = SubResource("50")
 blend_point_0/pos = Vector2(-1.1, 0)
 blend_point_1/node = SubResource("51")
-blend_point_1/pos = Vector2(0, 1.1)
+blend_point_1/pos = Vector2(0, 1)
 blend_point_2/node = SubResource("52")
 blend_point_2/pos = Vector2(1.1, 0)
 blend_point_3/node = SubResource("53")
-blend_point_3/pos = Vector2(0, -1.1)
+blend_point_3/pos = Vector2(0, -1)
 triangles = PackedInt32Array(0, 1, 2, 0, 2, 3)
-min_space = Vector2(-1.1, -1)
-max_space = Vector2(1.1, 1)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="13"]
@@ -563,7 +563,6 @@ cache/0/16/0/kerning_overrides/32/0 = Vector2(0, 0)
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="Player" type="CharacterBody3D"]
-collision_layer = 2
 script = ExtResource("1_h7dm2")
 metadata/_edit_lock_ = true
 
@@ -577,7 +576,6 @@ hframes = 60
 
 [node name="Shadow" type="Sprite3D" parent="."]
 transform = Transform3D(1.3, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00561619, -0.079, -0.160024)
-visible = false
 texture_filter = 0
 render_priority = -1
 texture = SubResource("CompressedTexture2D_n804x")
@@ -590,7 +588,7 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("15")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Idle/blend_position = Vector2(0.00908339, 0.494012)
 parameters/Roll/blend_position = Vector2(0, 0)
 parameters/Run/blend_position = Vector2(0.6776, -0.113773)
 
@@ -614,6 +612,7 @@ font = SubResource("55")
 wait_time = 0.03
 
 [node name="Dialog" type="ColorRect" parent="."]
+visible = false
 offset_left = 290.0
 offset_top = 527.0
 offset_right = 843.0

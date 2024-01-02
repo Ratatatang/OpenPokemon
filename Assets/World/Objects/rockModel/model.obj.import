@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ct8epqiv1n4bv"
+path="res://.godot/imported/model.obj-a8ffa3ed70613648e5c092902981276e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/model.obj-a8ffa3ed70613648e5c092902981276e.mesh"]
+
+source_file="res://Assets/World/Objects/rockModel/model.obj"
+dest_files=["res://.godot/imported/model.obj-a8ffa3ed70613648e5c092902981276e.mesh", "res://.godot/imported/model.obj-a8ffa3ed70613648e5c092902981276e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

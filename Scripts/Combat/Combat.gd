@@ -69,7 +69,7 @@ func resolveQueue():
 		UI.clearAll()
 		deadPlayer.deathTween()
 		await deadPlayer.tween.finished
-		pass
+		get_node("/root/Master").fadeFromCombat()
 	
 	moveQueue = []
 
@@ -91,8 +91,20 @@ func resolveQueue():
 
 func preMoveUse(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 	UI.showDialog()
-	UI.setDialog(attacker.getName() + " used " + move.DisplayName + "!")
-	moveUse(move, attacker, victim)
+	
+	if(attacker.getStatuses() != []):
+		for status in attacker.getStatuses():
+			var statusPassed = status._effect_preMoveUse(attacker, victim, UI)
+			
+			if(statusPassed):
+				await pressedComfirm
+	
+	if(attacker.skipMove):
+		attacker.skipMove = false
+		moveDone.emit()
+	else:
+		UI.setDialog(attacker.getName() + " used " + move.DisplayName + "!")
+		moveUse(move, attacker, victim)
 	
 func moveUse(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 	moveExectute(move, attacker, victim)
@@ -106,6 +118,14 @@ func moveExectute(move : Dictionary, attacker : battlePlayer, victim : battlePla
 	moveHit(move, attacker, victim)
 
 func moveHit(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
+	if(move.Accuracy != 101):
+		var stageMultiplier = MasterInfo.accuracyChanges.get(str(attacker.getAccuracy() - victim.getEvasion()))
+		
+		if(randi_range(0, 100) < (move.Accuracy * stageMultiplier)):
+				pass
+		else:
+			UI.setDialog("{Pokemon} avoided the attack!" % victim.getName())
+			await pressedComfirm
 	
 	var outcome = calculateDamage(move, attacker, victim)
 	
@@ -123,8 +143,12 @@ func moveHit(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 			UI.setDialog(MasterInfo.effectiveDialog.get(str(clamp(outcome[1], 0.5, 2))))
 			await pressedComfirm
 	
+	if(outcome[2]):
+		UI.setDialog("A critical hit!")
+		await pressedComfirm
+	
 	if(move.StatChanges != {} and outcome[1] != 0):
-		changeStats(move, attacker, victim)
+		statusEffects(move, attacker, victim)
 		await statusDone
 	
 	moveDone.emit()
@@ -136,6 +160,7 @@ func calculateDamage(move : Dictionary, attacker : battlePlayer, victim : battle
 	var power = float(move.Power)
 	var attack
 	var defense
+	var crit = false
 	
 	#Determines Type Effectiveness
 	var typeMatchups = MasterInfo.typeMatchups.get(move.Type)
@@ -152,7 +177,7 @@ func calculateDamage(move : Dictionary, attacker : battlePlayer, victim : battle
 		attack = float(attacker.getSpAttack())
 		defense = float(victim.getSpDefense())
 	else:
-		return [0, typeMultiplier]
+		return [0, typeMultiplier, crit]
 	
 	if(move.Flags.has("useDefense")):
 		defense = float(victim.def)
@@ -165,30 +190,48 @@ func calculateDamage(move : Dictionary, attacker : battlePlayer, victim : battle
 	damage *= float(attack/defense)
 	damage /= 50.0
 	damage += 2.0
-	#Multipliers
+	#Multipliers Check 1
+	var multiplier = 1
 	
 	#Burn
 	if(attacker.statusEffect != null):
 		if(attacker.statusEffect.reduceDamage and move.Category == "Physical"):
-			damage /= 2
+			multiplier /= 2
+	
+	damage *= multiplier
+	
+	#Multipliers Check 2
+	multiplier = 1
 	
 	#Critical
+	var critRatio = 1
+	if(move.keys().has("CritRatio")):
+		critRatio = move.get("CritRatio")
+		
+	critRatio += attacker.getCritRatio()
+	critRatio = clamp(critRatio, 1, 4)
+	
+	if(randi_range(0, 100) < MasterInfo.critRatio.get(str(critRatio))):
+		multiplier *= 2
+		crit = true
+	
 	
 	#Random
-	damage = damage * (randf_range(85, 100)/100.0)
+	multiplier *= (randf_range(85, 100)/100.0)
 	
 	#STAB
 	if(attacker.getTypes().has(move.Type)):
-		damage = float(damage) * 1.5
+		multiplier *= 1.5
 		
 	#Type Effectiveness
-	damage = damage * typeMultiplier
+	multiplier *= typeMultiplier
 	
+	damage *= multiplier
 	damage = floor(damage)
 	
-	return [int(damage), typeMultiplier]
+	return [int(damage), typeMultiplier, crit]
 
-func changeStats(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
+func statusEffects(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 	var statChanges = move.StatChanges
 	
 	#Go through each chance as its own step
@@ -210,7 +253,10 @@ func changeStats(move : Dictionary, attacker : battlePlayer, victim : battlePlay
 					
 				elif(step == "StatusEffect"):
 					hasStartMessage = inflictStatus(victim, change)
-					
+				
+				elif(step == "Recoil"):
+					pass
+				
 				else:
 					victim.changeStat(step, int(change))
 					UI.setDialog(MasterInfo.changesDialog.get(str(clamp(change, -3, 3))) % [victim.getName(), step])
@@ -225,6 +271,9 @@ func changeStats(move : Dictionary, attacker : battlePlayer, victim : battlePlay
 					
 				elif(step == "StatusEffect"):
 					hasStartMessage = inflictStatus(attacker, change)
+					
+				elif(step == "Recoil"):
+					pass
 					
 				else:
 					attacker.changeStat(step, int(change))
@@ -272,8 +321,36 @@ func decideAIMove(attacker : battlePlayer, victim : battlePlayer):
 		#preMoveUse(move, enemy, player)
 
 func _on_move_pressed(move : Dictionary):
-	if(move.PP[0] <= 0):
+	var statusPassed = false
+	
+	if(player.getStatuses() != []):
+		for status in player.getStatuses():
+			
+			if(status.forbidMoves != []):
+				
+				for forbidden in status.forbidMoves:
+					
+					if(forbidden == "Physical" and move.Category == "Physical"):
+						statusPassed = true
+							
+					elif(forbidden == "Special" and move.Category == "Special"):
+						statusPassed = true
+					
+					elif(forbidden == "Status" and move.Category == "Status"):
+						statusPassed = true
+							
+					elif(forbidden == move.DisplayName):
+						statusPassed = false
+			
+			if(statusPassed):
+				UI.showDialog()
+				UI.setDialog(status.activeMessage.format({"Pokemon":player.getName(), "Move":move.DisplayName}))
+				await pressedComfirm
+				UI.showFight()
+	
+	if(move.PP[0] <= 0 or statusPassed):
 		pass
+		
 	else:
 		var queue
 		if(move.Target == "Self"):

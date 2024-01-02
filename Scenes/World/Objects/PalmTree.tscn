@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsxytd37vuur2"]
+[gd_scene load_steps=6 format=3 uid="uid://balxeqy4x55mx"]
 
 [ext_resource type="Script" path="res://Scripts/World/Objects/GenericObject.gd" id="1_37a6u"]
 [ext_resource type="Texture2D" uid="uid://c0k4pn107qega" path="res://Assets/World/Objects/PalmTree.png" id="2_jy25h"]

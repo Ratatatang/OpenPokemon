@@ -23,7 +23,16 @@ current = true
 fov = 56.1467
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 3.25963e-09, 9.31323e-10, -3.0268e-09, 1, -4.17233e-07, -6.98492e-10, 4.47035e-07, 1, 0.00521021, -1.89577, 8.27079)
+transform = Transform3D(1, 2.79397e-09, 6.98492e-10, -3.25963e-09, 1, -5.66244e-07, -6.98492e-10, 5.96046e-07, 1, 0.00521021, -1.89577, 8.27079)
+light_energy = 0.5
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.423928, 0.265104, -0.866028, -0.0579994, 0.962186, 0.266148, 0.903837, -0.0625986, 0.423273, -11.0314, 4.81717, 4.01288)
+light_energy = 0.5
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.451755, -0.212262, 0.866523, -0.057177, 0.962398, 0.265556, -0.890308, -0.169511, 0.422632, 11.031, 4.817, 4.013)
+light_energy = 0.5
 
 [node name="Occluder1" type="OccluderInstance3D" parent="."]
 transform = Transform3D(0.999998, 0.00149604, 0.000898909, 0, 0.515038, -0.857167, -0.00174533, 0.857166, 0.515037, -0.0203685, 3.79018, -2.66457)

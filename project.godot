@@ -16,7 +16,8 @@ config/features=PackedStringArray("4.1", "Forward Plus")
 
 [autoload]
 
-MasterInfo="*res://Scenes/MasterInfo.tscn"
+MasterInfo="*res://Scripts/GameData/MasterInfo.gd"
+SignalManager="*res://Scripts/SignalManager.gd"
 
 [display]
 

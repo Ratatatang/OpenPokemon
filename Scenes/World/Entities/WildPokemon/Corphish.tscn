@@ -307,7 +307,6 @@ hframes = 2
 
 [node name="Shadow" type="Sprite3D" parent="Sprite2D"]
 transform = Transform3D(2.33333, 0, 0, 0, -1.70521, -0.539242, 0, 0.47781, -0.173201, -0.00333333, -0.239278, -0.00199512)
-visible = false
 texture_filter = 0
 render_priority = -1
 texture = ExtResource("2_2nkt2")

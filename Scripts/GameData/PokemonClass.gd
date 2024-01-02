@@ -37,18 +37,14 @@ var neededXP
 var experienceCurve
 	
 var participant = false
-
 var dimorphism = false
-
 var shiny = false
 
 var moves = []
-
 var availableMoves = []
-
-var healthBar
-
 var types = []
+
+var statusEffect
 
 func _init(tempName, lv = 0, info = MasterInfo):
 	

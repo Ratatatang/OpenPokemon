@@ -8,9 +8,11 @@ var statusEffect
 
 var generateBack = false
 var enemy = false
+var skipMove = false
 var opponent
 var tween
 
+var sleepCounter = 0
 @onready var sprite = $Sprite2D
 @onready var healthBar = $Healthbar
 @onready var nameLabel = $Healthbar/Name
@@ -26,14 +28,21 @@ var statsDict = {
 	"Special Defense" : 0,
 	"Speed" :  0,
 	"Accuracy" : 0,
-	"Evasion" : 0
+	"Evasion" : 0,
+	"Crit Ratio": 0
 }
 
 func loadPokemon(pokemonInst):
 	loadedPokemon = pokemonInst
 	moves = loadedPokemon.moves.duplicate()
+	healthBar.value = (loadedPokemon.tempHp / loadedPokemon.hp) * 1000
 	nameLabel.text = loadedPokemon.displayName
 	levelLabel.text = "LV " + str(loadedPokemon.level)
+	
+	if(loadedPokemon.statusEffect != null):
+		statusEffect = loadedPokemon.statusEffect
+		statusIcon.frame = statusEffect.iconFrame
+	
 	loadSprite(loadedPokemon.speciesName)
 
 func loadSprite(pokemonName):
@@ -63,7 +72,7 @@ func reduceHP(amount):
 		amount + loadedPokemon.tempHp
 		loadedPokemon.tempHp = 0
 		
-	var percentHP = (loadedPokemon.tempHp / loadedPokemon.hp) * 100
+	var percentHP = (loadedPokemon.tempHp / loadedPokemon.hp) * 1000
 	
 	var tween = create_tween()
 	tween.tween_property(healthBar, "value", percentHP, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -80,7 +89,7 @@ func heal(amount):
 		amount - loadedPokemon.tempHp
 		loadedPokemon.tempHp = loadedPokemon.hp
 		
-	var percentHP = (loadedPokemon.tempHp / loadedPokemon.hp) * 100
+	var percentHP = (loadedPokemon.tempHp / loadedPokemon.hp) * 1000
 		
 	var tween = create_tween()
 	tween.tween_property(healthBar, "value", percentHP, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -89,10 +98,17 @@ func heal(amount):
 
 func changeStat(stat, value : int):
 	statsDict[stat] += value
+	
 
 func inflictVolatile(value):
 	var effect = load("res://Scripts/Combat/StatusConditions/%s.gd" % [value]).new()
 	
+	for effects in volatileEffects:
+		if(effects.getStatusName() == effect.getStatusName()):
+			UI.setDialog("{Pokemon} is already {Status}!".format(
+			{"Pokemon": getName(), "Status": effects.getStatusName()}))
+			return true
+		
 	volatileEffects.append(effect)
 	
 	if(effect.hasStartMessage):
@@ -106,6 +122,7 @@ func inflictVolatile(value):
 func inflictStatus(value : String):
 	if(statusEffect == null):
 		statusEffect = load("res://Scripts/Combat/StatusConditions/%s.gd" % [value]).new()
+		loadedPokemon.statusEffect = statusEffect
 		
 		statusIcon.frame = statusEffect.iconFrame
 		
@@ -115,12 +132,21 @@ func inflictStatus(value : String):
 					"Pokemon":getName()}))
 			return true
 			
-	elif(statusEffect.statusName != null):
+	elif(statusEffect != null):
 		UI.setDialog("{Pokemon} is already {Status}!".format(
 			{"Pokemon": getName(), "Status": statusEffect.statusName}))
 		return true
 	
-		return false
+	return false
+
+func clearStatus(status):
+	if(status.statusName == statusEffect.statusName):
+		statusEffect = null
+		statusIcon.frame = 0
+	
+	for effects in volatileEffects:
+		if(effects.statusName == status.statusName):
+			volatileEffects.erase(effects)
 
 func deathTween():
 	var rect = sprite.region_rect
@@ -165,6 +191,15 @@ func getSpAttack() -> int:
 func getSpDefense() -> int:
 	return clamp(loadedPokemon.spDef * 
 	MasterInfo.statChanges.get(str(statsDict.get("Special Defense"))), 1, 999)
+
+func getCritRatio() -> int:
+	return statsDict.get("Crit Ratio")
+
+func getAccuracy():
+	return statsDict.get("Accuracy")
+
+func getEvasion():
+	return statsDict.get("Evasion")
 
 func getSpeed() -> int:
 	return clamp(loadedPokemon.speed * 

@@ -26,7 +26,7 @@ func _ready():
 	selectionArrow.position.y = 7.5 + (selected_option % 5) * 17.4
 
 func _input(event) -> void:
-	if(enabled == false):
+	if(enabled == false and screen_loaded == ScreenLoaded.NOTHING):
 		menu.visible = false
 		return
 	match screen_loaded:

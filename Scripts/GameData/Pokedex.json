@@ -7,7 +7,7 @@
 			"Moves": {
 				"1": ["tackle", "growl"],
 				"3": ["vine_whip"],
-				"6": ["will_o_wisp"],
+				"6": ["growth"],
 				"9": ["leech_seed"],
 				"12": ["razor_leaf"],
 				"15": ["poison_powder", "sleep_powder"],
@@ -212,6 +212,10 @@
 			"Moves": {
 				"1": ["ember", "tail_whip"],
 				"4": ["disable"],
+				"8": ["quick_attack"],
+				"12": ["spite"],
+				"16": ["incinerate"],
+				"20": ["confuse_ray"],
 				"24": ["will_o_wisp"],
 				"28": ["extrasensory"],
 				"32": ["flamethrower"],
@@ -236,12 +240,18 @@
 			"EvoPokemon": "Ninetales"
 		},
 		"Ninetales" : {
+			"ID": "0038",
 			"Placeholder": {
-				"8": ["quick_attack"],
-				"12": ["spite"],
-				"16": ["incinerate"],
-				"20": ["confuse_ray"],
 			}
+		},
+		"Gastly" : {
+			"ID": 0092,
+		},
+		"Haunter" : {
+			"ID": 0093,
+		},
+		"Gengar" : {
+			"ID": 0094,
 		},
 		"Krabby" : {
 			"ID": "0098",
@@ -484,6 +494,12 @@
 		"Milotic" : {
 			"ID": 0350
 		},
+		"Riolu" : {
+			"ID" : 0447
+		},
+		"Lucario" : {
+			"ID" : 0448
+		},
 		"Leafeon" : {
 			"ID" : 0470
 		},
@@ -508,6 +524,15 @@
 		"Sylveon" : {
 			"ID" : 0700
 		},
+		"Cutiefly" : {
+			"ID" : 0742
+		},
+		"Ribombee" : {
+			"ID" : 0743
+		},
+		"Mimikyu" : {
+			"ID" : 0778
+		},
 		"Jangmoo" : {
 			"Name" : "Jangmo-o",
 			"ID" : 0782
@@ -520,6 +545,21 @@
 			"Name" : "Kommo-o",
 			"ID" : 0784
 		},
+		"Toxel" : {
+			"ID" : 848
+		},
+		"Toxtricity" : {
+			"ID" : 0849
+		},
+		"Dreepy" : {
+			"ID" : 0885
+		},
+		"Drakloak" : {
+			"ID" : 0886
+		},
+		"Dragapult" : {
+			"ID" : 0887
+		},
 		"Charcadet" : {
 			"ID" : 0935
 		},
@@ -528,6 +568,15 @@
 		},
 		"Ceruledge" : {
 			"ID" : 0937
+		},
+		"Tinkatink" : {
+			"ID" : 0957
+		},
+		"Tinkatuff" : {
+			"ID" : 0958
+		},
+		"Tinkaton" : {
+			"ID" : 0959
 		},
 		"Cyclizar" : {
 			"ID" : 0967

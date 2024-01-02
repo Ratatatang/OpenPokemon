@@ -2,26 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0s7ikbvv5s7x"
-path="res://.godot/imported/Rock1.png-802e6611e0340a7c9496b3d11a8c12d8.ctex"
+uid="uid://ckmpqrawu8iro"
+path="res://.godot/imported/treeBase.png-e022c76c6790fb9789d8b048f335afd1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/World/Objects/Rock1.png"
-dest_files=["res://.godot/imported/Rock1.png-802e6611e0340a7c9496b3d11a8c12d8.ctex"]
+source_file="res://Assets/World/Objects/treeModel/treeBase.png"
+dest_files=["res://.godot/imported/treeBase.png-e022c76c6790fb9789d8b048f335afd1.ctex"]
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_compression=1
+compress/hdr_compression=0
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

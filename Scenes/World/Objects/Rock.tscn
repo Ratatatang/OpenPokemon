@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtrldjk45oxsj"]
+[gd_scene load_steps=7 format=3 uid="uid://dtrldjk45oxsj"]
 
 [ext_resource type="Script" path="res://Scripts/World/Objects/GenericObject.gd" id="1_f117a"]
 [ext_resource type="Texture2D" uid="uid://h37j7lhspl4x" path="res://Assets/World/Objects/Rock.png" id="2_erqbg"]
 [ext_resource type="Texture2D" uid="uid://cd4hs8fh055wu" path="res://Assets/World/EntityShadow.png" id="3_wypdn"]
+[ext_resource type="ArrayMesh" uid="uid://ct8epqiv1n4bv" path="res://Assets/World/Objects/rockModel/model.obj" id="4_ckpeh"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(0.258419, 0.339049, 0.0861482)
@@ -15,8 +16,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.884, 0)
 script = ExtResource("1_f117a")
 objectName = "Rock"
 
+[node name="Node3D" type="Node3D" parent="."]
+
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.784027, 0.861316, 0, -0.514923, 1.31145, 0, -0.247814, 0.164378)
+visible = false
 shaded = true
 alpha_cut = 2
 texture_filter = 2
@@ -44,3 +48,7 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1.91918, 0, 0, 0, 1, 0, 0, 0, 1, -0.0229299, -0.246759, 0.182136)
 shape = SubResource("1")
+
+[node name="Model" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.503323, -0.41532, -0.105989)
+mesh = ExtResource("4_ckpeh")

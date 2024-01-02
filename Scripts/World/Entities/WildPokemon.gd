@@ -22,6 +22,7 @@ enum {
 	IDLE,
 	WANDER,
 	EMOTE,
+	FREEZE
 }
 
 @onready var wanderController = $WanderController
@@ -38,19 +39,21 @@ var animVector = Vector2.ZERO
 func _ready():
 	wanderController.start_wander_timer(0.1)
 	currHeight = global_position.y
-	pokemonData = MasterInfo.getPokemon(pokemonName)
+	pokemonData = pokemon.new(pokemonName, 10)
 	
-	if(pokemonData.has("Acceleration")):
-		ACCELERATION = pokemonData.get("Acceleration")
-	if(pokemonData.has("Max Speed")):
-		MAX_SPEED = pokemonData.get("Max Speed")
-	if(pokemonData.has("Friction")):
-		FRICTION = pokemonData.get("Friction")
-	if(pokemonData.has("Walk Speed")):
-		walkSpeed = pokemonData.get("Walk Speed")
+#	if(pokemonData.has("Acceleration")):
+#		ACCELERATION = pokemonData.get("Acceleration")
+#	if(pokemonData.has("Max Speed")):
+#		MAX_SPEED = pokemonData.get("Max Speed")
+#	if(pokemonData.has("Friction")):
+#		FRICTION = pokemonData.get("Friction")
+#	if(pokemonData.has("Walk Speed")):
+#		walkSpeed = pokemonData.get("Walk Speed")
 	
 func _physics_process(delta):
 	if true:
+		if(pokemonData.tempHp <= 0):
+			queue_free()
 #	if get_node("/root/Master").connectedToServer == false or is_multiplayer_authority():
 		if(state != IDLE and state != EMOTE):
 			animVector = velocity2D.normalized()
@@ -59,6 +62,8 @@ func _physics_process(delta):
 	
 	
 		match state:
+			FREEZE:
+				velocity2D = velocity2D.move_toward(Vector3.ZERO, FRICTION*delta)
 			IDLE:
 				velocity2D = velocity2D.move_toward(Vector3.ZERO, FRICTION*delta)
 			
@@ -115,7 +120,21 @@ func setSprite(spritePath):
 
 func getName():
 	return pokemonName
-	
+
+func getType():
+	return "Entity"
+
+func battleable():
+	return true
+
+func getPokemon():
+	return pokemonData
+
+func battling():
+	state = FREEZE
+	await SignalManager.combatDone
+	state = IDLE
+
 func pick_new_state(state_list):
 	return state_list[round(randf_range(0, len(state_list)-1))]
 
@@ -128,7 +147,6 @@ func pick_new_state(state_list):
 
 func startTimer():
 	$networkTimer.start()"""
-
 
 func _on_emote_timer_timeout():
 	canEmote = true

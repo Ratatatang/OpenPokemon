@@ -10,7 +10,7 @@ var frozen = false
 
 var currentObject = ""
 
-enum stateMachine{
+enum stateMachine {
 	MOVE,
 	ROLL,
 	FREEZE
@@ -50,7 +50,15 @@ func _ready():
 func _input(event):
 	if(event.is_action_pressed("interact")):
 		if(rayCast.is_colliding()):
-			print(rayCast.get_collider().get_parent().getName())
+			var collider = rayCast.get_collider().get_parent()
+			print(collider.getName())
+			if(collider.getType() == "Entity"):
+				if(collider.battleable()):
+					get_node("/root/Master").initiateCombat(collider.getPokemon())
+					collider.battling()
+					state = stateMachine.FREEZE
+					await SignalManager.combatDone
+					state = stateMachine.MOVE
 
 # Matches the state machine to the correct state
 func _physics_process(delta):

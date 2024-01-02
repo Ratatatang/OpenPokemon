@@ -41,6 +41,24 @@
 				}
 			}
 		},
+		"leer":{
+			"DisplayName" : "Leer",
+			"Type": "Normal",
+			"Power": 0,
+			"PP": [30, 30],
+			"Accuracy": 100,
+			"Category": "Status",
+			"Flags": ["Sound"],
+			"Target": "AllAdjacentFoes",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100":  {
+					"Target": "Victim",
+					"Defense": -1
+				}
+			}
+		},
 		"growth":{
 			"DisplayName" : "Growth",
 			"Type": "Normal",
@@ -219,6 +237,19 @@
 					"Recoil": 0.25
 				}
 			}
+		},
+		"swift":{
+			"DisplayName" : "Swift",
+			"Type": "Normal",
+			"Power": 60,
+			"PP": [20, 20],
+			"Accuracy": 101,
+			"Category": "Special",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
 		},
 		"disable": {
 			"DisplayName" : "Disable",

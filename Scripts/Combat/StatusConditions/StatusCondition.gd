@@ -5,6 +5,7 @@ var startMessage : String
 var activeMessage : String
 var clearMessage : String
 var stageTag : String
+var forbidMoves : Array = []
 var iconFrame : int
 var hasStartMessage : bool = false
 var reduceDamage : bool = false

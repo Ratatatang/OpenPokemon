@@ -18,6 +18,11 @@ func showMenu():
 	$Fight.hide()
 	$Dialog.hide()
 
+func showFight():
+	$Fight.show()
+	$Menu.hide()
+	$Dialog.hide()
+
 func _on_fight_pressed():
 	$Fight.show()
 	$Menu.hide()

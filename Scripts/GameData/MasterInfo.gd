@@ -179,6 +179,22 @@ var statChanges = {
 	"6": 4
 }
 
+var accuracyChanges = {
+	"-6": 3/9,
+	"-5": 3/8,
+	"-4": 3/7,
+	"-3": 3/6,
+	"-2": 3/5,
+	"-1": 3/4,
+	"0": 3/3,
+	"1": 4/3,
+	"2": 5/3,
+	"3": 6/3,
+	"4": 7/3,
+	"5": 8/3,
+	"6": 9/3
+}
+
 var changesDialog = {
 	"-3": "%s's %s severely fell!",
 	"-2": "%s's %s harshly fell!",
@@ -186,6 +202,13 @@ var changesDialog = {
 	"1": "%s's %s rose!",
 	"2": "%s's %s rose sharply!",
 	"3": "%s's %s drastically!"
+}
+
+var critRatio = {
+	"1": 1/24,
+	"2": 1/8,
+	"3": 1/2,
+	"4": 1/1
 }
 
 var effectiveDialog = {

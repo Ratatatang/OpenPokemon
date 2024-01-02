@@ -168,10 +168,17 @@ func setTile(width, height):
 				elif temp > 0.7 and moist < 0.4:
 					tilemap.set_cellv(pos, biomeTiles.Desert)"""
 	
-	for i in cells["Plains"]:
-		autoTile(i)
-	for i in cells["Beach"]:
-		autoTile(i)
+	var reIndex = []
+	for tile in cells["Plains"]:
+		if(autoTile(tile)):
+			reIndex.append(tile)
+	
+	for tile in reIndex:
+		cells["Beach"].append(tile)
+		cells["Plains"].erase(tile)
+			
+	for tile in cells["Beach"]:
+		autoTile(tile)
 
 # Generates objects onto the tiles. trans is the Vector3 for putting the objects in their place and pos is for the biome map
 func generateObjects(width, height):
@@ -349,16 +356,15 @@ func autoTile(pos):
 	if(getBiome(pos) == "Beach"):
 		beachAutoTile(adjTiles, pos)
 	elif(getBiome(pos) == "Plains"):
-		plainsAutoTile(adjTiles, pos)
+		return plainsAutoTile(adjTiles, pos)
 
 func plainsAutoTile(adj, pos):
-	
 	for i in adj:
 		if(waterTile(i)):
 			tilemap.set_cell_item(pos, 2)
-			cells["Beach"].append(pos)
-			cells["Plains"].erase(pos)
-			break
+			return true
+		
+	return false
 
 #Okay fuck this
 #This function figures out all the directions the water is facing. 

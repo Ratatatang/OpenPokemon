@@ -39,7 +39,7 @@ func _ready():
 #	altitude = generateMap(180, 5)
 	altitude = generateIsland()
 
-	shaderProcess.queue_free()
+#	shaderProcess.queue_free()
 	setTile(width, height)
 	
 	generateObjects(width, height)

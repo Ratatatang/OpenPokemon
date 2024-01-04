@@ -3,12 +3,11 @@ extends CanvasLayer
 @onready var selectionArrow = $Menu/NinePatchRect/Arrow
 @onready var menu = $Menu
 
-@onready var partyScreen = "res://Scenes/2DScreens/TestScreen.tscn"
+@onready var partyScreen = "res://Scenes/2DScreens/PokemonScreen/PokemonScreen.tscn"
 @onready var crafting = "res://Scenes/2DScreens/TestScreen.tscn"
 @onready var journal = "res://Scenes/2DScreens/TestScreen.tscn"
 @onready var settings = "res://Scenes/2DScreens/TestScreen.tscn"
 @onready var save = "res://Scenes/2DScreens/TestScreen.tscn"
-
 
 @onready var options = [partyScreen, crafting, journal, settings, save]
  

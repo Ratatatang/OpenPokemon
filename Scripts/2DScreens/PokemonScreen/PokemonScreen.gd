@@ -1,21 +1,25 @@
-extends Node2D
+extends Control
 
 
-var slotPath = "res://OpenWorld/Player/Menu/Menus/PokemonScreen/PokeSlot.tscn"
-@onready var pkmnList = get_parent().get_parent().get_parent().playerPokemonList
-var startingPos = Vector2(-470, -270)
-var space = 100
+var slotPath = "res://Scenes/2DScreens/PokemonScreen/PokeSlot.tscn"
+var startingPos = Vector2(-577, -298)
+var space = 110
 
-func _ready():
-	for i in range(len(pkmnList)):
-		if(str(pkmnList[i]) != ""):
-			addSlot(pkmnList[i], Vector2(startingPos.x, startingPos.y+(space*i)))
+@onready var slots = $Slots
 
-func addSlot(pokemon, pos):
+func loadPokemon(pokemonList):
+	for node in slots.get_children():
+		node.queue_free()
+	
+	for i in range(len(pokemonList)):
+		if(str(pokemonList[i]) != ""):
+			addSlot(pokemonList[i], Vector2(startingPos.x, startingPos.y+(space*i)))
+
+func addSlot(pokeLoad, pos):
 	var readySlot = load(slotPath).instantiate()
-	readySlot.init(pokemon)
+	readySlot.init(pokeLoad)
 	readySlot.position = pos
-	add_child(readySlot)
+	slots.add_child(readySlot)
 	
 
 

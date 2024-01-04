@@ -180,19 +180,19 @@ var statChanges = {
 }
 
 var accuracyChanges = {
-	"-6": 3/9,
-	"-5": 3/8,
-	"-4": 3/7,
-	"-3": 3/6,
-	"-2": 3/5,
-	"-1": 3/4,
-	"0": 3/3,
-	"1": 4/3,
-	"2": 5/3,
-	"3": 6/3,
-	"4": 7/3,
-	"5": 8/3,
-	"6": 9/3
+	"-6": 0.33333333333,
+	"-5": 0.375,
+	"-4": 0.42857142857,
+	"-3": 0.5,
+	"-2": 0.6,
+	"-1": 0.75,
+	"0": 1,
+	"1": 1.33333333333,
+	"2": 1.66666666667,
+	"3": 2,
+	"4": 2.33333333333,
+	"5": 2.66666666667,
+	"6": 3
 }
 
 var changesDialog = {
@@ -215,6 +215,8 @@ var effectiveDialog = {
 	"2": "It's Super Effective!",
 	"0.5": "It's Not Very Effective..."
 }
+
+var worldMap
 
 func _init():
 	var text = FileAccess.open("res://Scripts/GameData/Pokedex.json", FileAccess.READ)

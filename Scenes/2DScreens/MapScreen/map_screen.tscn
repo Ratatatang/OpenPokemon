@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbr2mj5equ4s0"]
+
+[ext_resource type="Script" path="res://Scripts/2DScreens/MapScreen/map_screen.gd" id="1_pqm5v"]
+
+[node name="MapScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_pqm5v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

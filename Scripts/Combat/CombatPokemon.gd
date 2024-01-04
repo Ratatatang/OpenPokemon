@@ -34,6 +34,7 @@ var statsDict = {
 
 func loadPokemon(pokemonInst):
 	loadedPokemon = pokemonInst
+	loadedPokemon.participant = true
 	moves = loadedPokemon.moves.duplicate()
 	healthBar.value = (loadedPokemon.tempHp / loadedPokemon.hp) * 1000
 	nameLabel.text = loadedPokemon.displayName
@@ -66,7 +67,7 @@ func loadSprite(pokemonName):
 		healthBar.position.y += (96-rect.size.y)*4
 
 func reduceHP(amount):
-	loadedPokemon.tempHp -= amount
+	loadedPokemon.tempHp -= floor(amount)
 	
 	if(loadedPokemon.tempHp < 0):
 		amount + loadedPokemon.tempHp
@@ -83,7 +84,7 @@ func reducePercentHP(percent):
 	return reduceHP(loadedPokemon.hp / percent)
 
 func heal(amount):
-	loadedPokemon.tempHp += amount
+	loadedPokemon.tempHp += floor(amount)
 	
 	if(loadedPokemon.tempHp > loadedPokemon.hp):
 		amount - loadedPokemon.tempHp
@@ -142,6 +143,7 @@ func inflictStatus(value : String):
 func clearStatus(status):
 	if(status.statusName == statusEffect.statusName):
 		statusEffect = null
+		loadedPokemon.statusEffect = null
 		statusIcon.frame = 0
 	
 	for effects in volatileEffects:
@@ -174,7 +176,6 @@ func getLevel() -> int:
 
 func getHP():
 	return loadedPokemon.tempHp
-
 
 func getAttack() -> int:
 	return clamp(loadedPokemon.atk * 

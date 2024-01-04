@@ -353,7 +353,7 @@ alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("18")
 animation = &"down"
-frame_progress = 0.804162
+frame_progress = 0.315857
 
 [node name="Emote" type="Sprite3D" parent="Sprite2D"]
 transform = Transform3D(2, 0, 0, 0, 1.99143, 0.0924578, 0, -0.184915, 0.995717, 0.0139444, 0.0966271, 0.0495571)

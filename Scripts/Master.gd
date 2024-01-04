@@ -9,6 +9,7 @@ var playerPokemon = []
 @onready var world = $CurrentScene/World
 
 func _ready():
+	playerPokemon.append(pokemon.new("Pidgey", 10))
 	playerPokemon.append(pokemon.new("Bulbasaur", 10))
 	screenAnim.play("Loading")
 
@@ -27,10 +28,19 @@ func loadScreen(path):
 	world.process_mode = PROCESS_MODE_DISABLED
 
 func initiateCombat(enemy):
+	var playerFirst
+	for member in playerPokemon:
+		if(!member.getHP() <= 0):
+			playerFirst = member
+			break
+	
+	if(playerFirst == null):
+		return
+	
 	screenAnim.play("StartCombat")
 	await screenAnim.animation_finished
 	loadScreen("res://Scenes/Combat/combat_scene.tscn")
-	startCombat(playerPokemon[0], enemy)
+	startCombat(playerFirst, enemy)
 	screenAnim.play("FadeToCombat")
 
 func fadeFromCombat():
@@ -41,10 +51,30 @@ func fadeFromCombat():
 func startCombat(playerPokemon, enemyPokemon):
 	$CurrentScene/CurrentScreen/Combat.startCombat(playerPokemon, enemyPokemon)
 
+func distributeXP(defeated : pokemon):
+	for member in playerPokemon:
+		if(member.participant):
+			var exp = float(defeated.getBaseExp())
+			var level = float(defeated.getLevel())
+			exp *= level
+			exp /= 5.0
+			#S, should be 1, 2 if exp share. 1/S
+			
+			var levelMultiplier = (level * 2.0)
+			levelMultiplier += 10.0
+			
+			var levelDivider = level
+			levelDivider += float(member.getLevel())
+			levelDivider += 10.0
+			
+			exp *= (levelMultiplier/levelDivider) ** 2.5
+			exp += 1.0
+			
+			member.calculateLevel(floor(exp))
+
 func exitScreen():
 	screenNode.clearScreens()
 	menu.enabled = true
-	menu.visible = true
 	world.process_mode = PROCESS_MODE_INHERIT
 
 func checkLoad():

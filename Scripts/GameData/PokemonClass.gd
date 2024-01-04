@@ -66,8 +66,8 @@ func _init(tempName, lv = 0, info = MasterInfo):
 
 	var baseStats = pokedexInfo.get("BaseStats")
 
-#	self.experienceCurve = load("res://MasterNode/"+pokedexInfo.get("ExperienceCurve")+".gd").new()
-#	self.neededXP = experienceCurve.levelFunction(level)
+	self.experienceCurve = load("res://Scripts/GameData/Level Formulas/%s.gd" % pokedexInfo.get("ExperienceCurve")).new()
+	self.neededXP = experienceCurve.levelFunction(level)
 		
 	self.xp = calculateXP()
 	#print(experienceCurve.levelFunction(level))
@@ -83,19 +83,19 @@ func _init(tempName, lv = 0, info = MasterInfo):
 		gender = "Male"
 
 		#Sets random IV's
-#	self.hpIV = round(randf_range(0, 31))
-#	self.atkIV = round(randf_range(0, 31))
-#	self.defIV = round(randf_range(0, 31))
-#	self.spAtkIV = round(randf_range(0, 31))
-#	self.spDefIV = round(randf_range(0, 31))
-#	self.speedIV = round(randf_range(0, 31))
+	self.hpIV = round(randf_range(0, 31))
+	self.atkIV = round(randf_range(0, 31))
+	self.defIV = round(randf_range(0, 31))
+	self.spAtkIV = round(randf_range(0, 31))
+	self.spDefIV = round(randf_range(0, 31))
+	self.speedIV = round(randf_range(0, 31))
 	
-	self.hpIV = 31
-	self.atkIV = 31
-	self.defIV = 31
-	self.spAtkIV = 31
-	self.spDefIV = 31
-	self.speedIV = 31
+#	self.hpIV = 31
+#	self.atkIV = 31
+#	self.defIV = 31
+#	self.spAtkIV = 31
+#	self.spDefIV = 31
+#	self.speedIV = 31
 
 	#Calculates stats based on base stats & IV's
 	self.hp =  round(floor(((2 * baseStats.get("hp") + hpIV + 0) * level)/100) + level + 10)
@@ -162,9 +162,17 @@ func setRandomMoves():
 		moves.append(newMove)
 
 func calculateXP():
-	pass
-#	return clamp(experienceCurve.levelFunction(level-1), 0.0, 1640000.0)
+	return clamp(experienceCurve.levelFunction(level-1), 0.0, 1640000.0)
 			
+func getBaseExp():
+	return pokedexInfo.XPValue
+
+func getLevel():
+	return level
+
+func getHP():
+	return tempHp
+	
 #func calculateEV(addedEVs):
 #	var evTotal = hpEV + atkEV + spAtkEV + defEV + spDefEV + speedEV
 #	var keys = addedEVs.keys()

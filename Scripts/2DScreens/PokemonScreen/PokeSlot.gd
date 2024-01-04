@@ -1,22 +1,23 @@
 extends Node2D
 
-var chaLimit = 20
+var charLimit = 20
 
-func init(pokemon):
+var loadedPokemon
+
+func init(pokemonInst):
+	loadedPokemon = pokemonInst
 	#Sets the sprite, and the amount of frames (for pokemon that have alt looks for gender)
-	var newSprite = load("res://Combat/Sprites/Front/"+pokemon.speciesName.to_upper()+".png")
-	$Name.text = pokemon.displayName
+	var newSprite = load("res://Assets/Combat/Pokemon/Front/%s.png" % loadedPokemon.speciesName.to_upper())
+	$Name.text = loadedPokemon.displayName
 	$Sprite2D.texture = newSprite
 	
-	if(pokemon.dimorphism):
-		if(pokemon.gender == "Female"):
-			load("res://Combat/Sprites/Front/"+pokemon.speciesName.to_upper()+"_female.png")
-	
-	if(pokemon.gender == "Female"):
+	if(loadedPokemon.gender == "Female"):
 		$GenderIcons.frame = 1
 		
-	$HealthBar.value = round($HealthBar.value * (pokemon.tempHp/pokemon.hp))
-	$XPBar.value = round($XPBar.value * ((pokemon.xp-pokemon.neededXP)/pokemon.neededXP))
+	$HealthBar.value = (loadedPokemon.tempHp / loadedPokemon.hp) * 1000
 	
-	$HealthBar/HealthNumber.text = str(pokemon.tempHp)+"/"+str(pokemon.hp)
-	$XPBar/Level.text = "Level: "+str(pokemon.level)
+	#$XPBar.value = round($XPBar.value * ((loadedPokemon.xp-loadedPokemon.neededXP)/loadedPokemon.neededXP))
+	$XPBar.value = ((loadedPokemon.xp-loadedPokemon.calculateXP()) / loadedPokemon.neededXP) * 1000
+	
+	$HealthBar/HealthNumber.text = str(loadedPokemon.tempHp)+"/"+str(loadedPokemon.hp)
+	$XPBar/Level.text = "Level: "+str(loadedPokemon.level)

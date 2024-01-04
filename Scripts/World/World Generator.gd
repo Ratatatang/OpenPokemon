@@ -439,4 +439,9 @@ func beachAutoTile(adj, pos):
 	
 	tilemap.set_cell_item(Vector3i(pos.x, pos.y, pos.z), newTile, tileRotation)
 
-
+func generateColorMap():
+	var greyMap = altitude
+	var map = Image.new()
+	map.fill(Color(79, 174, 288))
+	
+	return map

@@ -30,6 +30,7 @@
 			"XPValue": 64,
 			"EVs": {"spAtk": 1},
 			"ExperienceCurve": "MediumSlow",
+			"EvoMethod": "Level",
 			"EvoLv": 16,
 			"EvoPokemon": "Ivysaur",
 			"GenderRatio": 87.5
@@ -63,6 +64,7 @@
 			"XPValue": 142,
 			"EVs": {"spAtk": 1, "spDef": 1},
 			"ExperienceCurve": "MediumSlow",
+			"EvoMethod": "Level",
 			"EvoLv": 32,
 			"EvoPokemon": "Venasaur",
 			"GenderRatio": 87.5
@@ -130,6 +132,7 @@
 			"XPValue": 50,
 			"EVs": {"speed": 1},
 			"ExperienceCurve": "MediumSlow",
+			"EvoMethod": "Level",
 			"EvoLv": 18,
 			"EvoPokemon": "Pidgeotto"
 		},
@@ -164,6 +167,7 @@
 			"XPValue": 122,
 			"EVs": {"speed": 2},
 			"ExperienceCurve": "MediumSlow",
+			"EvoMethod": "Level",
 			"EvoLv": 36,
 			"EvoPokemon": "Pidgeot"
 		},
@@ -236,6 +240,7 @@
 			"XPValue": 60,
 			"EVs": {"speed": 1},
 			"ExperienceCurve": "MediumFast",
+			"EvoMethod": "Item",
 			"EvoItem": "fire_stone",
 			"EvoPokemon": "Ninetales"
 		},
@@ -283,6 +288,7 @@
 			"XPValue": 65,
 			"EVs": {"atk": 1},
 			"ExperienceCurve": "MediumFast",
+			"EvoMethod": "Level",
 			"EvoLv": 28,
 			"EvoPokemon": "Kingler"
 		},
@@ -368,6 +374,7 @@
 			"XPValue": 50,
 			"EVs": {"atk": 1},
 			"ExperienceCurve": "Fast",
+			"EvoMethod": "Level",
 			"EvoLv": 22,
 			"EvoPokemon": "Ariados"
 		},
@@ -452,6 +459,7 @@
 			"XPValue": 62,
 			"EVs": {"atk": 1},
 			"ExperienceCurve": "Fluctuating",
+			"EvoMethod": "Level",
 			"EvoLv": 30,
 			"EvoPokemon": "Crawdaunt"
 		},

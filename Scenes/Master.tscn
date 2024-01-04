@@ -1,9 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bbgs55f41hqs8"]
+[gd_scene load_steps=17 format=3 uid="uid://bbgs55f41hqs8"]
 
 [ext_resource type="Script" path="res://Scripts/Master.gd" id="1_rn7d8"]
 [ext_resource type="PackedScene" uid="uid://ban4agfxv0snt" path="res://Scenes/World/World Generator.tscn" id="1_ym2i5"]
-[ext_resource type="PackedScene" uid="uid://wheagikwl2pa" path="res://Scenes/2DScreens/Menu.tscn" id="2_c8vqa"]
+[ext_resource type="Script" path="res://Scripts/2DScreens/Menu.gd" id="2_oqile"]
 [ext_resource type="Texture2D" uid="uid://bbwshtftyoche" path="res://Assets/Combat/Pokemon/Front/BULBASAUR.png" id="3_fo7s2"]
+[ext_resource type="PackedScene" uid="uid://ckx1b3i48m3y3" path="res://Scenes/2DScreens/PokemonScreen/PokemonScreen.tscn" id="3_y6hnl"]
+[ext_resource type="PackedScene" uid="uid://bbr2mj5equ4s0" path="res://Scenes/2DScreens/MapScreen/map_screen.tscn" id="4_1k33g"]
 [ext_resource type="Script" path="res://Scripts/2DScreens/Rotating.gd" id="4_f7hma"]
 [ext_resource type="Script" path="res://Scripts/2DScreens/CurrentScreen.gd" id="4_iamk4"]
 
@@ -60,10 +62,10 @@ tracks/1/path = NodePath("Sprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -72,7 +74,7 @@ tracks/2/path = NodePath("Sprite2D:process_mode")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [4]
@@ -219,9 +221,69 @@ sky_mode = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ob4mh")
 
-[node name="Menu" parent="." instance=ExtResource("2_c8vqa")]
+[node name="FPS" type="Label" parent="."]
+offset_top = 1.0
+offset_right = 110.0
+offset_bottom = 46.0
+text = "FPS"
+
+[node name="Menu" type="CanvasLayer" parent="."]
+script = ExtResource("2_oqile")
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+offset_left = -32.0
+offset_top = -27.0
+offset_right = 1188.0
+offset_bottom = 696.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 0.839216)
+
+[node name="PokemonScreen" parent="Menu" instance=ExtResource("3_y6hnl")]
+offset_left = 595.0
+offset_top = 324.0
+offset_right = 635.0
+offset_bottom = 364.0
+
+[node name="MapScreen" parent="Menu" instance=ExtResource("4_1k33g")]
+
+[node name="MenuTabs" type="VBoxContainer" parent="Menu"]
+anchors_preset = -1
+anchor_left = 0.92
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.16003
+offset_top = 21.0
+offset_right = -19.0
+offset_bottom = -117.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+
+[node name="Bag" type="Button" parent="Menu/MenuTabs"]
+layout_mode = 2
+text = "Bag"
+
+[node name="Map" type="Button" parent="Menu/MenuTabs"]
+layout_mode = 2
+text = "Map"
+
+[node name="Journal" type="Button" parent="Menu/MenuTabs"]
+layout_mode = 2
+text = "Journal"
+
+[node name="Craft" type="Button" parent="Menu/MenuTabs"]
+layout_mode = 2
+text = "Crafting"
+
+[node name="Settings" type="Button" parent="Menu/MenuTabs"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Save" type="Button" parent="Menu/MenuTabs"]
+layout_mode = 2
+text = "Save"
 
 [node name="ScreenFX" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="ScreenFX"]
 top_level = true
@@ -240,12 +302,6 @@ libraries = {
 position = Vector2(565, 372)
 texture = ExtResource("3_fo7s2")
 script = ExtResource("4_f7hma")
-
-[node name="FPS" type="Label" parent="."]
-offset_top = 1.0
-offset_right = 110.0
-offset_bottom = 46.0
-text = "FPS"
 
 [node name="CurrentScene" type="Node3D" parent="."]
 

@@ -56,6 +56,7 @@ func resolveQueue():
 					
 					if(battler.getHP() == 0):
 						deadPlayer = battler
+						deadPlayer.loadedPokemon.participant = false
 						break
 			if(deadPlayer != null):
 				break
@@ -64,11 +65,19 @@ func resolveQueue():
 			UI.showMenu()
 		
 	if(deadPlayer != null):
+		
 		UI.setDialog("%s fainted!" % deadPlayer.getName())
+		
 		await pressedComfirm
+		
 		UI.clearAll()
 		deadPlayer.deathTween()
+		
 		await deadPlayer.tween.finished
+		
+		if(deadPlayer != player):
+			get_node("/root/Master").distributeXP(deadPlayer.loadedPokemon)
+			
 		get_node("/root/Master").fadeFromCombat()
 	
 	moveQueue = []
@@ -118,41 +127,43 @@ func moveExectute(move : Dictionary, attacker : battlePlayer, victim : battlePla
 	moveHit(move, attacker, victim)
 
 func moveHit(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
-	if(move.Accuracy != 101):
-		var stageMultiplier = MasterInfo.accuracyChanges.get(str(attacker.getAccuracy() - victim.getEvasion()))
+	var stageMultiplier = float(MasterInfo.accuracyChanges.get(str(attacker.getAccuracy() - victim.getEvasion())))
+	print(MasterInfo.accuracyChanges.get(str(attacker.getAccuracy() - victim.getEvasion())))
+	
+	
+	if(move.Accuracy == 101 or randi_range(0, 100) < move.Accuracy * stageMultiplier):
+		var outcome = calculateDamage(move, attacker, victim)
 		
-		if(randi_range(0, 100) < (move.Accuracy * stageMultiplier)):
-				pass
-		else:
-			UI.setDialog("{Pokemon} avoided the attack!" % victim.getName())
-			await pressedComfirm
-	
-	var outcome = calculateDamage(move, attacker, victim)
-	
-	if(outcome[0] > 0):
-		victim.reduceHP(outcome[0])
-		print(outcome)
-		
-	await pressedComfirm
-	
-	if(outcome[1] != 1):
-		if(outcome[1] == 0):
-			UI.setDialog("It doesn't affect the opposing %s..." % [victim.getName()])
-			await pressedComfirm
-		elif(outcome[0] > 0):
-			UI.setDialog(MasterInfo.effectiveDialog.get(str(clamp(outcome[1], 0.5, 2))))
-			await pressedComfirm
-	
-	if(outcome[2]):
-		UI.setDialog("A critical hit!")
+		if(outcome[0] > 0):
+			victim.reduceHP(outcome[0])
+			print(outcome)
+				
 		await pressedComfirm
-	
-	if(move.StatChanges != {} and outcome[1] != 0):
-		statusEffects(move, attacker, victim)
-		await statusDone
-	
+			
+		if(outcome[1] != 1):
+			if(outcome[1] == 0):
+				UI.setDialog("It doesn't affect the opposing %s..." % [victim.getName()])
+				await pressedComfirm
+			elif(outcome[0] > 0):
+				UI.setDialog(MasterInfo.effectiveDialog.get(str(clamp(outcome[1], 0.5, 2))))
+				await pressedComfirm
+			
+		if(outcome[2]):
+			UI.setDialog("A critical hit!")
+			await pressedComfirm
+			
+		if(move.StatChanges != {} and outcome[1] != 0):
+			statusEffects(move, attacker, victim)
+			await statusDone
+		
+		
+	else:
+		await pressedComfirm
+		UI.setDialog("%s avoided the attack!" % victim.getName())
+		await pressedComfirm
+		
 	moveDone.emit()
-
+		
 func calculateDamage(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 	
 	var damage = 2.0

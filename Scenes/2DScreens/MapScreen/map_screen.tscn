@@ -1,15 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbr2mj5equ4s0"]
+[gd_scene load_steps=3 format=3 uid="uid://bbr2mj5equ4s0"]
 
 [ext_resource type="Script" path="res://Scripts/2DScreens/MapScreen/map_screen.gd" id="1_pqm5v"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_1b4p4"]
 
 [node name="MapScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -114.0
+offset_top = -16.0
+offset_right = -74.0
+offset_bottom = 24.0
+scale = Vector2(1.2, 1.2)
 script = ExtResource("1_pqm5v")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 43.0
+offset_right = 430.0
+offset_bottom = 143.0
+scale = Vector2(5, 5)
+color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 339.0
+offset_top = 53.0
+offset_right = 435.0
+offset_bottom = 149.0
+scale = Vector2(5, 5)
+texture = SubResource("ImageTexture_1b4p4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 543.0
+offset_top = 18.3333
+offset_right = 700.0
+offset_bottom = 58.3333
+text = "World Map"

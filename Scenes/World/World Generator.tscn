@@ -21,5 +21,3 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="GameObjects" type="Node3D" parent="."]
 
 [node name="ShaderProcess" parent="." instance=ExtResource("3")]
-
-[editable path="ShaderProcess"]

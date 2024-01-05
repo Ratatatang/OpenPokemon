@@ -37,7 +37,7 @@ func _ready():
 	moisture = generateMap(450.0, 5.0)
 	await RenderingServer.frame_post_draw
 #	altitude = generateMap(180, 5)
-	altitude = generateIsland()
+	altitude = await generateIsland()
 
 #	shaderProcess.queue_free()
 	setTile(width, height)
@@ -53,6 +53,9 @@ func _ready():
 	globalSpawnPoint.y = 0.586
 		
 	var newPlayer = addPlayer("")
+	
+	MasterInfo.worldMap = getItemMap()
+	SignalManager.mapReady.emit()
 
 #Generates 2D noise maps
 func generateMap(fre, oct):
@@ -75,6 +78,8 @@ func generateIsland():
 	var islandNoise = NoiseTexture2D.new()
 	islandNoise.width = 512
 	islandNoise.height = 512
+	islandNoise.generate_mipmaps = true
+	islandNoise.normalize = true
 	
 	#0.0049... is a magic number
 	var texNoise = FastNoiseLite.new()
@@ -87,8 +92,15 @@ func generateIsland():
 	texNoise.seed = randi()
 	
 	islandNoise.noise = texNoise
-
-	shaderProcess.material.set_shader_parameter("island_tex", islandNoise)
+	
+	await islandNoise.changed
+	
+	
+	print(shaderProcess.get_material().get_shader_parameter("island_tex"))
+	shaderProcess.get_material().set_shader_parameter("island_tex", islandNoise)
+	print(shaderProcess.get_material().get_shader_parameter("island_tex"))
+	
+	await RenderingServer.frame_post_draw
 	
 	var island = $ShaderProcess.get_texture().get_image()
 
@@ -284,6 +296,15 @@ func getBiome(pos: Vector3):
 	for i in keys:
 		if i >= cell:
 			return tileBiomes[i]
+			
+
+func getItemMap():
+	var itemMap = {}
+	for cell in tilemap.get_used_cells():
+		itemMap[cell] = tilemap.get_cell_item(cell)
+	
+	return itemMap
+		
 	
 #	return tileBiomes[tilemap.get_cell_item(pos.x, pos.y, pos.z)]
 """
@@ -363,6 +384,12 @@ func plainsAutoTile(adj, pos):
 		if(waterTile(i)):
 			tilemap.set_cell_item(pos, 2)
 			return true
+			
+	adj.resize(4)
+	
+	if(getBiome(adj[0]) == "Beach" and getBiome(adj[1]) == "Beach" and getBiome(adj[2]) == "Beach" and getBiome(adj[3]) == "Beach"):
+		tilemap.set_cell_item(pos, 2)
+		return true
 		
 	return false
 
@@ -379,6 +406,8 @@ func beachAutoTile(adj, pos):
 	for i in adj:
 		if(waterTile(i)):
 			oceanDirections.append(i)
+	
+	
 	
 	if(oceanDirections.size() == 0):
 		return
@@ -438,10 +467,3 @@ func beachAutoTile(adj, pos):
 			tileRotation = 22 #Works
 	
 	tilemap.set_cell_item(Vector3i(pos.x, pos.y, pos.z), newTile, tileRotation)
-
-func generateColorMap():
-	var greyMap = altitude
-	var map = Image.new()
-	map.fill(Color(79, 174, 288))
-	
-	return map

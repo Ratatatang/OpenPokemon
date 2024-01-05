@@ -244,6 +244,7 @@ offset_right = 635.0
 offset_bottom = 364.0
 
 [node name="MapScreen" parent="Menu" instance=ExtResource("4_1k33g")]
+visible = false
 
 [node name="MenuTabs" type="VBoxContainer" parent="Menu"]
 anchors_preset = -1
@@ -283,7 +284,6 @@ layout_mode = 2
 text = "Save"
 
 [node name="ScreenFX" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="ScreenFX"]
 top_level = true
@@ -291,6 +291,7 @@ offset_left = -870.0
 offset_top = -892.0
 offset_right = 2974.0
 offset_bottom = 1138.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="ScreenAnimation" type="AnimationPlayer" parent="ScreenFX"]
@@ -314,3 +315,6 @@ script = ExtResource("4_iamk4")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.3
+
+[connection signal="pressed" from="Menu/MenuTabs/Bag" to="Menu" method="_on_bag_pressed"]
+[connection signal="pressed" from="Menu/MenuTabs/Map" to="Menu" method="_on_map_pressed"]

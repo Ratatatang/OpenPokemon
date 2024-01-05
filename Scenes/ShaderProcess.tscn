@@ -1,44 +1,22 @@
 [gd_scene load_steps=6 format=3 uid="uid://u3jgemplnvlv"]
 
 [ext_resource type="Texture2D" uid="uid://drka25qmbip1h" path="res://Assets/World/SquareGradient.png" id="1"]
+[ext_resource type="Shader" path="res://Assets/ShaderProcess.gdshader" id="1_v2m7t"]
 
-[sub_resource type="Shader" id="1"]
-code = "shader_type canvas_item;
-
-uniform sampler2D island_tex;
-
-void fragment(){
-	
-	vec2 uvn=abs(UV-0.5) * 1.83;
-	float maxc=max(uvn.y,uvn.x);
-	vec3 mate=vec3(maxc);
-	
-	vec4 island = texture(island_tex, UV);
-	
-	float noise = 1.0;
-	vec2 uv_noise = vec2(noise, 1);
-	
-	
-	vec3 isl = island.xyz - mate;
-	vec3 grad = texture(TEXTURE, isl.xy).xyz;
-	
-	vec4 color = vec4(grad, 3);
-
-	COLOR = vec4(0.76 - color.rgb, color.a);
-}"
-
-[sub_resource type="FastNoiseLite" id="3"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jgudu"]
+seed = 1244432
 frequency = 0.0049
 fractal_octaves = 9
 fractal_lacunarity = 1.65
 fractal_weighted_strength = 0.03
 
-[sub_resource type="NoiseTexture2D" id="4"]
-noise = SubResource("3")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vtjgg"]
+noise = SubResource("FastNoiseLite_jgudu")
 
-[sub_resource type="ShaderMaterial" id="2"]
-shader = SubResource("1")
-shader_parameter/island_tex = SubResource("4")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cgcf1"]
+shader = ExtResource("1_v2m7t")
+shader_parameter/test = 5.0
+shader_parameter/island_tex = SubResource("NoiseTexture2D_vtjgg")
 
 [node name="ShaderProcess" type="SubViewport"]
 transparent_bg = true
@@ -46,10 +24,10 @@ handle_input_locally = false
 debug_draw = 1
 gui_disable_input = true
 size = Vector2i(50, 50)
-render_target_update_mode = 1
+render_target_update_mode = 4
 
 [node name="ShaderProcess" type="TextureRect" parent="."]
-material = SubResource("2")
+material = SubResource("ShaderMaterial_cgcf1")
 offset_right = 50.0
 offset_bottom = 50.0
 texture = ExtResource("1")

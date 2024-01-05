@@ -51,9 +51,13 @@ func loadSprite(pokemonName):
 	var gen = "Front"
 	if(generateBack):
 		gen = "Back"
-	texture = load("res://Assets/Combat/Pokemon/%s/%s.png" % [gen, pokemonName.to_upper()])
+	texture = "res://Assets/Combat/Pokemon/%s/%s.png" % [gen, pokemonName.to_upper()]
 	
-	sprite.texture = texture
+	if(FileAccess.file_exists(texture)):
+		sprite.texture = load(texture)
+	else:
+		print("%s sprite doesn't exist! Defaulting to 000 sprite." % pokemonName.to_upper())
+		sprite.texture = load("res://Assets/Combat/Pokemon/Front/000.png")
 	
 	var image = texture.get_image().get_used_rect()
 	var rect = Rect2(0, 0,

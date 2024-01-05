@@ -7,9 +7,14 @@ var loadedPokemon
 func init(pokemonInst):
 	loadedPokemon = pokemonInst
 	#Sets the sprite, and the amount of frames (for pokemon that have alt looks for gender)
-	var newSprite = load("res://Assets/Combat/Pokemon/Front/%s.png" % loadedPokemon.speciesName.to_upper())
+	var newSprite = "res://Assets/2DScreens/PokemonScreen/PokemonIcons/%s.png" % loadedPokemon.speciesName.to_upper()
+	if(FileAccess.file_exists(newSprite)):
+		$Sprite2D.texture = load(newSprite)
+	else:
+		print("%s pokemon icon dosen't exist! Defaulting to 000 sprite." % loadedPokemon.speciesName.to_upper())
+		$Sprite2D.texture = load("res://Assets/Combat/Pokemon/Front/000.png")
+	
 	$Name.text = loadedPokemon.displayName
-	$Sprite2D.texture = newSprite
 	
 	if(loadedPokemon.gender == "Female"):
 		$GenderIcons.frame = 1

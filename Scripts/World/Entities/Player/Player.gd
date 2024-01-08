@@ -67,6 +67,7 @@ func _physics_process(delta):
 #		if get_node("/root/Master").connectedToServer == false or is_multiplayer_authority():
 			if(frozen == true):
 				state = stateMachine.FREEZE
+			MasterInfo.playerPosition = position
 			match state:
 				stateMachine.MOVE:	
 					move_state(delta)

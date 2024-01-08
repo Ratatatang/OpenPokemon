@@ -1,41 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://baggdqhwu710l"]
+[gd_scene load_steps=3 format=3 uid="uid://baggdqhwu710l"]
 
 [ext_resource type="Script" path="res://Scripts/2DScreens/PokemonScreen/PokeSlot.gd" id="1_jxngg"]
 [ext_resource type="Texture2D" uid="uid://0gn1lyufx5ck" path="res://Assets/2DScreens/PokemonScreen/slotMarker.png" id="2_et8uy"]
-[ext_resource type="Texture2D" uid="uid://c70km7rys2j4f" path="res://Assets/2DScreens/PokemonScreen/slotMarkerHovered.png" id="3_axw05"]
-[ext_resource type="Texture2D" uid="uid://c42xig1ltbi1m" path="res://Assets/2DScreens/PokemonScreen/PokemonIcons/BULBASAUR.png" id="4_so7mb"]
-[ext_resource type="Texture2D" uid="uid://ldh2cvnkcse" path="res://Assets/2DScreens/PokemonScreen/gender_icons.png" id="5_iiblp"]
-[ext_resource type="FontFile" uid="uid://b55ek2u1muwn6" path="res://Assets/Fonts/m5x7.ttf" id="6_66pdj"]
-[ext_resource type="Texture2D" uid="uid://g3jb7fhd8mwc" path="res://Assets/Combat/HealthUnder.png" id="7_t44yj"]
-[ext_resource type="Texture2D" uid="uid://bm6rqdpjccy47" path="res://Assets/Combat/HealthFrame.png" id="8_5jyta"]
-[ext_resource type="Texture2D" uid="uid://brso7011tsoga" path="res://Assets/Combat/GreenHealth.png" id="9_o74w7"]
-[ext_resource type="Texture2D" uid="uid://b3e4l1a7xwgc3" path="res://Assets/2DScreens/PokemonScreen/xpBar.png" id="10_0mwrw"]
 
-[sub_resource type="FontFile" id="1"]
-fallbacks = Array[Font]([ExtResource("6_66pdj")])
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[sub_resource type="FontFile" id="2"]
-fallbacks = Array[Font]([ExtResource("6_66pdj")])
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[node name="PokeSlot" type="Node2D"]
+[node name="EmptyPokeSlot" type="Node2D"]
 scale = Vector2(1.8, 1.8)
 script = ExtResource("1_jxngg")
 
@@ -50,80 +18,9 @@ offset_bottom = 2.66667
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3.8, 3.8)
+disabled = true
+button_mask = 0
 texture_normal = ExtResource("2_et8uy")
-texture_hover = ExtResource("3_axw05")
 ignore_texture_size = true
 stretch_mode = 3
 metadata/_edit_use_anchors_ = true
-
-[node name="SlotMarker" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(73.8889, 13.3333)
-scale = Vector2(3.8, 3.8)
-texture = ExtResource("2_et8uy")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(13.5714, 12.8571)
-texture = ExtResource("4_so7mb")
-
-[node name="GenderIcons" type="Sprite2D" parent="."]
-position = Vector2(147.222, 10.5556)
-texture = ExtResource("5_iiblp")
-hframes = 2
-
-[node name="Name" type="RichTextLabel" parent="."]
-offset_left = 34.7778
-offset_top = -5.11111
-offset_right = 388.778
-offset_bottom = 31.8889
-mouse_filter = 2
-theme_override_fonts/normal_font = SubResource("1")
-text = "Pisngalbyurslfhndsm"
-
-[node name="HealthBar" type="TextureProgressBar" parent="."]
-offset_left = 32.0
-offset_top = 10.0
-offset_right = 112.0
-offset_bottom = 19.0
-scale = Vector2(0.5, 0.5)
-mouse_filter = 2
-max_value = 1000.0
-value = 1000.0
-texture_under = ExtResource("7_t44yj")
-texture_over = ExtResource("8_5jyta")
-texture_progress = ExtResource("9_o74w7")
-
-[node name="HealthNumber" type="RichTextLabel" parent="HealthBar"]
-layout_mode = 0
-offset_top = 13.3333
-offset_right = 129.0
-offset_bottom = 37.3333
-scale = Vector2(1.5, 1.5)
-mouse_filter = 2
-theme_override_fonts/normal_font = SubResource("2")
-text = "32/32
-"
-
-[node name="XPBar" type="TextureProgressBar" parent="."]
-offset_left = 101.667
-offset_top = 10.0
-offset_right = 181.667
-offset_bottom = 19.0
-scale = Vector2(0.5, 0.5)
-mouse_filter = 2
-max_value = 1000.0
-value = 1000.0
-texture_under = ExtResource("7_t44yj")
-texture_over = ExtResource("8_5jyta")
-texture_progress = ExtResource("10_0mwrw")
-
-[node name="Level" type="RichTextLabel" parent="XPBar"]
-layout_mode = 0
-offset_left = 1.74603
-offset_top = 13.3333
-offset_right = 130.746
-offset_bottom = 37.3333
-scale = Vector2(1.5, 1.5)
-mouse_filter = 2
-theme_override_fonts/normal_font = SubResource("2")
-text = "Level: "

@@ -44,6 +44,11 @@ func loadPokemon(pokemonInst):
 		statusEffect = loadedPokemon.statusEffect
 		statusIcon.frame = statusEffect.iconFrame
 	
+	volatileEffects = []
+	sleepCounter = 0
+	skipMove = false
+	statsDict = {"Attack" : 0, "Special Attack" : 0, "Defense" : 0, "Special Defense" : 0, "Speed" :  0, "Accuracy" : 0, "Evasion" : 0, "Crit Ratio": 0}
+	
 	loadSprite(loadedPokemon.speciesName)
 
 func loadSprite(pokemonName):
@@ -51,13 +56,18 @@ func loadSprite(pokemonName):
 	var gen = "Front"
 	if(generateBack):
 		gen = "Back"
+		sprite.position = Vector2(-226, -388)
+	else:
+		sprite.position = Vector2(-207, -317)
 	texture = "res://Assets/Combat/Pokemon/%s/%s.png" % [gen, pokemonName.to_upper()]
 	
 	if(FileAccess.file_exists(texture)):
-		sprite.texture = load(texture)
+		texture = load(texture)
 	else:
 		print("%s sprite doesn't exist! Defaulting to 000 sprite." % pokemonName.to_upper())
-		sprite.texture = load("res://Assets/Combat/Pokemon/Front/000.png")
+		texture = load("res://Assets/Combat/Pokemon/Front/000.png")
+	
+	sprite.texture = texture
 	
 	var image = texture.get_image().get_used_rect()
 	var rect = Rect2(0, 0,

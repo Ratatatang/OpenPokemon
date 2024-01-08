@@ -55,6 +55,7 @@ func _ready():
 	var newPlayer = addPlayer("")
 	
 	MasterInfo.worldMap = getItemMap()
+	MasterInfo.worldMapNode = $GridMap
 	SignalManager.mapReady.emit()
 
 #Generates 2D noise maps

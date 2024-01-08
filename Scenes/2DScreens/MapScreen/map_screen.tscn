@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbr2mj5equ4s0"]
+[gd_scene load_steps=4 format=3 uid="uid://bbr2mj5equ4s0"]
 
 [ext_resource type="Script" path="res://Scripts/2DScreens/MapScreen/map_screen.gd" id="1_pqm5v"]
+[ext_resource type="Texture2D" uid="uid://oc720hjngwks" path="res://Assets/2DScreens/MapScreen/compass.png" id="2_i2wdw"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_1b4p4"]
 
@@ -39,3 +40,8 @@ offset_top = 18.3333
 offset_right = 700.0
 offset_bottom = 58.3333
 text = "World Map"
+
+[node name="Compass" type="Sprite2D" parent="."]
+position = Vector2(761.667, 473.333)
+scale = Vector2(3, 3)
+texture = ExtResource("2_i2wdw")

@@ -28,19 +28,10 @@ func loadScreen(path):
 	world.process_mode = PROCESS_MODE_DISABLED
 
 func initiateCombat(enemy):
-	var playerFirst
-	for member in playerPokemon:
-		if(!member.getHP() <= 0):
-			playerFirst = member
-			break
-	
-	if(playerFirst == null):
-		return
-	
 	screenAnim.play("StartCombat")
 	await screenAnim.animation_finished
 	loadScreen("res://Scenes/Combat/combat_scene.tscn")
-	startCombat(playerFirst, enemy)
+	startCombat(playerPokemon, enemy)
 	screenAnim.play("FadeToCombat")
 
 func fadeFromCombat():

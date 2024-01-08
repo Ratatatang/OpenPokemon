@@ -1,14 +1,17 @@
 extends Control
 
+signal switchOut(selectedPokemon)
 
-var slotPath = "res://Scenes/2DScreens/PokemonScreen/PokeSlot.tscn"
+var slotPath = "res://Scenes/2DScreens/PokemonScreen/BattlePokeSlot.tscn"
 var startingPos = Vector2(-577, -268)
 var space = 100
+var pokemonList
+var currentBattler
 
 @onready var emptySlot = load("res://Scenes/2DScreens/PokemonScreen/EmptyPokeSlot.tscn")
 @onready var slots = $Slots
 
-func loadPokemon(pokemonList):
+func loadPokemon():
 	for node in slots.get_children():
 		node.queue_free()
 	
@@ -32,8 +35,10 @@ func addSlot(pokeLoad, pos):
 	readySlot.init(pokeLoad)
 	readySlot.position = pos
 	slots.add_child(readySlot)
-	
+	readySlot.switchOut.connect(switchPressed)
 
+func switchPressed(selectedPokemon):
+	switchOut.emit(selectedPokemon)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

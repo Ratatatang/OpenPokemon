@@ -219,6 +219,8 @@ var effectiveDialog = {
 var worldMapNode
 var worldMap
 
+var playerPosition = Vector2.ZERO
+
 func _init():
 	var text = FileAccess.open("res://Scripts/GameData/Pokedex.json", FileAccess.READ)
 	var json = JSON.new()
@@ -240,6 +242,10 @@ func _init():
 		return
 
 	movedex = json.get_data()
+
+func setPlayer(pos):
+	pos = worldMapNode.to_local(pos)
+	playerPosition = worldMapNode.local_to_map(pos)
 
 func getPokemon(pokeName):
 	return pokedex.get("Pokedex").get(pokeName)

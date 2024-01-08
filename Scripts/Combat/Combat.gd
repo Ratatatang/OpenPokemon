@@ -11,6 +11,8 @@ signal statusDone
 @onready var enemy : battlePlayer = $Enemy
 @onready var player : battlePlayer = $Player
 
+var playerParty
+
 var moveQueue = []
 @onready var battlerQueue = [player, enemy]
 
@@ -26,10 +28,18 @@ func _input(event):
 	if event.is_action_pressed("confirm"):
 		pressedComfirm.emit()
 
-func startCombat(playerPokemon, enemyPokemon):
+func startCombat(party, enemyPokemon):
 	enemy.loadPokemon(enemyPokemon)
-	player.loadPokemon(playerPokemon)
+	playerParty = party
+	$UI/Switch.pokemonList = party
+	player.loadPokemon(getFirstSlot(party))
 	loadMoves(player)
+
+func getFirstSlot(party):
+	for member in party:
+		if(!member.getHP() <= 0):
+			return member
+	return null
 
 func resolveQueue():
 	var deadPlayer : battlePlayer
@@ -371,3 +381,16 @@ func _on_move_pressed(move : Dictionary):
 		
 		decideAIMove(enemy, player)
 		resolveQueue()
+
+func _on_switch_switch_out(selectedPokemon):
+	if(selectedPokemon != player.loadedPokemon):
+		UI.showDialog()
+		UI.setDialog("%s, come on back." % player.getName())
+		await pressedComfirm
+		player.loadPokemon(selectedPokemon)
+		UI.setDialog("Go! %s!" % player.getName())
+		await pressedComfirm
+		loadMoves(player)
+		decideAIMove(enemy, player)
+		resolveQueue()
+		

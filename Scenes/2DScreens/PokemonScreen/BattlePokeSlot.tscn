@@ -1,0 +1,156 @@
+[gd_scene load_steps=12 format=3 uid="uid://clxi6nwfkv4hm"]
+
+[ext_resource type="Script" path="res://Scripts/2DScreens/PokemonScreen/BattlePokeSlot.gd" id="1_3m7lo"]
+[ext_resource type="Texture2D" uid="uid://0gn1lyufx5ck" path="res://Assets/2DScreens/PokemonScreen/slotMarker.png" id="2_p08mm"]
+[ext_resource type="Texture2D" uid="uid://c70km7rys2j4f" path="res://Assets/2DScreens/PokemonScreen/slotMarkerHovered.png" id="3_40okf"]
+[ext_resource type="Texture2D" uid="uid://c42xig1ltbi1m" path="res://Assets/2DScreens/PokemonScreen/PokemonIcons/BULBASAUR.png" id="4_ffwep"]
+[ext_resource type="Texture2D" uid="uid://ldh2cvnkcse" path="res://Assets/2DScreens/PokemonScreen/gender_icons.png" id="5_f6nmw"]
+[ext_resource type="FontFile" uid="uid://b55ek2u1muwn6" path="res://Assets/Fonts/m5x7.ttf" id="6_g4w57"]
+[ext_resource type="Texture2D" uid="uid://g3jb7fhd8mwc" path="res://Assets/Combat/HealthUnder.png" id="7_a34ky"]
+[ext_resource type="Texture2D" uid="uid://bm6rqdpjccy47" path="res://Assets/Combat/HealthFrame.png" id="8_3wrya"]
+[ext_resource type="Texture2D" uid="uid://brso7011tsoga" path="res://Assets/Combat/GreenHealth.png" id="9_c40xc"]
+
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("6_g4w57")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("6_g4w57")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[node name="PokeSlot" type="Control"]
+layout_mode = 3
+anchor_right = 0.234
+anchor_bottom = 0.118
+offset_right = -58.568
+offset_bottom = -1.464
+scale = Vector2(1.8, 1.8)
+script = ExtResource("1_3m7lo")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0107646
+anchor_top = 0.000198658
+anchor_right = 0.0107646
+anchor_bottom = 0.000198658
+offset_left = -8.33334
+offset_top = -7.77777
+offset_right = 33.6666
+offset_bottom = 3.22223
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.8, 3.8)
+texture_normal = ExtResource("2_p08mm")
+texture_hover = ExtResource("3_40okf")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="SlotMarker" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(73.8889, 13.3333)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("2_p08mm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10.7936, 13.4127)
+texture = ExtResource("4_ffwep")
+
+[node name="GenderIcons" type="Sprite2D" parent="."]
+position = Vector2(144.444, 11.1112)
+texture = ExtResource("5_f6nmw")
+hframes = 2
+
+[node name="Name" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -4.55555
+offset_right = 386.0
+offset_bottom = 32.4445
+mouse_filter = 2
+theme_override_fonts/normal_font = SubResource("1")
+text = "Pisngalbyurslfhndsm"
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 29.2222
+offset_top = 10.5556
+offset_right = 109.222
+offset_bottom = 19.5556
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+max_value = 1000.0
+value = 1000.0
+texture_under = ExtResource("7_a34ky")
+texture_over = ExtResource("8_3wrya")
+texture_progress = ExtResource("9_c40xc")
+
+[node name="HealthNumber" type="RichTextLabel" parent="HealthBar"]
+layout_mode = 0
+offset_top = 13.3333
+offset_right = 129.0
+offset_bottom = 37.3333
+scale = Vector2(1.5, 1.5)
+mouse_filter = 2
+theme_override_fonts/normal_font = SubResource("2")
+text = "32/32
+"
+
+[node name="Level" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 51.9844
+offset_top = 17.2222
+offset_right = 180.984
+offset_bottom = 41.2222
+scale = Vector2(0.8, 0.8)
+mouse_filter = 2
+theme_override_fonts/normal_font = SubResource("2")
+text = "Level: "
+
+[node name="Choices" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 156.667
+offset_top = 8.33334
+offset_right = 209.667
+offset_bottom = 79.3333
+
+[node name="Swap" type="Button" parent="Choices"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_g4w57")
+text = "Swap In"
+
+[node name="Summary" type="Button" parent="Choices"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_g4w57")
+text = "Summary"
+
+[node name="Back" type="Button" parent="Choices"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_g4w57")
+text = "Go Back"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="focus_exited" from="TextureButton" to="." method="_on_texture_button_focus_exited"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Choices/Swap" to="." method="_on_swap_pressed"]

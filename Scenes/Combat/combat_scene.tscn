@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cw6khyjk624mf"]
+[gd_scene load_steps=15 format=3 uid="uid://cw6khyjk624mf"]
 
 [ext_resource type="Texture2D" uid="uid://dqcmr855qpuf5" path="res://Assets/Combat/Backgrounds/battleForest.png" id="1_74idv"]
 [ext_resource type="Script" path="res://Scripts/Combat/Combat.gd" id="1_bn50e"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bp3eco8e02wbf" path="res://Assets/Combat/Pokemon/Front/DIALGA.png" id="8_pv40x"]
 [ext_resource type="Script" path="res://Scripts/Combat/Healthbar.gd" id="8_sf3xw"]
 [ext_resource type="Texture2D" uid="uid://b6y123htdolub" path="res://Assets/Combat/icon_statuses.png" id="8_yhi22"]
+[ext_resource type="Script" path="res://Scripts/2DScreens/PokemonScreen/BattlePokemonScreen.gd" id="14_2g2ys"]
 
 [node name="Combat" type="CanvasLayer"]
 script = ExtResource("1_bn50e")
@@ -276,7 +277,35 @@ theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
 scroll_active = false
 
+[node name="Switch" type="Control" parent="UI"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("14_2g2ys")
+
+[node name="ColorRect" type="ColorRect" parent="UI/Switch"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -27.0
+offset_right = 1188.0
+offset_bottom = 696.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 0.839216)
+
+[node name="Slots" type="Node2D" parent="UI/Switch"]
+position = Vector2(595, 324)
+
+[node name="Back" type="Button" parent="UI/Switch"]
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 586.0
+offset_right = 1105.0
+offset_bottom = 617.0
+scale = Vector2(1.5, 1.5)
+text = "Back"
+
 [connection signal="pressed" from="UI/Menu/Fight" to="UI" method="_on_fight_pressed"]
+[connection signal="pressed" from="UI/Menu/Pokemon" to="UI" method="_on_pokemon_pressed"]
 [connection signal="movePressed" from="UI/Fight/Fight/Attack2" to="." method="_on_move_pressed"]
 [connection signal="pressed" from="UI/Fight/Fight/Attack2" to="UI/Fight/Fight/Attack2" method="_on_pressed"]
 [connection signal="movePressed" from="UI/Fight/Fight/Attack3" to="." method="_on_move_pressed"]
@@ -286,3 +315,5 @@ scroll_active = false
 [connection signal="movePressed" from="UI/Fight/Fight/Attack1" to="." method="_on_move_pressed"]
 [connection signal="pressed" from="UI/Fight/Fight/Attack1" to="UI/Fight/Fight/Attack1" method="_on_pressed"]
 [connection signal="pressed" from="UI/Fight/Back" to="UI" method="_on_back_pressed"]
+[connection signal="switchOut" from="UI/Switch" to="." method="_on_switch_switch_out"]
+[connection signal="pressed" from="UI/Switch/Back" to="UI" method="_on_back_pressed"]

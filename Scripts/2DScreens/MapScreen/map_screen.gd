@@ -1,6 +1,8 @@
 extends Control
 
 @onready var texture = $TextureRect
+var map
+var markerMap
 
 var colorDict = {
 	0 : Color.CORNFLOWER_BLUE,
@@ -13,7 +15,7 @@ var colorDict = {
 }
 
 func _ready():
-	var map = Image.create(50, 50, false, 4)
+	map = Image.create(50, 50, false, 4)
 	
 	await SignalManager.mapReady
 	
@@ -24,4 +26,13 @@ func _ready():
 			var pixel = colorDict.get(itemMap[Vector3i(x, 0, z)])
 			map.set_pixel(x, z, pixel)
 	
+	markerMap = map.duplicate()
+	
 	texture.texture = ImageTexture.create_from_image(map)
+
+func _physics_process(delta):
+	if(visible == true):
+		var playerPos = MasterInfo.playerPosition
+		markerMap = map.duplicate()
+		markerMap.set_pixel(floor(playerPos.x), floor(playerPos.z), Color.ORANGE)
+		texture.texture = ImageTexture.create_from_image(markerMap)

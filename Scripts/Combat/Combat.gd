@@ -87,8 +87,17 @@ func resolveQueue():
 		
 		if(deadPlayer != player):
 			get_node("/root/Master").distributeXP(deadPlayer.loadedPokemon)
-			
-		get_node("/root/Master").fadeFromCombat()
+			get_node("/root/Master").fadeFromCombat()
+		else:
+			var hasAlive = false
+			for member in playerParty:
+				if(member.getHP() > 0):
+					hasAlive = true
+			if(hasAlive):
+				UI.showSwitch()
+			else:
+				get_node("/root/Master").fadeFromCombat()
+		
 	
 	moveQueue = []
 
@@ -385,8 +394,9 @@ func _on_move_pressed(move : Dictionary):
 func _on_switch_switch_out(selectedPokemon):
 	if(selectedPokemon != player.loadedPokemon):
 		UI.showDialog()
-		UI.setDialog("%s, come on back." % player.getName())
-		await pressedComfirm
+		if(player.getHP() > 0):
+			UI.setDialog("%s, come on back." % player.getName())
+			await pressedComfirm
 		player.loadPokemon(selectedPokemon)
 		UI.setDialog("Go! %s!" % player.getName())
 		await pressedComfirm

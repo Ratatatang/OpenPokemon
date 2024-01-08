@@ -5,6 +5,7 @@ signal switchOut(selectedPokemon)
 var charLimit = 20
 
 var loadedPokemon
+var switchMode
 
 func init(pokemonInst):
 	loadedPokemon = pokemonInst
@@ -25,6 +26,14 @@ func init(pokemonInst):
 	
 	$HealthBar/HealthNumber.text = str(loadedPokemon.tempHp)+"/"+str(loadedPokemon.hp)
 	$Level.text = "Level: "+str(loadedPokemon.level)
+	
+	$Choices/Swap.text = "Swap In"
+	if(switchMode == "Dead"):
+		$Choices/Swap.text = "Unable"
+		$Choices/Swap.disabled = true
+	elif(switchMode == "Battling"):
+		$Choices/Swap.text = "Battling"
+		$Choices/Swap.disabled = true
 
 func _on_texture_button_pressed():
 	$Choices.visible = true

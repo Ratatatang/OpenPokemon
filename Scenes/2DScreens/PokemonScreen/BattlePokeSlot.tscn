@@ -114,14 +114,14 @@ text = "32/32
 
 [node name="Level" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 51.9844
+offset_left = 82.2222
 offset_top = 17.2222
-offset_right = 180.984
+offset_right = 211.222
 offset_bottom = 41.2222
 scale = Vector2(0.8, 0.8)
 mouse_filter = 2
 theme_override_fonts/normal_font = SubResource("2")
-text = "Level: "
+text = "Level: 100"
 
 [node name="Choices" type="VBoxContainer" parent="."]
 visible = false

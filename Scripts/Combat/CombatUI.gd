@@ -27,6 +27,13 @@ func showFight():
 	$Dialog.hide()
 	$Switch.hide()
 
+func showSwitch():
+	$Switch.show()
+	$Switch.loadPokemon()
+	$Fight.hide()
+	$Menu.hide()
+	$Dialog.hide()
+
 func _on_fight_pressed():
 	$Fight.show()
 	$Menu.hide()

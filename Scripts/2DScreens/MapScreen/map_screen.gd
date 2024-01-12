@@ -5,13 +5,9 @@ var map
 var markerMap
 
 var colorDict = {
-	0 : Color.CORNFLOWER_BLUE,
-	1 : Color.SEA_GREEN,
-	2 : Color.KHAKI,
-	3 : Color.KHAKI,
-	4 : Color.KHAKI,
-	5 : Color.KHAKI,
-	6 : Color.KHAKI
+	"Ocean" : Color.CORNFLOWER_BLUE,
+	"Plains" : Color.SEA_GREEN,
+	"Beach" : Color.KHAKI,
 }
 
 func _ready():
@@ -20,10 +16,13 @@ func _ready():
 	await SignalManager.mapReady
 	
 	var itemMap = MasterInfo.worldMap
+	var library = MasterInfo.worldMapNode.mesh_library
 	
 	for x in 50:
 		for z in 50:
-			var pixel = colorDict.get(itemMap[Vector3i(x, 0, z)])
+			pass
+			var pixel = colorDict.get(
+				library.get_item_name(itemMap[Vector3i(x, 0, z)]))
 			map.set_pixel(x, z, pixel)
 	
 	markerMap = map.duplicate()

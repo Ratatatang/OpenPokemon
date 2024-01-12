@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq80uoxlfp6eu"
-path="res://.godot/imported/BeachOcean4.png-1b5d82f69c73feab22f213d63091ebc4.ctex"
+uid="uid://bx58ejefbgxie"
+path.s3tc="res://.godot/imported/Forest.png-8fb7e2d451d9f9edf25069f50609264c.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Assets/World/BiomeTiles/BeachOcean4.png"
-dest_files=["res://.godot/imported/BeachOcean4.png-1b5d82f69c73feab22f213d63091ebc4.ctex"]
+source_file="res://Assets/World/BiomeTiles/Forest.png"
+dest_files=["res://.godot/imported/Forest.png-8fb7e2d451d9f9edf25069f50609264c.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

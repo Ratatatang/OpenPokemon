@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://bbgs55f41hqs8"]
 
 [ext_resource type="Script" path="res://Scripts/Master.gd" id="1_rn7d8"]
-[ext_resource type="PackedScene" uid="uid://ban4agfxv0snt" path="res://Scenes/World/World Generator.tscn" id="1_ym2i5"]
+[ext_resource type="PackedScene" uid="uid://ban4agfxv0snt" path="res://Scenes/World/WorldGen/World Generator.tscn" id="1_ym2i5"]
 [ext_resource type="Script" path="res://Scripts/2DScreens/Menu.gd" id="2_oqile"]
 [ext_resource type="Texture2D" uid="uid://bbwshtftyoche" path="res://Assets/Combat/Pokemon/Front/BULBASAUR.png" id="3_fo7s2"]
 [ext_resource type="PackedScene" uid="uid://ckx1b3i48m3y3" path="res://Scenes/2DScreens/PokemonScreen/PokemonScreen.tscn" id="3_y6hnl"]

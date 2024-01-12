@@ -216,6 +216,7 @@ var effectiveDialog = {
 	"0.5": "It's Not Very Effective..."
 }
 
+var worldGenNode
 var worldMapNode
 var worldMap
 

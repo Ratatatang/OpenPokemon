@@ -348,7 +348,6 @@ shape = SubResource("CapsuleShape3D_gbepy")
 
 [node name="Sprite2D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.204776, 0.730806, 0, -0.219242, 0.682586, 0.001, -0.0195436, -0.0490979)
-shaded = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("18")

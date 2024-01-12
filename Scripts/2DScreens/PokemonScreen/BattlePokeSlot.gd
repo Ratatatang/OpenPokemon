@@ -46,4 +46,3 @@ func _on_texture_button_focus_exited():
 		$Timer.start()
 		await $Timer.timeout
 		$Choices.visible = false
-

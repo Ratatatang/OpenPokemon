@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvsix53358dmu"
-path="res://.godot/imported/BeachOcean1.png-fa9a4570144fc842212cf03165121049.ctex"
+uid="uid://bgjng5c68hj70"
+path="res://.godot/imported/oceanBorderV.png-5a1849aa2a0bb1991adf0f5f1c49b8e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/World/BiomeTiles/BeachOcean1.png"
-dest_files=["res://.godot/imported/BeachOcean1.png-fa9a4570144fc842212cf03165121049.ctex"]
+source_file="res://Assets/World/BiomeBorders/oceanBorderV.png"
+dest_files=["res://.godot/imported/oceanBorderV.png-5a1849aa2a0bb1991adf0f5f1c49b8e1.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

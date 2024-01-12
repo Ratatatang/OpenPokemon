@@ -1,7 +1,7 @@
 extends Node3D
 
-@export var width = 50
-@export var height = 50
+@export var width = 100
+@export var height = 100
 
 @onready var shaderProcess = $ShaderProcess/ShaderProcess
 @onready var tilemap = $GridMap
@@ -23,7 +23,7 @@ var moisture = {}
 var noise = FastNoiseLite.new()
 
 var biomeTiles = {"Ocean": 0, "Plains": 1, "Beach": 2}
-var tileBiomes = {-1: "", 0: "Ocean", 1: "Plains", 6: "Beach"}
+var tileBiomes = {-1: "", 0: "Ocean", 1: "Plains", 2: "Beach"}
 
 var globalSpawnPoint = Vector3.ZERO
 		
@@ -39,7 +39,7 @@ func _ready():
 #	altitude = generateMap(180, 5)
 	altitude = await generateIsland()
 
-#	shaderProcess.queue_free()
+	shaderProcess.queue_free()
 	setTile(width, height)
 	
 	generateObjects(width, height)
@@ -51,11 +51,13 @@ func _ready():
 	
 	globalSpawnPoint = tilemap.map_to_local(Vector3i(globalSpawnPoint.x, 0.586, globalSpawnPoint.z))
 	globalSpawnPoint.y = 0.586
-		
-	var newPlayer = addPlayer("")
 	
 	MasterInfo.worldMap = getItemMap()
 	MasterInfo.worldMapNode = $GridMap
+	MasterInfo.worldGenNode = self
+	
+	var newPlayer = addPlayer("")
+
 	SignalManager.mapReady.emit()
 
 #Generates 2D noise maps
@@ -189,7 +191,7 @@ func setTile(width, height):
 	for tile in reIndex:
 		cells["Beach"].append(tile)
 		cells["Plains"].erase(tile)
-			
+	
 	for tile in cells["Beach"]:
 		autoTile(tile)
 
@@ -279,6 +281,11 @@ func groundTile(pos : Vector3):
 	if(getBiome(pos) !=  "Ocean"):
 		return true
 	return false
+
+func waterTileGlobal(pos : Vector3):
+	if(getBiome(to_local(pos)) == "Ocean"):
+		return true
+	return false
 	
 func waterTile(pos : Vector3):
 	if(getBiome(pos) ==  "Ocean"):
@@ -292,12 +299,7 @@ func isTile(pos : Vector3, tile):
 	
 func getBiome(pos: Vector3):
 	var cell = tilemap.get_cell_item(pos)
-	var keys = tileBiomes.keys()
-	
-	for i in keys:
-		if i >= cell:
-			return tileBiomes[i]
-			
+	return tilemap.mesh_library.get_item_name(cell)			
 
 func getItemMap():
 	var itemMap = {}
@@ -375,10 +377,10 @@ func autoTile(pos):
 	
 	var adjTiles = [tileD, tileU, tileR, tileL, tileNW, tileNE, tileSW, tileSE]
 	
-	if(getBiome(pos) == "Beach"):
-		beachAutoTile(adjTiles, pos)
-	elif(getBiome(pos) == "Plains"):
+	if(getBiome(pos) == "Plains"):
 		return plainsAutoTile(adjTiles, pos)
+	elif(getBiome(pos) == "Beach"):
+		makeBorderTile(adjTiles, pos)
 
 func plainsAutoTile(adj, pos):
 	for i in adj:
@@ -394,77 +396,68 @@ func plainsAutoTile(adj, pos):
 		
 	return false
 
-#Okay fuck this
-#This function figures out all the directions the water is facing. 
-#It replaces the tile accordingly, and then gets a matrix coordinate
-#For the directions of the water tiles, and rotates it.
-func beachAutoTile(adj, pos):
-	adj.resize(4)
-	var newTile
-	var tileRotation = 0
-	var oceanDirections = []
+func makeBorderTile(adj, pos):
+	var shapes = []
 	
-	for i in adj:
-		if(waterTile(i)):
-			oceanDirections.append(i)
+	var image = Image.load_from_file("res://Assets/World/BiomeTiles/Beach.png")
 	
+	var tileName = "Ocean "
 	
-	
-	if(oceanDirections.size() == 0):
-		return
-		
-#		for i in [tileNW, tileNE, tileSW, tileSE]:
-#			if(waterTile(i)):
-#				oceanDirections.append(i)
-	
-	newTile = oceanDirections.size()+2
-	
-	if(oceanDirections.size() == 1):
-		
-		var direction = oceanDirections[0]
-		
-		if(pos.z+1 == direction.z):
-			tileRotation = 16
-		elif(pos.z-1 == direction.z):
-			tileRotation = 22
-		elif(pos.x+1 == direction.x):
-			tileRotation = 10
-		
-	elif(oceanDirections.size() == 2):
-		var coords = [0, 0]
-	
-		for i in oceanDirections:
-			if(i.x != pos.x):
-				if(i.x == pos.x+1):
-					coords[0] = 1
+	for i in 4:
+		var tile = adj[i]
+		if(getBiome(tile) == "Ocean"):
+			
+			if(pos.x != tile.x):
+				if(pos.x+1 == tile.x):
+					var border = Image.load_from_file("res://Assets/World/BiomeBorders/OceanBorderH.png")
+					drawBorderTile(image, border)
+					tileName = tileName + "HBorder "
+			
+				elif(pos.x-1 == tile.x):
+					var border = Image.load_from_file("res://Assets/World/BiomeBorders/OceanBorderH.png")
+					border.flip_x()
+					drawBorderTile(image, border)
+					tileName = tileName + "HBorderFlip "
+			
+			elif(pos.z != tile.z):
+				if(pos.z+1 == tile.z):
+					var border = Image.load_from_file("res://Assets/World/BiomeBorders/OceanBorderV.png")
+					drawBorderTile(image, border)
+					tileName = tileName + "VBorder "
 				
-			if(i.z != pos.z):
-				if(i.z == pos.z+1):
-					coords[1] = 1
-					
-		var rotations = {
-			[0, 0]: 0,
-			[0, 1]: 16,
-			[1, 0]: 22,
-			[1, 1]: 10
-		}
-		
-		tileRotation = rotations.get(coords)
+				elif(pos.z-1 == tile.z):
+					var border = Image.load_from_file("res://Assets/World/BiomeBorders/OceanBorderV.png")
+					border.flip_y()
+					drawBorderTile(image, border)
+					tileName = tileName + "VBorderFlip "
 	
-	elif(oceanDirections.size() == 3):
-		var direction
-		
-		for i in oceanDirections:
-			if(adj.has(i)):
-				adj.erase(i)
-		
-		direction = adj[0]
-# 16, 22, 10
-		if(pos.z-1 == direction.z):
-			tileRotation = 10
-		elif(pos.x+1 == direction.z):
-			tileRotation = 16
-		elif(pos.x-1 == direction.x):
-			tileRotation = 22 #Works
+	var library = tilemap.mesh_library
+	#if(library.find_item_by_name(tileName) > -1):
+	#	var id = library.find_item_by_name(tileName)
+	#	tilemap.set_cell_item(Vector3i(pos), id)
+	if(false):
+		pass
+	else:
+		var id = library.get_last_unused_item_id()
+		library.create_item(id)
+		var mesh = PlaneMesh.new()
+		var material = StandardMaterial3D.new()
 	
-	tilemap.set_cell_item(Vector3i(pos.x, pos.y, pos.z), newTile, tileRotation)
+		material.albedo_texture = ImageTexture.create_from_image(image)
+		material.texture_filter = material.TEXTURE_FILTER_NEAREST
+	
+		mesh.size = Vector2(1, 1)
+		mesh.material = material
+		
+		library.set_item_mesh(id, mesh)
+		library.set_item_name(id, "Beach")
+		library.set_item_shapes(id, shapes)
+			
+		tilemap.set_cell_item(Vector3i(pos), id)
+	
+func drawBorderTile(tile, border):
+	for x in 64:
+		for z in 64:
+			var pixel = border.get_pixel(x, z)
+			if(pixel != Color(0, 0, 0, 0)):
+				tile.set_pixel(x, z, pixel)

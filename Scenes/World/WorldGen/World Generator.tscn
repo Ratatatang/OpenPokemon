@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ban4agfxv0snt"]
 
 [ext_resource type="Script" path="res://Scripts/World/World Generator.gd" id="1_kr5ny"]
-[ext_resource type="MeshLibrary" uid="uid://cet3sknl0ffqp" path="res://Assets/World/WorldMap.tres" id="2_msqyu"]
+[ext_resource type="MeshLibrary" uid="uid://c4vv5b4csm78d" path="res://Assets/World/WorldMap.tres" id="2_msqyu"]
 [ext_resource type="PackedScene" uid="uid://u3jgemplnvlv" path="res://Scenes/ShaderProcess.tscn" id="3"]
 
 [node name="World Generator" type="Node3D"]

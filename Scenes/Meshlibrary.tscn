@@ -1,12 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://cug4ayj48pniq"]
+[gd_scene load_steps=13 format=3 uid="uid://cug4ayj48pniq"]
 
 [ext_resource type="Texture2D" uid="uid://cs51x0ggqthxl" path="res://Assets/World/BiomeTiles/Ocean.png" id="1_k3c8w"]
-[ext_resource type="Texture2D" uid="uid://dqdi1jjcfuele" path="res://Assets/World/BiomeTiles/Plains.png" id="2_l7mbf"]
+[ext_resource type="Texture2D" uid="uid://bx58ejefbgxie" path="res://Assets/World/BiomeTiles/Forest.png" id="2_wgs21"]
 [ext_resource type="Texture2D" uid="uid://b6axa2h3uo4xw" path="res://Assets/World/BiomeTiles/Beach.png" id="3_f2a4a"]
-[ext_resource type="Texture2D" uid="uid://cvsix53358dmu" path="res://Assets/World/BiomeTiles/BeachOcean1.png" id="4_xuhff"]
-[ext_resource type="Texture2D" uid="uid://baqb6tmkc0dcd" path="res://Assets/World/BiomeTiles/BeachOcean2.png" id="5_au8dc"]
-[ext_resource type="Texture2D" uid="uid://exmjl2xnv1wj" path="res://Assets/World/BiomeTiles/BeachOcean3.png" id="6_5jwbv"]
-[ext_resource type="Texture2D" uid="uid://cq80uoxlfp6eu" path="res://Assets/World/BiomeTiles/BeachOcean4.png" id="7_asftt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1cob"]
 albedo_texture = ExtResource("1_k3c8w")
@@ -18,14 +14,14 @@ albedo_texture = ExtResource("1_k3c8w")
 material = SubResource("10")
 size = Vector2(1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rcukn"]
-albedo_texture = ExtResource("2_l7mbf")
+[sub_resource type="BoxShape3D" id="BoxShape3D_3trur"]
+size = Vector3(1, 2.15444, 1)
 
-[sub_resource type="StandardMaterial3D" id="11"]
-albedo_texture = ExtResource("2_l7mbf")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6t61"]
+albedo_texture = ExtResource("2_wgs21")
 
 [sub_resource type="PlaneMesh" id="6"]
-material = SubResource("11")
+material = SubResource("StandardMaterial3D_e6t61")
 size = Vector2(1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qesmj"]
@@ -38,137 +34,22 @@ albedo_texture = ExtResource("3_f2a4a")
 material = SubResource("12")
 size = Vector2(1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yrel2"]
-albedo_texture = ExtResource("4_xuhff")
-
-[sub_resource type="StandardMaterial3D" id="13"]
-albedo_texture = ExtResource("4_xuhff")
-
-[sub_resource type="PlaneMesh" id="14"]
-material = SubResource("13")
-size = Vector2(1, 1)
-
-[sub_resource type="BoxShape3D" id="19"]
-size = Vector3(0.0315506, 0.084751, 1.08639)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xny2g"]
-albedo_texture = ExtResource("5_au8dc")
-
-[sub_resource type="StandardMaterial3D" id="15"]
-albedo_texture = ExtResource("5_au8dc")
-
-[sub_resource type="PlaneMesh" id="16"]
-material = SubResource("15")
-size = Vector2(1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q28yl"]
-albedo_texture = ExtResource("6_5jwbv")
-
-[sub_resource type="StandardMaterial3D" id="17"]
-albedo_texture = ExtResource("6_5jwbv")
-
-[sub_resource type="PlaneMesh" id="18"]
-material = SubResource("17")
-size = Vector2(1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ywg12"]
-albedo_texture = ExtResource("7_asftt")
-
-[sub_resource type="StandardMaterial3D" id="20"]
-albedo_texture = ExtResource("7_asftt")
-
-[sub_resource type="PlaneMesh" id="21"]
-material = SubResource("20")
-size = Vector2(1, 1)
-
 [node name="Meshlibrary" type="Node3D"]
 
 [node name="Ocean" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_y1cob")
 mesh = SubResource("2")
 
+[node name="Ocean" type="StaticBody3D" parent="Ocean"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ocean/Ocean"]
+shape = SubResource("BoxShape3D_3trur")
+
 [node name="Plains" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02882, 0, 0)
-material_override = SubResource("StandardMaterial3D_rcukn")
 mesh = SubResource("6")
 
 [node name="Beach" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03567, 0, 0)
 material_override = SubResource("StandardMaterial3D_qesmj")
 mesh = SubResource("8")
-
-[node name="Beach1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03567, 0, 1.29469)
-material_override = SubResource("StandardMaterial3D_yrel2")
-mesh = SubResource("14")
-
-[node name="StaticBody" type="StaticBody3D" parent="Beach1"]
-transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Beach1/StaticBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.486146, 0, -0.00139773)
-shape = SubResource("19")
-
-[node name="Beach2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03567, 0, 2.51938)
-material_override = SubResource("StandardMaterial3D_xny2g")
-mesh = SubResource("16")
-
-[node name="StaticBody" type="StaticBody3D" parent="Beach2"]
-transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, -0.0304866)
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Beach2/StaticBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.494619, 0, -0.0214934)
-shape = SubResource("19")
-
-[node name="CollisionShape2" type="CollisionShape3D" parent="Beach2/StaticBody"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0518377, 0, -0.446253)
-shape = SubResource("19")
-
-[node name="Beach3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03567, 0, 3.85993)
-material_override = SubResource("StandardMaterial3D_q28yl")
-mesh = SubResource("18")
-
-[node name="StaticBody" type="StaticBody3D" parent="Beach3"]
-transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0.00603437)
-
-[node name="CollisionShape4" type="CollisionShape3D" parent="Beach3/StaticBody"]
-transform = Transform3D(4.62018, 0, 3.12106e-08, 0, 1, 0, -8.35055e-09, 0, 0.808962, -0.51499, -0.0161866, -0.0161369)
-shape = SubResource("19")
-
-[node name="CollisionShape6" type="CollisionShape3D" parent="Beach3/StaticBody"]
-transform = Transform3D(-6.61942e-08, 0, -1.22505, 0, 1, 0, 1, 0, -3.53608e-08, 0.00483179, -0.00757501, -0.385942)
-shape = SubResource("19")
-
-[node name="CollisionShape5" type="CollisionShape3D" parent="Beach3/StaticBody"]
-transform = Transform3D(1.78819, 0, 3.77772e-09, 0, 1, 0, -8.35054e-09, 0, 0.808962, -0.445095, -0.0161866, -0.0887079)
-shape = SubResource("19")
-
-[node name="CollisionShape3" type="CollisionShape3D" parent="Beach3/StaticBody"]
-transform = Transform3D(1, 0, 5.79116e-09, 0, 1, 0, -6.87131e-09, 0, 0.842803, 0.483184, 0, -0.0194805)
-shape = SubResource("19")
-
-[node name="Beach4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03567, 0, 5.33033)
-material_override = SubResource("StandardMaterial3D_ywg12")
-mesh = SubResource("21")
-
-[node name="StaticBody" type="StaticBody3D" parent="Beach4"]
-transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0.00603437)
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Beach4/StaticBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.387713, 0, 0)
-shape = SubResource("19")
-
-[node name="CollisionShape2" type="CollisionShape3D" parent="Beach4/StaticBody"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00125241, 0, -0.360793)
-shape = SubResource("19")
-
-[node name="CollisionShape3" type="CollisionShape3D" parent="Beach4/StaticBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42863, 0, 0)
-shape = SubResource("19")
-
-[node name="CollisionShape4" type="CollisionShape3D" parent="Beach4/StaticBody"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00125241, 0, 0.40624)
-shape = SubResource("19")

@@ -1,18 +1,12 @@
 class_name Nest
-extends Node3D
+extends WorldFeature
 
-@export var validSpawns = {100: ["Bulbasaur"]}
-@export var validAlphas = {100: ["Bulbasaur"]}
+@export var objectSpawns = {100:[""]}
+@export var alphaSpawns = {100:[""]}
 
-var runReady = true
 var dominantPokemon
 
-@export var maxPokemon = 1
-var linkedPokemon
-
 @onready var NestZone = $Nest_Zone
-
-var connectedNodes = []
 
 enum {
 	RANDOMSPAWMS,
@@ -21,6 +15,7 @@ enum {
 
 func _ready():
 	if(runReady):
+		maxObjects = 1
 	#$Nest_Zone/CollisionShape.scale.x = round(rand_range(1, 6))
 	#$Nest_Zone/CollisionShape.scale.z = round(rand_range(1, 6))
 		if(NestZone.has_overlapping_areas()):
@@ -34,43 +29,8 @@ func _ready():
 			#elif(pick == 1):
 				#queue_free()
 		else:
-			var pokeList = decidePokemon()
+			var pokeList = decideObjects(objectSpawns)
 			
 			for p in pokeList:
 				var num = randf_range(0, p.size()-1)
-				spawnPokemon(p[num])
-
-func decidePokemon():
-	var pokeList = []
-	
-	var keys = validSpawns.keys()
-	keys.sort()
-	
-	for i in range(round(randf_range(1, maxPokemon))):
-		var num = randf_range(0, 100)
-		
-		for j in keys:
-			if(j == keys[keys.size()-1]):
-				pokeList.append(validSpawns.get(j))
-				break
-			if(j >= num):
-				pokeList.append(validSpawns.get(j))
-				break
-			else:
-				continue
-		
-	return pokeList
-
-func spawnPokemon(pokemon):
-	while(true):
-		var x = randf_range(-1, 1)
-		var z = randf_range(-1, 1)
-
-		var pos = to_global(Vector3(x, 0, z))
-
-		if(get_parent().get_parent().groundTileGlobal(pos)):
-			get_parent().get_parent().placeForeignObject(load("res://Scenes/World/Entities/WildPokemon/"+pokemon+".tscn"), pos)
-			return
-
-func startTimer():
-	pass
+				spawnObjectRandPos("res://Scenes/World/Entities/WildPokemon/%s.tscn" % p[num], 1, 1)

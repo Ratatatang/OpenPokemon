@@ -1,7 +1,7 @@
 extends Node3D
 
-@export var width = 100
-@export var height = 100
+@export var width = 50
+@export var height = 50
 
 @onready var shaderProcess = $ShaderProcess/ShaderProcess
 @onready var tilemap = $GridMap
@@ -129,23 +129,26 @@ func setTile(width, height):
 			var temp = temperature[Vector2(x, z)]
 			var moist = moisture[Vector2(x, z)]
 			
+			var xPos = x
+			var zPos = z
+			
 			#Ocean
 			if alt < 0.14:
-				tilemap.set_cell_item(Vector3i(x, 0, z), biomeTiles.Ocean)
-				cells["Ocean"].append(Vector3(x, 0, z))
+				tilemap.set_cell_item(Vector3i(xPos, 0, zPos), biomeTiles.Ocean)
+				cells["Ocean"].append(Vector3(xPos, 0, zPos))
 				
 			#Beach
 			elif between(alt, 0.14, 0.369):
-				tilemap.set_cell_item(Vector3i(x, 0, z), biomeTiles.Beach)
-				cells["Beach"].append(Vector3(x, 0, z))
+				tilemap.set_cell_item(Vector3i(xPos, 0, zPos), biomeTiles.Beach)
+				cells["Beach"].append(Vector3(xPos, 0, zPos))
 
 			#Other Biomes
 			elif alt > 0.369:
 				
 				#Plains
 				#if between(moist, 0.2, 0.5) and between(temp, 0.2, 0.5):
-				tilemap.set_cell_item(Vector3i(x, 0, z), biomeTiles.Plains)
-				cells["Plains"].append(Vector3(x, 0, z))
+				tilemap.set_cell_item(Vector3i(xPos, 0, zPos), biomeTiles.Plains)
+				cells["Plains"].append(Vector3(xPos, 0, zPos))
 					
 				"""#Taiga Plains
 				elif between(moist, 0, 0.2) and between(temp, 0.2, 0.4):
@@ -182,7 +185,7 @@ func setTile(width, height):
 				#Desert
 				elif temp > 0.7 and moist < 0.4:
 					tilemap.set_cellv(pos, biomeTiles.Desert)"""
-	
+					
 	var reIndex = []
 	for tile in cells["Plains"]:
 		if(autoTile(tile)):

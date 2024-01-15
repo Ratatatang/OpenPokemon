@@ -8,11 +8,14 @@ size = Vector3(0.275492, 0.225214, 0.226539)
 [node name="Nest" type="Node3D" groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.812405, 0)
 script = ExtResource("1_axh1d")
+objectSpawns = {
+100: ["Corphish", "Crawdaunt"]
+}
 
 [node name="Nest_Zone" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Nest_Zone"]
-transform = Transform3D(4.6597, 0, 0, 0, 0.611018, 0, 0, 0, 5.12588, -0.00501996, 0, 0)
+transform = Transform3D(4.236, 0, 0, 0, 0.555, 0, 0, 0, 4.66, -0.00501996, 0, 0)
 shape = SubResource("1")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

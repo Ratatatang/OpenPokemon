@@ -9,9 +9,8 @@ size = Vector3(0.275492, 0.225214, 0.226539)
 [node name="Nest" type="Node3D" groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.812405, 0)
 script = ExtResource("1")
-validSpawns = {
-25: ["Crawdaunt"],
-75: ["Corphish"]
+objectSpawns = {
+100: ["Corphish", "Crawdaunt"]
 }
 
 [node name="Nest_Zone" type="Area3D" parent="."]

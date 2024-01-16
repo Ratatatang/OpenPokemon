@@ -1,7 +1,7 @@
 {
 	"Pokedex": {
 		"Bulbasaur" : {
-			"ID": "0001",
+			"ID": 0001,
 			"Name": "Bulbasaur",
 			"Types": ["Grass", "Poison"],
 			"Moves": {
@@ -36,7 +36,7 @@
 			"GenderRatio": 87.5
 		},
 		"Ivysaur": {
-			"ID": "0002",
+			"ID": 0002,
 			"Name": "Ivysaur",
 			"Types": ["Grass", "Poison"],
 			"Moves": {
@@ -70,7 +70,7 @@
 			"GenderRatio": 87.5
 		},
 		"Venusaur": {
-			"ID": "0003",
+			"ID": 0003,
 			"Name": "Venusaur",
 			"Types": ["Grass", "Poison"],
 			"Moves": {
@@ -102,7 +102,7 @@
 			"Dimorphism": true
 		},
 		"Pidgey" : {
-			"ID": "0016",
+			"ID": 0016,
 			"Name": "Pidgey",
 			"Types": ["Normal", "Flying"],
 			"Moves": {
@@ -137,7 +137,7 @@
 			"EvoPokemon": "Pidgeotto"
 		},
 		"Pidgeotto" : {
-			"ID": "0017",
+			"ID": 0017,
 			"Name": "Pidgeotto",
 			"Types": ["Normal", "Flying"],
 			"Moves": {
@@ -172,7 +172,7 @@
 			"EvoPokemon": "Pidgeot"
 		},
 		"Pidgeot" : {
-			"ID": "0018",
+			"ID": 0018,
 			"Name": "Pidgeot",
 			"Types": ["Normal", "Flying"],
 			"Moves": {
@@ -210,7 +210,7 @@
 			"ID" : 0028
 		},
 		"Vulpix" : {
-			"ID": "0037",
+			"ID": 0037,
 			"Name": "Vulpix",
 			"Types": ["Fire"],
 			"Moves": {
@@ -245,7 +245,7 @@
 			"EvoPokemon": "Ninetales"
 		},
 		"Ninetales" : {
-			"ID": "0038",
+			"ID": 0038,
 			"Placeholder": {
 			}
 		},
@@ -259,7 +259,7 @@
 			"ID": 0094,
 		},
 		"Krabby" : {
-			"ID": "0098",
+			"ID": 0098,
 			"Name": "Krabby",
 			"Types": ["Water"],
 			"Moves": {
@@ -293,7 +293,7 @@
 			"EvoPokemon": "Kingler"
 		},
 		"Kingler" : {
-			"ID": "0099",
+			"ID": 0099,
 			"Name": "Kingler",
 			"Types": ["Water"],
 			"Moves": {
@@ -342,7 +342,7 @@
 			"ID" : 0136
 		},
 		"Spinarak" : {
-			"ID": "0167",
+			"ID": 0167,
 			"Name": "Spinarak",
 			"Types": ["Bug", "Poison"],
 			"Moves": {
@@ -379,13 +379,12 @@
 			"EvoPokemon": "Ariados"
 		},
 		"Ariados" : {
-			"ID": "0168",
+			"ID": 0168,
 			"Name": "Ariados",
 			"Types": ["Bug", "Poison"],
 			"Moves": {
 				"0": ["swords_dance"],
-				"1": ["poison_sting", "string_shot", "swords_dance", "focus_energy", "venom_drench", "fell_stinger", "bug_bite"],
-				"5": ["absorb"],
+				"1": ["poison_sting", "string_shot", "focus_energy", "fell_stinger", "bug_bite", "absorb"],
 				"8": ["infestation"],
 				"12": ["scary_face"],
 				"15": ["night_shade"],
@@ -429,7 +428,7 @@
 			"ID" : 0299
 		},
 		"Corphish" : {
-			"ID": "0341",
+			"ID": 0341,
 			"Name": "Corphish",
 			"Types": ["Water"],
 			"Moves": {
@@ -464,7 +463,7 @@
 			"EvoPokemon": "Crawdaunt"
 		},
 		"Crawdaunt" : {
-			"ID": "0342",
+			"ID": 0342,
 			"Name": "Crawdaunt",
 			"Types": ["Water", "Dark"],
 			"Moves": {
@@ -533,10 +532,62 @@
 			"ID" : 0700
 		},
 		"Cutiefly" : {
-			"ID" : 0742
+			"ID" : 0742,
+			"Name": "Cutiefly",
+			"Types": ["Bug", "Fairy"],
+			"Moves": {
+				"1": ["absorb", "fairy_wind"],
+				"6": ["stun_spore"],
+				"12": ["sweet_scent"],
+				"18": ["draining_kiss"],
+				"24": ["struggle_bug"],
+				"30": ["covet"],
+				"36": ["switcheroo"],
+				"42": ["dazzling_gleam"],
+				"48": ["bug_buzz"],
+				"54": ["quiver_dance"]
+			},
+			"BaseStats": {
+				"hp": 40,
+				"atk": 45,
+				"def": 40,
+				"spAtk": 55,
+				"spDef": 40,
+				"speed": 84
+				},
+			"XPValue": 61,
+			"EVs": {"speed": 1},
+			"ExperienceCurve": "MediumFast",
+			"EvoMethod": "Level",
+			"EvoLv": 25,
+			"EvoPokemon": "Ribombee"
 		},
 		"Ribombee" : {
-			"ID" : 0743
+			"ID" : 0743,
+			"Name": "Ribombee",
+			"Types": ["Bug", "Fairy"],
+			"Moves": {
+				"0": ["pollen_puff"],
+				"1": ["absorb", "fairy_wind", "stun_spore", "sweet_scent"],
+				"18": ["draining_kiss"],
+				"24": ["struggle_bug"],
+				"32": ["covet"],
+				"40": ["switcheroo"],
+				"48": ["dazzling_gleam"],
+				"56": ["bug_buzz"],
+				"64`": ["quiver_dance"]
+			},
+			"BaseStats": {
+				"hp": 60,
+				"atk": 55,
+				"def": 60,
+				"spAtk": 95,
+				"spDef": 70,
+				"speed": 124
+				},
+			"XPValue": 162,
+			"EVs": {"speed": 2},
+			"ExperienceCurve": "MediumFast",
 		},
 		"Mimikyu" : {
 			"ID" : 0778

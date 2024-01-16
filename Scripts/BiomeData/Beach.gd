@@ -1,4 +1,5 @@
 var objects = {
-	100: ["res://Scenes/World/Objects/Nests/BeachCommon.tscn"]
+	50: ["res://Scenes/World/Objects/Nests/BeachCommon.tscn"]
 }
 
+var trees = null

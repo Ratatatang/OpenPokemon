@@ -1,16 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://iwjdngmedins"]
+[gd_scene load_steps=4 format=3 uid="uid://dntaifpq6uair"]
 
-[ext_resource type="Script" path="res://Scripts/World/Objects/WorldFeature.gd" id="1_vbo0n"]
+[ext_resource type="Script" path="res://Scripts/World/Objects/ObjectPatch.gd" id="1_fp5qi"]
 [ext_resource type="Texture2D" uid="uid://cd4hs8fh055wu" path="res://Assets/World/EntityShadow.png" id="2_pxtxo"]
 
 [sub_resource type="BoxShape3D" id="1"]
-size = Vector3(0.275492, 0.225214, 0.226539)
+size = Vector3(0.275, 0.225, 0.275)
 
 [node name="ForestPatch" type="Node3D" groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.812405, 0)
-script = ExtResource("1_vbo0n")
+script = ExtResource("1_fp5qi")
 
 [node name="Zone" type="Area3D" parent="."]
+collision_layer = 256
+collision_mask = 256
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Zone"]
 transform = Transform3D(4.6597, 0, 0, 0, 0.611018, 0, 0, 0, 5.12588, -0.00501996, 0, 0)
@@ -19,3 +21,9 @@ shape = SubResource("1")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.224178, 0)
 texture = ExtResource("2_pxtxo")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 0, -0.119)

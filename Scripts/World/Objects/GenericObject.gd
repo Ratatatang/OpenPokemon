@@ -8,8 +8,6 @@ var runReady = true
 
 func _ready():
 	pass
-	#if(textureVariations.size() > 0):
-	#	$Sprite3D.texture = load(textureVariations.pick_random())
 
 func startTimer():
 	pass

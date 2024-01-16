@@ -31,13 +31,33 @@ func decideObjects(objects):
 		
 	return objectsList
 
-func spawnObjectRandPos(object, boundsX, boundsZ):
-	while(true):
-		var x = randf_range(-(boundsX), boundsX)
-		var z = randf_range(-(boundsZ), boundsZ)
+func spawnObjectRandPos(object, boundsX, boundsZ, biome = null):
+	var x = randf_range(-(boundsX), boundsX)
+	var z = randf_range(-(boundsZ), boundsZ)
 
-		var pos = to_global(Vector3(x, 0, z))
+	var pos = to_global(Vector3(x, 0, z))
+		
+	var world = MasterInfo.worldGenNode
 
-		if(get_parent().get_parent().groundTileGlobal(pos)):
-			get_parent().get_parent().placeForeignObject(load(object), pos)
-			return
+	if(world.groundTileGlobal(pos)):
+		if(biome == null):
+			world.placeForeignObject(load(object), pos)
+			return true
+		elif(biome.has(world.getBiomeGlobal(pos))):
+			world.placeForeignObject(load(object), pos)
+			return true
+	return false
+
+func spawnObjectExactPos(object, x, z, biome = null):
+	var pos = to_global(Vector3(x, 0, z))
+		
+	var world = MasterInfo.worldGenNode
+
+	if(world.groundTileGlobal(pos)):
+		if(biome == null):
+			world.placeForeignObject(load(object), pos)
+			return true
+		elif(biome.has(world.getBiomeGlobal(pos))):
+			world.placeForeignObject(load(object), pos)
+			return true
+	return false

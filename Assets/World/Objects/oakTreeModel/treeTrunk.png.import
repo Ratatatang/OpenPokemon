@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c28jwfr7ru1nb"
-path="res://.godot/imported/treeBase.png-f9098087eb276f7e126b00620bd49c88.ctex"
+uid="uid://cceqh5qeibx67"
+path="res://.godot/imported/treeTrunk.png-f815b8bc3ca8acdaf2d0d7d512deed82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/World/Objects/roundTreeModel/treeBase.png"
-dest_files=["res://.godot/imported/treeBase.png-f9098087eb276f7e126b00620bd49c88.ctex"]
+source_file="res://Assets/World/Objects/oakTreeModel/treeTrunk.png"
+dest_files=["res://.godot/imported/treeTrunk.png-f815b8bc3ca8acdaf2d0d7d512deed82.ctex"]
 
 [params]
 
@@ -25,10 +25,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

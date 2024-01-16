@@ -6,31 +6,17 @@ extends WorldFeature
 
 var dominantPokemon
 
-@onready var NestZone = $Nest_Zone
-
 enum {
-	RANDOMSPAWMS,
+	RANDOMSPAWNS,
 	ESTABLISHEDNEST
 }
 
 func _ready():
 	if(runReady):
 		maxObjects = 1
-	#$Nest_Zone/CollisionShape.scale.x = round(rand_range(1, 6))
-	#$Nest_Zone/CollisionShape.scale.z = round(rand_range(1, 6))
-		if(NestZone.has_overlapping_areas()):
-			#0 = They merge into an established nest
-			#1 = Deletes this node
-			#var pick = [0, 0, 1].pick_random()
-			var pick = 0
-			if(pick == 0):
-				var nests = NestZone.get_overlapping_areas()
-				pass
-			#elif(pick == 1):
-				#queue_free()
-		else:
-			var pokeList = decideObjects(objectSpawns)
+		var pokeList = decideObjects(objectSpawns)
 			
-			for p in pokeList:
-				var num = randf_range(0, p.size()-1)
-				spawnObjectRandPos("res://Scenes/World/Entities/WildPokemon/%s.tscn" % p[num], 1, 1)
+		for p in pokeList:
+			var num = randf_range(0, p.size()-1)
+			while(!spawnObjectRandPos("res://Scenes/World/Entities/WildPokemon/%s.tscn" % p[num], 0.6, 0.6)):
+				pass

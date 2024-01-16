@@ -9,6 +9,7 @@ var forbidMoves : Array = []
 var iconFrame : int
 var hasStartMessage : bool = false
 var reduceDamage : bool = false
+var counter = 0
 
 func _effect_always(inflicted : battlePlayer, opposing : battlePlayer, UI):
 	return false

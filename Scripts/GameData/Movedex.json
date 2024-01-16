@@ -1,7 +1,7 @@
 {
 	"Flags": ["Sound", "Powder", "Healing", "Support", "Charge", "IgnoreLevitate", "AirAttack"],
 	"StatusEffects": ["Poison", "Paralyze", "Burn", "Sleep", "Freeze"],
-	"VolatileEffects":  ["Confusion", "Infatuated", "Seeded", "Flinch"],
+	"VolatileEffects":  ["Confusion", "Infatuated", "Leech Seed", "Flinch", "Infestation"],
 	"EctEffects": ["HealPercent", "HealAmount", "Recoil"],
 
 	"Movedex": {
@@ -269,6 +269,25 @@
 				}
 			}
 		},
+		"focus_energy":{
+			"DisplayName" : "Focus Energy",
+			"Type": "Normal",
+			"Power": 0,
+			"PP": [30, 30],
+			"Accuracy": 101,
+			"Category": "Status",
+			"Flags": [],
+			"Target": "Self",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100": {
+					"Target": "Victim",
+					"CustomMessage": "{Pokemon} is getting pumped!",
+					"Crit Ratio": 2
+				}
+			}
+		},
 		
 
 
@@ -439,12 +458,7 @@
 			"Target": "AdjacentFoe",
 			"Priority": 0,
 			"SpecialEffect": null,
-			"StatChanges": {
-				"100":  {
-					"Target": "Victim",
-					"Speed": -1
-				}
-			}
+			"StatChanges": {}
 		},
 		"string_shot":{
 			"DisplayName" : "String Shot",
@@ -464,9 +478,188 @@
 				}
 			}
 		},
+		"infestation":{
+			"DisplayName" : "Infestation",
+			"Type": "Bug",
+			"Power": 20,
+			"PP": [20, 20],
+			"Accuracy": 100,
+			"Category": "Special",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100":  {
+					"Target": "Victim",
+					"VolatileEffect": "Infestation"
+				}
+			}
+		},
+		"leech_life":{
+			"DisplayName" : "Leech Life",
+			"Type": "Bug",
+			"Power": 80,
+			"PP": [10, 10],
+			"Accuracy": 100,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100": {
+					"Target": "Self",
+					"LeechPercent": 50
+				}
+			}
+		},
+		"pollen_puff":{
+			"DisplayName" : "Pollen Puff",
+			"Type": "Bug",
+			"Power": 90,
+			"PP": [15, 15],
+			"Accuracy": 100,
+			"Category": "Special",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
+		},
+		"bug_buzz":{
+			"DisplayName" : "Bug Buzz",
+			"Type": "Bug",
+			"Power": 90,
+			"PP": [10, 10],
+			"Accuracy": 100,
+			"Category": "Special",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"10":  {
+					"Target": "Victim",
+					"Special Defense": -1
+				}
+			}
+		},
+		"fell_stinger":{
+			"DisplayName" : "Fell Stinger",
+			"Type": "Bug",
+			"Power": 50,
+			"PP": [25, 25],
+			"Accuracy": 100,
+			"Category": "Special",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"OnKO":  {
+					"Target": "Self",
+					"Attacker": 3
+				}
+			}
+		},
+		"first_impression":{
+			"DisplayName" : "First Impression",
+			"Type": "Bug",
+			"Power": 90,
+			"PP": [10, 10],
+			"Accuracy": 100,
+			"Category": "Physical",
+			"Flags": ["FirstTurn"],
+			"Target": "AdjacentFoe",
+			"Priority": 2,
+			"SpecialEffect": null,
+			"StatChanges": {}
+		},
+		"attack_order":{
+			"DisplayName" : "Attack Order",
+			"Type": "Bug",
+			"Power": 90,
+			"PP": [15, 15],
+			"Accuracy": 100,
+			"Category": "Physical",
+			"Flags": ["CritRatio1"],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
+		},
+		"defend_order":{
+			"DisplayName" : "Defend Order",
+			"Type": "Bug",
+			"Power": 0,
+			"PP": [10, 10],
+			"Accuracy": 101,
+			"Category": "Status",
+			"Flags": [],
+			"Target": "Self",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100": {
+					"Target": "Victim",
+					"Defense": 1,
+					"Special Defense": 1
+				}
+			}
+		},
+		"lunge":{
+			"DisplayName" : "Lunge",
+			"Type": "Bug",
+			"Power": 80,
+			"PP": [15, 15],
+			"Accuracy": 100,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100":  {
+					"Target": "Victim",
+					"Attack": -1
+				}
+			}
+		},
+		"megahorn":{
+			"DisplayName" : "Megahorn",
+			"Type": "Bug",
+			"Power": 120,
+			"PP": [10, 10],
+			"Accuracy": 85,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
+		},
+		"pounce":{
+			"DisplayName" : "Pounce",
+			"Type": "Bug",
+			"Power": 50,
+			"PP": [20, 20],
+			"Accuracy": 100,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100":  {
+					"Target": "Victim",
+					"Speed": -1
+				}
+			}
+		},
 
 
-		
+
 		"ember":{
 			"DisplayName" : "Ember",
 			"Type": "Fire",
@@ -575,6 +768,40 @@
 					"VolatileEffect": "Flinch"
 				}
 			}
+		},
+		
+		
+		
+		"draining_kiss":{
+			"DisplayName" : "Draining Kiss",
+			"Type": "Fairy",
+			"Power": 50,
+			"PP": [10, 10],
+			"Accuracy": 100,
+			"Category": "Special",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100": {
+					"Target": "Self",
+					"LeechPercent": 75
+				}
+			}
+		},
+		"fairy_wind":{
+			"DisplayName" : "Fairy Wind",
+			"Type": "Fairy",
+			"Power": 40,
+			"PP": [30, 30],
+			"Accuracy": 100,
+			"Category": "Special",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
 		},
 
 
@@ -790,6 +1017,24 @@
 			"Priority": 0,
 			"SpecialEffect": null,
 			"StatChanges": {}
+		},
+		"absorb":{
+			"DisplayName" : "Absorb",
+			"Type": "Grass",
+			"Power": 20,
+			"PP": [25, 25],
+			"Accuracy": 100,
+			"Category": "Special",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100": {
+					"Target": "Self",
+					"LeechPercent": 50
+				}
+			}
 		},
 		"worry_seed":{
 			"DisplayName" : "Worry Seed",

@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cug4ayj48pniq"]
+[gd_scene load_steps=15 format=3 uid="uid://cug4ayj48pniq"]
 
 [ext_resource type="Texture2D" uid="uid://cs51x0ggqthxl" path="res://Assets/World/BiomeTiles/Ocean.png" id="1_k3c8w"]
 [ext_resource type="Texture2D" uid="uid://bx58ejefbgxie" path="res://Assets/World/BiomeTiles/Forest.png" id="2_wgs21"]
+[ext_resource type="Texture2D" uid="uid://dqdi1jjcfuele" path="res://Assets/World/BiomeTiles/Plains.png" id="2_xpodc"]
 [ext_resource type="Texture2D" uid="uid://b6axa2h3uo4xw" path="res://Assets/World/BiomeTiles/Beach.png" id="3_f2a4a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1cob"]
@@ -14,14 +15,17 @@ albedo_texture = ExtResource("1_k3c8w")
 material = SubResource("10")
 size = Vector2(1, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3trur"]
-size = Vector3(1, 2.15444, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6t61"]
-albedo_texture = ExtResource("2_wgs21")
+albedo_texture = ExtResource("2_xpodc")
 
 [sub_resource type="PlaneMesh" id="6"]
 material = SubResource("StandardMaterial3D_e6t61")
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_548qo"]
+albedo_texture = ExtResource("2_wgs21")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hvqgq"]
 size = Vector2(1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qesmj"]
@@ -40,14 +44,14 @@ size = Vector2(1, 1)
 material_override = SubResource("StandardMaterial3D_y1cob")
 mesh = SubResource("2")
 
-[node name="Ocean" type="StaticBody3D" parent="Ocean"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ocean/Ocean"]
-shape = SubResource("BoxShape3D_3trur")
-
 [node name="Plains" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02882, 0, 0)
 mesh = SubResource("6")
+
+[node name="Forest" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02882, 0, -1.21607)
+material_override = SubResource("StandardMaterial3D_548qo")
+mesh = SubResource("PlaneMesh_hvqgq")
 
 [node name="Beach" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03567, 0, 0)

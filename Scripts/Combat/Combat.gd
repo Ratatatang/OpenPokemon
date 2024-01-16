@@ -150,7 +150,7 @@ func moveHit(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 	print(MasterInfo.accuracyChanges.get(str(attacker.getAccuracy() - victim.getEvasion())))
 	
 	
-	if(move.Accuracy == 101 or randi_range(0, 100) < move.Accuracy * stageMultiplier):
+	if(move.Accuracy == 101 or randi_range(1, 100) < move.Accuracy * stageMultiplier):
 		var outcome = calculateDamage(move, attacker, victim)
 		
 		if(outcome[0] > 0):
@@ -172,7 +172,7 @@ func moveHit(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 			await pressedComfirm
 			
 		if(move.StatChanges != {} and outcome[1] != 0):
-			statusEffects(move, attacker, victim)
+			statusEffects(move, attacker, victim, outcome[0])
 			await statusDone
 		
 		
@@ -241,7 +241,7 @@ func calculateDamage(move : Dictionary, attacker : battlePlayer, victim : battle
 	critRatio += attacker.getCritRatio()
 	critRatio = clamp(critRatio, 1, 4)
 	
-	if(randi_range(0, 100) < MasterInfo.critRatio.get(str(critRatio))):
+	if(randi_range(1, 100) < MasterInfo.critRatio.get(str(critRatio))):
 		multiplier *= 2
 		crit = true
 	
@@ -261,58 +261,86 @@ func calculateDamage(move : Dictionary, attacker : battlePlayer, victim : battle
 	
 	return [int(damage), typeMultiplier, crit]
 
-func statusEffects(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
+func statusEffects(move : Dictionary, attacker : battlePlayer, victim : battlePlayer, damage):
 	var statChanges = move.StatChanges
 	
 	#Go through each chance as its own step
 	for chance in statChanges.keys():
-		var statChange = statChanges.get(chance)
-		var target
-		
-		#Go through each step of the change
-		for step in statChange.keys():
-			var change = statChange.get(step)
-			var hasStartMessage = false
+		var passForward = false
+		if(chance == "OnKO" and victim.getHP() <= 0):
+			passForward = true
+		elif(randi_range(1, 100) < int(chance)):
+			passForward = true
 			
-			if(step == "Target"):
-				target = change
+		if(passForward):
+			var statChange = statChanges.get(chance)
+			var target
+			var customMessage
+		
+			#Go through each step of the change
+			for step in statChange.keys():
+				var change = statChange.get(step)
+				var hasStartMessage = false
+			
+				if(step == "Target"):
+					target = change
+				elif(step == "CustomMessage"):
+					customMessage = change
 
-			elif(target == "Victim"):
-				if(step == "VolatileEffect"):
-					hasStartMessage = inflictVolatile(victim, change)
+				elif(target == "Victim"):
+					if(step == "VolatileEffect"):
+						hasStartMessage = inflictVolatile(victim, change)
 					
-				elif(step == "StatusEffect"):
-					hasStartMessage = inflictStatus(victim, change)
+					elif(step == "StatusEffect"):
+						hasStartMessage = inflictStatus(victim, change)
 				
-				elif(step == "Recoil"):
-					pass
+					elif(step == "Recoil"):
+						pass
 				
-				else:
-					victim.changeStat(step, int(change))
-					UI.setDialog(MasterInfo.changesDialog.get(str(clamp(change, -3, 3))) % [victim.getName(), step])
-					hasStartMessage = true
+					elif(step == "LeechPercent"):
+						victim.heal(damage * (change/100))
+						UI.setDialog("%s had it's energy drained!" % attacker.getName())
+						hasStartMessage = true
+				
+					else:
+						victim.changeStat(step, int(change))
+						UI.setDialog(MasterInfo.changesDialog.get(str(clamp(change, -3, 3))) % [victim.getName(), step])
+						hasStartMessage = true
 					
-				if(hasStartMessage):
-					await pressedComfirm
+					if(customMessage != null):
+						UI.setDialog(customMessage.format({"Pokemon":victim.getName()}))
+					
+					if(hasStartMessage):
+						await pressedComfirm
 						
-			elif(target == "Self"):
-				if(step == "VolatileEffect"):
-					hasStartMessage = inflictVolatile(attacker, change)
+				elif(target == "Self"):
+					if(step == "VolatileEffect"):
+						hasStartMessage = inflictVolatile(attacker, change)
 					
-				elif(step == "StatusEffect"):
-					hasStartMessage = inflictStatus(attacker, change)
+					elif(step == "StatusEffect"):
+						hasStartMessage = inflictStatus(attacker, change)
 					
-				elif(step == "Recoil"):
-					pass
+					elif(step == "Recoil"):
+						pass
+				
+					elif(step == "LeechPercent"):
+						attacker.heal(damage * (change/100))
+						UI.setDialog("%s had it's energy drained!" % victim.getName())
+						hasStartMessage = true
 					
-				else:
-					attacker.changeStat(step, int(change))
-					UI.setDialog(MasterInfo.changesDialog.get(str(clamp(change, -3, 3))) % [attacker.getName(), step])
-					hasStartMessage = true
+					else:
+						attacker.changeStat(step, int(change))
+						UI.setDialog(MasterInfo.changesDialog.get(str(clamp(change, -3, 3))) % [attacker.getName(), step])
+						hasStartMessage = true
 					
-				if(hasStartMessage):
-					await pressedComfirm
+					if(customMessage != null):
+						UI.setDialog(customMessage.format({"Pokemon":victim.getName()}))
 					
+					if(hasStartMessage):
+						await pressedComfirm
+		else:
+			moveDone.emit()
+			
 	statusDone.emit()
 
 func inflictVolatile(target : battlePlayer, change):

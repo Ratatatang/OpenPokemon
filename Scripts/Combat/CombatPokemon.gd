@@ -12,7 +12,6 @@ var skipMove = false
 var opponent
 var tween
 
-var sleepCounter = 0
 @onready var sprite = $Sprite2D
 @onready var healthBar = $Healthbar
 @onready var nameLabel = $Healthbar/Name
@@ -43,9 +42,11 @@ func loadPokemon(pokemonInst):
 	if(loadedPokemon.statusEffect != null):
 		statusEffect = loadedPokemon.statusEffect
 		statusIcon.frame = statusEffect.iconFrame
+	else:
+		statusEffect = null
+		statusIcon.frame = 0
 	
 	volatileEffects = []
-	sleepCounter = 0
 	skipMove = false
 	statsDict = {"Attack" : 0, "Special Attack" : 0, "Defense" : 0, "Special Defense" : 0, "Speed" :  0, "Accuracy" : 0, "Evasion" : 0, "Crit Ratio": 0}
 	

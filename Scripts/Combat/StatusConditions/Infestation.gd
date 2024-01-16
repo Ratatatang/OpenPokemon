@@ -1,31 +1,31 @@
 extends StatusCondition
 
 func _init():
-	statusName = "Sleeping"
-	iconFrame = 1
-	activeMessage = "{Pokemon} is fast asleep."
-	startMessage = "{Pokemon} fell asleep!"
-	clearMessage = "{Pokemon} woke up!"
+	statusName = "Infested"
+	activeMessage = "{Pokemon} was hurt by the infestation!"
+	startMessage = "{Pokemon} has been afflicted with an infestation!"
+	clearMessage = "{Pokemon}'s infestation cleared away!"
 	hasStartMessage = true
 
-func _effect_preMoveUse(inflicted : battlePlayer, opposing : battlePlayer, UI):
-	if(counter == 3):
+func _effect_afterMoves(inflicted : battlePlayer, opposing : battlePlayer, UI):
+	if(counter == 5):
 		inflicted.clearStatus(self)
 		UI.setDialog(clearMessage.format({"Pokemon":inflicted.getName()}))
+		inflicted.reducePercentHP(12.5)
 		return true
 		
-	elif(counter == 0):
+	elif(counter <= 3):
 		counter += 1
-		inflicted.skipMove = true
 		UI.setDialog(activeMessage.format({"Pokemon":inflicted.getName()}))
+		inflicted.reducePercentHP(12.5)
 		return true
 		
 	else:
 		var chance = [true, false].pick_random()
 		if(chance):
 			counter += 1
-			inflicted.skipMove = true
 			UI.setDialog(activeMessage.format({"Pokemon":inflicted.getName()}))
+			inflicted.reducePercentHP(12.5)
 			return true
 			
 		else:

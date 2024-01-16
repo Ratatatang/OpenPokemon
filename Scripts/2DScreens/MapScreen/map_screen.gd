@@ -6,9 +6,12 @@ var markerMap
 
 var colorDict = {
 	"Ocean" : Color.CORNFLOWER_BLUE,
-	"Plains" : Color.SEA_GREEN,
+	"Plains" : Color8(115, 181, 85),
 	"Beach" : Color.KHAKI,
+	"Forest": Color.SEA_GREEN
 }
+
+
 
 func _ready():
 	map = Image.create(50, 50, false, 4)

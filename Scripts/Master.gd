@@ -18,8 +18,9 @@ func _process(delta):
 	$FPS.text = str(Engine.get_frames_per_second())
 
 func _input(event):
-	if(event.is_action_pressed("testCombat")):
-		initiateCombat(pokemon.new("Bulbasaur", 10))
+	pass
+	#if(event.is_action_pressed("testCombat")):
+	#	initiateCombat(pokemon.new("Bulbasaur", 10))
 
 func loadScreen(path):
 	screenNode.add_child(load(path).instantiate())

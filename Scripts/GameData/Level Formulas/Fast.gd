@@ -1,2 +1,2 @@
 func levelFunction(n):
-	return (5 * n^3)/4
+	return (4 * n^3)/5

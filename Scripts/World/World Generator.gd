@@ -9,11 +9,12 @@ extends Node3D
 
 signal finished_island
 
-var cells = {"Ocean": [], "Plains": [],"Beach": []}
+var cells = {"Ocean": [], "Plains": [],"Beach": [], "Forest": []}
 
 var biomeData = {"Beach": preload("res://Scripts/BiomeData/Beach.gd"),
 				 "Plains": preload("res://Scripts/BiomeData/Plains.gd"),
-				 "Ocean": preload("res://Scripts/BiomeData/Ocean.gd")}
+				 "Ocean": preload("res://Scripts/BiomeData/Ocean.gd"),
+				 "Forest": preload("res://Scripts/BiomeData/Forest.gd")}
 
 var playerObj = preload("res://Scenes/World/Entities/Player/Player.tscn")
 
@@ -22,8 +23,10 @@ var altitude = {}
 var moisture = {}
 var noise = FastNoiseLite.new()
 
-var biomeTiles = {"Ocean": 0, "Plains": 1, "Beach": 2}
-var tileBiomes = {-1: "", 0: "Ocean", 1: "Plains", 2: "Beach"}
+var treesMap
+
+var biomeTiles = {"Ocean": 0, "Plains": 1, "Beach": 2, "Forest": 3}
+var tileBiomes = {-1: "", 0: "Ocean", 1: "Plains", 2: "Beach", 3: "Forest"}
 
 var globalSpawnPoint = Vector3.ZERO
 		
@@ -33,8 +36,8 @@ func _ready():
 	#Sets the noise to SmoothOpenSimplexNoise
 	noise.noise_type = 1
 	
-	temperature = generateMap(450.0, 5.0)
-	moisture = generateMap(450.0, 5.0)
+	temperature = generateMap()
+	moisture = generateMap()
 	await RenderingServer.frame_post_draw
 #	altitude = generateMap(180, 5)
 	altitude = await generateIsland()
@@ -42,7 +45,12 @@ func _ready():
 	shaderProcess.queue_free()
 	setTile(width, height)
 	
-	generateObjects(width, height)
+	MasterInfo.worldMap = getItemMap()
+	MasterInfo.worldMapNode = $GridMap
+	MasterInfo.worldGenNode = self
+	
+	generateTrees()
+	generateObjects()
 	
 	while(globalSpawnPoint == Vector3.ZERO):
 		var point = Vector3(randf_range(1, 100), 0, randf_range(1, 100))
@@ -52,18 +60,18 @@ func _ready():
 	globalSpawnPoint = tilemap.map_to_local(Vector3i(globalSpawnPoint.x, 0.586, globalSpawnPoint.z))
 	globalSpawnPoint.y = 0.586
 	
-	MasterInfo.worldMap = getItemMap()
-	MasterInfo.worldMapNode = $GridMap
-	MasterInfo.worldGenNode = self
-	
 	var newPlayer = addPlayer("")
 
 	SignalManager.mapReady.emit()
 
 #Generates 2D noise maps
-func generateMap(fre, oct):
+func generateMap(fre = 0.0049, oct = 9, lun = 1.65, gain = 0.5, str = 0.03):
+	noise.noise_type = 1
 	noise.frequency = fre
 	noise.fractal_octaves = oct
+	noise.fractal_lacunarity = lun
+	noise.fractal_gain = gain
+	noise.fractal_weighted_strength = str
 	noise.seed = randi()
 	var gridName = {}
 	
@@ -146,9 +154,14 @@ func setTile(width, height):
 			elif alt > 0.369:
 				
 				#Plains
-				#if between(moist, 0.2, 0.5) and between(temp, 0.2, 0.5):
-				tilemap.set_cell_item(Vector3i(xPos, 0, zPos), biomeTiles.Plains)
-				cells["Plains"].append(Vector3(xPos, 0, zPos))
+				if between(moist, 0, 1) and between(temp, 0, 0.5):
+					tilemap.set_cell_item(Vector3i(xPos, 0, zPos), biomeTiles.Plains)
+					cells["Plains"].append(Vector3(xPos, 0, zPos))
+				
+				#Forest
+				elif between(moist, 0, 1) and between(temp, 0, 1):
+					tilemap.set_cell_item(Vector3i(xPos, 0, zPos), biomeTiles.Forest)
+					cells["Forest"].append(Vector3(xPos, 0, zPos))
 					
 				"""#Taiga Plains
 				elif between(moist, 0, 0.2) and between(temp, 0.2, 0.4):
@@ -157,10 +170,6 @@ func setTile(width, height):
 				#Sulfur
 				elif between(moist, 0.4, 0.9) and between(temp, 0.8, 0.9):
 					tilemap.set_cellv(pos, biomeTiles.Sulfur)
-					
-				#Forest
-				elif between(moist, 0.2, 0.7) and between(temp, 0.2, 0.6):
-					tilemap.set_cellv(pos, biomeTiles.Forest)
 				
 				#Taiga
 				elif between(moist, 0.3, 0.9) and between(temp, 0.1, 0.3):
@@ -191,46 +200,64 @@ func setTile(width, height):
 		if(autoTile(tile)):
 			reIndex.append(tile)
 	
+	for tile in cells["Forest"]:
+		if(autoTile(tile)):
+			reIndex.append(tile)
+	
 	for tile in reIndex:
 		cells["Beach"].append(tile)
 		cells["Plains"].erase(tile)
 	
 	for tile in cells["Beach"]:
 		autoTile(tile)
+	
+	generateTreesMap()
+
+func generateTrees():
+	for point in treesMap:
+		var pos = Vector3(point.x, 0, point.y)
+		var biome = biomeData.get(getBiome(pos)).new()
+		
+		if(biome.trees != null):
+			var tree = biome.trees.pick_random()
+			
+			placeObjectExact(load(tree), pos)
 
 # Generates objects onto the tiles. trans is the Vector3 for putting the objects in their place and pos is for the biome map
-func generateObjects(width, height):
+func generateObjects():
 	print("--generating objects")
 	randomize()
 	for x in width:
 		for z in height:
-			if(randi_range(0, 100) < 65):
-				continue
-			else:
-				var objectNum = randi_range(0, 100)
-				var pos = Vector3(x, 0, z)
+			var objectNum = randi_range(0, 100)
+			var pos = Vector3(x, 0, z)
 				
-				if(groundTile(pos)):
-					var possibleObjects
-					var biome = biomeData.get(getBiome(pos)).new()
-					var objects = biome.objects
-					var keys = objects.keys()
-					keys.sort()
-					keys.reverse()
+			if(groundTile(pos)):
+				var possibleObjects
+				var biome = biomeData.get(getBiome(pos)).new()
+				var objects = biome.objects
+				var keys = objects.keys()
+				keys.sort()
+				keys.reverse()
 					
-					#Randomly decides a priority bracket.
-					#Each bracket has a chance. if it's equal or greater the
-					#Random number, its selected.
-					var num = randi_range(1, 100)
-					
-					for i in keys:
-						if i >= num:
-							possibleObjects = objects.get(i)
-					
+				#Randomly decides a priority bracket.
+				#Each bracket has a chance. if it's equal or greater the
+				#Random number, its selected.
+				var num = randi_range(1, 100)
+				
+				for i in keys:
+					if i >= num:
+						possibleObjects = objects.get(i)
+				
+				if(possibleObjects != null):
 					#Picks a random object from the priority bracket
 					var newObject = possibleObjects[randi_range(0, possibleObjects.size()-1)]
 					
 					placeObject(load(newObject), pos)
+
+func generateTreesMap():
+	var square = PackedVector2Array([Vector2(0, 0), Vector2(50, 0), Vector2(50, 50), Vector2(0, 50)])
+	treesMap = PoissonDiscSampling.generate_points_for_polygon(square, 0.55, 30)
 
 #Helper func for start < val < end
 func between(val, start, end):
@@ -241,6 +268,9 @@ func between(val, start, end):
 # EG: Adding a pokemon that is created inside the nest node
 func placeForeignObject(newObject, pos : Vector3, biome = ""):
 	placeObject(newObject, to_local(pos), biome)
+
+func placeForeignObjectExact(newObject, pos : Vector3):
+	placeObjectExact(newObject, to_local(pos))
 
 func placeObject(objectPath, pos : Vector3, biome = ""):
 	var newObject = objectPath.instantiate()
@@ -258,9 +288,8 @@ func placeObject(objectPath, pos : Vector3, biome = ""):
 # Place object, without the random tweaking
 func placeObjectExact(objectPath, pos : Vector3):
 	var newObject = objectPath.instantiate()
-	var objectTrans = tilemap.map_to_local(pos)
-	objectTrans.y = newObject.translation.y
-	newObject.global_translate(objectTrans)
+	pos.y = newObject.position.y
+	newObject.global_translate(pos)
 	gameObjects.add_child(newObject)
 
 func addPlayer(playerName, pos = globalSpawnPoint):
@@ -302,7 +331,11 @@ func isTile(pos : Vector3, tile):
 	
 func getBiome(pos: Vector3):
 	var cell = tilemap.get_cell_item(pos)
-	return tilemap.mesh_library.get_item_name(cell)			
+	return tilemap.mesh_library.get_item_name(cell)
+
+func getBiomeGlobal(pos : Vector3):
+	pos = tilemap.local_to_map(to_local(pos))
+	return getBiome(pos)
 
 func getItemMap():
 	var itemMap = {}
@@ -380,12 +413,12 @@ func autoTile(pos):
 	
 	var adjTiles = [tileD, tileU, tileR, tileL, tileNW, tileNE, tileSW, tileSE]
 	
-	if(getBiome(pos) == "Plains"):
-		return plainsAutoTile(adjTiles, pos)
-	elif(getBiome(pos) == "Beach"):
+	if(getBiome(pos) == "Beach"):
 		makeBorderTile(adjTiles, pos)
+	else:
+		return correctBeaches(adjTiles, pos)
 
-func plainsAutoTile(adj, pos):
+func correctBeaches(adj, pos):
 	for i in adj:
 		if(waterTile(i)):
 			tilemap.set_cell_item(pos, 2)

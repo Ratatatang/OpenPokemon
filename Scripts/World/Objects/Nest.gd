@@ -14,9 +14,10 @@ enum {
 func _ready():
 	if(runReady):
 		maxObjects = 1
-		var pokeList = decideObjects(objectSpawns)
+		
+		var keys = objectSpawns.keys()
+		var pokeList = objectSpawns.get(keys.pick_random())
 			
-		for p in pokeList:
-			var num = randf_range(0, p.size()-1)
-			while(!spawnObjectRandPos("res://Scenes/World/Entities/WildPokemon/%s.tscn" % p[num], 0.6, 0.6)):
+		for i in maxObjects:
+			while(!spawnObjectRandPos("res://Scenes/World/Entities/WildPokemon/%s.tscn" % pokeList.pick_random(), 0.6, 0.6)):
 				pass

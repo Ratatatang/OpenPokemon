@@ -10,27 +10,6 @@ var connectedObjects = []
 #Areas that spawn objects
 var connectedFeatures = []
 
-func decideObjects(objects):
-	var objectsList = []
-	
-	var keys = objects.keys()
-	keys.sort()
-	
-	for i in range(round(randf_range(1, maxObjects))):
-		var num = randf_range(0, 100)
-		
-		for j in keys:
-			if(j == keys[keys.size()-1]):
-				objectsList.append(objects.get(j))
-				break
-			if(j >= num):
-				objectsList.append(objects.get(j))
-				break
-			else:
-				continue
-		
-	return objectsList
-
 func spawnObjectRandPos(object, boundsX, boundsZ, biome = null):
 	var x = randf_range(-(boundsX), boundsX)
 	var z = randf_range(-(boundsZ), boundsZ)

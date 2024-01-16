@@ -43,6 +43,7 @@ func getFirstSlot(party):
 
 func resolveQueue():
 	var deadPlayer : battlePlayer
+	sortMoves()
 	for move in moveQueue:
 		preMoveUse(move[0], move[1], move[2])
 		await moveDone
@@ -377,6 +378,30 @@ func decideAIMove(attacker : battlePlayer, victim : battlePlayer):
 	else:
 		moveQueue.append([move, attacker, victim])
 		#preMoveUse(move, enemy, player)
+
+func sortMoves():
+	var newQueue = []
+	
+	for move in moveQueue:
+		if(newQueue == []):
+			newQueue.append(move)
+		else:
+			var speed = move[1].getSpeed()
+			var priority = move[0].Priority
+			var currentTop = null
+			
+			for moveCheck in newQueue:
+				if(speed < moveCheck[1].getSpeed()):
+					currentTop = moveCheck
+				elif(speed == moveCheck[1].getSpeed()):
+					currentTop = [null, moveCheck].pick_random()
+			
+			if(currentTop == null):
+				newQueue.insert(0, move)
+			else:
+				newQueue.insert(newQueue.find(currentTop)+1, move)
+	
+	moveQueue = newQueue
 
 func _on_move_pressed(move : Dictionary):
 	var statusPassed = false

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dio78kq5vq2fg"]
+
+[ext_resource type="Script" path="res://Scripts/World/Objects/GenericObject.gd" id="1_muelo"]
+[ext_resource type="Texture2D" uid="uid://c4b5gslg3yvhj" path="res://Assets/World/Objects/YellowFlowers.png" id="2_q2hio"]
+[ext_resource type="Texture2D" uid="uid://cd4hs8fh055wu" path="res://Assets/World/EntityShadow.png" id="6_ua71h"]
+
+[sub_resource type="BoxShape3D" id="2"]
+size = Vector3(0.401487, 0.001, 0.496625)
+
+[node name="Flowers" type="StaticBody3D" groups=["persist"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91, 0)
+script = ExtResource("1_muelo")
+objectName = "Yellow Flowers"
+
+[node name="Sprites" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.083, 0)
+
+[node name="Flowers" type="Sprite3D" parent="Sprites"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -1, 0, 2, -4.37114e-08, 0, -0.300303, 0)
+texture_filter = 2
+texture = ExtResource("2_q2hio")
+
+[node name="Shadow" type="Sprite3D" parent="."]
+transform = Transform3D(3.9, 0, 0, 0, -8.74228e-08, -3, 0, 2, -1.31134e-07, -0.00953105, -0.375252, 0.22756)
+visible = false
+texture_filter = 0
+render_priority = -1
+texture = ExtResource("6_ua71h")
+
+[node name="CollisionShape2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0126977, -0.386289, 0)
+shape = SubResource("2")

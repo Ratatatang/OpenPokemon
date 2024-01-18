@@ -9,9 +9,20 @@ var forbidMoves : Array = []
 var iconFrame : int
 var hasStartMessage : bool = false
 var reduceDamage : bool = false
-var counter = 0
+var reduceSpeed : bool = false
+var counter : int = 0
+var protection : bool = false
 
 func _effect_always(inflicted : battlePlayer, opposing : battlePlayer, UI):
+	return false
+
+func _effect_onInflicted(inflicted : battlePlayer, opposing : battlePlayer, UI):
+	return false
+
+func _effect_onClear(inflicted : battlePlayer, opposing : battlePlayer, UI):
+	return false
+
+func _effect_protection(inflicted : battlePlayer, opposing : battlePlayer, UI, move):
 	return false
 
 func _effect_preMoveUse(inflicted : battlePlayer, opposing : battlePlayer, UI):
@@ -27,6 +38,9 @@ func _effect_moveHit(inflicted : battlePlayer, opposing : battlePlayer, UI):
 	return false
 
 func _effect_afterMoves(inflicted : battlePlayer, opposing : battlePlayer, UI):
+	return false
+
+func _checkProtection(move):
 	return false
 
 func getStatusName() -> String:

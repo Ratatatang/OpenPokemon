@@ -25,27 +25,33 @@ fov = 56.1467
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 2.79397e-09, 6.98492e-10, -3.25963e-09, 1, -5.66244e-07, -6.98492e-10, 5.96046e-07, 1, 0.00521021, -1.89577, 8.27079)
 light_energy = 0.5
+light_bake_mode = 0
+directional_shadow_mode = 0
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.423928, 0.265104, -0.866028, -0.0579994, 0.962186, 0.266148, 0.903837, -0.0625986, 0.423273, -11.0314, 4.81717, 4.01288)
 light_energy = 0.5
+light_bake_mode = 0
+directional_shadow_mode = 0
 
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.451755, -0.212262, 0.866523, -0.057177, 0.962398, 0.265556, -0.890308, -0.169511, 0.422632, 11.031, 4.817, 4.013)
 light_energy = 0.5
+light_bake_mode = 0
+directional_shadow_mode = 0
 
 [node name="Occluder1" type="OccluderInstance3D" parent="."]
-transform = Transform3D(0.999998, 0.00149604, 0.000898909, 0, 0.515038, -0.857167, -0.00174533, 0.857166, 0.515037, -0.0203685, 3.79018, -2.66457)
+transform = Transform3D(0.999998, 0.00149604, 0.000898909, -2.32831e-10, 0.515038, -0.857167, -0.00174533, 0.857166, 0.515037, -0.0146728, 2.74097, -2.00664)
 occluder = SubResource("QuadOccluder3D_t2iab")
 
 [node name="Occluder2" type="OccluderInstance3D" parent="."]
-transform = Transform3D(-0.00232501, 0.201854, -0.979408, -0.861281, 0.497261, 0.104528, 0.508123, 0.843793, 0.172697, 4.60566, 1.5157, -0.838695)
+transform = Transform3D(-0.00232501, 0.201854, -0.979408, -0.861281, 0.497261, 0.104528, 0.508123, 0.843793, 0.172697, 3.44727, 1.50889, -0.839526)
 occluder = SubResource("QuadOccluder3D_2e1g1")
 
 [node name="Occluder3" type="OccluderInstance3D" parent="."]
-transform = Transform3D(0.999993, -0.00320395, -0.00144072, 0.000627843, 0.566512, -0.82405, 0.00345641, 0.824047, 0.566508, -0.369285, -1.78831, 1.21116)
+transform = Transform3D(0.999993, -0.00320395, -0.00144072, 0.000627841, 0.566512, -0.82405, 0.00345641, 0.824047, 0.566508, -0.378241, -0.138564, 0.176658)
 occluder = SubResource("QuadOccluder3D_7qjjm")
 
 [node name="Occluder4" type="OccluderInstance3D" parent="."]
-transform = Transform3D(-0.00117236, -0.0459182, 0.99894, 0.846965, 0.531038, 0.0254037, -0.531643, 0.846102, 0.0382681, -4.12961, 1.63505, -0.951999)
+transform = Transform3D(-0.00117236, -0.0459182, 0.99894, 0.846965, 0.531038, 0.0254037, -0.531643, 0.846102, 0.0382681, -2.71695, 1.64335, -0.950985)
 occluder = SubResource("QuadOccluder3D_tl8hv")

@@ -48,7 +48,7 @@
 			"PP": [30, 30],
 			"Accuracy": 100,
 			"Category": "Status",
-			"Flags": ["Sound"],
+			"Flags": [],
 			"Target": "AllAdjacentFoes",
 			"Priority": 0,
 			"SpecialEffect": null,
@@ -288,6 +288,94 @@
 				}
 			}
 		},
+		"scratch":{
+			"DisplayName" : "Scratch",
+			"Type": "Normal",
+			"Power": 40,
+			"PP": [35, 35],
+			"Accuracy": 100,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
+		},
+		"screech":{
+			"DisplayName" : "Screech",
+			"Type": "Normal",
+			"Power": 0,
+			"PP": [40, 40],
+			"Accuracy": 85,
+			"Category": "Status",
+			"Flags": ["Sound"],
+			"Target": "AllAdjacentFoes",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100":  {
+					"Target": "Victim",
+					"Defense": -2
+				}
+			}
+		},
+		"scary_face":{
+			"DisplayName" : "Scary Face",
+			"Type": "Normal",
+			"Power": 0,
+			"PP": [10, 10],
+			"Accuracy": 100,
+			"Category": "Status",
+			"Flags": [],
+			"Target": "AllAdjacentFoes",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100":  {
+					"Target": "Victim",
+					"Speed": -2
+				}
+			}
+		},
+		"protect": {
+			"DisplayName" : "Protect",
+			"Type": "Normal",
+			"Power": 0,
+			"PP": [10, 10],
+			"Accuracy": 101,
+			"Category": "Status",
+			"Flags": ["Protect"],
+			"Target": "Self",
+			"Priority": 4,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100": {
+					"Target": "Victim",
+					"VolatileEffect": "Protect"
+				}
+			}
+		},
+		
+		
+		
+		"wide_guard": {
+			"DisplayName" : "Wide Guard",
+			"Type": "Rock",
+			"Power": 0,
+			"PP": [10, 10],
+			"Accuracy": 101,
+			"Category": "Status",
+			"Flags": ["Protect"],
+			"Target": "Self",
+			"Priority": 3,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100": {
+					"Target": "Victim",
+					"VolatileEffect": "WideGuard"
+				}
+			}
+		},
 		
 
 
@@ -382,7 +470,7 @@
 			"Accuracy": 100,
 			"Category": "Special",
 			"Flags": [],
-			"Target": "All",
+			"Target": "AdjacentFoes",
 			"Priority": 0,
 			"SpecialEffect": null,
 			"StatChanges": {}
@@ -395,7 +483,7 @@
 			"Accuracy": 70,
 			"Category": "Special",
 			"Flags": [],
-			"Target": "All",
+			"Target": "AdjacentFoes",
 			"Priority": 0,
 			"SpecialEffect": null,
 			"StatChanges": {}
@@ -443,6 +531,27 @@
 			"Priority": 0,
 			"SpecialEffect": null,
 			"StatChanges": {}
+		},
+		
+		
+		
+		"hammer_arm":{
+			"DisplayName" : "Hammer Arm",
+			"Type": "Fighting",
+			"Power": 100,
+			"PP": [10, 10],
+			"Accuracy": 90,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100": {
+					"Target": "Self",
+					"Speed": -1
+				}
+			}
 		},
 		
 
@@ -657,6 +766,75 @@
 				}
 			}
 		},
+		"quiver_dance":{
+			"DisplayName" : "Quiver Dance",
+			"Type": "Bug",
+			"Power": 0,
+			"PP": [20, 20],
+			"Accuracy": 101,
+			"Category": "Status",
+			"Flags": [],
+			"Target": "Self",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100":  {
+					"Target": "Victim",
+					"Special Attack": 1,
+					"Special Defense": 1,
+					"Speed": 1
+				}
+			}
+		},
+		"skitter_smack":{
+			"DisplayName" : "Skitter Smack",
+			"Type": "Bug",
+			"Power": 70,
+			"PP": [10, 10],
+			"Accuracy": 90,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100":  {
+					"Target": "Victim",
+					"Special Attack": -1
+				}
+			}
+		},
+		"struggle_bug":{
+			"DisplayName" : "Struggle Bug",
+			"Type": "Bug",
+			"Power": 50,
+			"PP": [20, 20],
+			"Accuracy": 100,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100":  {
+					"Target": "Victim",
+					"Special Attack": -1
+				}
+			}
+		},
+		"x_scissor":{
+			"DisplayName" : "X-Scissor",
+			"Type": "Bug",
+			"Power": 80,
+			"PP": [15, 15],
+			"Accuracy": 100,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
+		},
 
 
 
@@ -748,9 +926,22 @@
 				}
 			}
 		},
+		"mud_slap":{
+			"DisplayName" : "Mud Slap",
+			"Type": "Ground",
+			"Power": 20,
+			"PP": [10, 10],
+			"Accuracy": 100,
+			"Category": "Special",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
+		},
+		
 
 
-	
 		"twister":{
 			"DisplayName" : "Twister",
 			"Type": "Dragon",
@@ -766,6 +957,27 @@
 				"30": {
 					"Target": "Victim",
 					"VolatileEffect": "Flinch"
+				}
+			}
+		},
+		
+		
+		
+		"metal_claw":{
+			"DisplayName" : "Metal Claw",
+			"Type": "Steel",
+			"Power": 50,
+			"PP": [35, 35],
+			"Accuracy": 95,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"10": {
+					"Target": "Self",
+					"Attack": 1
 				}
 			}
 		},
@@ -1090,6 +1302,43 @@
 				}
 			}
 		},
+		"bite":{
+			"DisplayName" : "Bite",
+			"Type": "Dark",
+			"Power": 60,
+			"PP": [25, 25],
+			"Accuracy": 100,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"30": {
+					"Target": "Victim",
+					"VolatileEffect": "Flinch"
+				}
+			}
+		},
+		"crunch":{
+			"DisplayName" : "Crunch",
+			"Type": "Dark",
+			"Power": 80,
+			"PP": [15, 15],
+			"Accuracy": 100,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"20": {
+					"Target": "Victim",
+					"Defense": -1
+				}
+			}
+		},
+		
 
 
 

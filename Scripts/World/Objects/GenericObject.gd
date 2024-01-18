@@ -3,6 +3,7 @@ class_name GenericObject
 
 @export var textureVariations: Array[String] = []
 @export var objectName: String = ""
+@export var alwaysCenter: bool = false
 
 var runReady = true
 

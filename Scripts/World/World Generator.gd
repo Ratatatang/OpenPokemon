@@ -42,7 +42,7 @@ func _ready():
 #	altitude = generateMap(180, 5)
 	altitude = await generateIsland()
 
-	shaderProcess.queue_free()
+	$ShaderProcess.queue_free()
 	setTile(width, height)
 	
 	MasterInfo.worldMap = getItemMap()
@@ -57,8 +57,7 @@ func _ready():
 		if(getBiome(point) == "Beach"):
 			globalSpawnPoint = point
 	
-	globalSpawnPoint = tilemap.map_to_local(Vector3i(globalSpawnPoint.x, 0.586, globalSpawnPoint.z))
-	globalSpawnPoint.y = 0.586
+	globalSpawnPoint = tilemap.map_to_local(Vector3i(globalSpawnPoint.x, 1, globalSpawnPoint.z))
 	
 	var newPlayer = addPlayer("")
 
@@ -195,18 +194,23 @@ func setTile(width, height):
 				elif temp > 0.7 and moist < 0.4:
 					tilemap.set_cellv(pos, biomeTiles.Desert)"""
 					
-	var reIndex = []
+	var reIndexPlains = []
+	var reIndexForest = []
 	for tile in cells["Plains"]:
 		if(autoTile(tile)):
-			reIndex.append(tile)
+			reIndexPlains.append(tile)
 	
 	for tile in cells["Forest"]:
 		if(autoTile(tile)):
-			reIndex.append(tile)
+			reIndexForest.append(tile)
 	
-	for tile in reIndex:
+	for tile in reIndexPlains:
 		cells["Beach"].append(tile)
 		cells["Plains"].erase(tile)
+	
+	for tile in reIndexForest:
+		cells["Beach"].append(tile)
+		cells["Forest"].erase(tile)
 	
 	for tile in cells["Beach"]:
 		autoTile(tile)
@@ -219,9 +223,9 @@ func generateTrees():
 		var biome = biomeData.get(getBiome(pos)).new()
 		
 		if(biome.trees != null):
-			var tree = biome.trees.pick_random()
+			var tree = load(biome.trees.pick_random())
 			
-			placeObjectExact(load(tree), pos)
+			placeObjectExact(tree, pos)
 
 # Generates objects onto the tiles. trans is the Vector3 for putting the objects in their place and pos is for the biome map
 func generateObjects():
@@ -235,6 +239,10 @@ func generateObjects():
 			if(groundTile(pos)):
 				var possibleObjects
 				var biome = biomeData.get(getBiome(pos)).new()
+				
+				if(biome.everyTile != null):
+					placeObjectExact(load(biome.everyTile), pos)
+				
 				var objects = biome.objects
 				var keys = objects.keys()
 				keys.sort()
@@ -294,7 +302,7 @@ func placeObjectExact(objectPath, pos : Vector3):
 
 func addPlayer(playerName, pos = globalSpawnPoint):
 	var newObject = playerObj.instantiate()
-	var objectTrans = tilemap.map_to_local(Vector3i(0, 0.586, 0))
+	#var objectTrans = tilemap.map_to_local(Vector3i(0, 0.586, 0))
 	newObject.name += playerName
 	$Players.add_child(newObject)
 	
@@ -438,6 +446,14 @@ func makeBorderTile(adj, pos):
 	var image = Image.load_from_file("res://Assets/World/BiomeTiles/Beach.png")
 	
 	var tileName = "Ocean "
+	
+	var adjBiomes = []
+	for i in 4:
+		var tile = adj[i]
+		adjBiomes.append(getBiome(tile))
+	
+	if(adjBiomes[0] == adjBiomes[1] and adjBiomes[0] == adjBiomes[2] and adjBiomes[0] == adjBiomes[3] and adjBiomes[0] != "Beach"):
+		tilemap.set_cell_item(pos, biomeTiles.get(adjBiomes[0]))
 	
 	for i in 4:
 		var tile = adj[i]

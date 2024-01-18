@@ -64,6 +64,7 @@ texture = ExtResource("2_yi63d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(13.5714, 12.8571)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_cmy7v")
 
 [node name="GenderIcons" type="Sprite2D" parent="."]

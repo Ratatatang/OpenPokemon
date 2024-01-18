@@ -522,6 +522,72 @@
 		"Galvantula" : {
 			"ID" : 0596
 		},
+		"Bunnelby" : {
+			"ID" : 0659,
+			"Name": "Bunnelby",
+			"Types": ["Normal"],
+			"Moves": {
+				"1": ["mud_slap", "leer"],
+				"3": ["tackle"],
+				"6": ["sand_attack"],
+				"9": ["quick_attack"],
+				"12": ["mud_shot"],
+				"15": ["flail"],
+				"18": ["double_kick"],
+				"21": ["bulldoze"],
+				"24": ["dig"],
+				"27": ["bounce"],
+				"30": ["take_down"],
+				"33": ["swords_dance"],
+				"36": ["earthquake"],
+				"39": ["super_fang"]
+			},
+			"BaseStats": {
+				"hp": 38,
+				"atk": 36,
+				"def": 38,
+				"spAtk": 32,
+				"spDef": 36,
+				"speed": 57
+				},
+			"XPValue": 47,
+			"EVs": {"speed": 1},
+			"ExperienceCurve": "MediumFast",
+			"EvoMethod": "Level",
+			"EvoLv": 20,
+			"EvoPokemon": "Diggersby"
+		},
+		"Diggersby" : {
+			"ID" : 0660,
+			"Name": "Diggersby",
+			"Types": ["Normal", "Ground"],
+			"Moves": {
+				"1": ["mud_slap", "leer", "tackle", "sand_attack"],
+				"9": ["quick_attack"],
+				"12": ["mud_shot"],
+				"15": ["flail"],
+				"18": ["double_kick"],
+				"23": ["bulldoze"],
+				"28": ["dig"],
+				"33": ["bounce"],
+				"38": ["take_down"],
+				"43": ["swords_dance"],
+				"48": ["earthquake"],
+				"53": ["super_fang"],
+				"58": ["hammer_arm"]
+			},
+			"BaseStats": {
+				"hp": 85,
+				"atk": 56,
+				"def": 77,
+				"spAtk": 50,
+				"spDef": 77,
+				"speed": 78
+				},
+			"XPValue": 148,
+			"EVs": {"hp": 2},
+			"ExperienceCurve": "MediumFast"
+		},
 		"Pancham" : {
 			"ID" : 0674
 		},

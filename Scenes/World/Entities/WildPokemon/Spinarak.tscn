@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/World/Entities/Wander Controller.gd" id="5_ju1e4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h1suh"]
-radius = 0.213676
-height = 0.522104
+radius = 0.132722
+height = 0.447217
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.0949792
@@ -339,7 +339,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, -0.00390719, -0.0138645, -0.0124963)
+transform = Transform3D(0.398189, 0, 0, 0, -1.74054e-08, -0.398189, 0, 0.398189, -1.74054e-08, -0.00390719, -0.0138645, -0.00773036)
 shape = SubResource("CapsuleShape3D_h1suh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

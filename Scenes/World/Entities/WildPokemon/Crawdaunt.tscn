@@ -11,8 +11,8 @@ radius = 0.0949792
 height = 0.277646
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gbepy"]
-radius = 0.213676
-height = 0.522104
+radius = 0.313244
+height = 0.631157
 
 [sub_resource type="AtlasTexture" id="29"]
 atlas = ExtResource("2")

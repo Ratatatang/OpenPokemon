@@ -22,6 +22,8 @@ func _ready():
 func _input(event) -> void:
 	if event.is_action_pressed("menu"):
 		reloadScreens("menu")
+	if event.is_action_pressed("map"):
+		reloadScreens("map")
 
 func reloadScreens(event):
 	if(enabled == false and screenLoaded == ScreenLoaded.NOTHING):
@@ -33,6 +35,12 @@ func reloadScreens(event):
 				visible = true
 				pokemonScreen.loadPokemon(get_node("/root/Master").playerPokemon)
 				screenLoaded = screenSelected
+			if event == "map":
+				visible = true
+				pokemonScreen.loadPokemon(get_node("/root/Master").playerPokemon)
+				screenLoaded = ScreenLoaded.MAP_SCREEN
+				hideAll()
+				map.visible = true
 				
 		ScreenLoaded.PARTY_SCREEN:
 			if event == "menu":

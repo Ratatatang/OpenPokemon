@@ -20,6 +20,10 @@ var tween
 
 var UI
 
+var protected = false
+var protectExhaustion = false
+var protection = load("res://Scripts/Combat/StatusConditions/StatusCondition.gd").new()
+
 var statsDict = {
 	"Attack" : 0,
 	"Special Attack" : 0,
@@ -49,6 +53,10 @@ func loadPokemon(pokemonInst):
 	volatileEffects = []
 	skipMove = false
 	statsDict = {"Attack" : 0, "Special Attack" : 0, "Defense" : 0, "Special Defense" : 0, "Speed" :  0, "Accuracy" : 0, "Evasion" : 0, "Crit Ratio": 0}
+	
+	protected = false
+	protectExhaustion = false
+	protection = load("res://Scripts/Combat/StatusConditions/StatusCondition.gd").new()
 	
 	loadSprite(loadedPokemon.speciesName)
 
@@ -127,6 +135,11 @@ func inflictVolatile(value):
 		
 	volatileEffects.append(effect)
 	
+	if(effect.protection == true):
+		protection = effect
+		protected = true
+		protectExhaustion = true
+	
 	if(effect.hasStartMessage):
 		UI.setDialog(
 			effect.startMessage.format({
@@ -156,13 +169,17 @@ func inflictStatus(value : String):
 	return false
 
 func clearStatus(status):
-	if(status.statusName == statusEffect.statusName):
-		statusEffect = null
-		loadedPokemon.statusEffect = null
-		statusIcon.frame = 0
+	if(statusEffect != null):
+		if(status.statusName == statusEffect.statusName):
+			statusEffect = null
+			loadedPokemon.statusEffect = null
+			statusIcon.frame = 0
 	
 	for effects in volatileEffects:
 		if(effects.statusName == status.statusName):
+			if(effects.protection):
+				protection = load("res://Scripts/Combat/StatusConditions/StatusCondition.gd").new()
+				protected = false
 			volatileEffects.erase(effects)
 
 func deathTween():
@@ -218,8 +235,14 @@ func getEvasion():
 	return statsDict.get("Evasion")
 
 func getSpeed() -> int:
-	return clamp(loadedPokemon.speed * 
+	var speedCalc = clamp(loadedPokemon.speed * 
 	MasterInfo.statChanges.get(str(statsDict.get("Speed"))), 1, 999)
+	
+	if(statusEffect != null):
+		if(statusEffect.reduceSpeed):
+			speedCalc /= 2
+			
+	return speedCalc
 
 func getTypes() -> Array:
 	return loadedPokemon.types

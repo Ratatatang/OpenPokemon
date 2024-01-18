@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://7cx44bbruyn0"]
+
+[ext_resource type="Script" path="res://Scripts/World/Objects/Nest.gd" id="1_nfqjf"]
+[ext_resource type="Texture2D" uid="uid://cd4hs8fh055wu" path="res://Assets/World/EntityShadow.png" id="2_ndild"]
+
+[sub_resource type="Curve3D" id="Curve3D_ot5we"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.80464, -0.812405, 0.60558, 0, 0, 0, 0, 0, 0, -0.80464, -0.812405, -0.640513, 0, 0, 0, 0, 0, 0, 0.564641, -0.812405, -0.654727, 0, 0, 0, 0, 0, 0, 0.545689, -0.812405, 0.586628, 0, 0, 0, 0, 0, 0, -0.80464, -0.812405, 0.60558),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Nest" type="Node3D" groups=["persist"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.812405, 0)
+script = ExtResource("1_nfqjf")
+objectSpawns = {
+100: ["Bunnelby", "Diggersby", "Cutiefly", "Ribombee"]
+}
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.224178, 0)
+visible = false
+texture = ExtResource("2_ndild")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132664, 0, 0)
+visible = false
+curve = SubResource("Curve3D_ot5we")

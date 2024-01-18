@@ -143,18 +143,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [true]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RayCast3D:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5708, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_65noo"]
 resource_name = "RollDown"
@@ -562,7 +550,6 @@ cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_h7dm2")
-metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.682585, 0.730806, 0, -0.730806, 0.682585, 0, 0, 0)
@@ -591,8 +578,9 @@ parameters/Roll/blend_position = Vector2(0, 0)
 parameters/Run/blend_position = Vector2(0.6776, -0.113773)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(0.13, 0, 0, 0, -4.70599e-07, 0.13, 0, -0.13, -4.70599e-07, 0, 0, 0)
+transform = Transform3D(2.17059, 0, 0, 0, -4.70595e-07, 0.317176, 0, -0.129999, -1.14817e-06, 0, 0, 0)
 collision_mask = 4
+hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 

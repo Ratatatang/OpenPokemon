@@ -152,30 +152,36 @@ func moveHit(move : Dictionary, attacker : battlePlayer, victim : battlePlayer):
 	
 	
 	if(move.Accuracy == 101 or randi_range(1, 100) < move.Accuracy * stageMultiplier):
-		var outcome = calculateDamage(move, attacker, victim)
+		if(victim.protected == false or !victim.protection._checkProtection(move)):
 		
-		if(outcome[0] > 0):
-			victim.reduceHP(outcome[0])
-			print(outcome)
+			var outcome = calculateDamage(move, attacker, victim)
+		
+			if(outcome[0] > 0):
+				victim.reduceHP(outcome[0])
+				print(outcome)
 				
-		await pressedComfirm
-			
-		if(outcome[1] != 1):
-			if(outcome[1] == 0):
-				UI.setDialog("It doesn't affect the opposing %s..." % [victim.getName()])
-				await pressedComfirm
-			elif(outcome[0] > 0):
-				UI.setDialog(MasterInfo.effectiveDialog.get(str(clamp(outcome[1], 0.5, 2))))
-				await pressedComfirm
-			
-		if(outcome[2]):
-			UI.setDialog("A critical hit!")
 			await pressedComfirm
 			
-		if(move.StatChanges != {} and outcome[1] != 0):
-			statusEffects(move, attacker, victim, outcome[0])
-			await statusDone
-		
+			if(outcome[1] != 1):
+				if(outcome[1] == 0):
+					UI.setDialog("It doesn't affect the opposing %s..." % [victim.getName()])
+					await pressedComfirm
+				elif(outcome[0] > 0):
+					UI.setDialog(MasterInfo.effectiveDialog.get(str(clamp(outcome[1], 0.5, 2))))
+					await pressedComfirm
+			
+			if(outcome[2]):
+				UI.setDialog("A critical hit!")
+				await pressedComfirm
+			
+			if(move.StatChanges != {} and outcome[1] != 0):
+				statusEffects(move, attacker, victim, outcome[0])
+				await statusDone
+		else:
+			await pressedComfirm
+			UI.setDialog("%s protected itself!" % victim.getName())
+			victim.protection._effect_protection(victim, victim.opponent, UI, move)
+			await pressedComfirm
 		
 	else:
 		await pressedComfirm
@@ -245,7 +251,6 @@ func calculateDamage(move : Dictionary, attacker : battlePlayer, victim : battle
 	if(randi_range(1, 100) < MasterInfo.critRatio.get(str(critRatio))):
 		multiplier *= 2
 		crit = true
-	
 	
 	#Random
 	multiplier *= (randf_range(85, 100)/100.0)

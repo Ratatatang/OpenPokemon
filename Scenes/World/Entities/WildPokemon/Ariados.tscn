@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/World/Entities/Wander Controller.gd" id="5_x4xcf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h1suh"]
-radius = 0.213676
-height = 0.522104
+radius = 0.290298
+height = 0.731585
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.0949792

@@ -9,6 +9,7 @@ var statusEffect
 var generateBack = false
 var enemy = false
 var skipMove = false
+var trapped = false
 var opponent
 var tween
 
@@ -57,6 +58,8 @@ func loadPokemon(pokemonInst):
 	protected = false
 	protectExhaustion = false
 	protection = load("res://Scripts/Combat/StatusConditions/StatusCondition.gd").new()
+	
+	trapped = false
 	
 	loadSprite(loadedPokemon.speciesName)
 
@@ -124,7 +127,7 @@ func changeStat(stat, value : int):
 	statsDict[stat] += value
 	
 
-func inflictVolatile(value):
+func inflictVolatile(value, attacker):
 	var effect = load("res://Scripts/Combat/StatusConditions/%s.gd" % [value]).new()
 	
 	for effects in volatileEffects:
@@ -143,12 +146,14 @@ func inflictVolatile(value):
 	if(effect.hasStartMessage):
 		UI.setDialog(
 			effect.startMessage.format({
-				"Pokemon":getName()}))
+				"Pokemon":getName(), "User":attacker.getName()}))
+		effect._effect_onInflicted(self, opponent, UI)
 		return true
 	
+	effect._effect_onInflicted(self, opponent, UI)
 	return false
 
-func inflictStatus(value : String):
+func inflictStatus(value : String, attacker) :
 	if(statusEffect == null):
 		statusEffect = load("res://Scripts/Combat/StatusConditions/%s.gd" % [value]).new()
 		loadedPokemon.statusEffect = statusEffect
@@ -158,7 +163,8 @@ func inflictStatus(value : String):
 		if(statusEffect.hasStartMessage):
 			UI.setDialog(
 				statusEffect.startMessage.format({
-					"Pokemon":getName()}))
+					"Pokemon":getName(), "User":attacker.getName()}))
+			statusEffect._effect_onInflicted(self, opponent, UI)
 			return true
 			
 	elif(statusEffect != null):
@@ -166,11 +172,13 @@ func inflictStatus(value : String):
 			{"Pokemon": getName(), "Status": statusEffect.statusName}))
 		return true
 	
+	statusEffect._effect_onInflicted(self, opponent, UI)
 	return false
 
 func clearStatus(status):
 	if(statusEffect != null):
 		if(status.statusName == statusEffect.statusName):
+			statusEffect._effect_onClear(self, opponent, UI)
 			statusEffect = null
 			loadedPokemon.statusEffect = null
 			statusIcon.frame = 0
@@ -180,6 +188,7 @@ func clearStatus(status):
 			if(effects.protection):
 				protection = load("res://Scripts/Combat/StatusConditions/StatusCondition.gd").new()
 				protected = false
+			effects._effect_onClear(self, opponent, UI)
 			volatileEffects.erase(effects)
 
 func deathTween():

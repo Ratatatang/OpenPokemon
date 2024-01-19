@@ -355,6 +355,42 @@
 				}
 			}
 		},
+		"bind": {
+			"DisplayName" : "Bind",
+			"Type": "Normal",
+			"Power": 20,
+			"PP": [15, 15],
+			"Accuracy": 85,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100": {
+					"Target": "Victim",
+					"VolatileEffect": "Bind"
+				}
+			}
+		},
+		"defense_curl":{
+			"DisplayName" : "Defense Curl",
+			"Type": "Normal",
+			"Power": 0,
+			"PP": [40, 40],
+			"Accuracy": 101,
+			"Category": "Status",
+			"Flags": [],
+			"Target": "Self",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100":  {
+					"Target": "Victim",
+					"Defense": 2
+				}
+			}
+		},
 		
 		
 		
@@ -940,7 +976,28 @@
 			"StatChanges": {}
 		},
 		
-
+		
+		
+		"thunder_shock":{
+			"DisplayName" : "Thunder Shock",
+			"Type": "Electric",
+			"Power": 40,
+			"PP": [30, 30],
+			"Accuracy": 100,
+			"Category": "Special",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"10": {
+					"Target": "Victim",
+					"StatusEffect": "Paralyze"
+				}
+			}
+		},
+		
+		
 
 		"twister":{
 			"DisplayName" : "Twister",
@@ -1014,6 +1071,24 @@
 			"Priority": 0,
 			"SpecialEffect": null,
 			"StatChanges": {}
+		},
+		"charm":{
+			"DisplayName" : "Charm",
+			"Type": "Fairy",
+			"Power": 0,
+			"PP": [20, 20],
+			"Accuracy": 100,
+			"Category": "Status",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100":  {
+					"Target": "Victim",
+					"Attack": -2
+				}
+			}
 		},
 
 

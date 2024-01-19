@@ -14,12 +14,6 @@ func _effect_preMoveUse(inflicted : battlePlayer, opposing : battlePlayer, UI):
 		UI.setDialog(clearMessage.format({"Pokemon":inflicted.getName()}))
 		return true
 		
-	elif(counter == 0):
-		counter += 1
-		inflicted.skipMove = true
-		UI.setDialog(activeMessage.format({"Pokemon":inflicted.getName()}))
-		return true
-		
 	else:
 		var chance = [true, false].pick_random()
 		if(chance):

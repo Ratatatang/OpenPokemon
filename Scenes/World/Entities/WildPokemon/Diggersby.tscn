@@ -7,12 +7,12 @@
 [ext_resource type="Script" path="res://Scripts/World/Entities/Wander Controller.gd" id="5_8csu1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h1suh"]
-radius = 0.273475
-height = 0.619964
+radius = 0.333557
+height = 0.678729
 
 [sub_resource type="CapsuleShape3D" id="1"]
-radius = 0.120253
-height = 0.322656
+radius = 0.162522
+height = 0.386312
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pranp"]
 atlas = ExtResource("2_abatm")
@@ -343,11 +343,11 @@ transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 
 shape = SubResource("CapsuleShape3D_h1suh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, -0.00390719, -0.0138645, -0.00489306)
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, -0.00390719, -0.0138645, -0.00409365)
 shape = SubResource("1")
 
 [node name="Sprite2D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.204776, 0.730806, 0, -0.219242, 0.682586, 0.001, -0.0195436, -0.0490979)
+transform = Transform3D(0.4, 0, 0, 0, 0.273034, 0.974164, 0, -0.292322, 0.909887, -0.028, 0, -0.03)
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("18")

@@ -295,10 +295,10 @@ func statusEffects(move : Dictionary, attacker : battlePlayer, victim : battlePl
 
 				elif(target == "Victim"):
 					if(step == "VolatileEffect"):
-						hasStartMessage = inflictVolatile(victim, change)
+						hasStartMessage = inflictVolatile(victim, change, attacker)
 					
 					elif(step == "StatusEffect"):
-						hasStartMessage = inflictStatus(victim, change)
+						hasStartMessage = inflictStatus(victim, change, attacker)
 				
 					elif(step == "Recoil"):
 						pass
@@ -321,10 +321,10 @@ func statusEffects(move : Dictionary, attacker : battlePlayer, victim : battlePl
 						
 				elif(target == "Self"):
 					if(step == "VolatileEffect"):
-						hasStartMessage = inflictVolatile(attacker, change)
+						hasStartMessage = inflictVolatile(attacker, change, attacker)
 					
 					elif(step == "StatusEffect"):
-						hasStartMessage = inflictStatus(attacker, change)
+						hasStartMessage = inflictStatus(attacker, change, attacker)
 					
 					elif(step == "Recoil"):
 						pass
@@ -349,12 +349,13 @@ func statusEffects(move : Dictionary, attacker : battlePlayer, victim : battlePl
 			
 	statusDone.emit()
 
-func inflictVolatile(target : battlePlayer, change):
-	var statusMessage = target.inflictVolatile(change)
+func inflictVolatile(target : battlePlayer, change, attacker):
+	var statusMessage = target.inflictVolatile(change, attacker)
+	
 	return statusMessage
 
-func inflictStatus(target : battlePlayer, change):
-	var statusMessage = target.inflictStatus(change)
+func inflictStatus(target : battlePlayer, change, attacker):
+	var statusMessage = target.inflictStatus(change, attacker)
 	return statusMessage
 
 func loadMoves(battleNode : battlePlayer):
@@ -450,15 +451,27 @@ func _on_move_pressed(move : Dictionary):
 		resolveQueue()
 
 func _on_switch_switch_out(selectedPokemon):
-	if(selectedPokemon != player.loadedPokemon):
+	if(player.trapped):
+		UI.showDialog()
+		UI.setDialog("%s is trapped! It can't leave the fight!" % player.getName())
+		await pressedComfirm
+		UI.showMenu()
+		
+	elif(selectedPokemon != player.loadedPokemon):
 		UI.showDialog()
 		if(player.getHP() > 0):
 			UI.setDialog("%s, come on back." % player.getName())
 			await pressedComfirm
-		player.loadPokemon(selectedPokemon)
-		UI.setDialog("Go! %s!" % player.getName())
-		await pressedComfirm
-		loadMoves(player)
-		decideAIMove(enemy, player)
-		resolveQueue()
+			player.loadPokemon(selectedPokemon)
+			UI.setDialog("Go! %s!" % player.getName())
+			await pressedComfirm
+			loadMoves(player)
+			decideAIMove(enemy, player)
+			resolveQueue()
+		else:
+			player.loadPokemon(selectedPokemon)
+			UI.setDialog("Go! %s!" % player.getName())
+			await pressedComfirm
+			loadMoves(player)
+			UI.showMenu()
 		

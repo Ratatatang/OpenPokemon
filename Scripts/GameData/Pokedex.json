@@ -323,6 +323,39 @@
 			"EVs": {"atk": 2},
 			"ExperienceCurve": "MediumFast"
 		},
+		"Tangela" : {
+			"ID": 0114,
+			"Name": "Tangela",
+			"Types": ["Grass"],
+			"Moves": {
+				"1": ["absorb", "bind"],
+				"4": ["stun_spore"],
+				"8": ["growth"],
+				"12": ["mega_drain"],
+				"16": ["vine_whip"],
+				"20": ["poison_powder"],
+				"24": ["ancient_power"],
+				"28": ["knock_off"],
+				"32": ["giga_drain"],
+				"36": ["sleep_powder"],
+				"40": ["slam"],
+				"44": ["tickle"],
+				"48": ["power_whip"],
+				"52": ["ingrain"],
+				"56": ["grassy_terrain"]
+			},
+			"BaseStats": {
+				"hp": 65,
+				"atk": 55,
+				"def": 115,
+				"spAtk": 100,
+				"spDef": 40,
+				"speed": 60
+				},
+			"XPValue": 87,
+			"EVs": {"def": 1},
+			"ExperienceCurve": "MediumFast"
+		},
 		"Magikarp" : {
 			"ID": 0129
 		},
@@ -501,6 +534,38 @@
 		"Milotic" : {
 			"ID": 0350
 		},
+		"Pachirisu": {
+			"ID": 417,
+			"Name": "Pachirisu",
+			"Types": ["Electric"],
+			"Moves": {
+				"0": ["growl", "thunder_shock"],
+				"5": ["quick_attack"],
+				"9": ["charm"],
+				"13": ["spark"],
+				"17": ["endure"],
+				"19": ["nuzzle"],
+				"21": ["swift"],
+				"25": ["electro_ball"],
+				"29": ["sweet_kiss"],
+				"33": ["thunder_wave"],
+				"37": ["super_fang"],
+				"41": ["discharge"],
+				"45": ["last_resort"],
+				"49": ["thunder"]
+			},
+			"BaseStats": {
+				"hp": 66,
+				"atk": 45,
+				"def": 70,
+				"spAtk": 45,
+				"spDef": 90,
+				"speed": 95
+				},
+			"XPValue": 142,
+			"EVs": {"speed": 1},
+			"ExperienceCurve": "MediumFast"
+		},
 		"Riolu" : {
 			"ID" : 0447
 		},
@@ -670,8 +735,69 @@
 			"Name" : "Kommo-o",
 			"ID" : 0784
 		},
+		"Wooloo" : {
+			"ID" : 0831,
+			"Name": "Wooloo",
+			"Types": ["Normal"],
+			"Moves": {
+				"1": ["tackle", "growl"],
+				"4": ["defense_curl"],
+				"80": ["copycat"],
+				"12": ["guard_split"],
+				"16": ["double_kick"],
+				"21": ["headbutt"],
+				"25": ["take_down"],
+				"28": ["guard_swap"],
+				"32": ["reversal"],
+				"36": ["cotton_guard"],
+				"40": ["double_edge"]
+			},
+			"BaseStats": {
+				"hp": 42,
+				"atk": 40,
+				"def": 55,
+				"spAtk": 40,
+				"spDef": 45,
+				"speed": 48
+				},
+			"XPValue": 122,
+			"EVs": {"def": 1},
+			"ExperienceCurve": "MediumFast",
+			"EvoMethod": "Level",
+			"EvoLv": 24,
+			"EvoPokemon": "Dubwool"
+		},
+		"Dubwool" : {
+			"ID" : 0832,
+			"Name": "Dubwool",
+			"Types": ["Normal"],
+			"Moves": {
+				"1": ["tackle", "growl", "defense_curl"],
+				"80": ["copycat"],
+				"12": ["guard_split"],
+				"16": ["double_kick"],
+				"21": ["headbutt"],
+				"27": ["take_down"],
+				"32": ["guard_swap"],
+				"38": ["reversal"],
+				"44": ["cotton_guard"],
+				"50": ["double_edge"],
+				"56": ["last_resort"]
+			},
+			"BaseStats": {
+				"hp": 72,
+				"atk": 80,
+				"def": 100,
+				"spAtk": 60,
+				"spDef": 90,
+				"speed": 88
+				},
+			"XPValue": 172,
+			"EVs": {"def": 2},
+			"ExperienceCurve": "MediumFast",
+		},
 		"Toxel" : {
-			"ID" : 848
+			"ID" : 0848
 		},
 		"Toxtricity" : {
 			"ID" : 0849

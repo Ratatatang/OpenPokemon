@@ -422,7 +422,7 @@ func autoTile(pos):
 	var adjTiles = [tileD, tileU, tileR, tileL, tileNW, tileNE, tileSW, tileSE]
 	
 	if(getBiome(pos) == "Beach"):
-		makeBorderTile(adjTiles, pos)
+		makeBorderTile(adjTiles, pos, "Beach", "Ocean")
 	else:
 		return correctBeaches(adjTiles, pos)
 
@@ -440,12 +440,10 @@ func correctBeaches(adj, pos):
 		
 	return false
 
-func makeBorderTile(adj, pos):
+func makeBorderTile(adj, pos, biome, CheckBiome):
 	var shapes = []
 	
 	var image = Image.load_from_file("res://Assets/World/BiomeTiles/Beach.png")
-	
-	var tileName = "Ocean "
 	
 	var adjBiomes = []
 	for i in 4:
@@ -457,31 +455,27 @@ func makeBorderTile(adj, pos):
 	
 	for i in 4:
 		var tile = adj[i]
-		if(getBiome(tile) == "Ocean"):
+		if(getBiome(tile) == CheckBiome):
 			
 			if(pos.x != tile.x):
 				if(pos.x+1 == tile.x):
 					var border = Image.load_from_file("res://Assets/World/BiomeBorders/OceanBorderH.png")
 					drawBorderTile(image, border)
-					tileName = tileName + "HBorder "
 			
 				elif(pos.x-1 == tile.x):
 					var border = Image.load_from_file("res://Assets/World/BiomeBorders/OceanBorderH.png")
 					border.flip_x()
 					drawBorderTile(image, border)
-					tileName = tileName + "HBorderFlip "
 			
 			elif(pos.z != tile.z):
 				if(pos.z+1 == tile.z):
 					var border = Image.load_from_file("res://Assets/World/BiomeBorders/OceanBorderV.png")
 					drawBorderTile(image, border)
-					tileName = tileName + "VBorder "
 				
 				elif(pos.z-1 == tile.z):
 					var border = Image.load_from_file("res://Assets/World/BiomeBorders/OceanBorderV.png")
 					border.flip_y()
 					drawBorderTile(image, border)
-					tileName = tileName + "VBorderFlip "
 	
 	var library = tilemap.mesh_library
 	#if(library.find_item_by_name(tileName) > -1):
@@ -502,7 +496,7 @@ func makeBorderTile(adj, pos):
 		mesh.material = material
 		
 		library.set_item_mesh(id, mesh)
-		library.set_item_name(id, "Beach")
+		library.set_item_name(id, biome)
 		library.set_item_shapes(id, shapes)
 			
 		tilemap.set_cell_item(Vector3i(pos), id)

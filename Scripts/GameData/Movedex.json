@@ -391,6 +391,38 @@
 				}
 			}
 		},
+		"double_hit":{
+			"DisplayName" : "Double Hit",
+			"Type": "Normal",
+			"Power": 35,
+			"PP": [10, 10],
+			"Accuracy": 90,
+			"Category": "Physical",
+			"Flags": ["MultiHit"],
+			"MultiHit": 2,
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
+		},
+		"guillotine":{
+			"DisplayName" : "Scratch",
+			"Type": "Normal",
+			"Power": 0,
+			"PP": [5, 5],
+			"Accuracy": 30,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"100": {
+					"Target": "Victim",
+					"OHKO": 0
+				}
+			}
+		},
 		
 		
 		
@@ -441,6 +473,37 @@
 			"Accuracy": 100,
 			"Category": "Special",
 			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
+		},
+		"razor_shell":{
+			"DisplayName" : "Razor Shell",
+			"Type": "Water",
+			"Power": 75,
+			"PP": [10, 10],
+			"Accuracy": 95,
+			"Category": "Physical",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"50": {
+					"Target": "Victim",
+					"Defense": -1
+				}
+			}
+		},
+		"crabhammer":{
+			"DisplayName" : "Crabhammer",
+			"Type": "Water",
+			"Power": 100,
+			"PP": [10, 10],
+			"Accuracy": 90,
+			"Category": "Physical",
+			"Flags": ["CritRatio1"],
 			"Target": "AdjacentFoe",
 			"Priority": 0,
 			"SpecialEffect": null,
@@ -996,6 +1059,24 @@
 				}
 			}
 		},
+		"zing_zap":{
+			"DisplayName" : "Zing Zap",
+			"Type": "Electric",
+			"Power": 80,
+			"PP": [10, 10],
+			"Accuracy": 100,
+			"Category": "Special",
+			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {
+				"30": {
+					"Target": "Victim",
+					"VolatileEffect": "Flinch"
+				}
+			}
+		},
 		
 		
 
@@ -1412,6 +1493,19 @@
 					"Defense": -1
 				}
 			}
+		},
+		"night_slash":{
+			"DisplayName" : "Night Slash",
+			"Type": "Dark",
+			"Power": 70,
+			"PP": [15, 15],
+			"Accuracy": 100,
+			"Category": "Physical",
+			"Flags": ["CritRatio1", "Sharpness"],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
 		},
 		
 

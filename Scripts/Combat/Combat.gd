@@ -242,8 +242,8 @@ func calculateDamage(move : Dictionary, attacker : battlePlayer, victim : battle
 	
 	#Critical
 	var critRatio = 1
-	if(move.keys().has("CritRatio")):
-		critRatio = move.get("CritRatio")
+	if(move.Flags.has("CritRatio1")):
+		critRatio = 2
 		
 	critRatio += attacker.getCritRatio()
 	critRatio = clamp(critRatio, 1, 4)

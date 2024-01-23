@@ -485,7 +485,7 @@
 			"PP": [10, 10],
 			"Accuracy": 95,
 			"Category": "Physical",
-			"Flags": [],
+			"Flags": ["Sharpness"],
 			"Target": "AdjacentFoe",
 			"Priority": 0,
 			"SpecialEffect": null,
@@ -509,6 +509,19 @@
 			"SpecialEffect": null,
 			"StatChanges": {}
 		},
+		"aqua_cutter":{
+			"DisplayName" : "Aqua Cutter",
+			"Type": "Water",
+			"Power": 70,
+			"PP": [20, 20],
+			"Accuracy": 100,
+			"Category": "Physical",
+			"Flags": ["Sharpness", "CritRatio1"],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
+		},
 
 
 
@@ -519,7 +532,7 @@
 			"PP": [20, 20],
 			"Accuracy": 101,
 			"Category": "Physical",
-			"Flags": [],
+			"Flags": ["Sharpness"],
 			"Target": "AdjacentFoe",
 			"Priority": 0,
 			"SpecialEffect": null,
@@ -532,7 +545,7 @@
 			"PP": [15, 15],
 			"Accuracy": 95,
 			"Category": "Special",
-			"Flags": [],
+			"Flags": ["Sharpness"],
 			"Target": "All",
 			"Priority": 0,
 			"SpecialEffect": null,
@@ -585,7 +598,12 @@
 			"Target": "AdjacentFoes",
 			"Priority": 0,
 			"SpecialEffect": null,
-			"StatChanges": {}
+			"StatChanges": {
+				"30": {
+					"Target": "Victim",
+					"VolatileEffect": "Confusion"
+				}
+			}
 		},
 		"peck":{
 			"DisplayName" : "Peck",
@@ -614,7 +632,8 @@
 			"StatChanges": {
 				"100": {
 					"Target": "Victim",
-					"HealPercent": 0.50
+					"HealPercent": 0.50,
+					"VolatileEffect": "Roost"
 				}
 			}
 		},
@@ -626,6 +645,19 @@
 			"Accuracy": 100,
 			"Category": "Physical",
 			"Flags": [],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
+		},
+		"air_cutter":{
+			"DisplayName" : "Air Cutter",
+			"Type": "Flying",
+			"Power": 60,
+			"PP": [25, 25],
+			"Accuracy": 95,
+			"Category": "Special",
+			"Flags": ["CritRatio1", "Sharpness"],
 			"Target": "AdjacentFoe",
 			"Priority": 0,
 			"SpecialEffect": null,
@@ -928,7 +960,7 @@
 			"PP": [15, 15],
 			"Accuracy": 100,
 			"Category": "Physical",
-			"Flags": [],
+			"Flags": ["Sharpness"],
 			"Target": "AdjacentFoe",
 			"Priority": 0,
 			"SpecialEffect": null,
@@ -1246,6 +1278,19 @@
 				}
 			}
 		},
+		"leaf_blade":{
+			"DisplayName" : "Leaf Blade",
+			"Type": "Psychic",
+			"Power": 70,
+			"PP": [20, 20],
+			"Accuracy": 100,
+			"Category": "Physical",
+			"Flags": ["Sharpness", "CritRatio1"],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
+		},
 
 
 
@@ -1287,7 +1332,7 @@
 			"PP": [25, 25],
 			"Accuracy": 95,
 			"Category": "Physical",
-			"Flags": [],
+			"Flags": ["CritRatio1", "Sharpness"],
 			"Target": "AdjacentFoe",
 			"Priority": 0,
 			"SpecialEffect": null,
@@ -1300,7 +1345,7 @@
 			"PP": [15, 15],
 			"Accuracy": 100,
 			"Category": "Physical",
-			"Flags": [],
+			"Flags": ["Bullet"],
 			"Target": "AdjacentFoe",
 			"Priority": 0,
 			"SpecialEffect": null,
@@ -1416,8 +1461,22 @@
 			"Priority": 0,
 			"SpecialEffect": null,
 			"StatChanges": {
-				"AbilityChange": "Insomnia"
+				"Target": "Victim",
+				"VolatileEffect": "Insomnia"
 			}
+		},
+		"leaf_blade":{
+			"DisplayName" : "Leaf Blade",
+			"Type": "Grass",
+			"Power": 90,
+			"PP": [15, 15],
+			"Accuracy": 100,
+			"Category": "Physical",
+			"Flags": ["Sharpness", "CritRatio1"],
+			"Target": "AdjacentFoe",
+			"Priority": 0,
+			"SpecialEffect": null,
+			"StatChanges": {}
 		},
 
 

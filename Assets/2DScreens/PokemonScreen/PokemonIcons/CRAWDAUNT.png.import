@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/CRAWDAUNT.png-30c59c5d228fa86801ca1f6b8823b9f
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -7,6 +7,7 @@ var playerPokemon = []
 @onready var menu = $Menu
 @onready var screenAnim = $ScreenFX/ScreenAnimation
 @onready var world = $CurrentScene/World
+@onready var worldGenerator = $"CurrentScene/World/World Generator"
 
 func _ready():
 	playerPokemon.append(pokemon.new("Pidgey", 10))

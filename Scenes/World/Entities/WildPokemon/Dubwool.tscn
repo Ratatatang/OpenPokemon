@@ -351,7 +351,7 @@ transform = Transform3D(0.4, 0, 0, 0, 0.273034, 0.974164, 0, -0.292322, 0.909887
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("18")
-animation = &"up"
+animation = &"down"
 
 [node name="Emote" type="Sprite3D" parent="Sprite2D"]
 transform = Transform3D(2, 0, 0, 0, 1.99143, 0.0924578, 0, -0.184915, 0.995717, 0.0139444, 0.0966271, 0.0495571)

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DIGGERSBY.png-f9424ce08ceea5186b9d9d5ee2bdf30
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

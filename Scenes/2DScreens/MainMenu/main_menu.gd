@@ -43,6 +43,5 @@ func walking():
 	tweenDone.emit()
 
 func _on_start_pressed():
-	var master = load("res://Scenes/Master.tscn").instantiate()
-	get_tree().get_root().add_child(master)
-	queue_free()
+	var master = load("res://Scenes/Master.tscn")
+	get_tree().change_scene_to_packed(master)

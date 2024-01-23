@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://Scripts/Master.gd" id="1_rn7d8"]
 [ext_resource type="PackedScene" uid="uid://ban4agfxv0snt" path="res://Scenes/World/WorldGen/World Generator.tscn" id="1_ym2i5"]
 [ext_resource type="Script" path="res://Scripts/2DScreens/Menu.gd" id="2_oqile"]
-[ext_resource type="Texture2D" uid="uid://bbwshtftyoche" path="res://Assets/Combat/Pokemon/Front/BULBASAUR.png" id="3_fo7s2"]
 [ext_resource type="PackedScene" uid="uid://ckx1b3i48m3y3" path="res://Scenes/2DScreens/PokemonScreen/PokemonScreen.tscn" id="3_y6hnl"]
 [ext_resource type="PackedScene" uid="uid://bbr2mj5equ4s0" path="res://Scenes/2DScreens/MapScreen/map_screen.tscn" id="4_1k33g"]
-[ext_resource type="Script" path="res://Scripts/2DScreens/Rotating.gd" id="4_f7hma"]
 [ext_resource type="Script" path="res://Scripts/2DScreens/CurrentScreen.gd" id="4_iamk4"]
+[ext_resource type="Texture2D" uid="uid://bbwshtftyoche" path="res://Assets/Combat/Pokemon/Front/BULBASAUR.png" id="5_l83m8"]
+[ext_resource type="Script" path="res://Scripts/2DScreens/Rotating.gd" id="6_hwnhg"]
 
 [sub_resource type="Environment" id="Environment_ob4mh"]
 ambient_light_source = 2
@@ -62,22 +62,10 @@ tracks/1/path = NodePath("Sprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:process_mode")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_w7140"]
@@ -136,30 +124,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:process_mode")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ColorRect:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ortg0"]
@@ -228,6 +192,7 @@ offset_bottom = 46.0
 text = "FPS"
 
 [node name="Menu" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("2_oqile")
 
 [node name="ColorRect" type="ColorRect" parent="Menu"]
@@ -294,15 +259,16 @@ offset_bottom = 1138.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="Sprite2D" type="Sprite2D" parent="ScreenFX"]
+position = Vector2(607, 320)
+scale = Vector2(2, 2)
+texture = ExtResource("5_l83m8")
+script = ExtResource("6_hwnhg")
+
 [node name="ScreenAnimation" type="AnimationPlayer" parent="ScreenFX"]
 libraries = {
 "": SubResource("AnimationLibrary_e20g4")
 }
-
-[node name="Sprite2D" type="Sprite2D" parent="ScreenFX"]
-position = Vector2(565, 372)
-texture = ExtResource("3_fo7s2")
-script = ExtResource("4_f7hma")
 
 [node name="CurrentScene" type="Node3D" parent="."]
 

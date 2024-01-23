@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/IVYSAUR.png-2238ab3f9d19f49348babbc8101b0d16.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

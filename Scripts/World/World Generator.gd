@@ -29,12 +29,18 @@ var biomeTiles = {"Ocean": 0, "Plains": 1, "Beach": 2, "Forest": 3}
 var tileBiomes = {-1: "", 0: "Ocean", 1: "Plains", 2: "Beach", 3: "Forest"}
 
 var globalSpawnPoint = Vector3.ZERO
-		
-#Generates maps for temp, moisture & altitude used to decide biomes
+
+var generationThread
+
 func _ready():
 	randomize()
 	#Sets the noise to SmoothOpenSimplexNoise
 	noise.noise_type = 1
+	generationThread = Thread.new()
+	generationThread.start(await Callable(self, "startGeneration"))
+
+#Generates maps for temp, moisture & altitude used to decide biomes
+func startGeneration():
 	
 	temperature = generateMap()
 	moisture = generateMap()
@@ -43,12 +49,14 @@ func _ready():
 	altitude = await generateIsland()
 
 	$ShaderProcess.queue_free()
-	setTile(width, height)
+	
+	#Lagging game gen
+	await setTile(width, height)
 	
 	MasterInfo.worldMap = getItemMap()
 	MasterInfo.worldMapNode = $GridMap
 	MasterInfo.worldGenNode = self
-	
+
 	generateTrees()
 	generateObjects()
 	
@@ -65,6 +73,7 @@ func _ready():
 
 #Generates 2D noise maps
 func generateMap(fre = 0.0049, oct = 9, lun = 1.65, gain = 0.5, str = 0.03):
+	print("--generating blobmap")
 	noise.noise_type = 1
 	noise.frequency = fre
 	noise.fractal_octaves = oct
@@ -83,6 +92,7 @@ func generateMap(fre = 0.0049, oct = 9, lun = 1.65, gain = 0.5, str = 0.03):
 
 #Runs a noise image through the island filter
 func generateIsland():
+	print("--generating island")
 	var gridName = {}
 	
 	var islandNoise = NoiseTexture2D.new()
@@ -105,15 +115,11 @@ func generateIsland():
 	
 	await islandNoise.changed
 	
-	
-	print(shaderProcess.get_material().get_shader_parameter("island_tex"))
 	shaderProcess.get_material().set_shader_parameter("island_tex", islandNoise)
-	print(shaderProcess.get_material().get_shader_parameter("island_tex"))
 	
 	await RenderingServer.frame_post_draw
 	
 	var island = $ShaderProcess.get_texture().get_image()
-
 
 	for x in width:
 		for z in height:
@@ -135,7 +141,6 @@ func setTile(width, height):
 			var alt = altitude[Vector2(x, z)]
 			var temp = temperature[Vector2(x, z)]
 			var moist = moisture[Vector2(x, z)]
-			
 			var xPos = x
 			var zPos = z
 			
@@ -218,6 +223,7 @@ func setTile(width, height):
 	generateTreesMap()
 
 func generateTrees():
+	print("--generating trees")
 	for point in treesMap:
 		var pos = Vector3(point.x, 0, point.y)
 		var biome = biomeData.get(getBiome(pos)).new()
@@ -443,7 +449,7 @@ func correctBeaches(adj, pos):
 func makeBorderTile(adj, pos, biome, CheckBiome):
 	var shapes = []
 	
-	var image = Image.load_from_file("res://Assets/World/BiomeTiles/Beach.png")
+	var image = load("res://Assets/World/BiomeTiles/Beach.png").get_image()
 	
 	var adjBiomes = []
 	for i in 4:
@@ -459,24 +465,24 @@ func makeBorderTile(adj, pos, biome, CheckBiome):
 			
 			if(pos.x != tile.x):
 				if(pos.x+1 == tile.x):
-					var border = Image.load_from_file("res://Assets/World/BiomeBorders/OceanBorderH.png")
+					var border = load("res://Assets/World/BiomeBorders/oceanBorderH.png").get_image()
 					drawBorderTile(image, border)
 			
 				elif(pos.x-1 == tile.x):
-					var border = Image.load_from_file("res://Assets/World/BiomeBorders/OceanBorderH.png")
+					var border = load("res://Assets/World/BiomeBorders/oceanBorderH.png").get_image()
 					border.flip_x()
 					drawBorderTile(image, border)
 			
 			elif(pos.z != tile.z):
 				if(pos.z+1 == tile.z):
-					var border = Image.load_from_file("res://Assets/World/BiomeBorders/OceanBorderV.png")
+					var border = load("res://Assets/World/BiomeBorders/oceanBorderV.png").get_image()
 					drawBorderTile(image, border)
 				
 				elif(pos.z-1 == tile.z):
-					var border = Image.load_from_file("res://Assets/World/BiomeBorders/OceanBorderV.png")
+					var border = load("res://Assets/World/BiomeBorders/oceanBorderV.png").get_image()
 					border.flip_y()
 					drawBorderTile(image, border)
-	
+
 	var library = tilemap.mesh_library
 	#if(library.find_item_by_name(tileName) > -1):
 	#	var id = library.find_item_by_name(tileName)
@@ -507,3 +513,6 @@ func drawBorderTile(tile, border):
 			var pixel = border.get_pixel(x, z)
 			if(pixel != Color(0, 0, 0, 0)):
 				tile.set_pixel(x, z, pixel)
+
+func _exit_tree():
+	generationThread.wait_to_finish()

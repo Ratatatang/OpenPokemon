@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://flljemccm1gb"]
+
+[ext_resource type="Script" path="res://Scripts/loadingScreen.gd" id="1_oca56"]
+[ext_resource type="Texture2D" uid="uid://bbwshtftyoche" path="res://Assets/Combat/Pokemon/Front/BULBASAUR.png" id="2_riqtl"]
+[ext_resource type="Script" path="res://Scripts/2DScreens/Rotating.gd" id="3_4u85f"]
+[ext_resource type="FontFile" uid="uid://b55ek2u1muwn6" path="res://Assets/Fonts/m5x7.ttf" id="4_sdeg1"]
+
+[node name="loadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_oca56")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -732.0
+offset_top = -436.0
+offset_right = 669.0
+offset_bottom = 408.0
+color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_riqtl")
+script = ExtResource("3_4u85f")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ProgressLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -30.0
+offset_top = 76.0
+offset_right = 9.99999
+offset_bottom = 116.0
+scale = Vector2(5, 5)
+theme_override_fonts/normal_font = ExtResource("4_sdeg1")
+text = "0%"
+
+[node name="Temp" type="Node3D" parent="."]
+visible = false

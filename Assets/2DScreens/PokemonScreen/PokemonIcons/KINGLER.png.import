@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/KINGLER.png-70820af5aa1bcad97a44d48025022e8b.
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

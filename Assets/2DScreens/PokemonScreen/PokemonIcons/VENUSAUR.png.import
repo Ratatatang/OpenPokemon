@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/VENUSAUR.png-1accd400510822c0b7d56c8d82624eb4
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

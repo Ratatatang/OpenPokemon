@@ -3,6 +3,8 @@
 		"Bulbasaur" : {
 			"ID": 0001,
 			"Name": "Bulbasaur",
+			"Abilities": ["Overgrow"],
+			"HiddenAbility": ["Chlorophyll"],
 			"Types": ["Grass", "Poison"],
 			"Moves": {
 				"1": ["tackle", "growl"],
@@ -38,6 +40,8 @@
 		"Ivysaur": {
 			"ID": 0002,
 			"Name": "Ivysaur",
+			"Abilities": ["Overgrow"],
+			"HiddenAbility": ["Chlorophyll"],
 			"Types": ["Grass", "Poison"],
 			"Moves": {
 				"1": ["tackle", "growl", "vine_whip", "growth"],
@@ -72,6 +76,8 @@
 		"Venusaur": {
 			"ID": 0003,
 			"Name": "Venusaur",
+			"Abilities": ["Overgrow"],
+			"HiddenAbility": ["Chlorophyll"],
 			"Types": ["Grass", "Poison"],
 			"Moves": {
 				"0": ["petal_blizzard"],
@@ -104,6 +110,8 @@
 		"Pidgey" : {
 			"ID": 0016,
 			"Name": "Pidgey",
+			"Abilities": ["Keen Eye", "Tangled Feet"],
+			"HiddenAbility": ["Big Pecks"],
 			"Types": ["Normal", "Flying"],
 			"Moves": {
 				"1": ["tackle"],
@@ -139,6 +147,8 @@
 		"Pidgeotto" : {
 			"ID": 0017,
 			"Name": "Pidgeotto",
+			"Abilities": ["Keen Eye", "Tangled Feet"],
+			"HiddenAbility": ["Big Pecks"],
 			"Types": ["Normal", "Flying"],
 			"Moves": {
 				"1": ["tackle", "sand_attack", "gust"],
@@ -174,6 +184,8 @@
 		"Pidgeot" : {
 			"ID": 0018,
 			"Name": "Pidgeot",
+			"Abilities": ["Keen Eye", "Tangled Feet"],
+			"HiddenAbility": ["Big Pecks"],
 			"Types": ["Normal", "Flying"],
 			"Moves": {
 				"1": ["tackle", "sand_attack", "gust", "quick_attack", "hurricane"],
@@ -261,6 +273,8 @@
 		"Krabby" : {
 			"ID": 0098,
 			"Name": "Krabby",
+			"Abilities": ["Hyper Cutter", "Shell Armor"],
+			"HiddenAbility": ["Sheer Force"],
 			"Types": ["Water"],
 			"Moves": {
 				"1": ["water_gun", "leer"],
@@ -295,6 +309,8 @@
 		"Kingler" : {
 			"ID": 0099,
 			"Name": "Kingler",
+			"Abilities": ["Hyper Cutter", "Shell Armor"],
+			"HiddenAbility": ["Sheer Force"],
 			"Types": ["Water"],
 			"Moves": {
 				"1": ["wide_guard", "hammer_arm", "water_gun", "leer"],
@@ -326,6 +342,8 @@
 		"Tangela" : {
 			"ID": 0114,
 			"Name": "Tangela",
+			"Abilities": ["Chlorophyll", "Leaf Guard"],
+			"HiddenAbility": ["Regenerator"],
 			"Types": ["Grass"],
 			"Moves": {
 				"1": ["absorb", "bind"],
@@ -377,6 +395,8 @@
 		"Spinarak" : {
 			"ID": 0167,
 			"Name": "Spinarak",
+			"Abilities": ["Swarm", "Insomnia"],
+			"HiddenAbility": ["Sniper"],
 			"Types": ["Bug", "Poison"],
 			"Moves": {
 				"1": ["poison_sting", "string_shot"],
@@ -414,6 +434,8 @@
 		"Ariados" : {
 			"ID": 0168,
 			"Name": "Ariados",
+			"Abilities": ["Swarm", "Insomnia"],
+			"HiddenAbility": ["Sniper"],
 			"Types": ["Bug", "Poison"],
 			"Moves": {
 				"0": ["swords_dance"],
@@ -463,6 +485,8 @@
 		"Corphish" : {
 			"ID": 0341,
 			"Name": "Corphish",
+			"Abilities": ["Hyper Cutter", "Shell Armor"],
+			"HiddenAbility": ["Adaptability"],
 			"Types": ["Water"],
 			"Moves": {
 				"1": ["water_gun", "harden"],
@@ -498,6 +522,8 @@
 		"Crawdaunt" : {
 			"ID": 0342,
 			"Name": "Crawdaunt",
+			"Abilities": ["Hyper Cutter", "Shell Armor"],
+			"HiddenAbility": ["Adaptability"],
 			"Types": ["Water", "Dark"],
 			"Moves": {
 				"0": ["swift"],
@@ -537,6 +563,8 @@
 		"Pachirisu": {
 			"ID": 417,
 			"Name": "Pachirisu",
+			"Abilities": ["Run Away", "Pickup"],
+			"HiddenAbility": ["Volt Absorb"],
 			"Types": ["Electric"],
 			"Moves": {
 				"0": ["growl", "thunder_shock"],
@@ -590,6 +618,8 @@
 		"Bunnelby" : {
 			"ID" : 0659,
 			"Name": "Bunnelby",
+			"Abilities": ["Run Away", "Cheek Pouch"],
+			"HiddenAbility": ["Huge Power"],
 			"Types": ["Normal"],
 			"Moves": {
 				"1": ["mud_slap", "leer"],
@@ -625,6 +655,8 @@
 		"Diggersby" : {
 			"ID" : 0660,
 			"Name": "Diggersby",
+			"Abilities": ["Run Away", "Cheek Pouch"],
+			"HiddenAbility": ["Huge Power"],
 			"Types": ["Normal", "Ground"],
 			"Moves": {
 				"1": ["mud_slap", "leer", "tackle", "sand_attack"],
@@ -665,6 +697,8 @@
 		"Cutiefly" : {
 			"ID" : 0742,
 			"Name": "Cutiefly",
+			"Abilities": ["Honey Gather", "Shield Dust"],
+			"HiddenAbility": ["Sweet Veil"],
 			"Types": ["Bug", "Fairy"],
 			"Moves": {
 				"1": ["absorb", "fairy_wind"],
@@ -696,6 +730,8 @@
 		"Ribombee" : {
 			"ID" : 0743,
 			"Name": "Ribombee",
+			"Abilities": ["Honey Gather", "Shield Dust"],
+			"HiddenAbility": ["Sweet Veil"],
 			"Types": ["Bug", "Fairy"],
 			"Moves": {
 				"0": ["pollen_puff"],
@@ -738,6 +774,8 @@
 		"Wooloo" : {
 			"ID" : 0831,
 			"Name": "Wooloo",
+			"Abilities": ["Run Away", "Fluffy"],
+			"HiddenAbility": ["Bulletproof"],
 			"Types": ["Normal"],
 			"Moves": {
 				"1": ["tackle", "growl"],
@@ -770,6 +808,8 @@
 		"Dubwool" : {
 			"ID" : 0832,
 			"Name": "Dubwool",
+			"Abilities": ["Steadfast", "Fluffy"],
+			"HiddenAbility": ["Bulletproof"],
 			"Types": ["Normal"],
 			"Moves": {
 				"1": ["tackle", "growl", "defense_curl"],

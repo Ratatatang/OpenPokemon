@@ -73,12 +73,8 @@ func loadSprite(pokemonName):
 		sprite.position = Vector2(-207, -317)
 	texture = "res://Assets/Combat/Pokemon/%s/%s.png" % [gen, pokemonName.to_upper()]
 	
-	if(FileAccess.file_exists(texture)):
-		texture = load(texture)
-	else:
-		print("%s sprite doesn't exist! Defaulting to 000 sprite." % pokemonName.to_upper())
-		texture = load("res://Assets/Combat/Pokemon/Front/000.png")
-	
+	texture = load(texture)
+
 	sprite.texture = texture
 	
 	var image = texture.get_image().get_used_rect()

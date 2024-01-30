@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bbgs55f41hqs8"]
+[gd_scene load_steps=18 format=3 uid="uid://bbgs55f41hqs8"]
 
 [ext_resource type="Script" path="res://Scripts/Master.gd" id="1_rn7d8"]
 [ext_resource type="PackedScene" uid="uid://ban4agfxv0snt" path="res://Scenes/World/WorldGen/World Generator.tscn" id="1_ym2i5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/2DScreens/CurrentScreen.gd" id="4_iamk4"]
 [ext_resource type="Texture2D" uid="uid://bbwshtftyoche" path="res://Assets/Combat/Pokemon/Front/BULBASAUR.png" id="5_l83m8"]
 [ext_resource type="Script" path="res://Scripts/2DScreens/Rotating.gd" id="6_hwnhg"]
+[ext_resource type="FontFile" uid="uid://b55ek2u1muwn6" path="res://Assets/Fonts/m5x7.ttf" id="7_1ccs5"]
 
 [sub_resource type="Environment" id="Environment_ob4mh"]
 ambient_light_source = 2
@@ -58,7 +59,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/path = NodePath("LoadingFX:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -116,7 +117,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/path = NodePath("LoadingFX:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -252,29 +253,41 @@ text = "Save"
 
 [node name="ColorRect" type="ColorRect" parent="ScreenFX"]
 top_level = true
-offset_left = -870.0
-offset_top = -892.0
-offset_right = 2974.0
-offset_bottom = 1138.0
+offset_left = -89.0
+offset_top = -79.0
+offset_right = 1241.0
+offset_bottom = 763.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="ScreenFX"]
-position = Vector2(607, 320)
-scale = Vector2(2, 2)
-texture = ExtResource("5_l83m8")
-script = ExtResource("6_hwnhg")
 
 [node name="ScreenAnimation" type="AnimationPlayer" parent="ScreenFX"]
 libraries = {
 "": SubResource("AnimationLibrary_e20g4")
 }
 
+[node name="LoadingFX" type="Sprite2D" parent="ScreenFX"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ScreenFX/LoadingFX"]
+position = Vector2(607, 320)
+scale = Vector2(2, 2)
+texture = ExtResource("5_l83m8")
+script = ExtResource("6_hwnhg")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScreenFX/LoadingFX"]
+offset_left = 516.0
+offset_top = 352.0
+offset_right = 604.0
+offset_bottom = 392.0
+scale = Vector2(3, 3)
+theme_override_fonts/normal_font = ExtResource("7_1ccs5")
+text = "Generating World..."
+
 [node name="CurrentScene" type="Node3D" parent="."]
 
 [node name="World" type="Node3D" parent="CurrentScene"]
 
 [node name="World Generator" parent="CurrentScene/World" instance=ExtResource("1_ym2i5")]
+visible = false
 
 [node name="CurrentScreen" type="Node3D" parent="CurrentScene"]
 script = ExtResource("4_iamk4")

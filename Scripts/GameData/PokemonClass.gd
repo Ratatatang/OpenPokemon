@@ -38,7 +38,10 @@ var experienceCurve
 	
 var participant = false
 var dimorphism = false
+
 var shiny = false
+
+var ability
 
 var moves = []
 var availableMoves = []
@@ -61,6 +64,8 @@ func _init(tempName, lv = 0, info = MasterInfo):
 		self.level = round(randf_range(1, pokedexInfo.get("EvoLv")))
 	else:
 		self.level = round(randf_range(1, 100))
+
+	ability = pokedexInfo.get("Abilities").pick_random()
 	
 	var moveLvs = pokedexInfo.get("Moves").keys()
 

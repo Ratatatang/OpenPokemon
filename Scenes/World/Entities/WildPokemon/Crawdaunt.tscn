@@ -382,9 +382,11 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1j0hj")
+}
 tree_root = SubResource("27")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/blend_position = Vector2(-0.00800002, -0.0131004)
 
 [connection signal="timeout" from="WanderController/Timer" to="WanderController" method="_on_Timer_timeout"]

@@ -56,7 +56,10 @@ func startGeneration():
 	MasterInfo.worldMap = getItemMap()
 	MasterInfo.worldMapNode = $GridMap
 	MasterInfo.worldGenNode = self
-
+	
+	print("--generating treeMap")
+	generateTreesMap()
+	
 	generateTrees()
 	generateObjects()
 	
@@ -68,7 +71,8 @@ func startGeneration():
 	globalSpawnPoint = tilemap.map_to_local(Vector3i(globalSpawnPoint.x, 1, globalSpawnPoint.z))
 	
 	var newPlayer = addPlayer("")
-
+	
+	self.visible = true
 	SignalManager.mapReady.emit()
 
 #Generates 2D noise maps
@@ -131,6 +135,7 @@ func generateIsland():
 
 #Preliminary, sets every tile to be plains so there are no gaps in the world
 func setTile(width, height):
+	print("--setting world tiles")
 	for x in width:
 		for z in height:
 			tilemap.set_cell_item(Vector3i(x, 0, z), biomeTiles.Plains)
@@ -138,6 +143,8 @@ func setTile(width, height):
 #Sets the tile in accordance of the moisture, altitude, and temperature of the tile
 	for x in width:
 		for z in height:
+			if((z+x) % 5 == 0):
+				await RenderingServer.frame_post_draw
 			var alt = altitude[Vector2(x, z)]
 			var temp = temperature[Vector2(x, z)]
 			var moist = moisture[Vector2(x, z)]
@@ -219,8 +226,6 @@ func setTile(width, height):
 	
 	for tile in cells["Beach"]:
 		autoTile(tile)
-	
-	generateTreesMap()
 
 func generateTrees():
 	print("--generating trees")

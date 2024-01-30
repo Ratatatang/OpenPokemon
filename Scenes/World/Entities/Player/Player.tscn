@@ -530,9 +530,6 @@ radius = 0.0383264
 height = 0.0878534
 
 [sub_resource type="FontFile" id="55"]
-face_index = null
-embolden = null
-transform = null
 cache/0/32/0/ascent = 0.0
 cache/0/32/0/descent = 0.0
 cache/0/32/0/underline_position = 0.0
@@ -571,6 +568,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_78y26")
+}
 tree_root = SubResource("15")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0.00908339, 0.494012)
@@ -578,7 +578,7 @@ parameters/Roll/blend_position = Vector2(0, 0)
 parameters/Run/blend_position = Vector2(0.6776, -0.113773)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(2.17059, 0, 0, 0, -4.70595e-07, 0.317176, 0, -0.129999, -1.14817e-06, 0, 0, 0)
+transform = Transform3D(2.17059, 0, 0, 0, 0.129999, 0, 0, 0, 0.317176, 0, 0, 0)
 collision_mask = 4
 hit_from_inside = true
 collide_with_areas = true
